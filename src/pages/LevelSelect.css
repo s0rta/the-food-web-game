@@ -1,0 +1,16 @@
+.level-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.levels {
+    display:flex;
+}
+
+.level {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 4px;
+}

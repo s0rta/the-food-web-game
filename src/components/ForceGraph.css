@@ -1,0 +1,12 @@
+.nodes {
+    stroke-width: 1;
+    stroke: white;
+}
+
+.line-feeding {
+    stroke: grey;
+}
+
+.line-es {
+    stroke: black;
+}
