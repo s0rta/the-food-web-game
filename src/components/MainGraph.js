@@ -9,7 +9,8 @@ class MainGraph extends React.Component {
 
 
         this.state = {
-            trophicDisplay: false
+            trophicDisplay: false,
+            clock: 0
         };
     }
 
@@ -25,8 +26,16 @@ class MainGraph extends React.Component {
             .onRightClick(d, seed)
     }
 
+    handleESBiomass = (bioArr) => {
+        this.props.onUpdateESBiomass(bioArr)
+    }
+
     toggleTrophic = () => {
         this.setState({trophicDisplay: !this.state.trophicDisplay})
+    }
+
+    gameTick = () => {
+        this.setState({clock: this.state.clock + 1})
     }
 
     render()
@@ -44,8 +53,11 @@ class MainGraph extends React.Component {
                     edges={this.props.edges}
                     trophic={this.state.trophicDisplay}
                     onNodeHover={this.handleNodeHover}
-                    onRightClick={this.handleRightClick}/>
+                    onRightClick={this.handleRightClick}
+                    onUpdateESBiomass={this.handleESBiomass}
+                    gameClock={this.state.clock}/>
                 <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
+                <input type="button" value="Tick" onClick={this.gameTick}/>
             </div>
 
         )

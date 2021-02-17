@@ -22,6 +22,7 @@ class Game extends React.Component {
             subGraphNodes: [],
             subGraphEdges: [],
             subSeed: 0,
+            esBiomass: [-1, -1, -1, -1, -1, -1, -1, -1]
         };
     }
 
@@ -56,12 +57,12 @@ class Game extends React.Component {
                 break;
             case "7":
                 levelNodes = lists.nodeList7;
-                levelEdges = lists.edgeList2;
+                levelEdges = lists.edgeList7;
                 break;
             default:
                 break;
         }
-
+        console.log(levelEdges)
         return [levelNodes, levelEdges]
     }
 
@@ -79,6 +80,10 @@ class Game extends React.Component {
         })
     }
 
+    handleESBiomass = (bioArr) => {
+        this.setState({esBiomass: bioArr})
+    }
+
     render()
     {
 
@@ -90,8 +95,9 @@ class Game extends React.Component {
                     nodes={[...this.state.levelNodes]}
                     edges={[...this.state.levelEdges]}
                     onNodeHover={this.handleNodeHover}
-                    onRightClick={this.handleRightClick}/>
-                <SubGraphs onNodeHover={this.handleNodeHover} epiNode={this.state.subGraphEpi} seed={this.state.subSeed} colors={lists.colors} nodes={[...this.state.levelNodes]}
+                    onRightClick={this.handleRightClick}
+                    onUpdateESBiomass={this.handleESBiomass}/>
+                <SubGraphs esBiomass={this.state.esBiomass} onNodeHover={this.handleNodeHover} epiNode={this.state.subGraphEpi} seed={this.state.subSeed} colors={lists.colors} nodes={[...this.state.levelNodes]}
                     edges={[...this.state.levelEdges]}/>
             </div>
         )

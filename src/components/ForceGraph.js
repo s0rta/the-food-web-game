@@ -9,7 +9,11 @@ class ForceGraph extends React.Component {
         super(props);
 
         let nodeList = this.props.nodes
-            ? [...this.props.nodes]
+            ? [...this.props.nodes.map(n => {
+                n.living = true;
+                n.saved = false;
+                return n;
+            })]
             : [];
         let edgeList = this.props.edges
             ? [...this.props.edges]
@@ -81,12 +85,50 @@ class ForceGraph extends React.Component {
         }
     }
 
+    handleESBiomass = () => {
+        const biomassID = [350, 450, 550, 650, 750, 850, 950, 1050]
+        const bioArr = [];
+        if (this.props.onUpdateESBiomass) {
+            biomassID.forEach((e, i) => {
+                let b = 0;
+                const biomassLinks = this.props.edges.filter(l => {
+                    return l.Type === "ES" ? l.source.speciesID === e : false
+                })
+
+                biomassLinks.forEach(n => {
+                    b += (n.target.biomass === -1 || !n.target.living) ? 0 : n.target.biomass
+                })
+
+                bioArr[i] = b;
+            })
+            this.props.onUpdateESBiomass(bioArr)
+        }
+    }
+
     restartSim = () => {
         this
             .state
             .sim
             .alpha(0.9)
             .restart()
+    }
+
+    gameTick = () => {
+        if(this.props.gameClock === 1) {
+            let nodes = this.state.nodeList;
+            let setDead = true;
+            // while(setDead) {
+            //     let node = nodes[Math.floor(Math.random() * nodes.length)];
+            //     if(node.organismType !== "Ecosystem Service") {
+            //         node.living = false;
+            //         setDead = false;
+            //     }
+            // }
+            nodes[1].living = false;
+            this.setState({nodeList: nodes})
+            this.state.sim.alpha(0.1).restart()
+            this.handleESBiomass()
+        }
     }
 
     createSim = () => {
@@ -172,7 +214,8 @@ class ForceGraph extends React.Component {
             nodes
                 .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
-                });
+                }).attr("class", (d) => d.living ? "" : "dead");
+
             links = g_links
                 .selectAll("line")
                 .attr("x2", (d) => {
@@ -189,7 +232,9 @@ class ForceGraph extends React.Component {
                 })
         })
 
-        this.setState({sim: simulation, g_nodes: g_nodes, g_links: g_links})
+        this.setState({sim: simulation, g_nodes: g_nodes, g_links: g_links}, () => {
+            this.handleESBiomass()
+        })
     }
 
     tl2y = d3
@@ -200,9 +245,20 @@ class ForceGraph extends React.Component {
             10
         ]);
 
+    restartSim() {
+        return new Promise(() => this.state.sim.alpha(0.1).restart())
+    }
+
+    sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
     componentDidUpdate(prevProps, prevState) {
+        if(prevProps.gameClock !== this.props.gameClock) {
+            this.gameTick()
+        }
+
         if (prevProps.seed !== this.props.seed) {
-            console.log("HERE")
             this.state.sim && d3
                 .select(`#${this.props.name}`)
                 .selectAll("*")
@@ -228,10 +284,14 @@ class ForceGraph extends React.Component {
 
                 this.setState((state, props) => {
                     return {edgeList: linksArr, nodeList: nodesArr}
-                }, this.createSim)
+                }, () => {
+                    this.sleep(1000).then(() => {
+                        this.state.sim.stop()
+                    })
+                    this.createSim()
+                })
             }
         } else if (prevProps.trophic !== this.props.trophic) {
-
             this
                 .state
                 .sim
@@ -240,12 +300,15 @@ class ForceGraph extends React.Component {
                     : 0).y((d) => {
                     return this.tl2y(d.trophicLevel);
                 }))
+
             this
                 .state
                 .sim
                 .alpha(0.1)
-                .restart();
-
+                .restart()
+            this.sleep(500).then(() => {
+                this.state.sim.stop()
+            })
         }
 
     }

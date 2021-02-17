@@ -10,3 +10,8 @@
 .line-es {
     stroke: black;
 }
+
+.dead {
+    fill: grey;
+    stroke: black;
+}
