@@ -13,57 +13,67 @@ class Game extends React.Component {
         super(props);
 
         let [levelNodes,
-            levelEdges] = this.getLevelData();
+            levelEdges, levelData] = this.getLevelData();
 
         this.state = {
             level: this.props.match.params.level,
             levelNodes: levelNodes,
             levelEdges: levelEdges,
+            levelData: levelData,
             subGraphNodes: [],
             subGraphEdges: [],
             subSeed: 0,
-            esBiomass: [-1, -1, -1, -1, -1, -1, -1, -1]
+            esBiomass: [-1, -1, -1, -1, -1, -1, -1, -1],
+            step: 0,
         };
     }
 
     getLevelData = () => {
         let levelNodes;
         let levelEdges;
+        let levelData;
 
         switch (this.props.match.params.level) {
             case "1":
                 levelNodes = lists.nodeList1;
                 levelEdges = lists.edgeList1;
+                levelData = lists.levelData[0];
                 break;
             case "2":
                 levelNodes = lists.nodeList2;
                 levelEdges = lists.edgeList2;
+                levelData = lists.levelData[1];
                 break;
             case "3":
                 levelNodes = lists.nodeList3;
                 levelEdges = lists.edgeList3;
+                levelData = lists.levelData[2];
                 break;
             case "4":
                 levelNodes = lists.nodeList4;
                 levelEdges = lists.edgeList4;
+                levelData = lists.levelData[3];
                 break;
             case "5":
                 levelNodes = lists.nodeList5;
                 levelEdges = lists.edgeList5;
+                levelData = lists.levelData[4];
                 break;
             case "6":
                 levelNodes = lists.nodeList6;
                 levelEdges = lists.edgeList6;
+                levelData = lists.levelData[5];
                 break;
             case "7":
                 levelNodes = lists.nodeList7;
                 levelEdges = lists.edgeList7;
+                levelData = lists.levelData[6];
                 break;
             default:
                 break;
         }
         console.log(levelEdges)
-        return [levelNodes, levelEdges]
+        return [levelNodes, levelEdges, levelData]
     }
 
     componentDidMount() {}
@@ -80,8 +90,8 @@ class Game extends React.Component {
         })
     }
 
-    handleESBiomass = (bioArr) => {
-        this.setState({esBiomass: bioArr})
+    handleESBiomass = (bioArr, step) => {
+        this.setState({esBiomass: bioArr, step: step})
     }
 
     render()
@@ -97,7 +107,7 @@ class Game extends React.Component {
                     onNodeHover={this.handleNodeHover}
                     onRightClick={this.handleRightClick}
                     onUpdateESBiomass={this.handleESBiomass}/>
-                <SubGraphs esBiomass={this.state.esBiomass} onNodeHover={this.handleNodeHover} epiNode={this.state.subGraphEpi} seed={this.state.subSeed} colors={lists.colors} nodes={[...this.state.levelNodes]}
+                <SubGraphs esBiomass={this.state.esBiomass} step={this.state.step} onNodeHover={this.handleNodeHover} epiNode={this.state.subGraphEpi} seed={this.state.subSeed} colors={lists.colors} nodes={[...this.state.levelNodes]}
                     edges={[...this.state.levelEdges]}/>
             </div>
         )

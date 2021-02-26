@@ -2,7 +2,6 @@ import React from 'react';
 import * as d3 from "d3"
 
 import "./ForceGraph.css"
-import {areaRadial} from 'd3';
 
 class ForceGraph extends React.Component {
     constructor(props) {
@@ -22,7 +21,8 @@ class ForceGraph extends React.Component {
         this.state = {
             nodeList: nodeList,
             edgeList: edgeList,
-            seed: this.props.seed
+            seed: this.props.seed,
+            step: 0,
         };
     }
 
@@ -49,10 +49,10 @@ class ForceGraph extends React.Component {
         return es.includes(transformed);
     }
 
-    handleMouseOver = (d) => {
+    handleMouseOver (d) {
         this
             .props
-            .onNodeHover(d.originalTarget.__data__);
+            .onNodeHover(d);
     }
 
     filterNodes = (epiNode, n) => {
@@ -101,8 +101,27 @@ class ForceGraph extends React.Component {
 
                 bioArr[i] = b;
             })
-            this.props.onUpdateESBiomass(bioArr)
+            this.props.onUpdateESBiomass(bioArr, this.state.step)
+            this.setState({step: this.state.step + 1})
         }
+    }
+
+    handleClick = (d) => {
+        console.log(d)
+        let nodes = this.state.nodeList
+        nodes.map((e) => {
+            if(e.speciesID === d.speciesID && d.living && d.organismType !== "Ecosystem Service") {
+                e.saved = true;
+            }
+            return e;
+        })
+
+        this.setState({nodeList: nodes})
+        this.restartSim()
+    }
+
+    zoom_actions(event, g){
+        g.attr("transform", event.transform)
     }
 
     restartSim = () => {
@@ -114,28 +133,60 @@ class ForceGraph extends React.Component {
     }
 
     gameTick = () => {
-        if(this.props.gameClock === 1) {
+        if(this.props.gameClock <= 4) {
             let nodes = this.state.nodeList;
             let setDead = true;
-            // while(setDead) {
-            //     let node = nodes[Math.floor(Math.random() * nodes.length)];
-            //     if(node.organismType !== "Ecosystem Service") {
-            //         node.living = false;
-            //         setDead = false;
-            //     }
-            // }
-            nodes[1].living = false;
+            let tries = nodes.length * 10
+            console.log(tries)
+            while(setDead && tries >= 0) {
+                tries--;
+                let node = nodes[Math.floor(Math.random() * nodes.length)];
+                if(node.organismType !== "Ecosystem Service" && node.living === true && !node.saved) {
+                    node.living = false;
+                    setDead = false;
+                }
+            }
+            // nodes[1].living = false;
             this.setState({nodeList: nodes})
-            this.state.sim.alpha(0.1).restart()
+            this.restartSim();
+            this.handleESBiomass()
+        } else if(this.props.gameClock > 4) {
+            let nodes = this.state.nodeList;
+
+            nodes.map((node) => {
+                if(node.organismType !== "Ecosystem Service" && node.living) {
+                    let deadCount = 0;
+
+                    const keepAlive = this.props.edges.some((edge) => {
+                        if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
+                            return true;
+                        } else if(edge.source.speciesID === node.speciesID) {
+                            deadCount++;
+                            return false;
+                        }
+                    })
+
+                    node.living = deadCount > 0 ? keepAlive : true;
+                }
+                return node;
+            })
+
+            this.setState({nodeList: nodes})
+            this.restartSim()
             this.handleESBiomass()
         }
     }
 
+    
+
     createSim = () => {
+        
+        let transform = d3.zoomIdentity;
         const svg = d3
             .select(`#${this.props.name}`)
             .attr("width", this.props.width)
-            .attr("height", this.props.height);
+            .attr("height", this.props.height)
+            .attr("fill", "#CCC")
 
         const rect = svg
             .append("rect")
@@ -143,16 +194,18 @@ class ForceGraph extends React.Component {
             .attr("y", 0)
             .attr("width", this.props.width)
             .attr("height", this.props.height)
-            .attr("fill", "#CCC");
+            .attr("fill", "#CCC")
 
-        let g_links = svg
+            let g = svg.append("g");
+
+        let g_links = g
             .append("g")
             .attr("class", "links");
 
-        let g_nodes = svg
+        let g_nodes = g
             .append("g")
-            .attr("class", "nodes");
-
+            .attr("class", "nodes")
+             
         let links = g_links
             .selectAll("line")
             .data(this.state.edgeList)
@@ -185,8 +238,7 @@ class ForceGraph extends React.Component {
                     ? d3.symbolSquare
                     : d3.symbolCircle
                 return test
-            }))
-            .attr("fill", d => {
+            })).attr("fill", d => {
                 let color = this
                     .props
                     .colors
@@ -197,11 +249,26 @@ class ForceGraph extends React.Component {
                     ? color.hex
                     : "#00f"
             })
-            .on("mouseover", this.handleMouseOver)
+            .on("mouseover", (event, d) => {
+                return this.handleMouseOver(d)
+            })
+            .on("click", (event, d) => {
+                this.handleClick(d)
+            })
             .on("contextmenu", (event, d) => {
                 event.preventDefault();
                 return this.handleRightClick(d);
             });
+
+            const zoomed = (event, d) => {
+                g.attr("transform", event.transform);
+            }
+
+            const zoom = d3.zoom()
+            .on("zoom", zoomed);
+
+        rect.call(zoom)
+            
 
         const simulation = d3
             .forceSimulation(this.state.nodeList)
@@ -210,11 +277,14 @@ class ForceGraph extends React.Component {
             .force("x", d3.forceX(this.props.width / 2))
             .force("y", d3.forceY(this.props.height / 2))
 
+        
+
         simulation.on("tick", () => {
             nodes
                 .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
-                }).attr("class", (d) => d.living ? "" : "dead");
+                }).classed("dead", (d) => !d.living)
+                .classed("saved", (d) => d.saved);
 
             links = g_links
                 .selectAll("line")
@@ -315,7 +385,7 @@ class ForceGraph extends React.Component {
 
     componentDidMount() {
         if (this.props.n) {} else {
-            this.createSim()
+            this.createSim() 
         }
 
     }

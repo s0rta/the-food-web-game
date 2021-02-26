@@ -79,7 +79,14 @@ class SubGraphs extends React.Component {
 }
                 <div className="plots">
                     Biomass Plots
-                    <Plot name="Wave Attenuation" id="wave-attenuation" index={850} display={true} pos={this.props.esBiomass[0]}/>
+                    <Plot name="Wave Attenuation" step={this.props.step} id="wave-attenuation" index={350} failLine={50} display={true} pos={this.props.esBiomass[0]}/>
+                    <Plot name="Shoreline Protection" step={this.props.step} id="shoreline-protection" index={450} failLine={50} display={true} pos={this.props.esBiomass[1]}/>
+                    <Plot name="Carbon Storage" step={this.props.step} id="carbon-storage" index={550} failLine={50} display={true} pos={this.props.esBiomass[2]}/>
+                    <Plot name="Water Filtration" step={this.props.step} id="water-filtration" index={650} failLine={50} display={true} pos={this.props.esBiomass[3]}/>
+                    <Plot name="Commercial Fishery" step={this.props.step} id="commercial-fishery" index={750} failLine={50} display={true} pos={this.props.esBiomass[4]}/>
+                    <Plot name="Bird Watching" step={this.props.step} id="bird-watching" index={850} failLine={50} display={true} pos={this.props.esBiomass[5]}/>
+                    <Plot name="Waterfowl Hunting" step={this.props.step} id="waterfowl-hunting" index={950} failLine={50}  display={true} pos={this.props.esBiomass[6]}/>
+                    <Plot name="Recreational Fishery" step={this.props.step} id="recreational-fishery" index={1050} failLine={50} display={true} pos={this.props.esBiomass[7]}/>
                 </div>
                 </div>
 

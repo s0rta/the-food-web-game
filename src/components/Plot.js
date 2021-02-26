@@ -8,8 +8,8 @@ class Plot extends React.Component {
         super(props);
 
         this.state = {
-            step: 1,
             data: [],
+            failLine: [{x: 0, y: this.props.failLine}, {x: 1, y: this.props.failLine}],
             startPos: this.props.pos 
         };
     }
@@ -27,7 +27,7 @@ class Plot extends React.Component {
 
         let plotX = d3
             .scaleLinear()
-            .domain([0, this.state.step])
+            .domain([0, this.props.step + 1])
             .range([0, 390]);
 
         let plotY = d3
@@ -51,6 +51,14 @@ class Plot extends React.Component {
             .attr("stroke", "steelblue")
             .attr("stroke-width", 1.5)
             .attr("d", d3.line().x(d => plotX(d.x)).y(d => plotY(d.y)))
+
+        plotSVG
+            .append("path")
+            .datum(this.state.failLine)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line().x(d => plotX(d.x)).y(d => plotY(d.y)))
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -60,15 +68,14 @@ class Plot extends React.Component {
                 data: [{x:0, y: 100}]
             }, () => {
                 this.drawPlot()
-                this.setState({step: 1})
             })
-        } else if(this.props.pos !== prevProps.pos) {
+        } else if(this.props.step !== prevProps.step) {
             let data = [...this.state.data];
             data.push({
-                x: this.state.step,
+                x: this.props.step,
                 y: (this.props.pos / this.state.startPos) * 100
             })
-            this.setState({data: data, step: this.state.step + 1}, () => {
+            this.setState({data: data, failLine: [...this.state.failLine, {x: this.props.step + 1, y: this.props.failLine}]}, () => {
                 this.drawPlot()
             })
         }

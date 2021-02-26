@@ -26,8 +26,8 @@ class MainGraph extends React.Component {
             .onRightClick(d, seed)
     }
 
-    handleESBiomass = (bioArr) => {
-        this.props.onUpdateESBiomass(bioArr)
+    handleESBiomass = (bioArr, step) => {
+        this.props.onUpdateESBiomass(bioArr, step)
     }
 
     toggleTrophic = () => {

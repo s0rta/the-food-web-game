@@ -43,3 +43,48 @@ export const colors = [
     {name: "Bright Green-14", hex: "#24ff24"},
     {name: "Light Yellow-15", hex: "#ffff6d"}
 ]
+
+export const levels = [
+    {
+        level: 1,
+        intro: "You recently accepted a position working for the Carpinteria Salt Marsh Reserve in Santa Barbara, California. You work in conservation, and part of your job requires you to monitor the species living in the salt marsh, and to take action to maintain the ecosystem. The Carpinteria Salt Marsh Reserve supports a great diversity of life and plays an important role in many ecosystem services that your community relies on. In your first week on the job, your supervisor asks you to monitor the water quality of the reserve. As an ecologist, you have a general idea of which types of species help maintain water quality, and how they interact with other types of species. But, as a new resident in California, you still don't know the species themselves.",
+        objective: "Ecosystem service as nature's contributions to people. Your supervisor requests that you conduct a brief study to maximize the number of ecosystem services at the reserve with a limited budget. Maintain as many ecosystem services as you can by protecting one type of species.",
+        removableIDs: [300],
+    },
+    {
+        level: 2,
+        intro: "You make new friends at the local Audubon Society meeting and explain to them that you're new to the area and are still learning the local flora and fauna. They agree to take you birdwatching at the Carpinteria Salt Marsh Reserve, and you learn a few new bird species.",
+        objecive: "Since salt marshes exist at the intersection of fresh water from rivers and salt water from the ocean, ocean acidification - the ongoing decrease in the ocean's pH - is reaching the salt marsh.  Ocean acidifcation impacts calcifying organisms, including those that build shells. Maintain X level of water quality in the salt marsh.",
+        removeableIDs: [500]
+    },
+    {
+        level: 3,
+        intro: "While on your weekly monitoring walk through the reserve, you stumble upon some recreational fishers. Because you haven't had a chance to identify the local fish species yet, you decide to spend some time with the fishers, getting to know a few of the species. While talking to the fishers, you learn that they've noticed decreases in some of their favorite fish species.",
+        objective: "Salt marshes are vulnerable to changes in nutrient levels, which can cause eutrophication, where excess nutrient levels lead to increased algal growth and decreased oxygen levels. Decreased oxygen, also known as hypoxia, can lead to fish kills. Maintain X level of the recreational fishery.",
+        removableIDs: [900, 120, 118, 125, 800, 700]
+    },
+    {
+        level: 4,
+        intro: "After many weeks birdwatching with your friends, you finally know all of the birds in the Carpinteria Salt Marsh Reserve! You also had a meeting with local Fish and Wildlife offices, where you discussed waterfowl hunting permits in nearby salt marshes. Hunting doesn't take place in the reserve but is allowed in neighboring marshlands, and birds often move between the areas. Officials mention that these neighboring marshlands are hotspots for hunting, which generate important conservation resources through fees and permits. They request that your department surveys the waterfowl population in the reserve, and take any necessary actions to maintain stable populations.",
+        objective: "Protect X species to maintain and support waterfowl hunting in the surrounding area. ",
+        removableIDs: []
+    },
+    {
+        level: 5,
+        intro: "You spent some time this week surveying the mollsucs and crabs in the reserve, slowly building up your knowledge of the system. After meeting with your team about how to draw in new visitors, you decide to put more effort into protecting and enhancing the birdwatching experience at the reserve.",
+        objective: "Coastal wetlands, like salt marshes, can be contaminated with pesticides and other pollutants from upstream and adjacent lands. Recently, while monitoring water quality you noticed higher concentrations of these chemicals in the reserve. Maintain X level of the birdwatching service and mitigate the impacts of pesticide contamination.",
+        removableIDs: []
+    },
+    {
+        level: 6,
+        intro: "Last week you attended a seminar on the impacts of climate change on coastal wetlands. The leading scientist at the seminar helped you identify more plant and mollusc species. You also learned that as sea levels rise, salt marsh plants move upland, potentially taking over previously forested or suburban areas, or squeezing salt marshes out of existence (called coastal squeeze'). Climate change can also play a major role in increasing soil salinity by increasing the rate or evaporation.",
+        objective: "Increasing soil salinty can lead to changes in community structure and function. There is also evidence that increased soil salinty can lead to increased below ground biomass, which is linked to carbon storage. Sea level rise can also result in lost habitat for fish and bird species. Maintain carbon storage level of X while protecting the fish species that are important for commerical fisheries.",
+        removableIDs: []
+    },
+    {
+        level: 7,
+        intro: "You've been in Santa Barbara for some time now, and you've finally had a chance to take a diversity survey of the Carpinteria Salt Marsh Reserve. You spent some time in the field practicing species identification after you found a database with all of the local flora and fauna. You identified 107 species in the reserve and have watched them interact with each other. Now that you know much more about the ecosystem, you're confident that you'll be able to make more informed decisions about protecting the ecosystem.",
+        objective: "Coastal areas are often vulnerable to development and habitat loss. A large company has proposed a nearby project that could lead to habitat loss in the adjacent salt marsh that is not protected by the reserve.  Your department at the reserve was hired to provide expert opinion in the environmental impact assessment before the project can be approved. Maintain a species richness of at least 70%, and maintain shoreline protection and wave attenuation. Given the budget, you can only protect X species.",
+        removableIDs: []
+    }
+]
