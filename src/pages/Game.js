@@ -37,37 +37,37 @@ class Game extends React.Component {
             case "1":
                 levelNodes = lists.nodeList1;
                 levelEdges = lists.edgeList1;
-                levelData = lists.levelData[0];
+                levelData = lists.levels[0];
                 break;
             case "2":
                 levelNodes = lists.nodeList2;
                 levelEdges = lists.edgeList2;
-                levelData = lists.levelData[1];
+                levelData = lists.levels[1];
                 break;
             case "3":
                 levelNodes = lists.nodeList3;
                 levelEdges = lists.edgeList3;
-                levelData = lists.levelData[2];
+                levelData = lists.levels[2];
                 break;
             case "4":
                 levelNodes = lists.nodeList4;
                 levelEdges = lists.edgeList4;
-                levelData = lists.levelData[3];
+                levelData = lists.levels[3];
                 break;
             case "5":
                 levelNodes = lists.nodeList5;
                 levelEdges = lists.edgeList5;
-                levelData = lists.levelData[4];
+                levelData = lists.levels[4];
                 break;
             case "6":
                 levelNodes = lists.nodeList6;
                 levelEdges = lists.edgeList6;
-                levelData = lists.levelData[5];
+                levelData = lists.levels[5];
                 break;
             case "7":
                 levelNodes = lists.nodeList7;
                 levelEdges = lists.edgeList7;
-                levelData = lists.levelData[6];
+                levelData = lists.levels[6];
                 break;
             default:
                 break;
