@@ -141,7 +141,7 @@ class ForceGraph extends React.Component {
             while(setDead && tries >= 0) {
                 tries--;
                 let node = nodes[Math.floor(Math.random() * nodes.length)];
-                if(node.organismType !== "Ecosystem Service" && node.living === true && !node.saved) {
+                if(node.organismType !== "Ecosystem Service" && node.living === true && !node.saved && (this.props.levelData.removableIDs.includes(node.speciesID) || this.props.levelData.removableIDs.length === 0)) {
                     node.living = false;
                     setDead = false;
                 }

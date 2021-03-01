@@ -101,7 +101,7 @@ class Game extends React.Component {
             <div className="game-wrap">
                 <SideBar level={this.state.level} data={this.state.hoveredNode}/>
                 <MainGraph
-                    levelData
+                    levelData={this.state.levelData}
                     colors={lists.colors}
                     nodes={[...this.state.levelNodes]}
                     edges={[...this.state.levelEdges]}

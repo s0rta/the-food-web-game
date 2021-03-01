@@ -51,6 +51,7 @@ class MainGraph extends React.Component {
                     nodes={this.props.nodes}
                     seed={0}
                     edges={this.props.edges}
+                    levelData={this.props.levelData}
                     trophic={this.state.trophicDisplay}
                     onNodeHover={this.handleNodeHover}
                     onRightClick={this.handleRightClick}
