@@ -62,14 +62,14 @@ class Plot extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(prevProps.pos === -1 && this.props.pos !== -1 ) {
+        if(prevProps.pos === -1 && this.props.pos !== -1 && this.props.display) {
             this.setState({
                 startPos: this.props.pos,
                 data: [{x:0, y: 100}]
             }, () => {
                 this.drawPlot()
             })
-        } else if(this.props.step !== prevProps.step) {
+        } else if(this.props.step !== prevProps.step && this.props.display) {
             let data = [...this.state.data];
             data.push({
                 x: this.props.step,
@@ -78,17 +78,23 @@ class Plot extends React.Component {
             this.setState({data: data, failLine: [...this.state.failLine, {x: this.props.step + 1, y: this.props.failLine}]}, () => {
                 this.drawPlot()
             })
+            if(Math.abs((this.props.pos / this.state.startPos) * 100) < this.props.failLine) {
+                console.log(((this.props.pos / this.state.startPos) * 100))
+                this.props.onLevelEnd(false);
+            }
         }
     }
 
     render()
     {
         return (
+            <>
+            {this.props.display && 
             <div className="plot">
                 <div>{this.props.name}</div>
                 <svg id={this.props.id}/>
-            </div>
-
+            </div>}
+            </>
         )
     }
 }

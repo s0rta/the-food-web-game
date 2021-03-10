@@ -23,6 +23,7 @@ class ForceGraph extends React.Component {
             edgeList: edgeList,
             seed: this.props.seed,
             step: 0,
+            saves: this.props.levelData && this.props.levelData.saves
         };
     }
 
@@ -107,11 +108,12 @@ class ForceGraph extends React.Component {
     }
 
     handleClick = (d) => {
-        console.log(d)
         let nodes = this.state.nodeList
         nodes.map((e) => {
-            if(e.speciesID === d.speciesID && d.living && d.organismType !== "Ecosystem Service") {
+            if(e.speciesID === d.speciesID && d.living && d.organismType !== "Ecosystem Service" && this.state.saves > 0) {
                 e.saved = true;
+                this.setState({saves: this.state.saves - 1})
+                this.props.onUpdateSaves()
             }
             return e;
         })
@@ -133,11 +135,10 @@ class ForceGraph extends React.Component {
     }
 
     gameTick = () => {
-        if(this.props.gameClock <= 4) {
+        if(this.props.gameClock <= this.props.levelData.initialKills) {
             let nodes = this.state.nodeList;
             let setDead = true;
             let tries = nodes.length * 10
-            console.log(tries)
             while(setDead && tries >= 0) {
                 tries--;
                 let node = nodes[Math.floor(Math.random() * nodes.length)];
@@ -150,26 +151,37 @@ class ForceGraph extends React.Component {
             this.setState({nodeList: nodes})
             this.restartSim();
             this.handleESBiomass()
-        } else if(this.props.gameClock > 4) {
+        } else if(this.props.gameClock > this.props.levelData.initialKills) {
             let nodes = this.state.nodeList;
-
+            let levelOver = true;
             nodes.map((node) => {
-                if(node.organismType !== "Ecosystem Service" && node.living) {
-                    let deadCount = 0;
+                if(node.living) {
+                    let deadBiomass = 0;
+                    let biomass = 0;
 
-                    const keepAlive = this.props.edges.some((edge) => {
+                    this.props.edges.forEach((edge) => {
                         if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
+                            biomass += edge.target.biomass;
                             return true;
                         } else if(edge.source.speciesID === node.speciesID) {
-                            deadCount++;
+                            biomass += edge.target.biomass;
+                            deadBiomass += edge.target.biomass;
                             return false;
                         }
                     })
-
-                    node.living = deadCount > 0 ? keepAlive : true;
+                    let check = !(deadBiomass > 0 && ((deadBiomass / biomass) >= 0.20));
+                        node.living = check;
+                    if(!check) {
+                        levelOver = false;
+                    }
+                        
                 }
                 return node;
             })
+
+            if(levelOver) {
+                this.props.onLevelEnd(true)
+            }
 
             this.setState({nodeList: nodes})
             this.restartSim()
@@ -186,7 +198,7 @@ class ForceGraph extends React.Component {
             .select(`#${this.props.name}`)
             .attr("width", this.props.width)
             .attr("height", this.props.height)
-            .attr("fill", "#CCC")
+            .attr("fill", "#fff")
 
         const rect = svg
             .append("rect")
@@ -194,7 +206,8 @@ class ForceGraph extends React.Component {
             .attr("y", 0)
             .attr("width", this.props.width)
             .attr("height", this.props.height)
-            .attr("fill", "#CCC")
+            .attr("stroke", "#CCC")
+            .attr("stroke-width", 4)
 
             let g = svg.append("g");
 

@@ -26,12 +26,17 @@ class SideBar extends React.Component {
         return es.includes(transformed);
     }
 
+    handleModal = () => {
+        this.props.onToggleModal()
+    }
+
     render()
     {
         return (
             <div className="sidebar-wrap">
                 
                 <h1>Level <span id="level">{this.props.level}</span></h1>
+                <button onClick={this.handleModal}>Show Intro/Objective</button>
 
       <br/>
       {this.props.data ? <div><img className="photo" src={`/img/Images/${this.props.data.imgFile}`} alt=""/>

@@ -2,7 +2,7 @@ import React from 'react';
 import SideBar from '../components/SideBar.js'
 import MainGraph from '../components/MainGraph.js'
 import SubGraphs from '../components/SubGraphs.js'
-
+import Modal from 'react-modal'
 import * as lists from "../data/lists"
 
 import "./Game.css"
@@ -25,6 +25,9 @@ class Game extends React.Component {
             subSeed: 0,
             esBiomass: [-1, -1, -1, -1, -1, -1, -1, -1],
             step: 0,
+            isModalOpen: true,
+            levelOver: false,
+            levelWon: false,
         };
     }
 
@@ -78,6 +81,10 @@ class Game extends React.Component {
 
     componentDidMount() {}
 
+    handleLevelEnd = (d) => {
+        this.setState({levelWon: d, levelOver: true})
+    }
+
     handleNodeHover = (d) => {
         this.setState((state, props) => {
             return {hoveredNode: d}
@@ -94,12 +101,22 @@ class Game extends React.Component {
         this.setState({esBiomass: bioArr, step: step})
     }
 
+    swapModal = () => {
+        this.setState({isModalOpen: !this.state.isModalOpen})
+    }
+
+    closeEndModal = () => {
+        this.setState({levelOver: false})
+    }
+
     render()
     {
 
         return (
             <div className="game-wrap">
-                <SideBar level={this.state.level} data={this.state.hoveredNode}/>
+                <Modal isOpen={this.state.isModalOpen} className="levelModal"><h1>Level {this.state.levelData.level} Intro</h1><p>{this.state.levelData.intro}</p><h1>Objective</h1><p>{this.state.levelData.objective}</p><button onClick={() => this.swapModal()}>Sounds Good</button></Modal>
+                <Modal isOpen={this.state.levelOver} className="levelModal">{this.state.levelWon ? this.state.levelData.win : this.state.levelData.lose}<br/> <button onClick={() => window.location.reload()}>Restart Level</button><button onClick={() => this.closeEndModal()}>Explore</button></Modal>
+                <SideBar onToggleModal={this.swapModal} level={this.state.level} data={this.state.hoveredNode}/>
                 <MainGraph
                     levelData={this.state.levelData}
                     colors={lists.colors}
@@ -107,8 +124,9 @@ class Game extends React.Component {
                     edges={[...this.state.levelEdges]}
                     onNodeHover={this.handleNodeHover}
                     onRightClick={this.handleRightClick}
-                    onUpdateESBiomass={this.handleESBiomass}/>
-                <SubGraphs esBiomass={this.state.esBiomass} step={this.state.step} onNodeHover={this.handleNodeHover} epiNode={this.state.subGraphEpi} seed={this.state.subSeed} colors={lists.colors} nodes={[...this.state.levelNodes]}
+                    onUpdateESBiomass={this.handleESBiomass}
+                    onLevelEnd={this.handleLevelEnd}/>
+                <SubGraphs onLevelEnd={this.handleLevelEnd} levelData={this.state.levelData} esBiomass={this.state.esBiomass} step={this.state.step} onNodeHover={this.handleNodeHover} epiNode={this.state.subGraphEpi} seed={this.state.subSeed} colors={lists.colors} nodes={[...this.state.levelNodes]}
                     edges={[...this.state.levelEdges]}/>
             </div>
         )

@@ -2,6 +2,8 @@ import React from 'react';
 import ForceGraph from './ForceGraph';
 import Plot from './Plot';
 
+import ServiceCount from './ServiceCount';
+
 class SubGraphs extends React.Component {
     constructor(props) {
         super(props);
@@ -52,12 +54,14 @@ class SubGraphs extends React.Component {
         })
     }
 
+    handleLevelEnd = (d) => {
+        this.props.onLevelEnd(d)
+    }
+
     render()
     {
         return (
             <div className="sub-graph-wrap">
-                sub graphs
-
                 <div className="sub-force-graph">
                     <ForceGraph
                         trophic={this.state.trophicDisplay}
@@ -78,15 +82,15 @@ class SubGraphs extends React.Component {
                     </div>
 }
                 <div className="plots">
-                    Biomass Plots
-                    <Plot name="Wave Attenuation" step={this.props.step} id="wave-attenuation" index={350} failLine={50} display={true} pos={this.props.esBiomass[0]}/>
-                    <Plot name="Shoreline Protection" step={this.props.step} id="shoreline-protection" index={450} failLine={50} display={true} pos={this.props.esBiomass[1]}/>
-                    <Plot name="Carbon Storage" step={this.props.step} id="carbon-storage" index={550} failLine={50} display={true} pos={this.props.esBiomass[2]}/>
-                    <Plot name="Water Filtration" step={this.props.step} id="water-filtration" index={650} failLine={50} display={true} pos={this.props.esBiomass[3]}/>
-                    <Plot name="Commercial Fishery" step={this.props.step} id="commercial-fishery" index={750} failLine={50} display={true} pos={this.props.esBiomass[4]}/>
-                    <Plot name="Bird Watching" step={this.props.step} id="bird-watching" index={850} failLine={50} display={true} pos={this.props.esBiomass[5]}/>
-                    <Plot name="Waterfowl Hunting" step={this.props.step} id="waterfowl-hunting" index={950} failLine={50}  display={true} pos={this.props.esBiomass[6]}/>
-                    <Plot name="Recreational Fishery" step={this.props.step} id="recreational-fishery" index={1050} failLine={50} display={true} pos={this.props.esBiomass[7]}/>
+                    <ServiceCount onLevelEnd={this.handleLevelEnd} biomass={this.props.esBiomass} display={this.props.levelData.shownGraphs.includes("num-services")} pos={this.props.esBiomass[0]}/>
+                    <Plot name="Wave Attenuation" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="wave-attenuation" index={350} failLine={50} display={this.props.levelData.shownGraphs.includes("wave-attenuation")} pos={this.props.esBiomass[0]}/>
+                    <Plot name="Shoreline Protection" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="shoreline-protection" index={450} failLine={50} display={this.props.levelData.shownGraphs.includes("shoreline-protection")} pos={this.props.esBiomass[1]}/>
+                    <Plot name="Carbon Storage" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="carbon-storage" index={550} failLine={50} display={this.props.levelData.shownGraphs.includes("carbon-storage")} pos={this.props.esBiomass[2]}/>
+                    <Plot name="Water Filtration" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="water-filtration" index={650} failLine={50} display={this.props.levelData.shownGraphs.includes("water-filtration")} pos={this.props.esBiomass[3]}/>
+                    <Plot name="Commercial Fishery" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="commercial-fishery" index={750} failLine={50} display={this.props.levelData.shownGraphs.includes("commercial-fishery")} pos={this.props.esBiomass[4]}/>
+                    <Plot name="Bird Watching" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="bird-watching" index={850} failLine={50} display={this.props.levelData.shownGraphs.includes("bird-watching")} pos={this.props.esBiomass[5]}/>
+                    <Plot name="Waterfowl Hunting" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="waterfowl-hunting" index={950} failLine={50}  display={this.props.levelData.shownGraphs.includes("waterfowl-hunting")} pos={this.props.esBiomass[6]}/>
+                    <Plot name="Recreational Fishery" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="recreational-fishery" index={1050} failLine={50} display={this.props.levelData.shownGraphs.includes("recreational-fishery")} pos={this.props.esBiomass[7]}/>
                 </div>
                 </div>
 

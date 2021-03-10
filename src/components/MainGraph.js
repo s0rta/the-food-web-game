@@ -10,7 +10,8 @@ class MainGraph extends React.Component {
 
         this.state = {
             trophicDisplay: false,
-            clock: 0
+            clock: 0,
+            saves: this.props.levelData.saves
         };
     }
 
@@ -30,6 +31,10 @@ class MainGraph extends React.Component {
         this.props.onUpdateESBiomass(bioArr, step)
     }
 
+    handleLevelEnd = (d) => {
+        this.props.onLevelEnd(d)
+    }
+
     toggleTrophic = () => {
         this.setState({trophicDisplay: !this.state.trophicDisplay})
     }
@@ -42,7 +47,6 @@ class MainGraph extends React.Component {
     {
         return (
             <div className="main-graph-wrap">
-                main-graph
                 <ForceGraph
                     colors={this.props.colors}
                     name="svgMain"
@@ -54,11 +58,15 @@ class MainGraph extends React.Component {
                     levelData={this.props.levelData}
                     trophic={this.state.trophicDisplay}
                     onNodeHover={this.handleNodeHover}
+                    onUpdateSaves={() => this.setState({saves: this.state.saves - 1})}
                     onRightClick={this.handleRightClick}
                     onUpdateESBiomass={this.handleESBiomass}
+                    onLevelEnd={this.handleLevelEnd}
                     gameClock={this.state.clock}/>
                 <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
                 <input type="button" value="Tick" onClick={this.gameTick}/>
+                <button onClick={() => window.location.reload()}>Restart Level</button>
+                <p>Saves left: {this.state.saves}</p>
             </div>
 
         )
