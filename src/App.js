@@ -5,7 +5,7 @@ import LevelSelect from "./pages/LevelSelect"
 import About from "./pages/About"
 import Credits from "./pages/Credits"
 
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import {HashRouter as Router, Switch, Route} from "react-router-dom"
 
 function App() {
     return (
