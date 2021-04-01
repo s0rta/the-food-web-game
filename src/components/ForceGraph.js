@@ -208,55 +208,56 @@ class ForceGraph extends React.Component {
 
 
                 // if using link count, doesn't really work because it counts every element at the same level
-                if(node.living) {
-                    let deadLinks = 0;
-                    let links = 0;
-
-                    this.props.edges.forEach((edge) => {
-                        if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
-                            links++;
-                            return true;
-                        } else if(edge.source.speciesID === node.speciesID) {
-                            links++
-                            deadLinks++
-                            
-                            return false;
-                        }
-                    })
-                    let check = !(deadLinks > 0 && ((deadLinks / links) >= 0.8)) || node.organismType === "Ecosystem Service";
-                    if(check === false) {
-                        node.living = false;
-                        this.killLinks(node.speciesID);
-                    }
-                        
-                    if(!check) {
-                        levelOver = false;
-                    }
-                        
-                }
-
                 // if(node.living) {
-                //     let deadBiomass = 0;
-                //     let biomass = 0;
+                //     let deadLinks = 0;
+                //     let links = 0;
 
                 //     this.props.edges.forEach((edge) => {
-                //         const targetBiomass = Math.log(edge.target.biomass === -1 ? 0 : edge.target.biomass)
                 //         if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
-                //             biomass += targetBiomass;
+                //             links++;
                 //             return true;
                 //         } else if(edge.source.speciesID === node.speciesID) {
-                //             biomass += targetBiomass;
-                //             deadBiomass += targetBiomass;
+                //             links++
+                //             deadLinks++
+                            
                 //             return false;
                 //         }
                 //     })
-                //     let check = !(deadBiomass > 0 && ((deadBiomass / biomass) >= 0.20)) || node.organismType === "Ecosystem Service";
-                //         node.living = check;
+                //     let check = !(deadLinks > 0 && ((deadLinks / links) >= 0.8)) || node.organismType === "Ecosystem Service";
+                //     if(check === false) {
+                //         node.living = false;
+                //         this.killLinks(node.speciesID);
+                //     }
+                        
                 //     if(!check) {
-                //         // levelOver = false;
+                //         levelOver = false;
                 //     }
                         
                 // }
+
+                if(node.living) {
+                    let deadBiomass = 0;
+                    let biomass = 0;
+
+                    this.props.edges.forEach((edge) => {
+                        const targetBiomass = Math.log(edge.target.biomass === -1 ? 0 : edge.target.biomass)
+                        if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
+                            biomass += targetBiomass;
+                            return true;
+                        } else if(edge.source.speciesID === node.speciesID) {
+                            biomass += targetBiomass;
+                            deadBiomass += targetBiomass;
+                            return false;
+                        }
+                    })
+                    let check = !(deadBiomass > 0 && ((deadBiomass / biomass) >= 0.20)) || node.organismType === "Ecosystem Service";
+                        node.living = check;
+                    if(!check) {
+                        levelOver = false;
+                        this.killLinks(node.speciesID);
+                    }
+                        
+                }
                 return node;
             })
 
