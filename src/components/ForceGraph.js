@@ -15,7 +15,7 @@ class ForceGraph extends React.Component {
             })]
             : [];
         let edgeList = this.props.edges
-            ? [...this.props.edges]
+            ? [...this.props.edges.map(n => {n.living = true; return n;})]
             : [];
 
         this.state = {
@@ -107,13 +107,28 @@ class ForceGraph extends React.Component {
         }
     }
 
+    handleSpeciesRemaining = () => {
+        if(this.props.onUpdateSpeciesRemaining) {
+            let count = 0;
+        this.state.nodeList.forEach((e) => {
+            if(e.living) {count++};
+        })
+        this.props.onUpdateSpeciesRemaining(count)
+        }
+    }
+
     handleClick = (d) => {
         let nodes = this.state.nodeList
         nodes.map((e) => {
-            if(e.speciesID === d.speciesID && d.living && d.organismType !== "Ecosystem Service" && this.state.saves > 0) {
-                e.saved = true;
-                this.setState({saves: this.state.saves - 1})
-                this.props.onUpdateSaves()
+            if(e.speciesID === d.speciesID && d.living && d.organismType !== "Ecosystem Service") {
+                if(e.saved) {
+                    e.saved = false
+                    this.setState({saves: this.state.saves + 1})
+                } else if(this.state.saves > 0) {
+                    e.saved = true
+                    this.setState({saves: this.state.saves - 1})
+                }
+                this.props.onUpdateSaves(this.state.saves)
             }
             return e;
         })
@@ -134,6 +149,17 @@ class ForceGraph extends React.Component {
             .restart()
     }
 
+    killLinks = (nSID) => {
+        let newEdges = [...this.state.edgeList].map((e) => {
+            if(e && (e.target.speciesID === nSID || e.source.speciesID === nSID)) {
+                e.living = false;
+            }
+            return e;
+        })
+
+        this.setState({edgeList: newEdges})
+    }
+
     gameTick = () => {
         if(this.props.gameClock <= this.props.levelData.initialKills) {
             let nodes = this.state.nodeList;
@@ -142,40 +168,95 @@ class ForceGraph extends React.Component {
             while(setDead && tries >= 0) {
                 tries--;
                 let node = nodes[Math.floor(Math.random() * nodes.length)];
-                if(node.organismType !== "Ecosystem Service" && node.living === true && !node.saved && (this.props.levelData.removableIDs.includes(node.speciesID) || this.props.levelData.removableIDs.length === 0)) {
+                if(node.living === true && !node.saved && (this.props.levelData.removableIDs.includes(node.speciesID))) {
                     node.living = false;
+                    this.killLinks(node.speciesID);
                     setDead = false;
+                    this.props.onSpeciesRemove()
                 }
             }
-            // nodes[1].living = false;
             this.setState({nodeList: nodes})
             this.restartSim();
             this.handleESBiomass()
+            this.handleSpeciesRemaining();
         } else if(this.props.gameClock > this.props.levelData.initialKills) {
             let nodes = this.state.nodeList;
             let levelOver = true;
             nodes.map((node) => {
+                // WHEN USING BIOMASS FOR DEAD
+                // if(node.living) {
+                //     let deadBiomass = 0;
+                //     let biomass = 0;
+
+                //     this.props.edges.forEach((edge) => {
+                //         if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
+                //             biomass += edge.target.biomass;
+                //             return true;
+                //         } else if(edge.source.speciesID === node.speciesID) {
+                //             biomass += edge.target.biomass;
+                //             deadBiomass += edge.target.biomass;
+                //             return false;
+                //         }
+                //     })
+                //     let check = !(deadBiomass > 0 && ((deadBiomass / biomass) >= 0.20)) || node.organismType === "Ecosystem Service";
+                //         node.living = check;
+                //     if(!check) {
+                //         levelOver = false;
+                //     }
+                        
+                // }
+
+
+                // if using link count, doesn't really work because it counts every element at the same level
                 if(node.living) {
-                    let deadBiomass = 0;
-                    let biomass = 0;
+                    let deadLinks = 0;
+                    let links = 0;
 
                     this.props.edges.forEach((edge) => {
                         if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
-                            biomass += edge.target.biomass;
+                            links++;
                             return true;
                         } else if(edge.source.speciesID === node.speciesID) {
-                            biomass += edge.target.biomass;
-                            deadBiomass += edge.target.biomass;
+                            links++
+                            deadLinks++
+                            
                             return false;
                         }
                     })
-                    let check = !(deadBiomass > 0 && ((deadBiomass / biomass) >= 0.20));
-                        node.living = check;
+                    let check = !(deadLinks > 0 && ((deadLinks / links) >= 0.8)) || node.organismType === "Ecosystem Service";
+                    if(check === false) {
+                        node.living = false;
+                        this.killLinks(node.speciesID);
+                    }
+                        
                     if(!check) {
                         levelOver = false;
                     }
                         
                 }
+
+                // if(node.living) {
+                //     let deadBiomass = 0;
+                //     let biomass = 0;
+
+                //     this.props.edges.forEach((edge) => {
+                //         const targetBiomass = Math.log(edge.target.biomass === -1 ? 0 : edge.target.biomass)
+                //         if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
+                //             biomass += targetBiomass;
+                //             return true;
+                //         } else if(edge.source.speciesID === node.speciesID) {
+                //             biomass += targetBiomass;
+                //             deadBiomass += targetBiomass;
+                //             return false;
+                //         }
+                //     })
+                //     let check = !(deadBiomass > 0 && ((deadBiomass / biomass) >= 0.20)) || node.organismType === "Ecosystem Service";
+                //         node.living = check;
+                //     if(!check) {
+                //         // levelOver = false;
+                //     }
+                        
+                // }
                 return node;
             })
 
@@ -186,6 +267,7 @@ class ForceGraph extends React.Component {
             this.setState({nodeList: nodes})
             this.restartSim()
             this.handleESBiomass()
+            this.handleSpeciesRemaining();
         }
     }
 
@@ -312,11 +394,12 @@ class ForceGraph extends React.Component {
                 })
                 .attr("y1", (d) => {
                     return d.target.y;
-                })
+                }).classed("dead", (d) => !d.living)
         })
 
         this.setState({sim: simulation, g_nodes: g_nodes, g_links: g_links}, () => {
             this.handleESBiomass()
+            this.handleSpeciesRemaining();
         })
     }
 

@@ -20,7 +20,7 @@ class Plot extends React.Component {
         let plotSVG = d3
             .select(`#${this.props.id}`)
             .attr("width", 460)
-            .attr("height", 410)
+            .attr("height", 500)
             .append("g")
             .attr("transform",
                 "translate(60,30)")
@@ -39,6 +39,22 @@ class Plot extends React.Component {
             .append("g")
             .attr("transform", "translate(0," + 360 + ")")
             .call(d3.axisBottom(plotX));
+
+            plotSVG.append("text")             
+            .attr("transform",
+                  "translate(" + (350/2) + " ," + 
+                                 (400) + ")")
+            .style("text-anchor", "middle")
+            .text("Number of species Removed");
+      
+
+        plotSVG.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -50)
+            .attr("x",0 - (360 / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Amount of ecosystem service left"); 
 
         plotSVG
             .append("g")

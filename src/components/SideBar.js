@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
+
 import "./SideBar.css"
 
 class SideBar extends React.Component {
@@ -37,6 +39,7 @@ class SideBar extends React.Component {
                 
                 <h1>Level <span id="level">{this.props.level}</span></h1>
                 <button onClick={this.handleModal}>Show Intro/Objective</button>
+                <Link to="/level-select"><button>Level Select</button></Link>
 
       <br/>
       {this.props.data ? <div><img className="photo" src={`/img/Images/${this.props.data.imgFile}`} alt=""/>

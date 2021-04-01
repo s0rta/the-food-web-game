@@ -6,7 +6,7 @@ import Modal from 'react-modal'
 import * as lists from "../data/lists"
 
 import "./Game.css"
-import {Switch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class Game extends React.Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class Game extends React.Component {
             levelNodes: levelNodes,
             levelEdges: levelEdges,
             levelData: levelData,
+            speciesRemaining: -1,
             subGraphNodes: [],
             subGraphEdges: [],
             subSeed: 0,
@@ -55,17 +56,18 @@ class Game extends React.Component {
             case "4":
                 levelNodes = lists.nodeList4;
                 levelEdges = lists.edgeList4;
-                levelData = lists.levels[3];
+                levelData = lists.levels[3][Math.floor(Math.random() * 4)];
+                // levelData = lists.levels[3][0];
                 break;
             case "5":
                 levelNodes = lists.nodeList5;
                 levelEdges = lists.edgeList5;
-                levelData = lists.levels[4];
+                levelData = lists.levels[4][Math.floor(Math.random() * 4)];
                 break;
             case "6":
                 levelNodes = lists.nodeList6;
                 levelEdges = lists.edgeList6;
-                levelData = lists.levels[5];
+                levelData = lists.levels[5][Math.floor(Math.random() * 4)];
                 break;
             case "7":
                 levelNodes = lists.nodeList7;
@@ -101,6 +103,10 @@ class Game extends React.Component {
         this.setState({esBiomass: bioArr, step: step})
     }
 
+    handleSpeciesRemaining = (count) => {
+        this.setState({speciesRemaining: count - 8})
+    }
+
     swapModal = () => {
         this.setState({isModalOpen: !this.state.isModalOpen})
     }
@@ -109,13 +115,36 @@ class Game extends React.Component {
         this.setState({levelOver: false})
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if(this.props.match.params.level !== prevProps.match.params.level) {
+            window.location.reload()
+        }
+    }
+
     render()
     {
 
+        const winTarget = {
+            pathname: `/game/${parseFloat(this.props.match.params.level) + 1}`,
+        };
+
         return (
             <div className="game-wrap">
-                <Modal isOpen={this.state.isModalOpen} className="levelModal"><h1>Level {this.state.levelData.level} Intro</h1><p>{this.state.levelData.intro}</p><h1>Objective</h1><p>{this.state.levelData.objective}</p><button onClick={() => this.swapModal()}>Sounds Good</button></Modal>
-                <Modal isOpen={this.state.levelOver} className="levelModal">{this.state.levelWon ? this.state.levelData.win : this.state.levelData.lose}<br/> <button onClick={() => window.location.reload()}>Restart Level</button><button onClick={() => this.closeEndModal()}>Explore</button></Modal>
+                <Modal isOpen={this.state.isModalOpen} className="levelModal">
+                    <h1>Level {this.state.levelData.level} Intro</h1>
+                    <p>{this.state.levelData.intro}</p>
+                    <h1>Objective</h1>
+                    <p>{this.state.levelData.objective}</p>
+                    <button onClick={() => this.swapModal()}>Sounds Good</button>
+                </Modal>
+                <Modal isOpen={this.state.levelOver} className="levelModal">
+                    {this.state.levelWon ? this.state.levelData.win : this.state.levelData.lose}<br/> 
+                    {this.state.levelWon && <Link to={winTarget}>
+                        <button>Next Level</button>
+                    </Link>}
+                    <button onClick={() => window.location.reload()}>Restart Level</button>
+                    <button onClick={() => this.closeEndModal()}>Explore</button>
+                </Modal>
                 <SideBar onToggleModal={this.swapModal} level={this.state.level} data={this.state.hoveredNode}/>
                 <MainGraph
                     levelData={this.state.levelData}
@@ -125,9 +154,10 @@ class Game extends React.Component {
                     onNodeHover={this.handleNodeHover}
                     onRightClick={this.handleRightClick}
                     onUpdateESBiomass={this.handleESBiomass}
+                    onUpdateSpeciesRemaining={this.handleSpeciesRemaining}
                     onLevelEnd={this.handleLevelEnd}/>
                 <SubGraphs onLevelEnd={this.handleLevelEnd} levelData={this.state.levelData} esBiomass={this.state.esBiomass} step={this.state.step} onNodeHover={this.handleNodeHover} epiNode={this.state.subGraphEpi} seed={this.state.subSeed} colors={lists.colors} nodes={[...this.state.levelNodes]}
-                    edges={[...this.state.levelEdges]}/>
+                    edges={[...this.state.levelEdges]} speciesRemaining={this.state.speciesRemaining}/>
             </div>
         )
     }

@@ -62,7 +62,7 @@ class SubGraphs extends React.Component {
     {
         return (
             <div className="sub-graph-wrap">
-                <div className="sub-force-graph">
+                {this.props.step === 0 && <div className="sub-force-graph">
                     <ForceGraph
                         trophic={this.state.trophicDisplay}
                         onNodeHover={this.handleNodeHover}
@@ -80,9 +80,12 @@ class SubGraphs extends React.Component {
                         <input type="button" value="+" onClick={this.incN}/>
                         <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
                     </div>
-}
+    }
+    </div>}
+    <br/>
                 <div className="plots">
                     <ServiceCount onLevelEnd={this.handleLevelEnd} biomass={this.props.esBiomass} display={this.props.levelData.shownGraphs.includes("num-services")} pos={this.props.esBiomass[0]}/>
+                    <Plot name="Species Remaining" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="species-remaining" index={1} failLine={70} display={this.props.levelData.shownGraphs.includes("species-remaining")} pos={this.props.speciesRemaining}/>
                     <Plot name="Wave Attenuation" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="wave-attenuation" index={350} failLine={50} display={this.props.levelData.shownGraphs.includes("wave-attenuation")} pos={this.props.esBiomass[0]}/>
                     <Plot name="Shoreline Protection" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="shoreline-protection" index={450} failLine={50} display={this.props.levelData.shownGraphs.includes("shoreline-protection")} pos={this.props.esBiomass[1]}/>
                     <Plot name="Carbon Storage" onLevelEnd={this.handleLevelEnd} step={this.props.step} id="carbon-storage" index={550} failLine={50} display={this.props.levelData.shownGraphs.includes("carbon-storage")} pos={this.props.esBiomass[2]}/>
@@ -94,7 +97,7 @@ class SubGraphs extends React.Component {
                 </div>
                 </div>
 
-            </div>
+
         )
     }
 }

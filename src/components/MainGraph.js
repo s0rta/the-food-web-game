@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ForceGraph from "./ForceGraph"
-
+import "./MainGraph.css"
 class MainGraph extends React.Component {
 
     constructor(props) {
@@ -11,6 +11,7 @@ class MainGraph extends React.Component {
         this.state = {
             trophicDisplay: false,
             clock: 0,
+            removed: 0,
             saves: this.props.levelData.saves
         };
     }
@@ -39,6 +40,14 @@ class MainGraph extends React.Component {
         this.setState({trophicDisplay: !this.state.trophicDisplay})
     }
 
+    handleSpeciesRemove = () => {
+        this.setState({removed: this.state.removed + 1})
+    }
+
+    handleSpeciesRemaining = (count) => {
+        this.props.onUpdateSpeciesRemaining(count);
+    }
+
     gameTick = () => {
         this.setState({clock: this.state.clock + 1})
     }
@@ -58,15 +67,38 @@ class MainGraph extends React.Component {
                     levelData={this.props.levelData}
                     trophic={this.state.trophicDisplay}
                     onNodeHover={this.handleNodeHover}
-                    onUpdateSaves={() => this.setState({saves: this.state.saves - 1})}
+                    onUpdateSaves={(s) => this.setState({saves: s})}
                     onRightClick={this.handleRightClick}
                     onUpdateESBiomass={this.handleESBiomass}
                     onLevelEnd={this.handleLevelEnd}
+                    onSpeciesRemove={this.handleSpeciesRemove}
+                    onUpdateSpeciesRemaining={this.handleSpeciesRemaining}
                     gameClock={this.state.clock}/>
-                <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
-                <input type="button" value="Tick" onClick={this.gameTick}/>
+
+                <div className="controls">
+                    <div className="left">
+                    <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
+                <input type="button" value={"Remove Species"} onClick={this.gameTick}/>
                 <button onClick={() => window.location.reload()}>Restart Level</button>
-                <p>Saves left: {this.state.saves}</p>
+                <p>Number of species you can protect: {this.state.saves}</p>
+                <p>{this.state.removed} of {this.props.levelData.initialKills} species removed</p>
+                    </div>
+                <div className="legend">
+          <div className="legend-elm-wrap">Species Interaction <div className="si legend-elm"></div></div>
+          <div className="legend-elm-wrap">Service Specie Interaction<div className="ssi legend-elm"></div></div>
+          <div className="legend-elm-wrap">Ecosystem Service <div className="eco-serve legend-elm"></div></div>
+          <div className="legend-elm-wrap">Mammel <div className="mammel legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Microscopic Organism <div className="micro-org legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Crustacean <div className="crustacean legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Plant <div className="plant legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Bird <div className="bird legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Insect, Annelid & Arachnid <div className="insect legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Fish <div className="fish legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Plankton <div className="plankton legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Mollusc <div className="mollusc legend-elm legend-species"></div></div>
+        </div>
+                </div>
+                
             </div>
 
         )

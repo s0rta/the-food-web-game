@@ -17,8 +17,6 @@
 }
 
 .dead {
-    fill: grey;
-    stroke: black;
-    stroke-width: 1;
+    visibility: hidden;
 }
 
