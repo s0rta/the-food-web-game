@@ -85,7 +85,7 @@ class MainGraph extends React.Component {
                     </div>
                 <div className="legend">
           <div className="legend-elm-wrap">Species Interaction <div className="si legend-elm"></div></div>
-          <div className="legend-elm-wrap">Service Specie Interaction<div className="ssi legend-elm"></div></div>
+          <div className="legend-elm-wrap">Service Species Interaction<div className="ssi legend-elm"></div></div>
           <div className="legend-elm-wrap">Ecosystem Service <div className="eco-serve legend-elm"></div></div>
           <div className="legend-elm-wrap">Mammel <div className="mammel legend-elm legend-species"></div></div>
           <div className="legend-elm-wrap">Microscopic Organism <div className="micro-org legend-elm legend-species"></div></div>

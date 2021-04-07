@@ -72,7 +72,7 @@ class Game extends React.Component {
             case "7":
                 levelNodes = lists.nodeList7;
                 levelEdges = lists.edgeList7;
-                levelData = lists.levels[6];
+                levelData = lists.levels[6][Math.floor(Math.random() * 4)];
                 break;
             default:
                 break;

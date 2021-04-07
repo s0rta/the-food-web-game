@@ -12,8 +12,8 @@
 }
 
 .saved {
-    stroke: darkgreen;
-    stroke-width: 3;
+    stroke: #00c100;
+    stroke-width: 4;
 }
 
 .dead {

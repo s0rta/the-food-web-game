@@ -222,15 +222,52 @@ export const levels = [
         win: "You Won!",
         lose: "You lost :("
     }],
+    [{
+        level: 7,
+        type: 0,
+        intro: "You've been in Santa Barbara for some time now, and you've finally had a chance to take a diversity survey of the Carpinteria Salt Marsh Reserve. You spent some time in the field practicing species identification after you found a database with all of the local flora and fauna. You identified 107 species in the reserve and have watched them interact with each other. You also had a meeting with local Fish and Wildlife offices, where you discussed waterfowl hunting permits in nearby salt marshes. Hunting doesn't take place in the reserve but is allowed in neighboring marshlands, and birds often move between the areas. Officials mention that these neighboring marshlands are hotspots for hunting, which generate important conservation resources through fees and permits. They request that your department surveys the waterfowl population in the reserve, and take any necessary actions to maintain stable populations.",
+        objective: "Maintain waterfowl hunting in the surrounding area.",
+        removableIDs: [61,66,68,5,6,7,8,9,10,11,16,61,64,65,66,67,68,70,71,72,73,75,76,79,25,35,44,47,51],
+        shownGraphs: ['waterfowl-hunting'],
+        saves: 8,
+        initialKills: 29,
+        win: "You Won!",
+        lose: "You Lost :("
+    },
     {
         level: 7,
-        intro: "You've been in Santa Barbara for some time now, and you've finally had a chance to take a diversity survey of the Carpinteria Salt Marsh Reserve. You spent some time in the field practicing species identification after you found a database with all of the local flora and fauna. You identified 107 species in the reserve and have watched them interact with each other. Now that you know much more about the ecosystem, you're confident that you'll be able to make more informed decisions about protecting the ecosystem.",
-        objective: "Coastal areas are often vulnerable to development and habitat loss. A large company has proposed a nearby project that could lead to habitat loss in the adjacent salt marsh that is not protected by the reserve.  Your department at the reserve was hired to provide expert opinion in the environmental impact assessment before the project can be approved. Maintain a species richness of at least 70%, and maintain shoreline protection and wave attenuation. Given the budget, you can only protect 8 species.",
+        type: 1,
+        intro: "You've been in Santa Barbara for some time now, and you've finally had a chance to take a diversity survey of the Carpinteria Salt Marsh Reserve. You spent some time in the field practicing species identification after you found a database with all of the local flora and fauna. You identified 107 species in the reserve and have watched them interact with each other. After meeting with your team about how to draw in new visitors, you decide to put more effort into protecting and enhancing the birdwatching experience at the reserve.",
+        objective: "Coastal wetlands, like salt marshes, can be contaminated with pesticides and other pollutants from upstream and adjacent lands. Recently, while monitoring water quality you noticed higher concentrations of these chemicals in the reserve. Maintain the birdwatching service and mitigate the impacts of pesticide contamination.",
+        removableIDs: [25,35,44,47,50,118,120,125,114,68,75,82,66,79,61,70,87,89,104,99,116,119,139],
+        shownGraphs: ['bird-watching'],
+        saves: 8,
+        initialKills: 23,
+        win: "You Won!",
+        lose: "You Lost :("
+    },
+    {
+        level: 7,
+        type: 2,
+        intro: "You've been in Santa Barbara for some time now, and you've finally had a chance to take a diversity survey of the Carpinteria Salt Marsh Reserve. You spent some time in the field practicing species identification after you found a database with all of the local flora and fauna. You identified 107 species in the reserve and have watched them interact with each other. Last week you attended a seminar on the impacts of climate change on coastal wetlands. You  learned that as sea levels rise, salt marsh plants move upland, potentially taking over previously forested or suburban areas, or squeezing salt marshes out of existence (called 'coastal squeeze'). Climate change can also play a major role in increasing soil salinity by increasing the rate or evaporation. ",
+        objective: "Increasing soil salinty can lead to changes in community structure and function. There is also evidence that increased soil salinty can lead to increased below ground biomass, which is linked to carbon storage. Sea level rise can also result in lost habitat for fish and bird species. Maintain carbon storage level while protecting the fish species that are important for commerical fisheries.",
+        removableIDs: [16,11,8,68,89,100,111,120,109,114,113],
+        shownGraphs: ['carbon-storage', 'commercial-fishery'],
+        saves: 8,
+        initialKills: 11,
+        win: "You Won!",
+        lose: "You Lost :("
+    },
+    {
+        level: 7,
+        type: 3,
+        intro: "You've been in Santa Barbara for some time now, and you've finally had a chance to take a diversity survey of the Carpinteria Salt Marsh Reserve. You spent some time in the field practicing species identification after you found a database with all of the local flora and fauna. You identified 107 species in the reserve and have watched them interact with each other. Now that you know much more about the ecosystem, you're confident that you'll be able to make more informed decisions about protecting the ecosystem. Coastal areas are often vulnerable to development and habitat loss. A large company has proposed a nearby project that could lead to habitat loss in the adjacent salt marsh that is not protected by the reserve.  Your department at the reserve was hired to provide expert opinion in the environmental impact assessment before the project can be approved.",
+        objective: " Maintain a species richness of at least 70%, and maintain shoreline protection and wave attenuation. Given the budget, you can only protect 7 species.",
         removableIDs: [5,6,7,8,9,10,11,12,16,118,121,122,125,64,65,67,25],
         shownGraphs: ['shoreline-protection', 'wave-attenuation', 'species-remaining'],
         saves: 8,
         initialKills: 17,
         win: "You Won!",
         lose: "You Lost :("
-    }
+    }]
 ]

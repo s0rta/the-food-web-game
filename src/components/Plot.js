@@ -54,7 +54,7 @@ class Plot extends React.Component {
             .attr("x",0 - (360 / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Amount of ecosystem service left"); 
+            .text(this.props.yAxis); 
 
         plotSVG
             .append("g")
