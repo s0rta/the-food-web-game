@@ -148,6 +148,7 @@ class Game extends React.Component {
                 <SideBar onToggleModal={this.swapModal} level={this.state.level} data={this.state.hoveredNode}/>
                 <MainGraph
                     levelData={this.state.levelData}
+                    levelOver={this.state.levelOver}
                     colors={lists.colors}
                     nodes={[...this.state.levelNodes]}
                     edges={[...this.state.levelEdges]}

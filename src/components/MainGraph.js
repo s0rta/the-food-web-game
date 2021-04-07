@@ -12,8 +12,19 @@ class MainGraph extends React.Component {
             trophicDisplay: false,
             clock: 0,
             removed: 0,
-            saves: this.props.levelData.saves
+            ticking: false,
+            saves: this.props.levelData.saves,
+            clockTicker: window.setInterval(() => {
+                this.state.ticking && this.setState({clock: this.state.clock + 1})
+            }, 1000)
         };
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.levelOver !== this.props.levelOver) {
+            this.setState({ticking: false})
+            window.clearInterval(this.state.clockTicker)
+        }
     }
 
     handleNodeHover = (d) => {
@@ -33,6 +44,9 @@ class MainGraph extends React.Component {
     }
 
     handleLevelEnd = (d) => {
+        // this.setState({ticking: false})
+        console.log("LEVEL OVER")
+        window.clearInterval(this.state.clockTicker)
         this.props.onLevelEnd(d)
     }
 
@@ -49,7 +63,7 @@ class MainGraph extends React.Component {
     }
 
     gameTick = () => {
-        this.setState({clock: this.state.clock + 1})
+        this.setState({ticking: true})
     }
 
     render()
@@ -78,7 +92,7 @@ class MainGraph extends React.Component {
                 <div className="controls">
                     <div className="left">
                     <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
-                <input type="button" value={"Remove Species"} onClick={this.gameTick}/>
+                <input type="button" value={"Start Lev"} onClick={this.gameTick}/>
                 <button onClick={() => window.location.reload()}>Restart Level</button>
                 <p>Number of species you can protect: {this.state.saves}</p>
                 <p>{this.state.removed} of {this.props.levelData.initialKills} species removed</p>
