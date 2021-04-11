@@ -304,7 +304,9 @@ class ForceGraph extends React.Component {
              
         let links = g_links
             .selectAll("line")
-            .data(this.state.edgeList)
+            .data(this.state.edgeList.filter(n => {
+                return n.source !== n.target
+            }))
             .enter()
             .append("line")
             .attr("x2", (d) => {
