@@ -12,7 +12,9 @@ class SubGraphs extends React.Component {
             n: 1,
             seed: this.props.seed,
             trophicDisplay: false,
-            displayed: false
+            displayed: false,
+            flowIn: false,
+            flowOut: true
         };
     }
 
@@ -48,6 +50,23 @@ class SubGraphs extends React.Component {
         }
     }
 
+    swapFlowIn = () => {
+        this.setState({
+            flowIn: !this.state.flowIn,
+            seed: Math.random(),
+            trophicDisplay: false
+        })
+    }
+
+    swapFlowOut = () => {
+        this.setState({
+            flowOut: !this.state.flowOut,
+            seed: Math.random(),
+            trophicDisplay: false
+        })
+    }
+
+
     toggleTrophic = () => {
         this.setState({
             trophicDisplay: !this.state.trophicDisplay
@@ -68,6 +87,8 @@ class SubGraphs extends React.Component {
                         onNodeHover={this.handleNodeHover}
                         epiNode={this.props.epiNode}
                         n={this.state.n}
+                        flowIn={this.state.flowIn}
+                        flowOut={this.state.flowOut}
                         width={450}
                         height={350}
                         seed={this.state.seed}
@@ -78,6 +99,8 @@ class SubGraphs extends React.Component {
                         <p>Levels of Separation: {this.state.n}</p>
                         <input type="button" value="-" onClick={this.decN}/>
                         <input type="button" value="+" onClick={this.incN}/>
+                        <input type="button" value="Energy In" onClick={this.swapFlowIn}/>
+                        <input type="button" value="Energy Out" onClick={this.swapFlowOut}/>
                         <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
                     </div>
     }

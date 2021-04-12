@@ -62,10 +62,10 @@ class ForceGraph extends React.Component {
         if (n > 0) {
             n = n - 1
             filteredEdgeList.forEach((e) => {
-                if (e.source.speciesID === epiNode.speciesID) {
+                if (this.props.flowIn && e.source.speciesID === epiNode.speciesID) {
                     arr.push(e);
                     arr.push(...this.filterNodes(e.target, n, []))
-                } else if (e.target.speciesID === epiNode.speciesID) {
+                } else if (this.props.flowOut && e.target.speciesID === epiNode.speciesID) {
                     arr.push(e);
                     arr.push(...this.filterNodes(e.source, n, []))
                 }
@@ -444,7 +444,6 @@ class ForceGraph extends React.Component {
 
                 let nodesArr = [...this.props.nodes].filter(e => {
                     if (!addedNodes.includes(e.speciesID)) {
-                        // if(true) {
                         return simpleNodes.includes(e.speciesID);
                     } else {
                         return false;
@@ -452,7 +451,7 @@ class ForceGraph extends React.Component {
                 })
 
                 this.setState((state, props) => {
-                    return {edgeList: linksArr, nodeList: nodesArr}
+                    return {edgeList: linksArr, nodeList: [...nodesArr, this.props.epiNode]}
                 }, () => {
                     this.sleep(1000).then(() => {
                         this.state.sim.stop()
