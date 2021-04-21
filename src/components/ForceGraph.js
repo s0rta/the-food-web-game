@@ -351,12 +351,16 @@ class ForceGraph extends React.Component {
                 return this.handleMouseOver(d)
             })
             .on("click", (event, d) => {
+                if (event.shiftKey) {
+                    return this.handleRightClick(d);
+                }
                 this.handleClick(d)
+               
             })
             .on("contextmenu", (event, d) => {
                 event.preventDefault();
                 return this.handleRightClick(d);
-            });
+            })
 
             const zoomed = (event, d) => {
                 g.attr("transform", event.transform);
