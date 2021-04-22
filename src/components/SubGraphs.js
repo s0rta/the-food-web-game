@@ -14,7 +14,7 @@ class SubGraphs extends React.Component {
             trophicDisplay: false,
             displayed: false,
             flowIn: false,
-            flowOut: true
+            flowOut: false
         };
     }
 
@@ -99,8 +99,8 @@ class SubGraphs extends React.Component {
                         <p>Levels of Separation: {this.state.n}</p>
                         <input type="button" value="-" onClick={this.decN}/>
                         <input type="button" value="+" onClick={this.incN}/>
-                        <input type="button" value="Energy In" onClick={this.swapFlowIn}/>
-                        <input type="button" value="Energy Out" onClick={this.swapFlowOut}/>
+                        <input type="checkbox" value="Energy In" onClick={this.swapFlowIn}/>Energy Flow In
+                        <input type="checkbox" value="Energy Out" onClick={this.swapFlowOut}/>Energy Flow Out
                         <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
                     </div>
     }
