@@ -92,11 +92,11 @@ class MainGraph extends React.Component {
                 <div className="controls">
                     <div className="left">
                     <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
-                <input type="button" value="Start Level" onClick={this.gameTick}/>
-                <button onClick={() => window.location.reload()}>Restart Level</button>
-                <p>Number of species you can protect: {this.state.saves}</p>
-                <p>{this.state.removed} of {this.props.levelData.initialKills} species removed</p>
-                    </div>
+                    {this.state.clock === 0 && <input type="button" value="Start Level" onClick={this.gameTick}/>}
+                    <button onClick={() => window.location.reload()}>Restart Level</button>
+                    <p>Number of species you can protect: {this.state.saves}</p>
+                    <p>{this.state.removed} of {this.props.levelData.initialKills} species removed</p>
+                </div>
                 <div className="legend">
           <div className="legend-elm-wrap">Species Interaction <div className="si legend-elm"></div></div>
           <div className="legend-elm-wrap">Service Species Interaction<div className="ssi legend-elm"></div></div>
