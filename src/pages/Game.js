@@ -149,6 +149,8 @@ class Game extends React.Component {
                 <MainGraph
                     levelData={this.state.levelData}
                     levelOver={this.state.levelOver}
+                    winTarget={winTarget}
+                    won={this.state.levelWon}
                     colors={lists.colors}
                     nodes={[...this.state.levelNodes]}
                     edges={[...this.state.levelEdges]}

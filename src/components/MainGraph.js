@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import ForceGraph from "./ForceGraph"
 import "./MainGraph.css"
@@ -13,6 +14,7 @@ class MainGraph extends React.Component {
             clock: 0,
             removed: 0,
             ticking: false,
+            over: false,
             saves: this.props.levelData.saves,
             clockTicker: window.setInterval(() => {
                 this.state.ticking && this.setState({clock: this.state.clock + 1})
@@ -22,7 +24,7 @@ class MainGraph extends React.Component {
 
     componentDidUpdate(prevProps) {
         if(prevProps.levelOver !== this.props.levelOver) {
-            this.setState({ticking: false})
+            this.setState({ticking: false, over: true})
             window.clearInterval(this.state.clockTicker)
         }
     }
@@ -66,6 +68,10 @@ class MainGraph extends React.Component {
         this.setState({ticking: true})
     }
 
+    startNextLevel = () => {
+
+    }
+
     render()
     {
         return (
@@ -94,6 +100,7 @@ class MainGraph extends React.Component {
                     <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
                     {this.state.clock === 0 && <input type="button" value="Start Level" onClick={this.gameTick}/>}
                     <button onClick={() => window.location.reload()}>Restart Level</button>
+                    {this.props.won && <Link to={this.props.winTarget}> <input type="button" value="Next Level" onClick={this.startNextLevel}/></Link>}
                     <p>Number of species you can protect: {this.state.saves}</p>
                     <p>{this.state.removed} of {this.props.levelData.initialKills} species removed</p>
                 </div>
