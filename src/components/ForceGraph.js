@@ -145,7 +145,7 @@ class ForceGraph extends React.Component {
         this
             .state
             .sim
-            .alpha(0.9)
+            .alpha(0.1)
             .restart()
     }
 
@@ -347,6 +347,16 @@ class ForceGraph extends React.Component {
                     ? color.hex
                     : "#00f"
             })
+            .attr("stroke", d => {
+                if(this.props.levelData?.shownGraphs.find(v => {return d.nodeName.split(" ").join('-').toLowerCase() === v})) {
+                    return '#00c100'
+                }
+            })
+            .attr("stroke-width", d => {
+                if(this.props.levelData?.shownGraphs.find(v => {return d.nodeName.split(" ").join('-').toLowerCase() === v})) {
+                    return 4
+                }
+            })
             .on("mouseover", (event, d) => {
                 return this.handleMouseOver(d)
             })
@@ -378,6 +388,7 @@ class ForceGraph extends React.Component {
             .force("charge", d3.forceManyBody().strength(-900))
             .force("x", d3.forceX(this.props.width / 2))
             .force("y", d3.forceY(this.props.height / 2))
+            .alpha(0.2)
 
         
 

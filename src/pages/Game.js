@@ -56,23 +56,26 @@ class Game extends React.Component {
             case "4":
                 levelNodes = lists.nodeList4;
                 levelEdges = lists.edgeList4;
-                levelData = lists.levels[3][Math.floor(Math.random() * 4)];
-                // levelData = lists.levels[3][0];
+                // levelData = lists.levels[3][Math.floor(Math.random() * 4)];
+                levelData = lists.levels[3][0];
                 break;
             case "5":
                 levelNodes = lists.nodeList5;
                 levelEdges = lists.edgeList5;
-                levelData = lists.levels[4][Math.floor(Math.random() * 4)];
+                // levelData = lists.levels[4][Math.floor(Math.random() * 4)];
+                levelData = lists.levels[4][0];
                 break;
             case "6":
                 levelNodes = lists.nodeList6;
                 levelEdges = lists.edgeList6;
-                levelData = lists.levels[5][Math.floor(Math.random() * 4)];
+                // levelData = lists.levels[5][Math.floor(Math.random() * 4)];
+                levelData = lists.levels[5][0];
                 break;
             case "7":
                 levelNodes = lists.nodeList7;
                 levelEdges = lists.edgeList7;
-                levelData = lists.levels[6][Math.floor(Math.random() * 4)];
+                // levelData = lists.levels[6][Math.floor(Math.random() * 4)];
+                levelData = lists.levels[6][0];
                 break;
             default:
                 break;

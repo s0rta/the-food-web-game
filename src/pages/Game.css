@@ -1,6 +1,8 @@
 .game-wrap {
     display:grid;
     grid-template-columns: 1fr 2fr 1fr;
+    margin: 12px;
+    grid-gap: 12px;
 }
 
 .levelModal {
@@ -13,4 +15,5 @@
     background: white;
     padding: 40px;
     border: 1px solid grey;
-    box-shadow: 3px 3px 5px #535353;}
+    box-shadow: 3px 3px 5px #535353;
+}

@@ -6,6 +6,7 @@ import About from "./pages/About"
 import Credits from "./pages/Credits"
 
 import {HashRouter as Router, Switch, Route} from "react-router-dom"
+import Intro from './pages/Intro';
 
 function App() {
     return (
@@ -21,6 +22,9 @@ function App() {
               </Route>
               <Route path="/about">
                 <About/>
+              </Route>
+              <Route path="/intro">
+                <Intro/>
               </Route>
               <Route path="/Credits">
                 <Credits/>

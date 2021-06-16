@@ -12,6 +12,9 @@ class LevelSelect extends React.Component {
             <div className="level-select">
                 <h1>Level Select</h1>
                 <div className="levels">
+                    <Link to="/intro">
+                        <div className="level">Intro</div>
+                    </Link>
                     <Link to="/game/1">
                         <div className="level">1</div>
                     </Link>
