@@ -8,8 +8,8 @@ class Menu extends React.Component {
         return(
             <div>
              <Link to="/level-select">Play Game</Link>
-             <Link to="/about">About</Link>
-             <Link to="/credits">Credits</Link>
+             {/* <Link to="/about">About</Link>
+             <Link to="/credits">Credits</Link> */}
             </div>
         )
     }
