@@ -2,6 +2,7 @@ import React from 'react';
 import * as d3 from "d3"
 
 import "./ForceGraph.css"
+import { timeThursdays } from 'd3';
 
 class ForceGraph extends React.Component {
     constructor(props) {
@@ -21,6 +22,10 @@ class ForceGraph extends React.Component {
         this.state = {
             nodeList: nodeList,
             edgeList: edgeList,
+            levelES: nodeList.filter(d => {
+                return this.props.levelData?.shownGraphs.find(v => {return d.nodeName.split(" ").join('-').toLowerCase() === v || v === "num-services"})
+            }).map(d => {
+                return d.index}),
             seed: this.props.seed,
             step: 0,
             saves: this.props.levelData && this.props.levelData.saves
@@ -270,13 +275,13 @@ class ForceGraph extends React.Component {
             this.handleESBiomass()
             this.handleSpeciesRemaining();
         }
-    }
-
-    
+    }  
 
     createSim = () => {
         
+
         let transform = d3.zoomIdentity;
+
         const svg = d3
             .select(`#${this.props.name}`)
             .attr("width", this.props.width)
@@ -292,7 +297,7 @@ class ForceGraph extends React.Component {
             .attr("stroke", "#CCC")
             .attr("stroke-width", 4)
 
-            let g = svg.append("g");
+        let g = svg.append("g");
 
         let g_links = g
             .append("g")
@@ -321,17 +326,25 @@ class ForceGraph extends React.Component {
             .attr("x1", (d) => {
                 return d.target.y;
             })
-            .attr("class", d => d.Type === "Feeding"
-                ? "line-feeding"
-                : "line-es")
-            .attr('marker-start', 'url(#arrowhead)');
+            .attr("class", (d) => {
+                    return d.Type === "Feeding"
+                    ? "line-feeding"
+                    : "line-es"
+            })
+            .attr('marker-start', (d) => {
+                return 'url(#arrowhead)'
+            });
 
         let nodes = g_nodes
             .selectAll(".nodes")
             .data(this.state.nodeList)
             .enter()
             .append("path")
-            .attr("d", d3.symbol().size(300).type((d) => {
+            .attr("d", d3.symbol()
+                .size((d) => {
+                    return 300 
+                })
+                .type((d) => {
                 let test = this.isES(d.nodeName)
                     ? d3.symbolSquare
                     : d3.symbolCircle
@@ -343,19 +356,10 @@ class ForceGraph extends React.Component {
                     .find(c => {
                         return c.name === d.nodeColor
                     })
+
                 return color
                     ? color.hex
                     : "#00f"
-            })
-            .attr("stroke", d => {
-                if(this.props.levelData?.shownGraphs.find(v => {return d.nodeName.split(" ").join('-').toLowerCase() === v})) {
-                    return '#00c100'
-                }
-            })
-            .attr("stroke-width", d => {
-                if(this.props.levelData?.shownGraphs.find(v => {return d.nodeName.split(" ").join('-').toLowerCase() === v})) {
-                    return 4
-                }
             })
             .on("mouseover", (event, d) => {
                 return this.handleMouseOver(d)
@@ -403,7 +407,7 @@ class ForceGraph extends React.Component {
                 .selectAll("line")
                 .attr("x2", (d) => {
                     return d.source.x;
-                })
+                }) 
                 .attr("y2", (d) => {
                     return d.source.y;
                 })
@@ -470,7 +474,7 @@ class ForceGraph extends React.Component {
                 }, () => {
                     this.sleep(1000).then(() => {
                         this.state.sim.stop()
-                    })
+                    }) 
                     this.createSim()
                 })
             }
