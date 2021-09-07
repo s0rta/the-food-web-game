@@ -372,7 +372,7 @@ class ForceGraph extends React.Component {
         let color = this.props.colors.find((c) => {
           return c.name === d.nodeColor;
         });
-        return "url('#pattern1')"
+        return "url('#service-node-icon')";
       })
       .on("mouseover", (event, d) => {
         return this.handleMouseOver(d);
@@ -517,7 +517,6 @@ class ForceGraph extends React.Component {
     }
   }
 
-
   render() {
     return (
       <div className="force-wrap">
@@ -538,17 +537,252 @@ class ForceGraph extends React.Component {
               </marker>
 
               <pattern
-                id="pattern1"
+                id="bird-node-icon"
                 x="15"
                 y="15"
                 width="30"
                 height="30"
                 patternUnits="userSpaceOnUse"
               >
+                <circle
+                  cx="15"
+                  cy="15"
+                  r="16"
+                  stroke="none"
+                  fill="#920000"
+                ></circle>
+                <image
+                  className="bird-icon"
+                  xlinkHref="/Node-Icons/bird-icon.svg"
+                  x="1"
+                  y="1"
+                  width="28"
+                  height="28"
+                ></image>
+              </pattern>
 
-      <circle cx='15' cy='15' r='16' stroke='none' fill='#920000'></circle>
-      <image class="bird-icon" xlinkHref="/Node-Icons/noun_Bird_703134.svg" x="0" y="3" width="30" height="30"></image>
-      </pattern>
+              <pattern
+                id="crustacean-node-icon"
+                x="15"
+                y="15"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+                '
+                <circle
+                  cx="15"
+                  cy="15"
+                  r="16"
+                  stroke="none"
+                  fill="#009292"
+                ></circle>
+                <image
+                  className="crustacean-icon"
+                  xlinkHref="/Node-Icons/crustacean-icon.svg"
+                  x="1"
+                  y="0"
+                  width="28"
+                  height="28"
+                ></image>
+              </pattern>
+              <pattern
+                id="fish-node-icon"
+                x="15"
+                y="15"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle
+                  cx="15"
+                  cy="15"
+                  r="16"
+                  stroke="none"
+                  fill="#006ddb"
+                ></circle>
+                <image
+                  className="fish-icon"
+                  xlinkHref="/Node-Icons/fish-icon.svg"
+                  x="0"
+                  y="-3"
+                  width="28"
+                  height="28"
+                ></image>
+              </pattern>
+              <pattern
+                id="insect-node-icon"
+                x="15"
+                y="15"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle
+                  cx="15"
+                  cy="15"
+                  r="16"
+                  stroke="none"
+                  fill="#490092"
+                ></circle>
+                <image
+                  className="insect-icon"
+                  xlinkHref="/Node-Icons/insect-icon.svg"
+                  x="2"
+                  y="4"
+                  width="26"
+                  height="26"
+                ></image>
+              </pattern>
+
+              <pattern
+                id="mammel-node-icon"
+                x="15"
+                y="15"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle
+                  cx="15"
+                  cy="15"
+                  r="16"
+                  stroke="none"
+                  fill="#db6d00"
+                ></circle>
+                <image
+                  className="mammel-icon"
+                  xlinkHref="/Node-Icons/mammel-icon.svg"
+                  x="2"
+                  y="1"
+                  width="26"
+                  height="26"
+                ></image>
+              </pattern>
+
+              <pattern
+                id="microscopic-node-icon"
+                x="15"
+                y="15"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle
+                  cx="15"
+                  cy="15"
+                  r="16"
+                  stroke="none"
+                  fill="#000"
+                ></circle>
+                <image
+                  className="microscopic-icon"
+                  xlinkHref="/Node-Icons/microscopic-icon.svg"
+                  x="1"
+                  y="2"
+                  width="28"
+                  height="28"
+                ></image>
+              </pattern>
+
+              <pattern
+                id="mollusc-node-icon"
+                x="15"
+                y="15"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle
+                  cx="15"
+                  cy="15"
+                  r="16"
+                  stroke="none"
+                  fill="#004949"
+                ></circle>
+                <image
+                  className="mollusc-icon"
+                  xlinkHref="/Node-Icons/mollusc-icon.svg"
+                  x="3"
+                  y="3"
+                  width="24"
+                  height="24"
+                ></image>
+              </pattern>
+
+              <pattern
+                id="plankton-node-icon"
+                x="15"
+                y="15"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle
+                  cx="15"
+                  cy="15"
+                  r="16"
+                  stroke="none"
+                  fill="#ffff6d"
+                ></circle>
+                <image
+                  className="plankton-icon"
+                  xlinkHref="/Node-Icons/plankton-icon.svg"
+                  x="0"
+                  y="0"
+                  width="30"
+                  height="30"
+                ></image>
+              </pattern>
+
+              <pattern
+                id="plant-node-icon"
+                x="15"
+                y="15"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+             <circle
+                  cx="15"
+                  cy="15"
+                  r="16"
+                  stroke="none"
+                  fill="#24ff24"
+                ></circle>
+   <image
+                  className="plant-icon"
+                  xlinkHref="/Node-Icons/plant-icon.svg"
+                  x="2"
+                  y="3"
+                  width="26"
+                  height="26"
+                ></image>
+              </pattern>
+
+              <pattern
+                id="service-node-icon"
+                x="15"
+                y="15"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+             <rect
+      width="30"
+      height="30"
+      stroke="none"
+                  fill="#ff6db6"
+                ></rect>
+   <image
+                  className="service-icon"
+                  xlinkHref="/Node-Icons/service-icon.svg"
+                  x="2"
+                  y="2"
+                  width="26"
+                  height="26"
+                ></image>
+              </pattern>
             </defs>
           </svg>
         </div>

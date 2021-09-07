@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="426"
+   height="404"
+   overflow="hidden"
+   version="1.1"
+   id="svg30"
+   sodipodi:docname="bird-icon.svg"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview32"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.7351485"
+     inkscape:cx="213.23823"
+     inkscape:cy="202"
+     inkscape:window-width="832"
+     inkscape:window-height="848"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg30" />
+  <defs
+     id="defs14">
+    <clipPath
+       id="clip0">
+      <rect
+         x="583"
+         y="94"
+         width="426"
+         height="404"
+         id="rect2" />
+    </clipPath>
+    <clipPath
+       id="clip1">
+      <rect
+         x="583"
+         y="94"
+         width="425"
+         height="403"
+         id="rect5" />
+    </clipPath>
+    <clipPath
+       id="clip2">
+      <rect
+         x="583"
+         y="94"
+         width="425"
+         height="403"
+         id="rect8" />
+    </clipPath>
+    <clipPath
+       id="clip3">
+      <rect
+         x="583"
+         y="94"
+         width="425"
+         height="532"
+         id="rect11" />
+    </clipPath>
+  </defs>
+  <g
+     clip-path="url(#clip0)"
+     transform="translate(-583 -94)"
+     id="g28"
+     style="fill:#f9f9f9">
+    <g
+       clip-path="url(#clip1)"
+       id="g26"
+       style="fill:#f9f9f9">
+      <g
+         clip-path="url(#clip2)"
+         id="g24"
+         style="fill:#f9f9f9">
+        <g
+           clip-path="url(#clip3)"
+           id="g22"
+           style="fill:#f9f9f9">
+          <path
+             d="M402.097 101.316 349.605 90.8182C346.77 82.2715 334.216 51.9222 298.868 51.9222 196.048 51.9222 257.741 206.155 165.202 206.155 113.789 206.159 21.25 165.023 21.25 165.023 21.25 165.023 74.9105 299.132 182.215 317.228L208.552 357.633C210.417 360.485 209.164 362.801 205.751 362.801L187.136 362.801C183.732 362.801 180.965 365.105 180.965 367.944 180.965 370.783 183.727 373.082 187.136 373.082L321.491 373.082C324.9 373.082 327.662 370.783 327.662 367.944 327.662 365.105 324.9 362.801 321.491 362.801L285.893 362.801C282.485 362.801 278.214 360.485 276.352 357.633L248.859 315.46C334.641 298.847 350.285 231.731 350.285 195.87 350.285 165.627 330.531 155.125 349.171 115.932L402.101 105.349C403.057 105.154 403.75 104.312 403.75 103.33 403.75 102.349 403.057 101.507 402.097 101.316ZM264.078 357.629C265.94 360.481 264.686 362.797 261.277 362.797L230.367 362.797C226.963 362.797 222.691 360.481 220.826 357.629L195.547 318.852C199.087 319.115 202.678 319.26 206.329 319.26 217.655 319.26 228.106 318.563 237.762 317.267L264.078 357.629Z"
+             transform="matrix(1 0 0 1.00002 583 94)"
+             id="path16"
+             style="fill:#f9f9f9" />
+          <text
+             font-family="Arial,Arial_MSFontService,sans-serif"
+             font-weight="700"
+             font-size="5"
+             transform="matrix(4.25 0 0 4.2501 583 583)"
+             id="text20"
+             style="fill:#f9f9f9">Created by David Khai<tspan
+   font-size="5"
+   x="0"
+   y="4.94106"
+   id="tspan18"
+   style="fill:#f9f9f9">from the Noun Project</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
