@@ -369,10 +369,9 @@ class ForceGraph extends React.Component {
           })
       )
       .attr("fill", (d) => {
-        let color = this.props.colors.find((c) => {
-          return c.name === d.nodeColor;
-        });
-        return "url('#service-node-icon')";
+        // return 'url(#mollusc-node-icon)';
+        console.log(d.organismType.toLowerCase().split(" ").join('-'))
+        return `url('#${d.organismType.toLowerCase().split("s,")[0].split(" ").join('-')}-node-icon')`;
       })
       .on("mouseover", (event, d) => {
         return this.handleMouseOver(d);
@@ -636,7 +635,7 @@ class ForceGraph extends React.Component {
               </pattern>
 
               <pattern
-                id="mammel-node-icon"
+                id="mammal-node-icon"
                 x="15"
                 y="15"
                 width="30"
@@ -661,7 +660,7 @@ class ForceGraph extends React.Component {
               </pattern>
 
               <pattern
-                id="microscopic-node-icon"
+                id="microscopic-organism-node-icon"
                 x="15"
                 y="15"
                 width="30"
@@ -761,7 +760,7 @@ class ForceGraph extends React.Component {
               </pattern>
 
               <pattern
-                id="service-node-icon"
+                id="ecosystem-service-node-icon"
                 x="15"
                 y="15"
                 width="30"
