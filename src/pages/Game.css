@@ -17,3 +17,38 @@
     border: 1px solid grey;
     box-shadow: 3px 3px 5px #535353;
 }
+
+.level-header {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+.sidebar-wrap .container {
+  width: 400px;
+  position: relative;
+  margin: 40px;
+}
+.sidebar-wrap button {
+  margin: 4px;
+}
+
+.sidebar-wrap img {
+  position: absolute;
+  width: 100%;
+  margin: -34px 0 0 -28px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 0px;
+}
+
+.sidebar-wrap h2 {
+  padding-top: 210px;
+}
+
+.sidebar-wrap p {
+  margin-bottom: 0px;
+}
+
+.sidebar-wrap .desc {
+  margin-top: 12px;
+}

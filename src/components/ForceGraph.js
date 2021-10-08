@@ -2,7 +2,6 @@ import React from "react";
 import * as d3 from "d3";
 
 import "./ForceGraph.css";
-import { timeThursdays } from "d3";
 
 class ForceGraph extends React.Component {
   constructor(props) {
