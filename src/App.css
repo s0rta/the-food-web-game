@@ -2,15 +2,24 @@
   font-family: 'roboto', sans-serif;
 }
 
+button a {
+  color: white;
+  text-decoration: none;
+}
+
 h1 {
   font-weight: normal;
   font-size: 64px;
   margin: 0;
 }
 
+h2 {
+  font-weight: normal;
+}
+
 p {
-  font-size: 16px;
-  margin-bottom: 16px;
+  font-size: 14px;
+  margin-bottom: 14px;
 }
 
 p.h1-subhead {
@@ -23,14 +32,20 @@ img {
 
 button {
   border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
+  padding: 8px 14px;
+  font-size: 14px;
   color: white;
   border: 0px;
 }
 
 button.btn--primary {
   background: #14B8A6;
+  color: white;
+  text-decoration: none;
+}
+
+button.btn--primary:hover {
+  background: #109385;
 }
 
 button.btn--secondary {
@@ -49,6 +64,11 @@ button.btn--game-ui {
   margin: 0 auto;
   margin: 50px;
   padding: 14px 28px;
+  overflow: auto;
+}
+
+.game-wrap .container {
+  max-height: 500px;
 }
 
 
@@ -67,4 +87,8 @@ button.btn--game-ui {
   min-height: 300px;
   width: 100%;
   object-fit: cover;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open{
+  z-index: 2;
 }

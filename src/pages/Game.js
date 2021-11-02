@@ -28,6 +28,7 @@ class Game extends React.Component {
       isModalOpen: true,
       levelOver: false,
       levelWon: false,
+      trophicDisplay: false
     };
   }
 
@@ -117,7 +118,11 @@ class Game extends React.Component {
     this.setState({ levelOver: false });
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  toggleTrophic = () => {
+    this.setState({ trophicDisplay: !this.state.trophicDisplay})
+  }
+
+  componentDidUpdate(prevProps) {
     if (this.props.match.params.level !== prevProps.match.params.level) {
       window.location.reload();
     }
@@ -131,11 +136,11 @@ class Game extends React.Component {
     return (
       <div className="game-wrap">
         <Modal isOpen={this.state.isModalOpen} className="levelModal">
-          <h1 class="level-header">Level {this.state.levelData.level} Intro</h1>
+          <h2 class="level-header">Level {this.state.levelData.level} Intro</h2>
           <p>{this.state.levelData.intro}</p>
-          <h1>Objective</h1>
+          <h2 class="level-header">Objective</h2>
           <p>{this.state.levelData.objective}</p>
-          <button onClick={() => this.swapModal()}>Sounds Good</button>
+          <button class="btn--primary" onClick={() => this.swapModal()}>Start Level</button>
         </Modal>
         <Modal isOpen={this.state.levelOver} className="levelModal">
           {this.state.levelWon
@@ -154,12 +159,14 @@ class Game extends React.Component {
         </Modal>
         <SideBar
           onToggleModal={this.swapModal}
+          onToggleTrophic={this.toggleTrophic}
           level={this.state.level}
           data={this.state.hoveredNode}
         />
         <MainGraph
           levelData={this.state.levelData}
           levelOver={this.state.levelOver}
+          trophicDisplay={this.state.trophicDisplay}
           winTarget={winTarget}
           won={this.state.levelWon}
           colors={lists.colors}

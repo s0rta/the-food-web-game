@@ -4,7 +4,7 @@ import Game from "./pages/Game";
 import LevelSelect from "./pages/LevelSelect";
 import About from "./pages/About";
 import Credits from "./pages/Credits";
-import Tutorial from "./pages/Tutorial"
+import Tutorial from "./pages/Tutorial";
 
 import Nav from "./components/Nav";
 
@@ -30,8 +30,8 @@ function App() {
             <Intro />
           </Route>
           <Route path="/tutorial">
-          <Tutorial />
-        </Route>
+            <Tutorial />
+          </Route>
           <Route path="/Credits">
             <Credits />
           </Route>

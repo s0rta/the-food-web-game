@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "./MainMenu.css";
 
 class MainMenu extends React.Component {
@@ -13,7 +13,7 @@ class MainMenu extends React.Component {
               <p class="h1-subhead">
                 A game about environmental services & how to protect them
               </p>
-              <button class="btn--primary">Play Game</button>
+              <button class="btn--primary"><Link to="/intro">Play Game</Link></button>
             </div>
 
             <img

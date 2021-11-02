@@ -29,6 +29,10 @@ class SideBar extends React.Component {
     this.props.onToggleModal();
   };
 
+  handleTrophicToggle = () => {
+    this.props.onToggleTrophic();
+  }
+
   render() {
     return (
       <div className="sidebar-wrap">
@@ -36,51 +40,59 @@ class SideBar extends React.Component {
           <h1 class="level-header">
             Level <span id="level">{this.props.level}</span>
           </h1>
-          <button class="btn--primary" onClick={this.handleModal}>
-            Show Intro/Objective
+          <button className="btn--primary" onClick={this.handleModal}>
+            Show Objective 
           </button>
           <Link to="/level-select">
-            <button class="btn--primary">Level Select</button>
+            <button className="btn--primary">Level Select</button>
           </Link>
+          <button className="btn--primary" onClick={this.handleTrophicToggle}>
+            Toggle Trophic
+          </button>
+          <button className="btn--primary">
+            Simulate Disturbance
+          </button>
+          <button className="btn--primary">
+            Reset Level
+          </button>
         </div>
-      <div class="container">
-        {this.props.data ? (
-          <div>
-            <img
-              className="photo"
-              src={`/img/Images/${this.props.data.imgFile}`}
-              alt=""
-            />
-            <h2 className="name">
-              Name:{" "}
-              <span className="name-filler">{this.props.data.nodeName}</span>
-            </h2>
-            <p className="biomass">
-              Biomass:{" "}
-              <span className="biomass-filler">
-                {this.isES(this.props.data.nodeName)
-                  ? "N/A"
-                  : this.props.data.biomass}
-              </span>
-            </p>
-            <p className="type">
-              Type:{" "}
-              <span className="type-filler">
-                {this.props.data.organismType}
-              </span>
-            </p>
-            <p className="trophic">
-              Trophic Level:{" "}
-              <span className="trophic-filler">
-                {this.props.data.trophicLevel}
-              </span>
-            </p>
-            <p className="desc">{this.props.data.desc}</p>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
+        <div className="container">
+          {this.props.data ? (
+            <div>
+              <img
+                className="photo"
+                src={`/img/Images/${this.props.data.imgFile}`}
+                alt=""
+              />
+              <h2 className="name">
+                <span className="name-filler">{this.props.data.nodeName}</span>
+              </h2>
+              <p className="biomass">
+                Biomass:{" "}
+                <span className="biomass-filler">
+                  {this.isES(this.props.data.nodeName)
+                    ? "N/A"
+                    : this.props.data.biomass}
+                </span>
+              </p>
+              <p className="type">
+                Type:{" "}
+                <span className="type-filler">
+                  {this.props.data.organismType}
+                </span>
+              </p>
+              <p className="trophic">
+                Trophic Level:{" "}
+                <span className="trophic-filler">
+                  {this.props.data.trophicLevel}
+                </span>
+              </p>
+              <p className="desc">{this.props.data.desc}</p>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     );
   }

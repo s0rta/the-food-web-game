@@ -301,16 +301,16 @@ class ForceGraph extends React.Component {
 
     const svg = d3
       .select(`#${this.props.name}`)
-      .attr("width", this.props.width)
-      .attr("height", this.props.height)
+      .attr("width", window.innerWidth)
+      .attr("height", window.innerHeight - 72)
       .attr("fill", "#fff");
 
     const rect = svg
       .append("rect")
       .attr("x", 0)
       .attr("y", 0)
-      .attr("width", this.props.width)
-      .attr("height", this.props.height)
+      .attr("width", window.innerWidth)
+      .attr("height", window.innerHeight - 72)
       .attr("stroke", "#CCC")
       .attr("stroke-width", 4);
 

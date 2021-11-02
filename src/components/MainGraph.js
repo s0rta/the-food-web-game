@@ -10,7 +10,6 @@ class MainGraph extends React.Component {
 
 
         this.state = {
-            trophicDisplay: false,
             clock: 0,
             removed: 0,
             ticking: false,
@@ -52,10 +51,6 @@ class MainGraph extends React.Component {
         this.props.onLevelEnd(d)
     }
 
-    toggleTrophic = () => {
-        this.setState({trophicDisplay: !this.state.trophicDisplay})
-    }
-
     handleSpeciesRemove = () => {
         this.setState({removed: this.state.removed + 1})
     }
@@ -85,7 +80,7 @@ class MainGraph extends React.Component {
                     seed={0}
                     edges={this.props.edges}
                     levelData={this.props.levelData}
-                    trophic={this.state.trophicDisplay}
+                    trophic={this.props.trophicDisplay}
                     onNodeHover={this.handleNodeHover}
                     onUpdateSaves={(s) => this.setState({saves: s})}
                     onRightClick={this.handleRightClick}
@@ -97,7 +92,6 @@ class MainGraph extends React.Component {
 
                 <div className="controls">
                     <div className="left">
-                    <input type="button" value="Toggle Trophic" onClick={this.toggleTrophic}/>
                     {this.state.clock === 0 && <input type="button" value="Start Level" onClick={this.gameTick}/>}
                     <button onClick={() => window.location.reload()}>Restart Level</button>
                     {this.props.won && <Link to={this.props.winTarget}> <input type="button" value="Next Level" onClick={this.startNextLevel}/></Link>}
