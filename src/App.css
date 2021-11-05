@@ -18,12 +18,12 @@ h2 {
 }
 
 p {
-  font-size: 14px;
-  margin-bottom: 14px;
+  font-size: 13px;
+  margin-bottom: 13px;
 }
 
 p.h1-subhead {
-  font-size: 36px;
+  font-size: 32px;
 }
 
 img {
@@ -32,11 +32,19 @@ img {
 
 button {
   border-radius: 4px;
-  padding: 8px 14px;
-  font-size: 14px;
+  padding: 8px 13px;
+  font-size: 13px;
   color: white;
   border: 0px;
+  font-weight: bold;
 }
+
+button.btn {
+  background: #52525B;
+  color: white;
+  text-decoration: none;
+}
+
 
 button.btn--primary {
   background: #14B8A6;
@@ -62,8 +70,8 @@ button.btn--game-ui {
   box-shadow: 0px 1px 2px rgba(0,0,0, 0.06), 0px 1px 3px rgba(0,0,0, 0.1);
   max-width: 1400px;
   margin: 0 auto;
-  margin: 50px;
-  padding: 14px 28px;
+  margin: 24px;
+  padding: 12px 24px;
   overflow: auto;
 }
 
@@ -75,7 +83,7 @@ button.btn--game-ui {
 .header-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 12px;
+  grid-gap: 8px;
 }
 
 .header-text {

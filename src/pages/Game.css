@@ -22,9 +22,10 @@
 .sidebar-wrap .container {
   width: 300px;
   position: relative;
-  margin: 40px;
+  margin: 24px;
   z-index: 1;
   padding:12px 12px;
+  max-height:450px;
 }
 .sidebar-wrap button {
   margin: 4px;
@@ -34,13 +35,13 @@
   position: absolute;
   width: 100%;
   margin: -34px 0 0 -12px;
-  height: 230px;
+  height: 210px;
   object-fit: cover;
   border-radius: 0px;
 }
 
 .sidebar-wrap h2 {
-  padding-top: 210px;
+  padding-top: 190px;
 }
 
 .sidebar-wrap p {
@@ -49,4 +50,13 @@
 
 .sidebar-wrap .desc {
   margin-top: 12px;
+}
+
+.sub-force-graph {
+  z-index: 1;
+  position:relative;
+}
+
+.sub-graph-inputs .btn {
+  margin: 4px;
 }

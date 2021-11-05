@@ -74,8 +74,8 @@ class MainGraph extends React.Component {
                 <ForceGraph
                     colors={this.props.colors}
                     name="svgMain"
-                    width={700}
-                    height={600}
+                    width={window.innerWidth}
+                    height={window.innerHeight - 72}
                     nodes={this.props.nodes}
                     seed={0}
                     edges={this.props.edges}

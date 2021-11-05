@@ -28,7 +28,7 @@ class Game extends React.Component {
       isModalOpen: true,
       levelOver: false,
       levelWon: false,
-      trophicDisplay: false
+      trophicDisplay: true 
     };
   }
 

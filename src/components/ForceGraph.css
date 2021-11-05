@@ -20,3 +20,7 @@
     visibility: hidden;
 }
 
+.sub-force-graph.container {
+  z-index: 1;
+  position: relative;
+}

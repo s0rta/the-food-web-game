@@ -31,7 +31,7 @@ class SideBar extends React.Component {
 
   handleTrophicToggle = () => {
     this.props.onToggleTrophic();
-  }
+  };
 
   render() {
     return (
@@ -40,21 +40,17 @@ class SideBar extends React.Component {
           <h1 class="level-header">
             Level <span id="level">{this.props.level}</span>
           </h1>
-          <button className="btn--primary" onClick={this.handleModal}>
-            Show Objective 
+          <button className="btn" onClick={this.handleModal}>
+            Show Objective
           </button>
           <Link to="/level-select">
-            <button className="btn--primary">Level Select</button>
+            <button className="btn">Level Select</button>
           </Link>
-          <button className="btn--primary" onClick={this.handleTrophicToggle}>
+          <button className="btn">Reset</button>
+          <button className="btn" onClick={this.handleTrophicToggle}>
             Toggle Trophic
           </button>
-          <button className="btn--primary">
-            Simulate Disturbance
-          </button>
-          <button className="btn--primary">
-            Reset Level
-          </button>
+          <button className="btn--primary">Simulate Disturbance</button>
         </div>
         <div className="container">
           {this.props.data ? (
@@ -72,7 +68,7 @@ class SideBar extends React.Component {
                 <span className="biomass-filler">
                   {this.isES(this.props.data.nodeName)
                     ? "N/A"
-                    : this.props.data.biomass}
+                    : this.props.data.biomass.toFixed(2)}
                 </span>
               </p>
               <p className="type">
@@ -84,7 +80,7 @@ class SideBar extends React.Component {
               <p className="trophic">
                 Trophic Level:{" "}
                 <span className="trophic-filler">
-                  {this.props.data.trophicLevel}
+                  {this.props.data.trophicLevel.toFixed(2)}
                 </span>
               </p>
               <p className="desc">{this.props.data.desc}</p>

@@ -301,16 +301,16 @@ class ForceGraph extends React.Component {
 
     const svg = d3
       .select(`#${this.props.name}`)
-      .attr("width", window.innerWidth)
-      .attr("height", window.innerHeight - 72)
+      .attr("width", this.props.width)
+      .attr("height", this.props.height)
       .attr("fill", "#fff");
 
     const rect = svg
       .append("rect")
       .attr("x", 0)
       .attr("y", 0)
-      .attr("width", window.innerWidth)
-      .attr("height", window.innerHeight - 72)
+      .attr("width", this.props.width)
+      .attr("height", this.props.height)
       .attr("stroke", "#CCC")
       .attr("stroke-width", 4);
 
@@ -399,7 +399,7 @@ class ForceGraph extends React.Component {
       .force("link", d3.forceLink(this.state.edgeList))
       .force("charge", d3.forceManyBody().strength(-900))
       .force("x", d3.forceX(this.props.width / 2))
-      .force("y", d3.forceY(this.props.height / 2))
+      .force("y", d3.forceY().strength(5).y((d) => this.tl2y(d.trophicLevel)))
       .alpha(0.2);
 
     simulation.on("tick", () => {
@@ -493,13 +493,8 @@ class ForceGraph extends React.Component {
     } else if (prevProps.trophic !== this.props.trophic) {
       this.state.sim.force(
         "trophic",
-        d3
-          .forceY()
-          .strength(this.props.trophic ? 5 : 0)
-          .y((d) => {
-            return this.tl2y(d.trophicLevel);
-          })
-      );
+        this.props.trophic ? d3.forceY().strength(5).y((d) => this.tl2y(d.trophicLevel)) : d3.forceY(this.props.height / 2))
+      .alpha(1.2);
 
       this.state.sim.alpha(0.1).restart();
       this.sleep(500).then(() => {
