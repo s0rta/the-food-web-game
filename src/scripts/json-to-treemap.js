@@ -1,49 +1,6 @@
 import * as d3 from "d3";
 
-export default function nodeListToTreeMap(nodeList) {
-  let treeData = [
-    { name: "Mammal", size: 0 },
-    { name: "Microscopic Organism", size: 0 },
-    { name: "Crustacean", size: 0 },
-    { name: "Plant", size: 0 },
-    { name: "Bird", size: 0 },
-    { name: "Insect", size: 0 },
-    { name: "Insect, Annelid & Arachnid", size: 0 },
-    { name: "Fish", size: 0 },
-    { name: "Plankton", size: 0 },
-    { name: "Mollusc", size: 0 },
-  ];
-
-  for (const node of nodeList) {
-    const nodeType = node.organismType;
-    const groupIndex = treeData.findIndex((n) => n.name === nodeType);
-    if (groupIndex >= 0) {
-      treeData[groupIndex].size += node.biomass;
-    }
-  }
-  
-  treeData = treeData.map(n => Math.log(n));
-
-  return Treemap(treeData, {
-    path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
-    value: (d) => d?.size, // size of each node (file); null for internal nodes (folders)
-    group: (d) => d.name.split(".")[0], // e.g., "animate" in "flare.animate.Easing"; for color
-    label: (d, n) =>
-      [
-        ...d.name
-          .split(".")
-          .pop()
-          .split(/(?=[A-Z][a-z])/g),
-        n.value.toLocaleString("en"),
-      ].join("\n"),
-    title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`, // text to show on hover
-    tile: d3.treemapBinary, // e.g., d3.treemapBinary; set by input above
-    width: 400,
-    height: 400,
-  });
-}
-
-function Treemap(
+export default function Treemap(
   data,
   {
     // data is either tabular (array of objects) or hierarchy (nested objects)

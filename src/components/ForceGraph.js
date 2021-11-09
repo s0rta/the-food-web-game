@@ -189,6 +189,7 @@ class ForceGraph extends React.Component {
           this.props.levelData.removableIDs.includes(node.speciesID)
         ) {
           node.living = false;
+          node.initial = true;
           this.killLinks(node.speciesID);
           setDead = false;
           this.props.onSpeciesRemove();
@@ -369,7 +370,6 @@ class ForceGraph extends React.Component {
       )
       .attr("fill", (d) => {
         // return 'url(#mollusc-node-icon)';
-        console.log(d.organismType.toLowerCase().split(" ").join('-'))
         return `url('#${d.organismType.toLowerCase().split("s,")[0].split(" ").join('-')}-node-icon')`;
       })
       .on("mouseover", (event, d) => {

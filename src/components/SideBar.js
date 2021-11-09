@@ -33,6 +33,10 @@ class SideBar extends React.Component {
     this.props.onToggleTrophic();
   };
 
+  handleSimulateDisturbance = () => {
+    this.props.onSimulateDisturbance();
+  }
+
   render() {
     return (
       <div className="sidebar-wrap">
@@ -50,7 +54,7 @@ class SideBar extends React.Component {
           <button className="btn" onClick={this.handleTrophicToggle}>
             Toggle Trophic
           </button>
-          <button className="btn--primary">Simulate Disturbance</button>
+          <button className="btn--primary" onClick={this.handleSimulateDisturbance}>Simulate Disturbance</button>
         </div>
         <div className="container">
           {this.props.data ? (

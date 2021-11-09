@@ -4,6 +4,7 @@ import MainGraph from "../components/MainGraph.js";
 import SubGraphs from "../components/SubGraphs.js";
 import Modal from "react-modal";
 import * as lists from "../data/lists";
+import TreeMap from "../components/TreeMap.js";
 
 import "./Game.css";
 import { Link } from "react-router-dom";
@@ -30,7 +31,8 @@ class Game extends React.Component {
       isModalOpen: true,
       levelOver: false,
       levelWon: false,
-      trophicDisplay: true 
+      trophicDisplay: true,
+      gameStart: false,
     };
   }
 
@@ -82,7 +84,6 @@ class Game extends React.Component {
       default:
         break;
     }
-    console.log(levelEdges);
     return [levelNodes, levelEdges, levelData];
   };
 
@@ -124,6 +125,10 @@ class Game extends React.Component {
     this.setState({ trophicDisplay: !this.state.trophicDisplay})
   }
 
+  simulateDisturbance = () => {
+    this.setState({ gameStart: true})
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props.match.params.level !== prevProps.match.params.level) {
       window.location.reload();
@@ -151,17 +156,19 @@ class Game extends React.Component {
           <br />
           {this.state.levelWon && (
             <Link to={winTarget}>
-              <button>Next Level</button>
+              <button className="btn btn--primary">Next Level</button>
             </Link>
           )}
-          <button onClick={() => window.location.reload()}>
+          <button className="btn" onClick={() => window.location.reload()}>
             Restart Level
           </button>
-          <button onClick={() => this.closeEndModal()}>Explore</button>
+          <button className="btn" onClick={() => this.closeEndModal()}>Explore</button>
+          <TreeMap levelOver={this.state.levelOver} nodeList={this.state.levelNodes}/>
         </Modal>
         <SideBar
           onToggleModal={this.swapModal}
           onToggleTrophic={this.toggleTrophic}
+          onSimulateDisturbance={this.simulateDisturbance}
           level={this.state.level}
           data={this.state.hoveredNode}
         />
@@ -179,6 +186,7 @@ class Game extends React.Component {
           onUpdateESBiomass={this.handleESBiomass}
           onUpdateSpeciesRemaining={this.handleSpeciesRemaining}
           onLevelEnd={this.handleLevelEnd}
+          gameStart={this.state.gameStart}
         />
         <SubGraphs
           onLevelEnd={this.handleLevelEnd}

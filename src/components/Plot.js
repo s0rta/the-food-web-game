@@ -95,7 +95,6 @@ class Plot extends React.Component {
                 this.drawPlot()
             })
             if(Math.abs((this.props.pos / this.state.startPos) * 100) < this.props.failLine) {
-                console.log(((this.props.pos / this.state.startPos) * 100))
                 this.props.onLevelEnd(false);
             }
         }

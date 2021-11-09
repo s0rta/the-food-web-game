@@ -22,6 +22,10 @@ class MainGraph extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        if(this.props.gameStart && !this.state.ticking) {
+          this.gameTick()
+        }
+        
         if(prevProps.levelOver !== this.props.levelOver) {
             this.setState({ticking: false, over: true})
             window.clearInterval(this.state.clockTicker)
@@ -46,7 +50,6 @@ class MainGraph extends React.Component {
 
     handleLevelEnd = (d) => {
         // this.setState({ticking: false})
-        console.log("LEVEL OVER")
         window.clearInterval(this.state.clockTicker)
         this.props.onLevelEnd(d)
     }
