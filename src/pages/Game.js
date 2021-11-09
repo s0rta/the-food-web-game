@@ -8,6 +8,8 @@ import * as lists from "../data/lists";
 import "./Game.css";
 import { Link } from "react-router-dom";
 
+import nodeListToTreeMap from "../scripts/json-to-treemap";
+
 class Game extends React.Component {
   constructor(props) {
     super(props);

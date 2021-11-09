@@ -41,7 +41,7 @@ export const nodeList1 = [
   {
     index: 3,
     speciesID: 400,
-    biomass: -1,
+    biomass: 0,
     organismType: "Microscopic Organisms",
     nodeColor: "Black-1",
     nodeShape: "Circle",

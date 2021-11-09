@@ -492,9 +492,9 @@ class ForceGraph extends React.Component {
       }
     } else if (prevProps.trophic !== this.props.trophic) {
       this.state.sim.force(
-        "trophic",
+        "y",
         this.props.trophic ? d3.forceY().strength(5).y((d) => this.tl2y(d.trophicLevel)) : d3.forceY(this.props.height / 2))
-      .alpha(1.2);
+      .alpha(0.1);
 
       this.state.sim.alpha(0.1).restart();
       this.sleep(500).then(() => {
