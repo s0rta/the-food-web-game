@@ -6,6 +6,7 @@ import Treemap from "../scripts/json-to-treemap.js";
 
 function TreeMap(props) {
   const [treeDataDirect, setTreeDataDirect] = useState([
+    { name: "No species were directly lost", size: 1 },
     { name: "Mammal", size: 0 },
     { name: "Microscopic Organism", size: 0 },
     { name: "Crustacean", size: 0 },
@@ -18,6 +19,7 @@ function TreeMap(props) {
     { name: "Mollusc", size: 0 },
   ]);
   const [treeDataIndirect, setTreeDataIndirect] = useState([
+    { name: "No species were indirectly lost", size: 1 },
     { name: "Mammal", size: 0 },
     { name: "Microscopic Organism", size: 0 },
     { name: "Crustacean", size: 0 },
@@ -32,7 +34,8 @@ function TreeMap(props) {
 
   const incrementTreeData = (index, value, direct) => {
     let newTreeData = direct ? treeDataDirect : treeDataIndirect;
-    newTreeData[index].size += Math.log(value);
+    newTreeData[index].size += Math.max(value, 0);
+    newTreeData[0].size = 0;
     direct ? setTreeDataDirect(newTreeData) : setTreeDataIndirect(newTreeData);
   };
 
@@ -43,6 +46,7 @@ function TreeMap(props) {
         const nodeType = !node.living && node.organismType;
         const groupIndex = treeDataDirect.findIndex((n) => n.name === nodeType);
         if (groupIndex >= 0) {
+          console.log(node);
           incrementTreeData(
             groupIndex,
             node.biomass,

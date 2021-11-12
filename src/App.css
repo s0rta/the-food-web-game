@@ -30,7 +30,7 @@ img {
   border-radius: 10px;
 }
 
-button {
+button, span.btn--secondary {
   border-radius: 4px;
   padding: 8px 13px;
   font-size: 13px;
@@ -56,7 +56,7 @@ button.btn--primary:hover {
   background: #109385;
 }
 
-button.btn--secondary {
+.btn--secondary, span.btn.btn--secondary {
   background: rgba(0,0,0,0);
   border: 1px solid white;
 }

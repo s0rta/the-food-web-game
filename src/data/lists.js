@@ -461,7 +461,7 @@ export const nodeList2 = [
   {
     index: 14,
     speciesID: 400,
-    biomass: -1,
+    biomass: 0,
     organismType: "Microscopic Organism",
     nodeColor: "Black-1",
     nodeShape: "Circle",
@@ -904,7 +904,7 @@ export const nodeList3 = [
   {
     index: 19,
     speciesID: 400,
-    biomass: -1,
+    biomass: 0,
     organismType: "Microscopic Organism",
     nodeColor: "Black-1",
     nodeShape: "Circle",
@@ -1808,7 +1808,7 @@ export const nodeList4 = [
   {
     index: 50,
     speciesID: 400,
-    biomass: -1,
+    biomass: 0,
     organismType: "Microscopic Organism",
     nodeColor: "Black-1",
     nodeShape: "Circle",
@@ -2962,7 +2962,7 @@ export const nodeList5 = [
   {
     index: 58,
     speciesID: 400,
-    biomass: -1,
+    biomass: 0,
     organismType: "Microscopic Organism",
     nodeColor: "Black-1",
     nodeShape: "Circle",
@@ -4484,7 +4484,7 @@ export const nodeList6 = [
   {
     index: 78,
     speciesID: 400,
-    biomass: -1,
+    biomass: 0,
     organismType: "Microscopic Organism",
     nodeColor: "Black-1",
     nodeShape: "Circle",
@@ -5430,7 +5430,7 @@ export const nodeList7 = [
   {
     index: 13,
     speciesID: 47,
-    biomass: -1,
+    biomass: 0,
     organismType: "Insects, Annelids and Arachnids",
     nodeColor: "Dark Purple-6",
     nodeShape: "Circle",
@@ -8422,7 +8422,7 @@ export const levels = [
     intro:
       "You recently accepted a position working for the Carpinteria Salt Marsh Reserve in Santa Barbara, California. You work in conservation, and part of your job requires you to monitor the species living in the salt marsh, and to take action to maintain the ecosystem. The Carpinteria Salt Marsh Reserve supports a great diversity of life and plays an important role in many ecosystem services that your community relies on. In your first week on the job, your supervisor asks you to monitor the water quality of the reserve. As an ecologist, you have a general idea of which types of species help maintain water quality, and how they interact with other types of species. But, as a new resident in California, you still don't know the species themselves.",
     objective:
-      "Ecosystem service are nature's contributions to people. Your supervisor requests that you conduct a brief study to maximize the number of ecosystem services at the reserve with a limited budget. Maintain as many ecosystem services as you can by protecting one type of species.",
+   "Ecosystem service are nature's contributions to people. Your supervisor requests that you conduct a brief study to maximize the number of ecosystem services at the reserve with a limited budget. Maintain as many ecosystem services as you can by protecting one type of species.",
     removableIDs: [300],
     shownGraphs: ["num-services"],
     saves: 1,

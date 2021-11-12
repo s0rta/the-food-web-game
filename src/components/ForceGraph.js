@@ -260,7 +260,7 @@ class ForceGraph extends React.Component {
 
           this.props.edges.forEach((edge) => {
             const targetBiomass = Math.log(
-              edge.target.biomass === -1 ? 0 : edge.target.biomass
+              edge.target.biomass < 1 ? 1.001 : edge.target.biomass
             );
             if (
               edge.source.speciesID === node.speciesID &&
@@ -275,7 +275,7 @@ class ForceGraph extends React.Component {
             }
           });
           let check =
-            !(deadBiomass > 0 && deadBiomass / biomass >= 0.2) ||
+            !(deadBiomass > 0 && deadBiomass / biomass >= 0.4) ||
             node.organismType === "Ecosystem Service";
           node.living = check;
           if (!check) {

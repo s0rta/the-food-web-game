@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
+import { Button, Wrapper, Menu, MenuItem} from 'react-aria-menubutton';
+
 import "./Nav.css"; 
 
 class Nav extends React.Component {
@@ -16,7 +18,42 @@ class Nav extends React.Component {
           <Link to="/credits" className="nav-elm">Credits</Link>
         </div>
         <div className="right-nav">
-          <Link to="/intro"><button className="btn--secondary">Play Game</button></Link>
+          <Wrapper className="playMenuButton">
+            <Button className="playMenuButton-button btn btn--secondary">Play Game</Button>
+            <Menu className='playMenuButton-menu'>
+              <ul>
+                <li key="0">
+                  <Link to="/level-select">
+                    <MenuItem className="playMenuButton-menuItem">
+                      Play Salt Marsh (Hard)
+                    </MenuItem>
+                  </Link>
+                </li>
+                <li key="1">
+                  <Link to="/">
+                    <MenuItem className="playMenuButton-menuItem">
+                      Play Rocky Inner Tidal (Coming soon) (Easy)
+                    </MenuItem>
+                  </Link>
+                </li>
+                <li key="2">
+                  <Link to="/intro">
+                    <MenuItem className="playMenuButton-menuItem">
+                      Concept Review
+                    </MenuItem>
+                  </Link>
+                </li>
+                <li key="3">
+                  <Link to="/tutorial">
+                    <MenuItem className="playMenuButton-menuItem">
+                      Tutorial
+                    </MenuItem>
+                  </Link>
+                </li>
+              </ul>
+            </Menu>
+
+          </Wrapper>
         </div>
       </div>
     )

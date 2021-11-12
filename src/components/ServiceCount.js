@@ -25,7 +25,7 @@ class ServiceCount extends React.Component {
                 }
             })
             this.setState({workingES: newWorkingES})
-            if(newWorkingES === 0) {
+            if(newWorkingES < 8) {
                 this.props.onLevelEnd(false)
             }
         }
