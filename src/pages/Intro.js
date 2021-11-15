@@ -10,13 +10,7 @@ class Intro extends React.Component {
         <div>
           <h1>Concept Review</h1>
           <br />
-          <iframe
-            src="https://docs.google.com/presentation/d/e/2PACX-1vQVj-gvBCddOlU0exsiBJM_PCxX7wsGbitrdN9AxKfCR0J4gAJNKSyJzUEMtBci7JAC1Y3--NyGRXtA/embed?start=false&loop=false&delayms=600000"
-            frameborder="0"
-            allowfullscreen="true"
-            mozallowfullscreen="true"
-            webkitallowfullscreen="true"
-          ></iframe>{" "}
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSa2DU57gUdOCvO4oN9v1lAZKNSOUP1IJuYIHJwqbEdlAc-ltic_qmo2kzx6DW3z8z6os5PcP4rTCzw/embed?start=true&loop=false&delayms=600000" frameborder="0" width="1176" height="691" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>{" "}
           <br />
           <Link to="/tutorial">
             <button class="btn--primary">Go to Tutorial</button>
