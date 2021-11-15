@@ -8,7 +8,7 @@ class Tutorial extends React.Component {
     return (
       <div className="container">
         <div>
-          <h1>Concept Review</h1>
+          <h1>Tutorial</h1>
           <br />
           <iframe
             src="https://docs.google.com/presentation/d/e/2PACX-1vTjnHXWNPf4VVlDN5pzfd6dUdSzjb4CDzbXN7VBDRRK-j3J_O0xW0-6nzktj0I2AA/embed?start=true&loop=false&delayms=600000"
