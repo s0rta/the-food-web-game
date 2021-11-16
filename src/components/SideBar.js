@@ -50,7 +50,7 @@ class SideBar extends React.Component {
           <Link to="/level-select">
             <button className="btn">Level Select</button>
           </Link>
-          <button className="btn">Reset</button>
+          <button className="btn" onClick={() => window.location.reload()}>Reset</button>
           <button className="btn" onClick={this.handleTrophicToggle}>
             Toggle Trophic
           </button>
