@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TopBar from './TopBar';
 
 import ForceGraph from "./ForceGraph";
 import "./MainGraph.css";
@@ -85,34 +86,35 @@ class MainGraph extends React.Component {
           gameClock={this.state.clock}
         />
 
-        <div className="controls">
-          <div className="left">
-            {this.state.clock === 0 && (
-              <input
-                type="button"
-                value="Start Level"
-                onClick={this.gameTick}
-              />
-            )}
-            <button onClick={() => window.location.reload()}>
-              Restart Level
-            </button>
-            {this.props.won && (
-              <Link to={this.props.winTarget}>
-                {" "}
-                <input
-                  type="button"
-                  value="Next Level"
-                  onClick={this.startNextLevel}
-                />
-              </Link>
-            )}
-            <p>Number of species you can protect: {this.state.saves}</p>
-            <p>
-              {this.state.removed} of {this.props.levelData.initialKills}{" "}
-              species removed
-            </p>
-          </div>
+        <div className="controls container">
+          <TopBar copy={this.props.levelData.topBarCopy} />
+          {/* <div className="left"> */}
+          {/*   {this.state.clock === 0 && ( */}
+          {/*     <input */}
+          {/*       type="button" */}
+          {/*       value="Start Level" */}
+          {/*       onClick={this.gameTick} */}
+          {/*     /> */}
+          {/*   )} */}
+          {/*   <button onClick={() => window.location.reload()}> */}
+          {/*     Restart Level */}
+          {/*   </button> */}
+          {/*   {this.props.won && ( */}
+          {/*     <Link to={this.props.winTarget}> */}
+          {/*       {" "} */}
+          {/*       <input */}
+          {/*         type="button" */}
+          {/*         value="Next Level" */}
+          {/*         onClick={this.startNextLevel} */}
+          {/*       /> */}
+          {/*     </Link> */}
+          {/*   )} */}
+          {/*   <p>Number of species you can protect: {this.state.saves}</p> */}
+          {/*   <p> */}
+          {/*     {this.state.removed} of {this.props.levelData.initialKills}{" "} */}
+          {/*     species removed */}
+          {/*   </p> */}
+          {/* </div> */}
           {/* <div className="legend"> */}
           {/*   <div className="legend-elm-wrap"> */}
           {/*     Species Interaction <div className="si legend-elm"></div> */}

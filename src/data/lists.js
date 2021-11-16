@@ -8423,6 +8423,7 @@ export const levels = [
       "You recently accepted a position working for the Carpinteria Salt Marsh Reserve in Santa Barbara, California. You work in conservation, and part of your job requires you to monitor the species living in the salt marsh, and to take action to maintain the ecosystem. The Carpinteria Salt Marsh Reserve supports a great diversity of life and plays an important role in many ecosystem services that your community relies on. In your first week on the job, your supervisor asks you to monitor the water quality of the reserve. As an ecologist, you have a general idea of which types of species help maintain water quality, and how they interact with other types of species. But, as a new resident in California, you still don't know the species themselves.",
     objective:
    "Ecosystem service are nature's contributions to people. Your supervisor requests that you conduct a brief study to maximize the number of ecosystem services at the reserve with a limited budget. Maintain as many ecosystem services as you can by protecting one type of species.",
+    topBarCopy: "Level 1 Goal: Protect (left click) 1 species to maintain as many ecosystem services as you can",
     removableIDs: [300],
     shownGraphs: ["num-services"],
     saves: 1,
@@ -8436,6 +8437,7 @@ export const levels = [
       "You make new friends at the local Audubon Society meeting and explain to them that you're new to the area and are still learning the local flora and fauna. They agree to take you birdwatching at the Carpinteria Salt Marsh Reserve, and you learn a few new bird species.",
     objective:
       "Since salt marshes exist at the intersection of fresh water from rivers and salt water from the ocean, ocean acidification - the ongoing decrease in the ocean's pH - is reaching the salt marsh.  Ocean acidifcation impacts calcifying organisms, including those that build shells. Habitat destruction also threatens coastal ecosystems. Maintain water filtration in the salt marsh to ensure water quality.",
+    topBarCopy: "Level 2 Goal: Protect (left click) 1 species to maintain water filtration",
     removableIDs: [500, 300],
     shownGraphs: ["water-filtration"],
     saves: 1,
@@ -8450,6 +8452,7 @@ export const levels = [
     objective:
       "Salt marshes are not only vulnerable to ocean acidification but also changes in nutrient levels, which can cause eutrophication, where excess nutrient levels lead to increased algal growth and decreased oxygen levels. Decreased oxygen, also known as hypoxia, can lead to fish kills. Maintain the recreational fishery.",
     removableIDs: [900, 500, 120, 118, 125, 800, 700],
+    topBarCopy: "Level 3 Goal: Protect (left click) 1 species to maintain recreational fisheries",
     shownGraphs: ["recreational-fishery"],
     saves: 1,
     initialKills: 7,
@@ -8463,6 +8466,7 @@ export const levels = [
       intro:
         "After many weeks birdwatching with your friends, you finally know all of the birds in the Carpinteria Salt Marsh Reserve! You also had a meeting with local Fish and Wildlife offices, where you discussed waterfowl hunting permits in nearby salt marshes. Hunting doesn't take place in the reserve but is allowed in neighboring marshlands, and birds often move between the areas. Officials mention that these neighboring marshlands are hotspots for hunting, which generate important conservation resources through fees and permits. They request that your department surveys the waterfowl population in the reserve, and take any necessary actions to maintain stable populations.",
       objective: "Maintain waterfowl hunting in the surrounding area.",
+      topBarCopy: "Level 4 Goal: Protect (left click) 2 species to maintain waterfowl hunting",
       removableIDs: [300, 500, 600],
       shownGraphs: ["waterfowl-hunting"],
       saves: 2,
@@ -8538,6 +8542,7 @@ export const levels = [
         "You spent some time this week surveying the mollsucs and crabs in the reserve, slowly building up your knowledge of the system. After meeting with your team about how to draw in new visitors, you decide to put more effort into protecting and enhancing the birdwatching experience at the reserve. ",
       objective:
         "Coastal wetlands, like salt marshes, can be contaminated with pesticides and other pollutants from upstream and adjacent lands. Recently, while monitoring water quality you noticed higher concentrations of these chemicals in the reserve. Maintain the birdwatching service by mitigating the impacts of pesticide contamination.",
+      topBarCopy: "Level 5 Goal: Protect (left click) 4 species to maintain birdwatching",
       removableIDs: [600, 900, 144, 66, 68, 118, 500],
       shownGraphs: ["bird-watching"],
       saves: 4,
@@ -8616,6 +8621,7 @@ export const levels = [
         "Last week you attended a seminar on the impacts of climate change on coastal wetlands. The leading scientist at the seminar helped you identify more plant and mollusc species. You also learned that as sea levels rise, salt marsh plants move upland, potentially taking over previously forested or suburban areas, or squeezing salt marshes out of existence (called 'coastal squeeze'). Climate change can also play a major role in increasing soil salinity by increasing the rate or evaporation.",
       objective:
         "Increasing soil salinty can lead to changes in community structure and function. There is also evidence that increased soil salinty can lead to increased below ground biomass, which is linked to carbon storage. Sea level rise can also result in lost habitat for fish and bird species. Maintain carbon storage level while protecting the fish species that are important for commerical fisheries.",
+      topBarCopy: "Level 6 Goal: Protect (left click) 6 species to maintain carbon storage and commercial fisheries",
       removableIDs: [16, 11, 8, 68, 89, 111, 113, 114, 120, 109],
       shownGraphs: ["carbon-storage", "commercial-fishery"],
       saves: 6,
@@ -8699,6 +8705,7 @@ export const levels = [
         "You've been in Santa Barbara for some time now, and you've finally had a chance to take a diversity survey of the Carpinteria Salt Marsh Reserve. You spent some time in the field practicing species identification after you found a database with all of the local flora and fauna. You identified 107 species in the reserve and have watched them interact with each other. Now that you know much more about the ecosystem, you're confident that you'll be able to make more informed decisions about protecting the ecosystem. Coastal areas are often vulnerable to development and habitat loss. A large company has proposed a nearby project that could lead to habitat loss in the adjacent salt marsh that is not protected by the reserve.  Your department at the reserve was hired to provide expert opinion in the environmental impact assessment before the project can be approved.",
       objective:
         " Maintain a species richness of at least 70%, and maintain shoreline protection and wave attenuation. Given the budget, you can only protect 7 species.",
+      topBarCopy: "Level 7 Goal: Protect (left click) 7 species to maintain shoreline protection, wave attenuation, and at least 70% of species",
       removableIDs: [
         5, 6, 7, 8, 9, 10, 11, 12, 16, 118, 121, 122, 125, 64, 65, 67, 25,
       ],
@@ -8707,7 +8714,7 @@ export const levels = [
         "wave-attenuation",
         "species-remaining",
       ],
-      saves: 8,
+      saves: 7,
       initialKills: 17,
       win: "You won! Wow, you've really gotten good at your job. There are so many species at the Carpinteria Salt Marsh Reserve and you've managed to protect many of them, and the ecosystem services they provide. Well done!",
       lose: "You lost! In science, we often have to deal with high levels of complexity and uncertainty. You've acquired so much knowledge about the ecosystem you're working in, so now you have to try to simplify this information so it's easier to comprehend. Remember, protecting a species doesn't guarentee that it survives a disturbance. Even if a species is not directly impacted by a disturbance, it can still be indirectly impacted if it loses its resources. ",
