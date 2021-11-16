@@ -130,7 +130,6 @@ class SubGraphs extends React.Component {
             )}
           </div>
         )}
-<<<<<<< Updated upstream
         <br />
         <div className="plots">
           <ServiceCount
@@ -255,7 +254,6 @@ class SubGraphs extends React.Component {
             pos={this.props.esBiomass[7]}
           />
         </div>
-=======
         <div className="legend container">
           <div className="legend-elm-wrap">
             Species Interaction <div className="si legend-elm"></div>
