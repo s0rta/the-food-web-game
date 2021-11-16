@@ -256,14 +256,14 @@ class SubGraphs extends React.Component {
         </div>
         <div className="legend container">
           <div className="directions">
-            <p>Directions</p>
-            <p>Hover over species to get more information, including what they might be vunerable to.</p>
-            <p>Right click a species (or ecosystem service) to look at its predators and prey more closely.</p>
-            <p>Left click a species to protect it against the direct effects of the disturbance.</p>
-            <p>Toggle trophic display to get a new perspective.</p>
-            <p>Once your ready, (protected as many species as allowed), simulate the distrbance to see if you won!</p>
+            <p><u>Directions</u></p>
+            <p><u>Hover over species</u> to get more information, including what they might be vunerable to.</p>
+            <p><u>Right click a species</u> (or ecosystem service) to look at its predators and prey more closely.</p>
+            <p><u>Left click a species</u> to protect it against the direct effects of the disturbance.</p>
+            <p><u>Toggle trophic</u> display to get a new perspective.</p>
+            <p>Once your ready, (protected as many species as allowed), <u>simulate the distrbance</u> to see if you won!</p>
           </div>
-          <p>Key</p>
+          <p><u>Key</u></p>
           <div className="legend-elm-wrap">
             Species Interaction <div className="si legend-elm"></div>
           </div>
