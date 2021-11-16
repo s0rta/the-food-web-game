@@ -130,130 +130,144 @@ class SubGraphs extends React.Component {
             )}
           </div>
         )}
-        <br />
-        <div className="plots">
-          <ServiceCount
-            onLevelEnd={this.handleLevelEnd}
-            biomass={this.props.esBiomass}
-            display={this.props.levelData.shownGraphs.includes("num-services")}
-            pos={this.props.esBiomass[0]}
-          />
-          <Plot
-            yAxis="Percent of species remaining in food web"
-            name="Species Remaining"
-            onLevelEnd={this.handleLevelEnd}
-            step={this.props.step}
-            id="species-remaining"
-            index={1}
-            failLine={70}
-            display={this.props.levelData.shownGraphs.includes(
-              "species-remaining"
-            )}
-            pos={this.props.speciesRemaining}
-          />
-          <Plot
-            yAxis="Amount of ecosystem service left"
-            name="Wave Attenuation"
-            onLevelEnd={this.handleLevelEnd}
-            step={this.props.step}
-            id="wave-attenuation"
-            index={350}
-            failLine={50}
-            display={this.props.levelData.shownGraphs.includes(
-              "wave-attenuation"
-            )}
-            pos={this.props.esBiomass[0]}
-          />
-          <Plot
-            yAxis="Amount of ecosystem service left"
-            name="Shoreline Protection"
-            onLevelEnd={this.handleLevelEnd}
-            step={this.props.step}
-            id="shoreline-protection"
-            index={450}
-            failLine={50}
-            display={this.props.levelData.shownGraphs.includes(
-              "shoreline-protection"
-            )}
-            pos={this.props.esBiomass[1]}
-          />
-          <Plot
-            yAxis="Amount of ecosystem service left"
-            name="Carbon Storage"
-            onLevelEnd={this.handleLevelEnd}
-            step={this.props.step}
-            id="carbon-storage"
-            index={550}
-            failLine={50}
-            display={this.props.levelData.shownGraphs.includes(
-              "carbon-storage"
-            )}
-            pos={this.props.esBiomass[2]}
-          />
-          <Plot
-            yAxis="Amount of ecosystem service left"
-            name="Water Filtration"
-            onLevelEnd={this.handleLevelEnd}
-            step={this.props.step}
-            id="water-filtration"
-            index={650}
-            failLine={50}
-            display={this.props.levelData.shownGraphs.includes(
-              "water-filtration"
-            )}
-            pos={this.props.esBiomass[3]}
-          />
-          <Plot
-            yAxis="Amount of ecosystem service left"
-            name="Commercial Fishery"
-            onLevelEnd={this.handleLevelEnd}
-            step={this.props.step}
-            id="commercial-fishery"
-            index={750}
-            failLine={50}
-            display={this.props.levelData.shownGraphs.includes(
-              "commercial-fishery"
-            )}
-            pos={this.props.esBiomass[4]}
-          />
-          <Plot
-            yAxis="Amount of ecosystem service left"
-            name="Bird Watching"
-            onLevelEnd={this.handleLevelEnd}
-            step={this.props.step}
-            id="bird-watching"
-            index={850}
-            failLine={50}
-            display={this.props.levelData.shownGraphs.includes("bird-watching")}
-            pos={this.props.esBiomass[5]}
-          />
-          <Plot
-            yAxis="Amount of ecosystem service left"
-            name="Waterfowl Hunting"
-            onLevelEnd={this.handleLevelEnd}
-            step={this.props.step}
-            id="waterfowl-hunting"
-            index={950}
-            failLine={50}
-            display={this.props.levelData.shownGraphs.includes(
-              "waterfowl-hunting"
-            )}
-            pos={this.props.esBiomass[6]}
-          />
-          <Plot
-            yAxis="Amount of ecosystem service left"
-            name="Recreational Fishery"
-            onLevelEnd={this.handleLevelEnd}
-            step={this.props.step}
-            id="recreational-fishery"
-            index={1050}
-            failLine={50}
-            display={this.props.levelData.shownGraphs.includes(
-              "recreational-fishery"
-            )}
-            pos={this.props.esBiomass[7]}
-          />
+                <div className="legend container">
+          <div className="legend-elm-wrap">Species Interaction <div className="si legend-elm"></div></div>
+          <div className="legend-elm-wrap">Service Species Interaction<div className="ssi legend-elm"></div></div>
+          <div className="legend-elm-wrap">Ecosystem Service <div className="eco-serve legend-elm"></div></div>
+          <div className="legend-elm-wrap">Mammel <div className="mammel legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Microscopic Organism <div className="micro-org legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Crustacean <div className="crustacean legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Plant <div className="plant legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Bird <div className="bird legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Insect, Annelid & Arachnid <div className="insect legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Fish <div className="fish legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Plankton <div className="plankton legend-elm legend-species"></div></div>
+          <div className="legend-elm-wrap">Mollusc <div className="mollusc legend-elm legend-species"></div></div>
         </div>
+ 
+        {/* <div className="plots"> */}
+        {/*   <ServiceCount */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     biomass={this.props.esBiomass} */}
+        {/*     display={this.props.levelData.shownGraphs.includes("num-services")} */}
+        {/*     pos={this.props.esBiomass[0]} */}
+        {/*   /> */}
+        {/*   <Plot */}
+        {/*     yAxis="Percent of species remaining in food web" */}
+        {/*     name="Species Remaining" */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     step={this.props.step} */}
+        {/*     id="species-remaining" */}
+        {/*     index={1} */}
+        {/*     failLine={70} */}
+        {/*     display={this.props.levelData.shownGraphs.includes( */}
+        {/*       "species-remaining" */}
+        {/*     )} */}
+        {/*     pos={this.props.speciesRemaining} */}
+        {/*   /> */}
+        {/*   <Plot */}
+        {/*     yAxis="Amount of ecosystem service left" */}
+        {/*     name="Wave Attenuation" */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     step={this.props.step} */}
+        {/*     id="wave-attenuation" */}
+        {/*     index={350} */}
+        {/*     failLine={50} */}
+        {/*     display={this.props.levelData.shownGraphs.includes( */}
+        {/*       "wave-attenuation" */}
+        {/*     )} */}
+        {/*     pos={this.props.esBiomass[0]} */}
+        {/*   /> */}
+        {/*   <Plot */}
+        {/*     yAxis="Amount of ecosystem service left" */}
+        {/*     name="Shoreline Protection" */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     step={this.props.step} */}
+        {/*     id="shoreline-protection" */}
+        {/*     index={450} */}
+        {/*     failLine={50} */}
+        {/*     display={this.props.levelData.shownGraphs.includes( */}
+        {/*       "shoreline-protection" */}
+        {/*     )} */}
+        {/*     pos={this.props.esBiomass[1]} */}
+        {/*   /> */}
+        {/*   <Plot */}
+        {/*     yAxis="Amount of ecosystem service left" */}
+        {/*     name="Carbon Storage" */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     step={this.props.step} */}
+        {/*     id="carbon-storage" */}
+        {/*     index={550} */}
+        {/*     failLine={50} */}
+        {/*     display={this.props.levelData.shownGraphs.includes( */}
+        {/*       "carbon-storage" */}
+        {/*     )} */}
+        {/*     pos={this.props.esBiomass[2]} */}
+        {/*   /> */}
+        {/*   <Plot */}
+        {/*     yAxis="Amount of ecosystem service left" */}
+        {/*     name="Water Filtration" */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     step={this.props.step} */}
+        {/*     id="water-filtration" */}
+        {/*     index={650} */}
+        {/*     failLine={50} */}
+        {/*     display={this.props.levelData.shownGraphs.includes( */}
+        {/*       "water-filtration" */}
+        {/*     )} */}
+        {/*     pos={this.props.esBiomass[3]} */}
+        {/*   /> */}
+        {/*   <Plot */}
+        {/*     yAxis="Amount of ecosystem service left" */}
+        {/*     name="Commercial Fishery" */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     step={this.props.step} */}
+        {/*     id="commercial-fishery" */}
+        {/*     index={750} */}
+        {/*     failLine={50} */}
+        {/*     display={this.props.levelData.shownGraphs.includes( */}
+        {/*       "commercial-fishery" */}
+        {/*     )} */}
+        {/*     pos={this.props.esBiomass[4]} */}
+        {/*   /> */}
+        {/*   <Plot */}
+        {/*     yAxis="Amount of ecosystem service left" */}
+        {/*     name="Bird Watching" */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     step={this.props.step} */}
+        {/*     id="bird-watching" */}
+        {/*     index={850} */}
+        {/*     failLine={50} */}
+        {/*     display={this.props.levelData.shownGraphs.includes("bird-watching")} */}
+        {/*     pos={this.props.esBiomass[5]} */}
+        {/*   /> */}
+        {/*   <Plot */}
+        {/*     yAxis="Amount of ecosystem service left" */}
+        {/*     name="Waterfowl Hunting" */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     step={this.props.step} */}
+        {/*     id="waterfowl-hunting" */}
+        {/*     index={950} */}
+        {/*     failLine={50} */}
+        {/*     display={this.props.levelData.shownGraphs.includes( */}
+        {/*       "waterfowl-hunting" */}
+        {/*     )} */}
+        {/*     pos={this.props.esBiomass[6]} */}
+        {/*   /> */}
+        {/*   <Plot */}
+        {/*     yAxis="Amount of ecosystem service left" */}
+        {/*     name="Recreational Fishery" */}
+        {/*     onLevelEnd={this.handleLevelEnd} */}
+        {/*     step={this.props.step} */}
+        {/*     id="recreational-fishery" */}
+        {/*     index={1050} */}
+        {/*     failLine={50} */}
+        {/*     display={this.props.levelData.shownGraphs.includes( */}
+        {/*       "recreational-fishery" */}
+        {/*     )} */}
+        {/*     pos={this.props.esBiomass[7]} */}
+        {/*   /> */}
+        {/* </div> */}
       </div>
     );
   }
