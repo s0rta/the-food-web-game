@@ -255,6 +255,15 @@ class SubGraphs extends React.Component {
           />
         </div>
         <div className="legend container">
+          <div className="directions">
+            <p>Directions</p>
+            <p>Hover over species to get more information, including what they might be vunerable to.</p>
+            <p>Right click a species (or ecosystem service) to look at its predators and prey more closely.</p>
+            <p>Left click a species to protect it against the direct effects of the disturbance.</p>
+            <p>Toggle trophic display to get a new perspective.</p>
+            <p>Once your ready, (protected as many species as allowed), simulate the distrbance to see if you won!</p>
+          </div>
+          <p>Key</p>
           <div className="legend-elm-wrap">
             Species Interaction <div className="si legend-elm"></div>
           </div>
@@ -293,11 +302,6 @@ class SubGraphs extends React.Component {
           </div>
           <div className="legend-elm-wrap">
             Mollusc <div className="mollusc legend-elm legend-species"></div>
-          </div>
-
-          <div className="directions">
-            <p>Directions</p>
-            <p>H</p>
           </div>
         </div>
       </div>
