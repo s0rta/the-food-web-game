@@ -3,5 +3,7 @@ img {
 }
 
 .plot {
-    /* padding-bottom: 60px; */
+
+  display: none;
+  /* padding-bottom: 60px; */
 }
