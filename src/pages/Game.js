@@ -90,7 +90,9 @@ class Game extends React.Component {
   componentDidMount() {}
 
   handleLevelEnd = (d) => {
-    this.setState({ levelWon: d, levelOver: true });
+    setTimeout(() => {
+      this.setState({ levelWon: d, levelOver: true });
+    }, 2000);
   };
 
   handleNodeHover = (d) => {
