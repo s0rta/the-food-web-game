@@ -258,25 +258,29 @@ class ForceGraph extends React.Component {
           let deadBiomass = 0;
           let biomass = 0;
 
+          let deadLinks = 0;
+          let links = 0;
+
           this.props.edges.forEach((edge) => {
-            const targetBiomass = Math.log(
-              edge.target.biomass < 1 ? 1.001 : edge.target.biomass
-            );
+            const targetBiomass = Math.log(edge.target.biomass) < 1 ? 1 : Math.log(edge.target.biomass);
             if (
               edge.source.speciesID === node.speciesID &&
               edge.target.living === true
             ) {
               biomass += targetBiomass;
+              links++;
               return true;
             } else if (edge.source.speciesID === node.speciesID) {
               biomass += targetBiomass;
               deadBiomass += targetBiomass;
+              links++;
+              deadLinks++;
               return false;
             }
           });
           let check =
-            !(deadBiomass > 0 && deadBiomass / biomass >= 0.4) ||
-            node.organismType === "Ecosystem Service";
+            !((deadBiomass > 0 && deadBiomass / biomass >= 0.4) && (deadLinks > 0 && deadLinks / links >= 0.76)) ||
+          node.organismType === "Ecosystem Service";
           node.living = check;
           if (!check) {
             levelOver = false;

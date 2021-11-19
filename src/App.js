@@ -5,6 +5,8 @@ import LevelSelect from "./pages/LevelSelect";
 import About from "./pages/About";
 import Credits from "./pages/Credits";
 import Tutorial from "./pages/Tutorial";
+import Educators from "./pages/Educators"
+import Contact from "./pages/Contact";
 
 import Nav from "./components/Nav";
 
@@ -34,6 +36,12 @@ function App() {
           </Route>
           <Route path="/Credits">
             <Credits />
+          </Route>
+          <Route path="/for-educators">
+            <Educators />
+          </Route>
+          <Route path="/Contact">
+            <Contact />
           </Route>
           <Route path="/">
             <MainMenu />

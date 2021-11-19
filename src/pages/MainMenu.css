@@ -1,1 +1,36 @@
+.copy-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
 
+.copy-wrap .container {
+  width: 70%;
+  max-width: 1000px;
+  box-shadow: var(--shadow-elevation-low);
+  border-radius: 4px;
+}
+
+.copy-wrap p {
+  font-size: 18px;
+  padding-left:24px;
+  padding-right:24px;
+}
+
+p.h1-subhead {
+  font-size: 22px;
+  padding-left: 2px;
+  max-width: 500px;
+}
+
+.header-text .btn--primary {
+  font-size: 14px;
+}
+
+.main-menu-wrap h2 {
+  padding-left: 24px;
+}
+.copy-wrap a {
+  margin-right: 0px;
+}
