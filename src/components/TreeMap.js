@@ -34,7 +34,6 @@ function TreeMap(props) {
     { name: "total", size: 0 },
   ]);
   const [isOver, setIsOver] = useState(false);
-  const [rendered, setRendered] = useState(false);
 
   const incrementTreeData = (index, value, direct) => {
     let newTreeData = direct ? treeDataDirect : treeDataIndirect;
@@ -49,7 +48,6 @@ function TreeMap(props) {
   useEffect(() => {
     if (props.levelOver && !isOver) {
       setIsOver(true);
-
       for (const node of props.nodeList) {
         const nodeType = !node.living && node.organismType;
         const groupIndex = treeDataDirect.findIndex((n) => n.name === nodeType);
@@ -61,7 +59,9 @@ function TreeMap(props) {
           );
         }
       }
-      const total = treeDataIndirect[11].size;
+
+      const total = Math.max(treeDataIndirect[11].size, 1);
+
       document.getElementById("indirect-wrapper").appendChild(
         Treemap(treeDataIndirect, {
           path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
@@ -81,25 +81,30 @@ function TreeMap(props) {
         })
       );
     }
-
-    // document.getElementById("direct-wrapper").appendChild(
-    //   Treemap(treeDataDirect, {
-    //     path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
-    //     value: (d) => d?.size, // size of each node (file); null for internal nodes (folders)
-    //     group: (d) => d.name.split(".")[0], // e.g., "animate" in "flare.animate.Easing"; for color
-    //     label: (d, n) =>
-    //       [
-    //         ...d.name
-    //           .split(".")
-    //           .pop()
-    //           .split(/(?=[A-Z][a-z])/g),
-    //         n.value.toLocaleString("en"),
-    //       ].join("\n"),
-    //     title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`, // text to show on hover
-    //     width: 300,
-    //     height: 300,
-    //   })
-    // );
+    // if (rendered[0] === rendered[1]) {
+    //   setRendered(false);
+    //   const total = treeDataIndirect[11].size;
+    //   console.log(total)
+    //   document.getElementById("indirect-wrapper").appendChild(
+    //     Treemap(treeDataIndirect, {
+    //       path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
+    //       value: (d) =>
+    //         (d?.size > 0 ) ? (d?.size / total) * 100 : 0, // size of each node (file); null for internal nodes (folders)
+    //       group: (d) => d.name.split(".")[0], // e.g., "animate" in "flare.animate.Easing"; for color
+    //       label: (d, n) =>
+    //         [
+    //           ...d.name
+    //             .split(".")
+    //             .pop()
+    //             .split(/(?=[A-Z][a-z])/g),
+    //           n.value.toLocaleString("en"),
+    //         ].join("\n"),
+    //       title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`, // text to show on hover
+    //       width: 300,
+    //       height: 300,
+    //     })
+    //   );
+    // }
   });
 
   return (
