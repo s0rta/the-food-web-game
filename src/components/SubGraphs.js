@@ -131,7 +131,7 @@ class SubGraphs extends React.Component {
           </div>
         )}
         <br />
-        <div className="plots">
+        <div className={this.props.levelOver ? "plots" : "plotsHidden"} >
           <ServiceCount
             onLevelEnd={this.handleLevelEnd}
             biomass={this.props.esBiomass}
@@ -152,7 +152,7 @@ class SubGraphs extends React.Component {
             pos={this.props.speciesRemaining}
           />
           <Plot
-            yAxis="Amount of ecosystem service left"
+            yAxis="% of ecosystem service left"
             name="Wave Attenuation"
             onLevelEnd={this.handleLevelEnd}
             step={this.props.step}
@@ -165,7 +165,7 @@ class SubGraphs extends React.Component {
             pos={this.props.esBiomass[0]}
           />
           <Plot
-            yAxis="Amount of ecosystem service left"
+            yAxis="% of ecosystem service left"
             name="Shoreline Protection"
             onLevelEnd={this.handleLevelEnd}
             step={this.props.step}
@@ -178,7 +178,7 @@ class SubGraphs extends React.Component {
             pos={this.props.esBiomass[1]}
           />
           <Plot
-            yAxis="Amount of ecosystem service left"
+            yAxis="% of ecosystem service left"
             name="Carbon Storage"
             onLevelEnd={this.handleLevelEnd}
             step={this.props.step}
@@ -191,7 +191,7 @@ class SubGraphs extends React.Component {
             pos={this.props.esBiomass[2]}
           />
           <Plot
-            yAxis="Amount of ecosystem service left"
+            yAxis="% of ecosystem service left"
             name="Water Filtration"
             onLevelEnd={this.handleLevelEnd}
             step={this.props.step}
@@ -204,7 +204,7 @@ class SubGraphs extends React.Component {
             pos={this.props.esBiomass[3]}
           />
           <Plot
-            yAxis="Amount of ecosystem service left"
+            yAxis="% of ecosystem service left"
             name="Commercial Fishery"
             onLevelEnd={this.handleLevelEnd}
             step={this.props.step}
@@ -217,7 +217,7 @@ class SubGraphs extends React.Component {
             pos={this.props.esBiomass[4]}
           />
           <Plot
-            yAxis="Amount of ecosystem service left"
+            yAxis="% of ecosystem service left"
             name="Bird Watching"
             onLevelEnd={this.handleLevelEnd}
             step={this.props.step}
@@ -228,7 +228,7 @@ class SubGraphs extends React.Component {
             pos={this.props.esBiomass[5]}
           />
           <Plot
-            yAxis="Amount of ecosystem service left"
+            yAxis="% of ecosystem service left"
             name="Waterfowl Hunting"
             onLevelEnd={this.handleLevelEnd}
             step={this.props.step}
@@ -241,7 +241,7 @@ class SubGraphs extends React.Component {
             pos={this.props.esBiomass[6]}
           />
           <Plot
-            yAxis="Amount of ecosystem service left"
+            yAxis="% of ecosystem service left"
             name="Recreational Fishery"
             onLevelEnd={this.handleLevelEnd}
             step={this.props.step}

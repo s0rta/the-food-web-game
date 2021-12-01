@@ -261,26 +261,42 @@ class ForceGraph extends React.Component {
           let deadLinks = 0;
           let links = 0;
 
+          let deadTypes = new Set();
+          let types = new Set();
+
           this.props.edges.forEach((edge) => {
-            const targetBiomass = Math.log(edge.target.biomass) < 1 ? 1 : Math.log(edge.target.biomass);
+            const targetBiomass =
+              Math.log(edge.target.biomass) < 1
+                ? 1
+                : Math.log(edge.target.biomass);
             if (
               edge.source.speciesID === node.speciesID &&
               edge.target.living === true
             ) {
               biomass += targetBiomass;
               links++;
+              types.add(edge.target.organismType);
               return true;
             } else if (edge.source.speciesID === node.speciesID) {
               biomass += targetBiomass;
               deadBiomass += targetBiomass;
+              types.add(edge.target.organismType);
+              deadTypes.add(edge.target.organismType);
               links++;
               deadLinks++;
               return false;
             }
           });
+          console.log(deadTypes);
           let check =
-            !((deadBiomass > 0 && deadBiomass / biomass >= 0.4) && (deadLinks > 0 && deadLinks / links >= 0.76)) ||
-          node.organismType === "Ecosystem Service";
+            !(
+              (deadBiomass > 0 &&
+                deadBiomass / biomass >= 0.64 &&
+                deadLinks > 0 &&
+                deadLinks / links >= 0.40) ||
+              (deadTypes.length > 0 &&
+                [...deadTypes].every((n) => types.has(n)))
+            ) || node.organismType === "Ecosystem Service";
           node.living = check;
           if (!check) {
             levelOver = false;
@@ -374,7 +390,11 @@ class ForceGraph extends React.Component {
       )
       .attr("fill", (d) => {
         // return 'url(#mollusc-node-icon)';
-        return `url('#${d.organismType.toLowerCase().split("s,")[0].split(" ").join('-')}-node-icon')`;
+        return `url('#${d.organismType
+          .toLowerCase()
+          .split("s,")[0]
+          .split(" ")
+          .join("-")}-node-icon')`;
       })
       .on("mouseover", (event, d) => {
         return this.handleMouseOver(d);
@@ -403,7 +423,13 @@ class ForceGraph extends React.Component {
       .force("link", d3.forceLink(this.state.edgeList))
       .force("charge", d3.forceManyBody().strength(-900))
       .force("x", d3.forceX(this.props.width / 2))
-      .force("y", d3.forceY().strength(5).y((d) => this.tl2y(d.trophicLevel)))
+      .force(
+        "y",
+        d3
+          .forceY()
+          .strength(5)
+          .y((d) => this.tl2y(d.trophicLevel))
+      )
       .alpha(0.2);
 
     simulation.on("tick", () => {
@@ -495,10 +521,17 @@ class ForceGraph extends React.Component {
         );
       }
     } else if (prevProps.trophic !== this.props.trophic) {
-      this.state.sim.force(
-        "y",
-        this.props.trophic ? d3.forceY().strength(5).y((d) => this.tl2y(d.trophicLevel)) : d3.forceY(this.props.height / 2))
-      .alpha(0.1);
+      this.state.sim
+        .force(
+          "y",
+          this.props.trophic
+            ? d3
+                .forceY()
+                .strength(5)
+                .y((d) => this.tl2y(d.trophicLevel))
+            : d3.forceY(this.props.height / 2)
+        )
+        .alpha(0.1);
 
       this.state.sim.alpha(0.1).restart();
       this.sleep(500).then(() => {
@@ -740,14 +773,14 @@ class ForceGraph extends React.Component {
                 height="30"
                 patternUnits="userSpaceOnUse"
               >
-             <circle
+                <circle
                   cx="15"
                   cy="15"
                   r="16"
                   stroke="none"
                   fill="#24ff24"
                 ></circle>
-   <image
+                <image
                   className="plant-icon"
                   xlinkHref="/Node-Icons/plant-icon.svg"
                   x="2"
@@ -765,13 +798,13 @@ class ForceGraph extends React.Component {
                 height="30"
                 patternUnits="userSpaceOnUse"
               >
-             <rect
-      width="30"
-      height="30"
-      stroke="none"
+                <rect
+                  width="30"
+                  height="30"
+                  stroke="none"
                   fill="#ff6db6"
                 ></rect>
-   <image
+                <image
                   className="service-icon"
                   xlinkHref="/Node-Icons/service-icon.svg"
                   x="2"

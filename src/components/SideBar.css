@@ -3,7 +3,21 @@ img {
 }
 
 .plot {
-
-  display: none;
   /* padding-bottom: 60px; */
+}
+
+.plot div {
+  text-align: center;
+}
+
+.plots {
+  position: absolute;
+  top:10;
+  left: 0;
+  z-index: 10;
+  background: white;
+}
+
+.plotsHidden {
+  display: none;
 }

@@ -90,19 +90,19 @@ class Game extends React.Component {
   componentDidMount() {}
 
   handleLevelEnd = (d) => {
-    setTimeout(() => {
+    // setTimeout(() => {
       this.setState({ levelWon: d, levelOver: true });
-    }, 2000);
+    // }, 2000);
   };
 
   handleNodeHover = (d) => {
-    this.setState((state, props) => {
+    this.setState(() => {
       return { hoveredNode: d };
     });
   };
 
   handleRightClick = (d, seed) => {
-    this.setState((state, props) => {
+    this.setState(() => {
       return { subGraphEpi: d, subSeed: seed };
     });
   };
@@ -192,6 +192,7 @@ class Game extends React.Component {
         />
         <SubGraphs
           onLevelEnd={this.handleLevelEnd}
+          levelOver={this.state.levelOver}
           levelData={this.state.levelData}
           esBiomass={this.state.esBiomass}
           step={this.state.step}
