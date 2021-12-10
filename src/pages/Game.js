@@ -87,11 +87,11 @@ class Game extends React.Component {
     return [levelNodes, levelEdges, levelData];
   };
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   handleLevelEnd = (d) => {
     // setTimeout(() => {
-      this.setState({ levelWon: d, levelOver: true });
+    this.setState({ levelWon: d, levelOver: true });
     // }, 2000);
   };
 
@@ -124,11 +124,11 @@ class Game extends React.Component {
   };
 
   toggleTrophic = () => {
-    this.setState({ trophicDisplay: !this.state.trophicDisplay})
+    this.setState({ trophicDisplay: !this.state.trophicDisplay })
   }
 
   simulateDisturbance = () => {
-    this.setState({ gameStart: true})
+    this.setState({ gameStart: true })
   }
 
   componentDidUpdate(prevProps) {
@@ -151,7 +151,8 @@ class Game extends React.Component {
           <p>{this.state.levelData.objective}</p>
           <button class="btn--primary" onClick={() => this.swapModal()}>Start Level</button>
         </Modal>
-        <Modal isOpen={this.state.levelOver} className="levelModal">
+        //Modal for post game screen, using a modal so data transfer is simpler
+        <Modal isOpen={this.state.levelOver} className="levelModal levelOverModal">
           {this.state.levelWon
             ? this.state.levelData.win
             : this.state.levelData.lose}
@@ -165,7 +166,7 @@ class Game extends React.Component {
             Restart Level
           </button>
           <button className="btn" onClick={() => this.closeEndModal()}>Explore</button>
-          <TreeMap levelOver={this.state.levelOver} nodeList={this.state.levelNodes}/>
+          <TreeMap levelOver={this.state.levelOver} nodeList={this.state.levelNodes} />
         </Modal>
         <SideBar
           onToggleModal={this.swapModal}
