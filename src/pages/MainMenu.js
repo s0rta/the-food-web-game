@@ -13,7 +13,8 @@ class MainMenu extends React.Component {
               <p class="h1-subhead">
                 A game about environmental services & learning how to protect them.
               </p>
-              <button class="btn--primary"><Link to="/intro">Play Game</Link></button>
+              <Link to="/intro"><button class="btn--primary">Play Game</button></Link>
+
             </div>
 
             <img
