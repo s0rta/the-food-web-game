@@ -151,7 +151,7 @@ class Game extends React.Component {
           <p>{this.state.levelData.objective}</p>
           <button class="btn--primary" onClick={() => this.swapModal()}>Start Level</button>
         </Modal>
-        //Modal for post game screen, using a modal so data transfer is simpler
+        {/* Modal for post game screen, using a modal so data transfer is simpler */}
         <Modal isOpen={this.state.levelOver} className="levelModal levelOverModal">
           {this.state.levelWon
             ? this.state.levelData.win

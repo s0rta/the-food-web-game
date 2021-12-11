@@ -65,7 +65,7 @@ function TreeMap(props) {
       document.getElementById("indirect-wrapper").appendChild(
         Treemap(treeDataIndirect, {
           path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
-          value: (d) => (d?.size > 0 && d?.name != 'total'? ( d.size / total ) * 100: 0), // size of each node (file); null for internal nodes (folders)
+          value: (d) => (d?.size > 0 && d?.name != 'total' ? (d.size / total) * 100 : 0), // size of each node (file); null for internal nodes (folders)
           group: (d) => d.name.split(".")[0], // e.g., "animate" in "flare.animate.Easing"; for color
           label: (d, n) =>
             [

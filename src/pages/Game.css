@@ -17,6 +17,8 @@
 .levelOverModal {
   inset: initial;
   height: 100%;
+  width: calc(100% - 24px);
+  padding:24px;
 }
 
 .level-header {

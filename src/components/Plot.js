@@ -33,14 +33,15 @@ class Plot extends React.Component {
     let plotX = d3
       .scaleLinear()
       .domain([0, this.props.step + 1])
-      .range([0, width - 110]);
+      .range([0, width - 110])
+
 
     let plotY = d3.scaleLinear().domain([0, 100]).range([height - 140, 0]);
 
     plotSVG
       .append("g")
       .attr("transform", "translate(0," + (height - 140) + ")")
-      .call(d3.axisBottom(plotX));
+      .call(d3.axisBottom(plotX).ticks(this.props.step));
 
     plotSVG
       .append("text")
@@ -88,7 +89,7 @@ class Plot extends React.Component {
       );
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.pos === -1 && this.props.pos !== -1 && this.props.display) {
       this.setState(
         {
