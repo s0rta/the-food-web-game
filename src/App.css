@@ -85,10 +85,16 @@ button.btn--primary:hover {
   background: #109385;
 }
 
-.btn--secondary, span.btn.btn--secondary {
+.btn--secondary.btn--nav {
   background: rgba(0,0,0,0);
   border: 1px solid white;
 }
+
+.btn--nav:hover {
+  background-color: rgba(0,0,0,0.1);
+  cursor: default;
+}
+
 
 button.btn--game-ui {
   background: #52525B;

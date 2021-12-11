@@ -25,7 +25,7 @@ class Nav extends React.Component {
         </div>
         <div className="right-nav">
           <Wrapper className="playMenuButton">
-            <Button className="playMenuButton-button btn btn--secondary">
+            <Button className="btn--nav btn btn--secondary">
               Play Game
             </Button>
             <Menu className="playMenuButton-menu">
@@ -44,7 +44,7 @@ class Nav extends React.Component {
                     </MenuItem>
                   </Link>
                 </li>
-<li key="1">
+                <li key="1">
                   <Link to="/">
                     <MenuItem className="playMenuButton-menuItem">
                       Play Rocky Inner Tidal (Coming soon) (Easy)
@@ -59,7 +59,7 @@ class Nav extends React.Component {
                     </MenuItem>
                   </Link>
                 </li>
-                              </ul>
+              </ul>
             </Menu>
           </Wrapper>
         </div>

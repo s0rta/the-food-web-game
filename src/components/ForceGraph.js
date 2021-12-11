@@ -9,20 +9,20 @@ class ForceGraph extends React.Component {
 
     let nodeList = this.props.nodes
       ? [
-          ...this.props.nodes.map((n) => {
-            n.living = true;
-            n.saved = false;
-            return n;
-          }),
-        ]
+        ...this.props.nodes.map((n) => {
+          n.living = true;
+          n.saved = false;
+          return n;
+        }),
+      ]
       : [];
     let edgeList = this.props.edges
       ? [
-          ...this.props.edges.map((n) => {
-            n.living = true;
-            return n;
-          }),
-        ]
+        ...this.props.edges.map((n) => {
+          n.living = true;
+          return n;
+        }),
+      ]
       : [];
 
     this.state = {
@@ -43,6 +43,7 @@ class ForceGraph extends React.Component {
       seed: this.props.seed,
       step: 0,
       saves: this.props.levelData && this.props.levelData.saves,
+      didNodeDie: false
     };
   }
 
@@ -175,6 +176,60 @@ class ForceGraph extends React.Component {
     this.setState({ edgeList: newEdges });
   };
 
+
+  checkNode = (node) => {
+    if (node.living) {
+      let deadBiomass = 0;
+      let biomass = 0;
+
+      let deadLinks = 0;
+      let links = 0;
+
+      let deadTypes = new Set();
+      let types = new Set();
+
+      this.props.edges.forEach((edge) => {
+        const targetBiomass =
+          Math.log(edge.target.biomass) < 1
+            ? 1
+            : Math.log(edge.target.biomass);
+        if (
+          edge.source.speciesID === node.speciesID &&
+          edge.target.living === true
+        ) {
+          biomass += targetBiomass;
+          links++;
+          types.add(edge.target.organismType);
+          return true;
+        } else if (edge.source.speciesID === node.speciesID) {
+          biomass += targetBiomass;
+          deadBiomass += targetBiomass;
+          types.add(edge.target.organismType);
+          deadTypes.add(edge.target.organismType);
+          links++;
+          deadLinks++;
+          return false;
+        }
+      });
+      let check =
+        !(
+          (deadBiomass > 0 &&
+            deadBiomass / biomass >= 0.64 &&
+            deadLinks > 0 &&
+            deadLinks / links >= 0.40) ||
+          (deadTypes.length > 0 &&
+            [...deadTypes].every((n) => types.has(n)))
+        ) || node.organismType === "Ecosystem Service";
+      node.living = check;
+      if (!check) {
+        this.setState({ didNodeDie: true })
+        this.killLinks(node.speciesID);
+      }
+    }
+    return node;
+
+  }
+
   gameTick = () => {
     if (this.props.gameClock <= this.props.levelData.initialKills) {
       let nodes = this.state.nodeList;
@@ -193,6 +248,9 @@ class ForceGraph extends React.Component {
           this.killLinks(node.speciesID);
           setDead = false;
           this.props.onSpeciesRemove();
+
+          // make sure the anything that would die second hand does
+          nodes.map(n => this.checkNode(n))
         }
       }
       this.setState({ nodeList: nodes });
@@ -200,9 +258,11 @@ class ForceGraph extends React.Component {
       this.handleESBiomass();
       this.handleSpeciesRemaining();
     } else if (this.props.gameClock > this.props.levelData.initialKills) {
+      //checking for dead nodes after the initial kills have happened
+
+      this.setState({ didNodeDie: false })
       let nodes = this.state.nodeList;
-      let levelOver = true;
-      nodes.map((node) => {
+      nodes.map(n => {
         // WHEN USING BIOMASS FOR DEAD
         // if(node.living) {
         //     let deadBiomass = 0;
@@ -254,59 +314,10 @@ class ForceGraph extends React.Component {
 
         // }
 
-        if (node.living) {
-          let deadBiomass = 0;
-          let biomass = 0;
-
-          let deadLinks = 0;
-          let links = 0;
-
-          let deadTypes = new Set();
-          let types = new Set();
-
-          this.props.edges.forEach((edge) => {
-            const targetBiomass =
-              Math.log(edge.target.biomass) < 1
-                ? 1
-                : Math.log(edge.target.biomass);
-            if (
-              edge.source.speciesID === node.speciesID &&
-              edge.target.living === true
-            ) {
-              biomass += targetBiomass;
-              links++;
-              types.add(edge.target.organismType);
-              return true;
-            } else if (edge.source.speciesID === node.speciesID) {
-              biomass += targetBiomass;
-              deadBiomass += targetBiomass;
-              types.add(edge.target.organismType);
-              deadTypes.add(edge.target.organismType);
-              links++;
-              deadLinks++;
-              return false;
-            }
-          });
-          console.log(deadTypes);
-          let check =
-            !(
-              (deadBiomass > 0 &&
-                deadBiomass / biomass >= 0.64 &&
-                deadLinks > 0 &&
-                deadLinks / links >= 0.40) ||
-              (deadTypes.length > 0 &&
-                [...deadTypes].every((n) => types.has(n)))
-            ) || node.organismType === "Ecosystem Service";
-          node.living = check;
-          if (!check) {
-            levelOver = false;
-            this.killLinks(node.speciesID);
-          }
-        }
-        return node;
+        this.checkNode(n);
       });
-
-      if (levelOver) {
+      // if no nodes dies, the level is over
+      if (!this.state.didNodeDie) {
         this.props.onLevelEnd(true);
       }
 
@@ -434,7 +445,7 @@ class ForceGraph extends React.Component {
 
     simulation.on("tick", () => {
       nodes
-        .attr("transform", function (d) {
+        .attr("transform", function(d) {
           return "translate(" + d.x + "," + d.y + ")";
         })
         .classed("dead", (d) => !d.living)
@@ -526,9 +537,9 @@ class ForceGraph extends React.Component {
           "y",
           this.props.trophic
             ? d3
-                .forceY()
-                .strength(5)
-                .y((d) => this.tl2y(d.trophicLevel))
+              .forceY()
+              .strength(5)
+              .y((d) => this.tl2y(d.trophicLevel))
             : d3.forceY(this.props.height / 2)
         )
         .alpha(0.1);
