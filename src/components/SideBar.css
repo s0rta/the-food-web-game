@@ -1,25 +1,23 @@
 img {
-    width: 300px;
-}
-
-.plot {
-  /* padding-bottom: 60px; */
+  width: 300px;
 }
 
 .plot div {
   text-align: center;
 }
 
+/* HACK: plots need to be moved from the side bar but because of their data importance to the game finishing, right now they are being positioned really awkwardly */
 .plots {
   position: absolute;
   top: 0;
-  margin-top:150px;
+  margin-top: 150px;
   right: 0;
   margin-right: 24px;
   z-index: 10;
   background: white;
-  height:400px;
-  overflow-y: scroll;
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .plotsHidden {

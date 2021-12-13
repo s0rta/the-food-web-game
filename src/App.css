@@ -1,21 +1,18 @@
 * {
-  font-family: 'roboto', sans-serif;
+  font-family: "roboto", sans-serif;
   color: #222;
 }
 
 :root {
   --shadow-color: 168deg 18% 57%;
-  --shadow-elevation-low:
-    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+  --shadow-elevation-low: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
     0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.34),
     1px 2px 2.5px -2.5px hsl(var(--shadow-color) / 0.34);
-  --shadow-elevation-medium:
-    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+  --shadow-elevation-medium: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
     0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
     2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
     5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
-  --shadow-elevation-high:
-    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+  --shadow-elevation-high: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
     1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
     2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
     4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34),
@@ -29,7 +26,8 @@ body {
   background: #e0f4f0;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
@@ -49,7 +47,6 @@ h1 {
   margin: 0;
 }
 
-
 p {
   font-size: 13px;
   margin-bottom: 13px;
@@ -59,7 +56,8 @@ img {
   border-radius: 10px;
 }
 
-button, span.btn--secondary {
+button,
+span.btn--secondary {
   border-radius: 4px;
   padding: 8px 13px;
   font-size: 13px;
@@ -69,14 +67,13 @@ button, span.btn--secondary {
 }
 
 button.btn {
-  background: #52525B;
+  background: #52525b;
   color: white;
   text-decoration: none;
 }
 
-
 button.btn--primary {
-  background: #14B8A6;
+  background: #14b8a6;
   color: white;
   text-decoration: none;
 }
@@ -86,23 +83,22 @@ button.btn--primary:hover {
 }
 
 .btn--secondary.btn--nav {
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   border: 1px solid white;
 }
 
 .btn--nav:hover {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   cursor: default;
 }
 
-
 button.btn--game-ui {
-  background: #52525B;
+  background: #52525b;
 }
 
 .container {
-  background: #FAFAFA;
-  box-shadow: 0px 1px 2px rgba(0,0,0, 0.06), 0px 1px 3px rgba(0,0,0, 0.1);
+  background: #fafafa;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1);
   max-width: 1400px;
   margin: 0 auto;
   margin: 12px;
@@ -113,7 +109,6 @@ button.btn--game-ui {
 .game-wrap .container {
   max-height: 500px;
 }
-
 
 .header-wrap {
   display: grid;
@@ -132,6 +127,6 @@ button.btn--game-ui {
   object-fit: cover;
 }
 
-.ReactModal__Overlay.ReactModal__Overlay--after-open{
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
   z-index: 2;
 }

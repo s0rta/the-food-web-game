@@ -122,7 +122,7 @@ class Plot extends React.Component {
         Math.abs((this.props.pos / this.state.startPos) * 100) <
         this.props.failLine
       ) {
-        this.props.onLevelEnd(false);
+        this.props.onLevelLost(true);
       }
     }
   }

@@ -113,7 +113,7 @@ function TreeMap(props) {
       {/*   <p>Types of Species Directly Impacted</p> */}
       {/* </div> */}
       <div id="indirect-wrapper">
-        <p>Types of Species Indirectly Lost</p>
+        <p>Types of Species Indirectly Lost (hover area for more info)</p>
       </div>
     </div>
   );

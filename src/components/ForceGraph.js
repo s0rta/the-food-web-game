@@ -186,13 +186,11 @@ class ForceGraph extends React.Component {
       let links = 0;
 
       let deadTypes = new Set();
+      let livingTypes = new Set();
       let types = new Set();
 
       this.props.edges.forEach((edge) => {
-        const targetBiomass =
-          Math.log(edge.target.biomass) < 1
-            ? 1
-            : Math.log(edge.target.biomass);
+        const targetBiomass = edge.target.biomass;
         if (
           edge.source.speciesID === node.speciesID &&
           edge.target.living === true
@@ -200,26 +198,30 @@ class ForceGraph extends React.Component {
           biomass += targetBiomass;
           links++;
           types.add(edge.target.organismType);
+          livingTypes.add(edge.target.organismType)
           return true;
         } else if (edge.source.speciesID === node.speciesID) {
           biomass += targetBiomass;
           deadBiomass += targetBiomass;
-          types.add(edge.target.organismType);
           deadTypes.add(edge.target.organismType);
+          types.add(edge.target.organismType);
           links++;
           deadLinks++;
           return false;
         }
       });
       let check =
-        !(
-          (deadBiomass > 0 &&
-            deadBiomass / biomass >= 0.64 &&
-            deadLinks > 0 &&
-            deadLinks / links >= 0.40) ||
-          (deadTypes.length > 0 &&
-            [...deadTypes].every((n) => types.has(n)))
-        ) || node.organismType === "Ecosystem Service";
+        ((
+          (deadBiomass === 0 ||
+            deadBiomass / biomass <= 0.31) &&
+
+          (deadLinks === 0 ||
+            deadLinks / links <= 0.50)
+          &&
+          (deadTypes.size === 0 || ([...deadTypes].filter((n) => !livingTypes.has(n)).length / types.size) <= 0.50)
+        )
+          ||
+          node.organismType === "Ecosystem Service");
       node.living = check;
       if (!check) {
         this.setState({ didNodeDie: true })

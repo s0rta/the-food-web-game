@@ -9,8 +9,6 @@ import TreeMap from "../components/TreeMap.js";
 import "./Game.css";
 import { Link } from "react-router-dom";
 
-import nodeListToTreeMap from "../scripts/json-to-treemap";
-
 class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +28,7 @@ class Game extends React.Component {
       step: 0,
       isModalOpen: true,
       levelOver: false,
-      levelWon: false,
+      levelWon: true,
       trophicDisplay: true,
       gameStart: false,
     };
@@ -89,9 +87,13 @@ class Game extends React.Component {
 
   componentDidMount() { }
 
-  handleLevelEnd = (d) => {
+  handleLevelLost = () => {
+    this.setState({ levelWon: false })
+  }
+
+  handleLevelEnd = () => {
     // setTimeout(() => {
-    this.setState({ levelWon: d, levelOver: true });
+    this.setState({ levelOver: true });
     // }, 2000);
   };
 
@@ -192,7 +194,7 @@ class Game extends React.Component {
           gameStart={this.state.gameStart}
         />
         <SubGraphs
-          onLevelEnd={this.handleLevelEnd}
+          onLevelLost={this.handleLevelLost}
           levelOver={this.state.levelOver}
           levelData={this.state.levelData}
           esBiomass={this.state.esBiomass}

@@ -8422,7 +8422,7 @@ export const levels = [
     intro:
       "You recently accepted a position working for the Carpinteria Salt Marsh Reserve in Santa Barbara, California. You work in conservation, and part of your job requires you to monitor the species living in the salt marsh, and to take action to maintain the ecosystem. The Carpinteria Salt Marsh Reserve supports a great diversity of life and plays an important role in many ecosystem services that your community relies on. In your first week on the job, your supervisor asks you to monitor the water quality of the reserve. As an ecologist, you have a general idea of which types of species help maintain water quality, and how they interact with other types of species. But, as a new resident in California, you still don't know the species themselves.",
     objective:
-   "Ecosystem service are nature's contributions to people. Your supervisor requests that you conduct a brief study to maximize the number of ecosystem services at the reserve with a limited budget. Maintain as many ecosystem services as you can by protecting one type of species.",
+      "Ecosystem service are nature's contributions to people. Your supervisor requests that you conduct a brief study to maximize the number of ecosystem services at the reserve with a limited budget. Maintain as many ecosystem services as you can by protecting one type of species.",
     topBarCopy: "Level 1 Goal: Protect (left click) 1 species to maintain as many ecosystem services as you can",
     removableIDs: [300],
     shownGraphs: ["num-services"],
@@ -8454,7 +8454,7 @@ export const levels = [
     removableIDs: [900, 500, 120, 118, 125, 800, 700],
     topBarCopy: "Level 3 Goal: Protect (left click) 1 species to maintain recreational fisheries",
     shownGraphs: ["recreational-fishery"],
-    saves: 1,
+    saves: 2,
     initialKills: 7,
     win: "You won! Recreational fisheries are an important ecosystem service in many coastal areas, so maintaining the levels of fish that people enjoy fishing is important. Great job!",
     lose: "You lost! Sometimes recreational fishers will collect other types of organisms besides fish for sustenance. As a hint, what types of seafood do you know of besides fish?",
@@ -8543,10 +8543,10 @@ export const levels = [
       objective:
         "Coastal wetlands, like salt marshes, can be contaminated with pesticides and other pollutants from upstream and adjacent lands. Recently, while monitoring water quality you noticed higher concentrations of these chemicals in the reserve. Maintain the birdwatching service by mitigating the impacts of pesticide contamination.",
       topBarCopy: "Level 5 Goal: Protect (left click) 4 species to maintain birdwatching",
-      removableIDs: [600, 900, 144, 66, 68, 118, 500],
+      removableIDs: [600, 900, 144, 66, 68, 118, 500, 61],
       shownGraphs: ["bird-watching"],
       saves: 4,
-      initialKills: 7,
+      initialKills: 8,
       win: "You won! Salt marshes are a great example of the connection between the ocean and land since they exist at the intersection of freshwater rivers and salty, marine water. The actions we take far away from the ocean can still impact these coastal areas, just as the pesticdes are in this scenario. Great work prioritizing which species to protect!",
       lose: "You lost! Salt marshes are a great example of the connection between the ocean and land since they exist at the intersection of freshwater rivers and salty, marine water. The actions we take far away from the ocean can still impact these coastal areas, just as the pesticdes are in this scenario. In conservation, protecting a species does not guarantee that it survives a disturbance, or long term changes. Remember, even if a species is not directly impacted by a disturbance, it can still be indirectly impacted if it loses its resources. Sifting through lots of information is challenging, so try using the sub-graph feature to simplify the decision. ",
     },
