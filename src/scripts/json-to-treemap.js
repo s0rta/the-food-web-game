@@ -31,7 +31,7 @@ export default function Treemap(
     paddingBottom = paddingOuter, // to separate a node’s bottom edge from its children
     paddingLeft = paddingOuter, // to separate a node’s left edge from its children
     round = true, // whether to round to exact pixels
-    colors = d3.schemeTableau10, // array of colors
+    colors = ["#fff", "#db6d00", "#000", "#6db6ff", "#24ff24", "#920000", "#b66dff", "#b66dff", "#b6d6ff", "#ffff6d", "#004949"], // array of colors
     fill = "#ccc", // fill for node rects (if no group color encoding)
     fillOpacity = group == null ? null : 0.6, // fill opacity for node rects
     stroke, // stroke for node rects
@@ -88,8 +88,8 @@ export default function Treemap(
     title === undefined
       ? L
       : title == null
-      ? null
-      : leaves.map((d) => title(d.data, d));
+        ? null
+        : leaves.map((d) => title(d.data, d));
 
   // Sort the leaves (typically by descending value for a pleasing layout).
   if (sort != null) root.sort(sort);
