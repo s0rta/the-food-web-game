@@ -6,7 +6,7 @@ function Contact() {
       <div className="container">
         <h1>Contact</h1>
         <p>If you have any questions, comments or suggestions about this learning module, please contact Aislyn Keyes at aislyn.keyes(at)colorado.edu</p>
-        <p>All code for this game is publicly available on <a href="https://github.com/s0rta/the-food-web-game">Github</a>. For game development and coding questions, please contact J.T. Wright at jacob.t.wright(at)ucdenver.edu</p>
+        <p>All code for this game is publicly available on <a href="https://github.com/s0rta/the-food-web-game">Github</a>. For game development and coding questions, please contact J.T. Wright at jacob.t.wright(at)pm.me</p>
         <p>You can visit our websites for more information about the people who contributed to this project:</p>
         <table>
           <tr>

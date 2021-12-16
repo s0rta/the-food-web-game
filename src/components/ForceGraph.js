@@ -391,8 +391,11 @@ class ForceGraph extends React.Component {
         "d",
         d3
           .symbol()
-          .size(() => {
-            return 800;
+          .size((d) => {
+            let size = this.isES(d.nodeName)
+              ? 900
+              : 750;
+            return size;
           })
           .type((d) => {
             let test = this.isES(d.nodeName)

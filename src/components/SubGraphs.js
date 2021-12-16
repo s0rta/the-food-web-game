@@ -274,7 +274,7 @@ class SubGraphs extends React.Component {
             Ecosystem Service <div className="eco-serve legend-elm"></div>
           </div>
           <div className="legend-elm-wrap">
-            Mammel <div className="mammel legend-elm legend-species"></div>
+            Mammal <div className="mammal legend-elm legend-species"></div>
           </div>
           <div className="legend-elm-wrap">
             Microscopic Organism{" "}

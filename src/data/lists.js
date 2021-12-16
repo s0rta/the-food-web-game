@@ -8423,7 +8423,7 @@ export const levels = [
       "You recently accepted a position working for the Carpinteria Salt Marsh Reserve in Santa Barbara, California. You work in conservation, and part of your job requires you to monitor the species living in the salt marsh, and to take action to maintain the ecosystem. The Carpinteria Salt Marsh Reserve supports a great diversity of life and plays an important role in many ecosystem services that your community relies on. In your first week on the job, your supervisor asks you to monitor the water quality of the reserve. As an ecologist, you have a general idea of which types of species help maintain water quality, and how they interact with other types of species. But, as a new resident in California, you still don't know the species themselves.",
     objective:
       "Ecosystem service are nature's contributions to people. Your supervisor requests that you conduct a brief study to maximize the number of ecosystem services at the reserve with a limited budget. Maintain as many ecosystem services as you can by protecting one type of species.",
-    topBarCopy: "Level 1 Goal: Protect (left click) 1 species to maintain as many ecosystem services as you can",
+    topBarCopy: "Level 1 Goal: Protect (left click) 1 species to maintain all 8 ecosystem services",
     removableIDs: [300],
     shownGraphs: ["num-services"],
     saves: 1,

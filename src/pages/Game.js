@@ -168,6 +168,7 @@ class Game extends React.Component {
             Restart Level
           </button>
           <button className="btn" onClick={() => this.closeEndModal()}>Explore</button>
+          {/* <button className="btn" onClick={() => this.closeEndModal()}>Explore</button> */}
           <TreeMap levelOver={this.state.levelOver} nodeList={this.state.levelNodes} />
         </Modal>
         <SideBar

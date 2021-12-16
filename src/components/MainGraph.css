@@ -5,81 +5,81 @@
   z-index: 0;
 }
 
-.mammel {
-    background-color: #db6d00;
-  }
+.mammal {
+  background-color: #db6d00;
+}
 
-  .micro-org {
-    background-color: black;
-  }
+.micro-org {
+  background-color: black;
+}
 
-  .crustacean {
-    background-color: #009292;
-  }
+.crustacean {
+  background-color: #009292;
+}
 
-  .eco-serve {
-    background-color: #ff6db6;
-  }
-  .plant {
-    background-color: #24ff24;
-  }
+.eco-serve {
+  background-color: #ff6db6;
+}
+.plant {
+  background-color: #24ff24;
+}
 
-  .bird {
-    background-color: #920000;
-  }
+.bird {
+  background-color: #920000;
+}
 
-  .insect {
-    background-color: #490092;
-  }
+.insect {
+  background-color: #490092;
+}
 
-  .fish {
-    background-color: #006ddb;
-  }
+.fish {
+  background-color: #006ddb;
+}
 
-  .plankton {
-    background-color: #ffff6d;
-  }
+.plankton {
+  background-color: #ffff6d;
+}
 
-  .mollusc {
-    background-color: #004949;
-  }
+.mollusc {
+  background-color: #004949;
+}
 
-  .si {
-    margin-top: 9px;
-    height: 2px !important;
-    background-color: grey;
-  }
+.si {
+  margin-top: 9px;
+  height: 2px !important;
+  background-color: grey;
+}
 
-  .ssi {
-    margin-top: 9px;
-    height: 2px !important ;
-    background-color: black;
-  }
+.ssi {
+  margin-top: 9px;
+  height: 2px !important ;
+  background-color: black;
+}
 
-  div.legend.container {
-    position: relative;
-    z-index: 2;
-    max-height: 300px;
-  }
-  .legend-elm-wrap {
-    display:flex;
-    justify-content: space-between;
-    padding: 2px 0;
-    border-bottom: 1px solid black;
-  }
+div.legend.container {
+  position: relative;
+  z-index: 2;
+  max-height: 300px;
+}
+.legend-elm-wrap {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+  border-bottom: 1px solid black;
+}
 
-  .legend-elm {
-    width:20px;
-    height:20px;
-  }
+.legend-elm {
+  width: 20px;
+  height: 20px;
+}
 
-  .legend-species {
-      border-radius: 50%;
-  }
+.legend-species {
+  border-radius: 50%;
+}
 
-  div.controls.container {
-      display: flex;
-      position:relative;
-      margin-top: 12px;
-      padding: 4px 4px;
-  }
+div.controls.container {
+  display: flex;
+  position: relative;
+  margin-top: 12px;
+  padding: 4px 4px;
+}
