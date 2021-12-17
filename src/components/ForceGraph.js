@@ -378,7 +378,7 @@ class ForceGraph extends React.Component {
       .attr("class", (d) => {
         return d.Type === "Feeding" ? "line-feeding" : "line-es";
       })
-      .attr("marker-start", () => {
+      .attr("marker-end", () => {
         return "url(#arrowhead)";
       });
 
@@ -572,7 +572,7 @@ class ForceGraph extends React.Component {
               <marker
                 id="arrowhead"
                 viewBox="-0 -5 10 10"
-                refX="-15"
+                refX="25"
                 refY="0"
                 orient="auto"
                 markerWidth="13"
