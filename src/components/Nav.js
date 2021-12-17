@@ -16,6 +16,9 @@ class Nav extends React.Component {
           <Link to="/for-educators" className="nav-elm">
             For Educators
           </Link>
+          <Link to="/glossary" className="nav-elm">
+            Glossary
+          </Link>
           <Link to="/credits" className="nav-elm">
             Credits
           </Link>

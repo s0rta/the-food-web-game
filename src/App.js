@@ -7,6 +7,7 @@ import Credits from "./pages/Credits";
 import Tutorial from "./pages/Tutorial";
 import Educators from "./pages/Educators"
 import Contact from "./pages/Contact";
+import Glossary from './pages/Glossary';
 
 import Nav from "./components/Nav";
 
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route path="/Contact">
             <Contact />
+          </Route>
+          <Route path="/Glossary">
+            <Glossary />
           </Route>
           <Route path="/">
             <MainMenu />
