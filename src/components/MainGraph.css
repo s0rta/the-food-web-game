@@ -69,8 +69,15 @@ div.legend.container {
 }
 
 .legend-elm {
-  width: 20px;
+  min-width: 20px;
   height: 20px;
+}
+
+.legend-elm img {
+  width: 15px;
+  height: 15px;
+  margin-top: 3px;
+  margin-left: 3px;
 }
 
 .legend-species {

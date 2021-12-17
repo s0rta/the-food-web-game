@@ -111,9 +111,9 @@ button.btn--game-ui {
 }
 
 .header-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 8px;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* grid-gap: 8px; */
 }
 
 .header-text {
@@ -123,8 +123,13 @@ button.btn--game-ui {
 .header-img {
   height: 100%;
   min-height: 300px;
-  width: 100%;
+  max-height:350px;
+  width:33%;
+  display:inline;
+  float:right;
   object-fit: cover;
+  margin-left:12px;
+  margin-right:-8px;
 }
 
 .ReactModal__Overlay.ReactModal__Overlay--after-open {

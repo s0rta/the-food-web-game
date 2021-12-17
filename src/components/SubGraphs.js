@@ -274,34 +274,53 @@ class SubGraphs extends React.Component {
             Ecosystem Service <div className="eco-serve legend-elm"></div>
           </div>
           <div className="legend-elm-wrap">
-            Mammal <div className="mammal legend-elm legend-species"></div>
+            Mammal
+            <div className="mammal legend-elm legend-species">
+              <img src="/Node-Icons/mammel-icon.svg" alt="" />
+            </div>
           </div>
           <div className="legend-elm-wrap">
             Microscopic Organism{" "}
-            <div className="micro-org legend-elm legend-species"></div>
+            <div className="micro-org legend-elm legend-species">
+              <img src="/Node-Icons/microscopic-icon.svg" />
+            </div>
           </div>
           <div className="legend-elm-wrap">
             Crustacean{" "}
-            <div className="crustacean legend-elm legend-species"></div>
+            <div className="crustacean legend-elm legend-species">
+              <img src="/Node-Icons/crustacean-icon.svg" />
+            </div>
           </div>
           <div className="legend-elm-wrap">
-            Plant <div className="plant legend-elm legend-species"></div>
+            Plant <div className="plant legend-elm legend-species">
+              <img src="/Node-Icons/plant-icon.svg" />
+            </div>
           </div>
           <div className="legend-elm-wrap">
-            Bird <div className="bird legend-elm legend-species"></div>
+            Bird <div className="bird legend-elm legend-species">
+              <img src="/Node-Icons/bird-icon.svg" />
+            </div>
           </div>
           <div className="legend-elm-wrap">
             Insect, Annelid & Arachnid{" "}
-            <div className="insect legend-elm legend-species"></div>
+            <div className="insect legend-elm legend-species">
+              <img src="/Node-Icons/insect-icon.svg" />
+            </div>
           </div>
           <div className="legend-elm-wrap">
-            Fish <div className="fish legend-elm legend-species"></div>
+            Fish <div className="fish legend-elm legend-species">
+              <img src="/Node-Icons/fish-icon.svg" />
+            </div>
           </div>
           <div className="legend-elm-wrap">
-            Plankton <div className="plankton legend-elm legend-species"></div>
+            Plankton <div className="plankton legend-elm legend-species">
+              <img src="/Node-Icons/plankton-icon.svg" />
+            </div>
           </div>
           <div className="legend-elm-wrap">
-            Mollusc <div className="mollusc legend-elm legend-species"></div>
+            Mollusc <div className="mollusc legend-elm legend-species">
+              <img src="/Node-Icons/mollusc-icon.svg" />
+            </div>
           </div>
         </div>
       </div>
