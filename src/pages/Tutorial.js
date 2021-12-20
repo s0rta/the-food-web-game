@@ -6,7 +6,7 @@ import "./Intro.css";
 class Tutorial extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="container copy-wrap">
         <div>
           <h1>Tutorial</h1>
           <br />
