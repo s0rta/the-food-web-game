@@ -123,13 +123,13 @@ button.btn--game-ui {
 .header-img {
   height: 100%;
   min-height: 300px;
-  max-height:350px;
-  width:33%;
-  display:inline;
-  float:right;
+  max-height: 350px;
+  width: 33%;
+  display: inline;
+  float: right;
   object-fit: cover;
-  margin-left:12px;
-  margin-right:-8px;
+  margin-left: 12px;
+  margin-right: -8px;
 }
 
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
