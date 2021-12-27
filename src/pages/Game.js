@@ -147,9 +147,7 @@ class Game extends React.Component {
     return (
       <div className="game-wrap">
         <Modal isOpen={this.state.isModalOpen} className="levelModal">
-          <h2 class="level-header">Level {this.state.levelData.level} Intro</h2>
-          <p>{this.state.levelData.intro}</p>
-          <h2 class="level-header">Objective</h2>
+          <h2 class="level-header">Level {this.state.levelData.level} Introduction</h2> <p>{this.state.levelData.intro}</p> <h2 class="level-header">Objective</h2>
           <p>{this.state.levelData.objective}</p>
           <button class="btn--primary" onClick={() => this.swapModal()}>Start Level</button>
         </Modal>

@@ -7864,7 +7864,7 @@ export const imgCredit = [
   },
   {
     imgFile: "b-mussel.jpg",
-    imgCaption: "Clusters of blue mussels in shallow water.",
+    imgCaptiolistn: "Clusters of blue mussels in shallow water.",
     imgSource: "Andreas Trepte",
     imgLiscence: "Free to copy and adapt with credit",
   },

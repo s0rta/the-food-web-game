@@ -2,7 +2,6 @@ import "./App.css";
 import MainMenu from "./pages/MainMenu";
 import Game from "./pages/Game";
 import LevelSelect from "./pages/LevelSelect";
-import About from "./pages/About";
 import Credits from "./pages/Credits";
 import Tutorial from "./pages/Tutorial";
 import Educators from "./pages/Educators"
@@ -25,9 +24,6 @@ function App() {
           <Route path="/game/:level" component={Game} />
           <Route path="/level-select">
             <LevelSelect />
-          </Route>
-          <Route path="/about">
-            <About />
           </Route>
           <Route path="/intro">
             <Intro />
