@@ -73,7 +73,7 @@ class SideBar extends React.Component {
             <button className="btn" onClick={this.handleTrophicToggle}>
               <FormattedMessage id="trophButton" defaultMessage="Toggle Trophic" />
             </button>
-            <button className="btn--primary" onClick={this.handleSimulateDisturbance}><FormattedMessage id="simButton" defaultMessage="Simulate Disturbance" /></button>
+            <button className="btn--primary sim-button" onClick={this.handleSimulateDisturbance}><FormattedMessage id="simButton" defaultMessage="Simulate Disturbance" /></button>
           </div>
           <div className="container">
             {this.props.data ? (

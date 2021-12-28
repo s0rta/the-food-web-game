@@ -23,3 +23,8 @@ img {
 .plotsHidden {
   display: none;
 }
+
+div button.sim-button {
+  width: 100%;
+  margin-left:0px;
+}
