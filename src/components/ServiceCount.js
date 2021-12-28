@@ -1,5 +1,10 @@
 import { thresholdScott } from 'd3-array';
 import React from 'react';
+import { FormattedMessage, IntlProvider } from 'react-intl';
+
+const componentInSpanish = {
+  sit: "spanish services in tact"
+}
 
 class ServiceCount extends React.Component {
   constructor(props) {
@@ -33,13 +38,13 @@ class ServiceCount extends React.Component {
 
   render() {
     return (
-      <>
+      <IntlProvider messages={this.props.locale === 'es' ? componentInSpanish : ""} defaultLocale="en" locale={this.props.locale}>
         {this.props.display &&
           <div className="service-count-wrap">
-            {this.state.workingES} out of 8 services in tact
+            {this.state.workingES} <FormattedMessage id="sit" defaultMessage="out of 8 services in tact" />
           </div>
         }
-      </>
+      </IntlProvider>
     )
   }
 }

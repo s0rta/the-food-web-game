@@ -20,21 +20,21 @@ class Credits extends React.Component {
 
           <h2>Image Credits</h2>
           <p>Images were collected from various photographers with creative commons usage rights.</p>
-          <ul>
+          <div class="image-credits">
             {imgCredit.map((value, index) => {
               return (
-                <li key={index}>
+                <div key={index}>
                   <img
                     src={`/img/Images/${value.imgFile}`}
                     alt={value.imgCaption}
                   />{" "}
                   <p>
-                    {value.imgSource}<br/> {value.imgLiscence}
+                    {value.imgSource}<br /> {value.imgLiscence}
                   </p>
-                </li>
+                </div>
               );
             })}
-          </ul>
+          </div>
         </div>
       </div>
     );

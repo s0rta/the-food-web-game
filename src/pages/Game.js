@@ -3,7 +3,7 @@ import SideBar from "../components/SideBar.js";
 import MainGraph from "../components/MainGraph.js";
 import SubGraphs from "../components/SubGraphs.js";
 import Modal from "react-modal";
-import * as lists from "../data/lists";
+import * as enLists from "../data/lists";
 import TreeMap from "../components/TreeMap.js";
 
 import "./Game.css";
@@ -31,13 +31,17 @@ class Game extends React.Component {
       levelWon: true,
       trophicDisplay: true,
       gameStart: false,
+      locale: this.props.match.params.language
     };
   }
 
   getLevelData = () => {
+    console.log(this.props.match.params)
     let levelNodes;
     let levelEdges;
     let levelData;
+
+    const lists = this.props.match.params.language === 'en' ? enLists : ''
 
     switch (this.props.match.params.level) {
       case "1":
@@ -80,6 +84,9 @@ class Game extends React.Component {
         levelData = lists.levels[6][3];
         break;
       default:
+        levelNodes = lists.nodeList7;
+        levelEdges = lists.edgeList7;
+        levelData = lists.levels[6][3];
         break;
     }
     return [levelNodes, levelEdges, levelData];
@@ -141,7 +148,7 @@ class Game extends React.Component {
 
   render() {
     const winTarget = {
-      pathname: `/game/${parseFloat(this.props.match.params.level) + 1}`,
+      pathname: this.props.match.params.level > 7 ? `/` : `/game/${parseFloat(this.props.match.params.level) + 1}/${this.props.match.params.language}`,
     };
 
     return (
@@ -171,6 +178,7 @@ class Game extends React.Component {
         </Modal>
         <SideBar
           onToggleModal={this.swapModal}
+          locale={this.state.locale}
           onToggleTrophic={this.toggleTrophic}
           onSimulateDisturbance={this.simulateDisturbance}
           level={this.state.level}
@@ -182,7 +190,7 @@ class Game extends React.Component {
           trophicDisplay={this.state.trophicDisplay}
           winTarget={winTarget}
           won={this.state.levelWon}
-          colors={lists.colors}
+          colors={enLists.colors}
           nodes={[...this.state.levelNodes]}
           edges={[...this.state.levelEdges]}
           onNodeHover={this.handleNodeHover}
@@ -201,7 +209,7 @@ class Game extends React.Component {
           onNodeHover={this.handleNodeHover}
           epiNode={this.state.subGraphEpi}
           seed={this.state.subSeed}
-          colors={lists.colors}
+          colors={enLists.colors}
           nodes={[...this.state.levelNodes]}
           edges={[...this.state.levelEdges]}
           speciesRemaining={this.state.speciesRemaining}

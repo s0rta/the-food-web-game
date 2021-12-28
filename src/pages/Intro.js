@@ -11,13 +11,13 @@ const pageInSpanish = {
   button1: 'spanish button1'
 }
 
-const locale = "es"
+const locale = "en"
 
 class Intro extends React.Component {
   render() {
     return (
       <IntlProvider messages={locale === "es" ? pageInSpanish : ""} locale={locale} defaultLocale="en">
-        <div className="container copy-wrap">
+        <div className="container copy-wrap intro-wrap">
           <div>
             <h1><FormattedMessage id="h1" defaultMessage="Concept Review" /></h1>
             <br />

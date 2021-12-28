@@ -162,7 +162,7 @@ class ForceGraph extends React.Component {
   }
 
   restartSim = () => {
-    this.state.sim.alpha(0.1).restart();
+    this.state.sim.alpha(0.05).restart();
   };
 
   killLinks = (nSID) => {
@@ -454,8 +454,24 @@ class ForceGraph extends React.Component {
           return "translate(" + d.x + "," + d.y + ")";
         })
         .classed("dead", (d) => !d.living)
-        .classed("saved", (d) => d.saved);
-
+        .classed("saved", (d) => d.saved)
+        .attr(
+          "d",
+          d3
+            .symbol()
+            .size((d) => {
+              let size = this.isES(d.nodeName)
+                ? 900
+                : d.saved ? 1000 : 750;
+              return size;
+            })
+            .type((d) => {
+              let test = this.isES(d.nodeName)
+                ? d3.symbolSquare
+                : d3.symbolCircle;
+              return test;
+            })
+        )
       links = g_links
         .selectAll("line")
         .attr("x2", (d) => {

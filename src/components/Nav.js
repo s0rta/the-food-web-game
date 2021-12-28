@@ -20,27 +20,30 @@ const pageInSpanish = {
   saltDrop: "sSalt"
 }
 
-const locale = "en"
 
 class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
+    const locale = this.props.language;
     return (
       <IntlProvider messages={locale === "es" ? pageInSpanish : ""} locale={locale} defaultLocale="en">
         <div class="nav-bar">
           <div class="left-nav">
-            <Link to="/" className="nav-title nav-elm">
+            <Link to={"/" + locale} className="nav-title nav-elm">
               <FormattedMessage id="homeLink" defaultMessage="The Food Web Game" />
             </Link>
-            <Link to="/for-educators" className="nav-elm">
+            <Link to={"/for-educators/" + locale} className="nav-elm">
               <FormattedMessage id="educatorsLink" defaultMessage="For Educators" />
             </Link>
-            <Link to="/glossary" className="nav-elm">
+            <Link to={"/glossary/" + locale} className="nav-elm">
               <FormattedMessage id="glossaryLink" defaultMessage="Glossary" />
             </Link>
-            <Link to="/credits" className="nav-elm">
+            <Link to={"/credits/" + locale} className="nav-elm">
               <FormattedMessage id="creditsLink" defaultMessage="Credits" />
             </Link>
-            <Link to="/contact" className="nav-elm">
+            <Link to={"/contact/" + locale} className="nav-elm">
               <FormattedMessage id="contactLink" defaultMessage="Contact" />
             </Link>
           </div>
@@ -52,21 +55,21 @@ class Nav extends React.Component {
               <Menu className="playMenuButton-menu">
                 <ul>
                   <li key="2">
-                    <Link to="/intro">
+                    <Link to={"/intro/" + locale}>
                       <MenuItem className="playMenuButton-menuItem">
                         <FormattedMessage id="introDop" defaultMessage="Introduction to Key Concepts" />
                       </MenuItem>
                     </Link>
                   </li>
                   <li key="3">
-                    <Link to="/tutorial">
+                    <Link to={"/tutorial/" + locale}>
                       <MenuItem className="playMenuButton-menuItem">
                         <FormattedMessage id="tutorialDrop" defaultMessage="Tutorial" />
                       </MenuItem>
                     </Link>
                   </li>
                   <li key="1">
-                    <Link to="/">
+                    <Link to={"/"}>
                       <MenuItem className="playMenuButton-menuItem">
                         <FormattedMessage id="rockyDrop" defaultMessage="Play Rocky Inner Tidal (Coming soon) (Easy)" />
                       </MenuItem>
@@ -74,7 +77,7 @@ class Nav extends React.Component {
                   </li>
 
                   <li key="0">
-                    <Link to="/level-select">
+                    <Link to={"/level-select/" + locale}>
                       <MenuItem className="playMenuButton-menuItem">
                         <FormattedMessage id="saltDrop" defaultMessage="Play Salt Marsh (Hard)" />
                       </MenuItem>
@@ -85,7 +88,7 @@ class Nav extends React.Component {
             </Wrapper>
           </div>
         </div>
-      </IntlProvider>
+      </IntlProvider >
     );
   }
 }

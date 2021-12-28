@@ -18,33 +18,19 @@ function App() {
     <div>
       <Router>
         <div className="App"></div>
-        <Nav />
+        <Nav language="en" />
 
         <Switch>
-          <Route path="/game/:level" component={Game} />
-          <Route path="/level-select">
-            <LevelSelect />
-          </Route>
-          <Route path="/intro">
-            <Intro />
-          </Route>
-          <Route path="/tutorial">
-            <Tutorial />
-          </Route>
-          <Route path="/Credits">
-            <Credits />
-          </Route>
-          <Route path="/for-educators">
-            <Educators />
-          </Route>
-          <Route path="/Contact">
-            <Contact />
-          </Route>
-          <Route path="/Glossary">
-            <Glossary />
-          </Route>
+          <Route path="/game/:level/:language" component={Game} />
+          <Route path="/level-select/:language" component={LevelSelect} />
+          <Route path="/intro/:language" component={Intro} />
+          <Route path="/tutorial/:language" component={Tutorial} />
+          <Route path="/Credits/:language" component={Credits} />
+          <Route path="/for-educators/:language" component={Educators} />
+          <Route path="/Contact/:language" component={Contact} />
+          <Route path="/Glossary/:language" component={Glossary} />
           <Route path="/">
-            <MainMenu />
+            <MainMenu language="en" />
           </Route>
         </Switch>
       </Router>

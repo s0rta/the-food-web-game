@@ -1,5 +1,5 @@
 import React from "react";
-import { IntlProvider, FormattedMessage, FormattedNumber } from 'react-intl'
+import { IntlProvider, FormattedMessage } from 'react-intl'
 
 import "./MainMenu.css";
 
@@ -12,13 +12,16 @@ const pageInSpanish = {
   p4: "paragraph4 spanish"
 }
 
-const locale = "en"
 
 class MainMenu extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
+    const locale = this.props.language;
     return (
-      <IntlProvider messages={locale === "es" ? pageInSpanish : ""} locale="en" defaultLocale="en">
+      <IntlProvider messages={locale === "es" ? pageInSpanish : ""} locale={locale} defaultLocale="en">
         <div className="main-menu-wrap copy-wrap">
           <div className="main-menu container">
             <div className="header-wrap ">

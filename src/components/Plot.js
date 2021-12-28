@@ -47,7 +47,7 @@ class Plot extends React.Component {
       .append("text")
       .attr("transform", "translate(" + (width - 110) / 2 + " ," + (height - 100) + ")")
       .style("text-anchor", "middle")
-      .text("Number of species Removed");
+      .text(this.props.locale === "es" ? "" : "Number of species Removed");
 
     plotSVG
       .append("text")
