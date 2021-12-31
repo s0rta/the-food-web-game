@@ -105,7 +105,7 @@ class SubGraphs extends React.Component {
     return (
       <IntlProvider messages={this.props.locale === "es" ? componentInSpanish : ""} defaultLocale="en" locale={this.props.locale} >
         <div className="sub-graph-wrap">
-          {this.props.step === 0 && (
+          {this.props.step === 0 && this.props.seed && (
             <div className="sub-force-graph container">
               <ForceGraph
                 trophic={this.state.trophicDisplay}
