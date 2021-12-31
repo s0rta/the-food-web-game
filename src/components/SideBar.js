@@ -91,7 +91,7 @@ class SideBar extends React.Component {
                   <span className="biomass-filler">
                     {this.isES(this.props.data.nodeName)
                       ? "N/A"
-                      : this.props.data.biomass.toFixed(2)}
+                      : Math.max(0.01, this.props.data.biomass.toFixed(2))}
                   </span>
                 </p>
                 <p className="type">
