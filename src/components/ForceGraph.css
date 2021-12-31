@@ -7,6 +7,11 @@
     stroke: grey;
 }
 
+.line-faded {
+  opacity: 0.1;
+  stroke: grey;
+}
+
 .line-es {
     stroke: black;
 }
