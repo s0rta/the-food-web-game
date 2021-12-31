@@ -20,7 +20,6 @@ class ForceGraph extends React.Component {
       ? [
         ...this.props.edges.map((n) => {
           n.living = true;
-          n.faded = false;
           return n;
         }),
       ]
@@ -80,11 +79,11 @@ class ForceGraph extends React.Component {
     })
   }
 
-  handleMouseOut() {
-    d3.selectAll('line').attr('class', (e) => {
-      return e.Type === "Feeding" ? 'line-feeding' : 'line-es';
-    })
-  }
+  // handleMouseOut() {
+  //   d3.selectAll('line').attr('class', (e) => {
+  //     return e.Type === "Feeding" ? 'line-feeding' : 'line-es';
+  //   })
+  // }
 
   filterNodes = (epiNode, n) => {
     let arr = [];
@@ -391,8 +390,7 @@ class ForceGraph extends React.Component {
         return d.target.y;
       })
       .attr("class", (d) => {
-        const fadeState = d.faded ? " line-faded " : ""
-        return (d.Type === "Feeding" ? "line-feeding" : "line-es") + fadeState;
+        return (d.Type === "Feeding" ? "line-feeding" : "line-es");
       })
       .attr("marker-end", () => {
         return "url(#arrowhead)";
@@ -431,9 +429,9 @@ class ForceGraph extends React.Component {
       .on("mouseover", (event, d) => {
         return this.handleMouseOver(d);
       })
-      .on("mouseout", () => {
-        return this.handleMouseOut();
-      })
+      // .on("mouseout", () => {
+      //   return this.handleMouseOut();
+      // })
       .on("click", (event, d) => {
         if (event.shiftKey) {
           return this.handleRightClick(d);

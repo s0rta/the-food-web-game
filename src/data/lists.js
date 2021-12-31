@@ -403,7 +403,7 @@ export const nodeList2 = [
     nodeName: "Spotted Sandpiper",
     trophicLevel: 6.011465346,
     desc: "The Spotted Sandpiper is a comon and widespread bird. It is generally not threatened, however it is vulnerable to habitat loss.",
-    imgFile: "spot-sandpiper.jpeg",
+    imgFile: "spot-sandpiper.jpg",
     imgCaption: "Two Spotted Sandpipers standing in water.",
   },
   {
@@ -416,7 +416,7 @@ export const nodeList2 = [
     nodeName: "Surf Scoter",
     trophicLevel: 5.401044854,
     desc: "The Surf Scoter is a species of duck that migrates to the Pacific coast of the United States, where it is vulnerable to oil spills and other pollution.",
-    imgFile: "surf-scoter",
+    imgFile: "surf-scoter.jpg",
     imgCaption: "Two Surf Scoters swimming in water.",
   },
   {
@@ -846,7 +846,7 @@ export const nodeList3 = [
     nodeName: "Spotted Sandpiper",
     trophicLevel: 6.048663155,
     desc: "The Spotted Sandpiper is a comon and widespread bird. It is generally not threatened, however it is vulnerable to habitat loss.",
-    imgFile: "spot-sandpiper.jpeg",
+    imgFile: "spot-sandpiper.jpg",
     imgCaption: "Two Spotted Sandpipers standing in water.",
   },
   {
@@ -859,7 +859,7 @@ export const nodeList3 = [
     nodeName: "Surf Scoter",
     trophicLevel: 5.439532791,
     desc: "The Surf Scoter is a species of duck that migrates to the Pacific coast of the United States, where it is vulnerable to oil spills and other pollution.",
-    imgFile: "surf-scoter",
+    imgFile: "surf-scoter.jpg",
     imgCaption: "Two Surf Scoters swimming in water.",
   },
   {
@@ -1229,7 +1229,7 @@ export const nodeList4 = [
     nodeName: "Haller's Round Ray",
     trophicLevel: 5.635856141,
     desc: "Haller's Round Ray is a species of stingray that lives in shallow coastal waters along the coast of California. Its range extends south to Ecuador. There a some fisheries that target this species but it is generally not considered vulnerable. ",
-    imgFile: "Urabotis.jpg",
+    imgFile: "Urobatis.jpg",
     imgCaption:
       "Yellow stingray, a species of stingray close to Haller's Round Ray.",
   },
@@ -1672,7 +1672,7 @@ export const nodeList4 = [
     nodeName: "Semipalmated Plover",
     trophicLevel: 6.073529614,
     desc: "While the Semipalmated is widespread and common in coastal ecosystems across the United States, this species is considered to be highly vulnerable to climate change.",
-    imgFile: "semi-plover.kpg",
+    imgFile: "semi-plover.jpg",
     imgCaption: "Juvenile Semipalmated Plover walking in sand. ",
   },
   {
@@ -1698,7 +1698,7 @@ export const nodeList4 = [
     nodeName: "Spotted Sandpiper",
     trophicLevel: 6.067402146,
     desc: "The Spotted Sandpiper is a comon and widespread bird. It is generally not threatened, however it is vulnerable to habitat loss.",
-    imgFile: "spot-sandpiper.jpeg",
+    imgFile: "spot-sandpiper.jpg",
     imgCaption: "Two Spotted Sandpipers standing in water.",
   },
   {
@@ -1711,7 +1711,7 @@ export const nodeList4 = [
     nodeName: "Surf Scoter",
     trophicLevel: 5.44794664,
     desc: "The Surf Scoter is a species of duck that migrates to the Pacific coast of the United States, where it is vulnerable to oil spills and other pollution.",
-    imgFile: "surf-scoter",
+    imgFile: "surf-scoter.jpg",
     imgCaption: "Two Surf Scoters swimming in water.",
   },
   {
@@ -2290,7 +2290,7 @@ export const nodeList5 = [
     nodeName: "Striped Shore Crab",
     trophicLevel: 3.7593492,
     desc: "The Striped Shore Crab is a species of crab that lives in muddy areas. This species is likely vulnerable to pollution.",
-    imgFile: "stribe-crab.jpg",
+    imgFile: "stripe-crab.jpg",
     imgCaption: "A Striped Shore Crab standing in a rocky sand patch.",
   },
   {
@@ -2383,7 +2383,7 @@ export const nodeList5 = [
     nodeName: "Haller's Round Ray",
     trophicLevel: 4.038518203,
     desc: "Haller's Round Ray is a species of stingray that lives in shallow coastal waters along the coast of California. Its range extends south to Ecuador. There a some fisheries that target this species but it is generally not considered vulnerable. ",
-    imgFile: "Urabotis.jpg",
+    imgFile: "Urobatis.jpg",
     imgCaption:
       "Yellow stingray, a species of stingray close to Haller's Round Ray.",
   },
@@ -2826,7 +2826,7 @@ export const nodeList5 = [
     nodeName: "Semipalmated Plover",
     trophicLevel: 5.110601835,
     desc: "While the Semipalmated is widespread and common in coastal ecosystems across the United States, this species is considered to be highly vulnerable to climate change.",
-    imgFile: "semi-plover.kpg",
+    imgFile: "semi-plover.jpg",
     imgCaption: "Juvenile Semipalmated Plover walking in sand. ",
   },
   {
@@ -2852,7 +2852,7 @@ export const nodeList5 = [
     nodeName: "Spotted Sandpiper",
     trophicLevel: 4.618698401,
     desc: "The Spotted Sandpiper is a comon and widespread bird. It is generally not threatened, however it is vulnerable to habitat loss.",
-    imgFile: "spot-sandpiper.jpeg",
+    imgFile: "spot-sandpiper.jpg",
     imgCaption: "Two Spotted Sandpipers standing in water.",
   },
   {
@@ -2865,7 +2865,7 @@ export const nodeList5 = [
     nodeName: "Surf Scoter",
     trophicLevel: 3.846247345,
     desc: "The Surf Scoter is a species of duck that migrates to the Pacific coast of the United States, where it is vulnerable to oil spills and other pollution.",
-    imgFile: "surf-scoter",
+    imgFile: "surf-scoter.jpg",
     imgCaption: "Two Surf Scoters swimming in water.",
   },
   {
@@ -3666,7 +3666,7 @@ export const nodeList6 = [
     nodeName: "Butter Clam",
     trophicLevel: 3.448965094,
     desc: "Butter clams are a species of saltwater clam that are vulnerable to ocean acidification.",
-    imgFile: "butter-clam.jpg",
+    imgFile: "butt-clam.jpg",
     imgCaption: "Close up of a Butter Clam.",
   },
   {
@@ -3812,7 +3812,7 @@ export const nodeList6 = [
     nodeName: "Striped Shore Crab",
     trophicLevel: 3.438808122,
     desc: "The Striped Shore Crab is a species of crab that lives in muddy areas. This species is likely vulnerable to pollution.",
-    imgFile: "stribe-crab.jpg",
+    imgFile: "stripe-crab.jpg",
     imgCaption: "A Striped Shore Crab standing in a rocky sand patch.",
   },
   {
@@ -3905,7 +3905,7 @@ export const nodeList6 = [
     nodeName: "Haller's Round Ray",
     trophicLevel: 3.971768914,
     desc: "Haller's Round Ray is a species of stingray that lives in shallow coastal waters along the coast of California. Its range extends south to Ecuador. There a some fisheries that target this species but it is generally not considered vulnerable. ",
-    imgFile: "Urabotis.jpg",
+    imgFile: "Urobatis.jpg",
     imgCaption:
       "Yellow stingray, a species of stingray close to Haller's Round Ray.",
   },
@@ -4348,7 +4348,7 @@ export const nodeList6 = [
     nodeName: "Semipalmated Plover",
     trophicLevel: 4.433030611,
     desc: "While the Semipalmated is widespread and common in coastal ecosystems across the United States, this species is considered to be highly vulnerable to climate change.",
-    imgFile: "semi-plover.kpg",
+    imgFile: "semi-plover.jpg",
     imgCaption: "Juvenile Semipalmated Plover walking in sand. ",
   },
   {
@@ -4374,7 +4374,7 @@ export const nodeList6 = [
     nodeName: "Spotted Sandpiper",
     trophicLevel: 3.979487691,
     desc: "The Spotted Sandpiper is a comon and widespread bird. It is generally not threatened, however it is vulnerable to habitat loss.",
-    imgFile: "spot-sandpiper.jpeg",
+    imgFile: "spot-sandpiper.jpg",
     imgCaption: "Two Spotted Sandpipers standing in water.",
   },
   {
@@ -4387,7 +4387,7 @@ export const nodeList6 = [
     nodeName: "Surf Scoter",
     trophicLevel: 3.811625442,
     desc: "The Surf Scoter is a species of duck that migrates to the Pacific coast of the United States, where it is vulnerable to oil spills and other pollution.",
-    imgFile: "surf-scoter",
+    imgFile: "surf-scoter.jpg",
     imgCaption: "Two Surf Scoters swimming in water.",
   },
   {
@@ -5571,7 +5571,7 @@ export const nodeList7 = [
     nodeName: "Butter Clam",
     trophicLevel: 2.920245399,
     desc: "Butter clams are a species of saltwater clam that are vulnerable to ocean acidification.",
-    imgFile: "butter-clam.jpg",
+    imgFile: "butt-clam.jpg",
     imgCaption: "Close up of a Butter Clam.",
   },
   {
@@ -5901,7 +5901,7 @@ export const nodeList7 = [
     nodeName: "Striped Shore Crab",
     trophicLevel: 3.108737043,
     desc: "The Striped Shore Crab is a species of crab that lives in muddy areas. This species is likely vulnerable to pollution.",
-    imgFile: "stribe-crab.jpg",
+    imgFile: "stripe-crab.jpg",
     imgCaption: "A Striped Shore Crab standing in a rocky sand patch.",
   },
   {
@@ -6062,7 +6062,7 @@ export const nodeList7 = [
     nodeName: "Haller's Round Ray",
     trophicLevel: 3.769553287,
     desc: "Haller's Round Ray is a species of stingray that lives in shallow coastal waters along the coast of California. Its range extends south to Ecuador. There a some fisheries that target this species but it is generally not considered vulnerable. ",
-    imgFile: "Urabotis.jpg",
+    imgFile: "Urobatis.jpg",
     imgCaption:
       "Yellow stingray, a species of stingray close to Haller's Round Ray.",
   },
@@ -6505,7 +6505,7 @@ export const nodeList7 = [
     nodeName: "Semipalmated Plover",
     trophicLevel: 3.015802194,
     desc: "While the Semipalmated is widespread and common in coastal ecosystems across the United States, this species is considered to be highly vulnerable to climate change.",
-    imgFile: "semi-plover.kpg",
+    imgFile: "semi-plover.jpg",
     imgCaption: "Juvenile Semipalmated Plover walking in sand. ",
   },
   {
@@ -6531,7 +6531,7 @@ export const nodeList7 = [
     nodeName: "Spotted Sandpiper",
     trophicLevel: 3.204371166,
     desc: "The Spotted Sandpiper is a comon and widespread bird. It is generally not threatened, however it is vulnerable to habitat loss.",
-    imgFile: "spot-sandpiper.jpeg",
+    imgFile: "spot-sandpiper.jpg",
     imgCaption: "Two Spotted Sandpipers standing in water.",
   },
   {
@@ -6544,7 +6544,7 @@ export const nodeList7 = [
     nodeName: "Surf Scoter",
     trophicLevel: 3.62008463,
     desc: "The Surf Scoter is a species of duck that migrates to the Pacific coast of the United States, where it is vulnerable to oil spills and other pollution.",
-    imgFile: "surf-scoter",
+    imgFile: "surf-scoter.jpg",
     imgCaption: "Two Surf Scoters swimming in water.",
   },
   {
