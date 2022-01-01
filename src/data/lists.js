@@ -662,7 +662,7 @@ export const nodeList3 = [
     nodeName: "Topsmelt",
     trophicLevel: 4.430684945,
     desc: "Topsmelt is a small fish species found in bays and estuaries, among other coastal ecosystems. This species is targeted by commercial fisheries but is considered to have a stable population size.",
-    imgFile: "topsmelt.png",
+    imgFile: "topsmelt.jpg",
     imgCaption: "Topsmelt Silverside on towel.",
   },
   {
@@ -1162,7 +1162,7 @@ export const nodeList4 = [
     nodeName: "Topsmelt",
     trophicLevel: 4.435691704,
     desc: "Topsmelt is a small fish species found in bays and estuaries, among other coastal ecosystems. This species is targeted by commercial fisheries but is considered to have a stable population size.",
-    imgFile: "topsmelt.png",
+    imgFile: "topsmelt.jpg",
     imgCaption: "Topsmelt Silverside on towel.",
   },
   {
@@ -1737,7 +1737,7 @@ export const nodeList4 = [
     nodeName: "Western Grebe",
     trophicLevel: 6.416819526,
     desc: "The Western Grebe is a species of aquatic birds that migrates between fresh water lakes and brackish coastal waters in North America. While this species used to be targeted for its feathers, it is currently only vulnerable to climate change.",
-    imgFile: "w-grebe.png",
+    imgFile: "w-grebe.jpg",
     imgCaption: "Two Western Grebes swimming.",
   },
   {
@@ -2316,7 +2316,7 @@ export const nodeList5 = [
     nodeName: "Topsmelt",
     trophicLevel: 3.367679719,
     desc: "Topsmelt is a small fish species found in bays and estuaries, among other coastal ecosystems. This species is targeted by commercial fisheries but is considered to have a stable population size.",
-    imgFile: "topsmelt.png",
+    imgFile: "topsmelt.jpg",
     imgCaption: "Topsmelt Silverside on towel.",
   },
   {
@@ -2891,7 +2891,7 @@ export const nodeList5 = [
     nodeName: "Western Grebe",
     trophicLevel: 5.074326352,
     desc: "The Western Grebe is a species of aquatic birds that migrates between fresh water lakes and brackish coastal waters in North America. While this species used to be targeted for its feathers, it is currently only vulnerable to climate change.",
-    imgFile: "w-grebe.png",
+    imgFile: "w-grebe.jpg",
     imgCaption: "Two Western Grebes swimming.",
   },
   {
@@ -3733,7 +3733,7 @@ export const nodeList6 = [
     nodeName: "California Assiminea",
     trophicLevel: 1.0,
     desc: "California Assiminea is a species of small, salt-tolerant snails.",
-    imgFile: "assiminea.png",
+    imgFile: "assiminea.jpg",
     imgCaption:
       "Close up of the shell of a snail species similar to California Assiminea.",
   },
@@ -3760,7 +3760,7 @@ export const nodeList6 = [
     nodeName: "Salt Marsh Snail",
     trophicLevel: 1.0,
     desc: "The Salt Marsh Snail, also known as the Marsh periwinkle is a species of sea snail.",
-    imgFile: "snail.png",
+    imgFile: "snail.jpg",
     imgCaption: "A close up of a Salt Marsh Snail.",
   },
   {
@@ -3838,7 +3838,7 @@ export const nodeList6 = [
     nodeName: "Topsmelt",
     trophicLevel: 3.622042017,
     desc: "Topsmelt is a small fish species found in bays and estuaries, among other coastal ecosystems. This species is targeted by commercial fisheries but is considered to have a stable population size.",
-    imgFile: "topsmelt.png",
+    imgFile: "topsmelt.jpg",
     imgCaption: "Topsmelt Silverside on towel.",
   },
   {
@@ -4413,7 +4413,7 @@ export const nodeList6 = [
     nodeName: "Western Grebe",
     trophicLevel: 4.931822641,
     desc: "The Western Grebe is a species of aquatic birds that migrates between fresh water lakes and brackish coastal waters in North America. While this species used to be targeted for its feathers, it is currently only vulnerable to climate change.",
-    imgFile: "w-grebe.png",
+    imgFile: "w-grebe.jpg",
     imgCaption: "Two Western Grebes swimming.",
   },
   {
@@ -5437,7 +5437,7 @@ export const nodeList7 = [
     nodeName: "Glossiphoniidae, leech",
     trophicLevel: 4.29474484,
     desc: "Glossiphoniidae is a family of leeches that are most common in fresh water.",
-    imgFile: "leech.png",
+    imgFile: "leech.jpg",
     imgCaption: "Microscope image of one type of leech.",
   },
   {
@@ -5450,7 +5450,7 @@ export const nodeList7 = [
     nodeName: "Carcinonemertes",
     trophicLevel: 4.04805726,
     desc: "Carcinonemertes is a family of ribbon worms.",
-    imgFile: "Carcinonemertes.jpeg",
+    imgFile: "Carcinonemertes.jpg",
     imgCaption: "Microscopic image of a Carcinonemertes.",
   },
   {
@@ -5463,7 +5463,7 @@ export const nodeList7 = [
     nodeName: "Carcinoma mutabilis",
     trophicLevel: 2.666666667,
     desc: "Carcinoma mutabilis is a species of ribbon worm.",
-    imgFile: "Carcinonemertes.jpeg",
+    imgFile: "Carcinonemertes.jpg",
     imgCaption: "Microscopic image of a Carcinonemertes.",
   },
   {
@@ -5638,7 +5638,7 @@ export const nodeList7 = [
     nodeName: "California Assiminea",
     trophicLevel: 1.0,
     desc: "California Assiminea is a species of small, salt-tolerant snails.",
-    imgFile: "assiminea.png",
+    imgFile: "assiminea.jpg",
     imgCaption:
       "Close up of the shell of a snail species similar to California Assiminea.",
   },
@@ -5665,7 +5665,7 @@ export const nodeList7 = [
     nodeName: "Salt Marsh Snail",
     trophicLevel: 1.0,
     desc: "The Salt Marsh Snail, also known as the Marsh periwinkle is a species of sea snail.",
-    imgFile: "snail.png",
+    imgFile: "snail.jpg",
     imgCaption: "A close up of a Salt Marsh Snail.",
   },
   {
@@ -5941,7 +5941,7 @@ export const nodeList7 = [
     nodeName: "Topsmelt",
     trophicLevel: 3.232745399,
     desc: "Topsmelt is a small fish species found in bays and estuaries, among other coastal ecosystems. This species is targeted by commercial fisheries but is considered to have a stable population size.",
-    imgFile: "topsmelt.png",
+    imgFile: "topsmelt.jpg",
     imgCaption: "Topsmelt Silverside on towel.",
   },
   {
@@ -6570,7 +6570,7 @@ export const nodeList7 = [
     nodeName: "Western Grebe",
     trophicLevel: 4.214908253,
     desc: "The Western Grebe is a species of aquatic birds that migrates between fresh water lakes and brackish coastal waters in North America. While this species used to be targeted for its feathers, it is currently only vulnerable to climate change.",
-    imgFile: "w-grebe.png",
+    imgFile: "w-grebe.jpg",
     imgCaption: "Two Western Grebes swimming.",
   },
   {
@@ -7817,20 +7817,20 @@ export const imgCredit = [
     imgLiscence: "Free to copy and adapt with credit",
   },
   {
-    imgFile: "leech.png",
+    imgFile: "leech.jpg",
     imgCaption: "Microscope image of one type of leech.",
     imgSource:
       "Krittiya Chiangkul, Poramad Tricalairat and Watchariya Purivirojkul",
     imgLiscence: "Free to copy and adapt with credit",
   },
   {
-    imgFile: "Carcinonemertes.jpeg",
+    imgFile: "Carcinonemertes.jpg",
     imgCaption: "Microscopic image of a Carcinonemertes.",
     imgSource: "Christian Ferrer",
     imgLiscence: "Free to copy and adapt with credit",
   },
   {
-    imgFile: "Carcinonemertes.jpeg",
+    imgFile: "Carcinonemertes.jpg",
     imgCaption: "Microscopic image of a Carcinonemertes.",
     imgSource: "Christian Ferrer",
     imgLiscence: "Free to copy and adapt with credit",
@@ -7909,7 +7909,7 @@ export const imgCredit = [
     imgLiscence: "Free for commercial use",
   },
   {
-    imgFile: "assiminea.png",
+    imgFile: "assiminea.jpg",
     imgCaption:
       "Close up of the shell of a snail species similar to California Assiminea.",
     imgSource: "Whelan, NV, Johnson, PD, Harris, PM",
@@ -7922,7 +7922,7 @@ export const imgCredit = [
     imgLiscence: "Free to copy and adapt with credit",
   },
   {
-    imgFile: "snail.png",
+    imgFile: "snail.jpg",
     imgCaption: "A close up of a Salt Marsh Snail.",
     imgSource: "Josve05a",
     imgLiscence: "Free to copy and adapt with credit",
@@ -8036,7 +8036,7 @@ export const imgCredit = [
     imgLiscence: "Free to copy and adapt with credit",
   },
   {
-    imgFile: "topsmelt.png",
+    imgFile: "topsmelt.jpg",
     imgCaption: "Topsmelt Silverside on towel.",
     imgSource: "Theo Modder",
     imgLiscence: "Free to copy and adapt with credit",
@@ -8324,7 +8324,7 @@ export const imgCredit = [
     imgLiscence: "Free for commercial use",
   },
   {
-    imgFile: "w-grebe.png",
+    imgFile: "w-grebe.jpg",
     imgCaption: "Two Western Grebes swimming.",
     imgSource: "Krazytea",
     imgLiscence: "Free to copy and adapt with credit",
