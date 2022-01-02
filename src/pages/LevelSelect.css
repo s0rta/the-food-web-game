@@ -9,6 +9,16 @@
     display:flex;
 }
 
+.levels button {
+  margin: 4px;
+  padding: 20px;
+  font-size: 16px;
+}
+
+.levels button:hover {
+  background: #41414a
+}
+
 .level {
     border: 1px solid black;
     padding: 20px;

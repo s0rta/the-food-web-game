@@ -22,35 +22,36 @@ class LevelSelect extends React.Component {
     console.log(locale);
     return (
       <IntlProvider messages={locale === 'es' ? pageInSpanish : ''} defaultLocale="en" locale={locale}>
-        <div className="level-select">
-          <h1><FormattedMessage id="h1" defaultMessage="Level Select" /></h1>
-          <div className="levels">
-            <Link to="/intro">
-              <div className="level"><FormattedMessage id="div1" defaultMessage="Intro" /></div>
-            </Link>
-            <Link to={`/game/1/${locale}`}>
-              <div className="level">1</div>
-            </Link>
-            <Link to={`/game/2/${locale}`}>
-              <div className="level">2</div>
-            </Link>
-            <Link to={`/game/3/${locale}`}>
-              <div className="level">3</div>
-            </Link>
-            <Link to={`/game/4/${locale}`}>
-              <div className="level">4</div>
-            </Link>
-            <Link to={`/game/5/${locale}`}>
-              <div className="level">5</div>
-            </Link>
-            <Link to={`/game/6/${locale}`}>
-              <div className="level">6</div>
-            </Link>
-            <Link to={`/game/7/${locale}`}>
-              <div className="level">7</div>
-            </Link>
+        <div className="copy-wrap">
+          <div className="container level-select">
+            <h1><FormattedMessage id="h1" defaultMessage="Level Select" /></h1>
+            <div className="levels">
+              <Link to="/intro">
+                <button className="btn"><FormattedMessage id="div1" defaultMessage="Intro" /></button>
+              </Link>
+              <Link to={`/game/1/${locale}`}>
+                <button className="btn">1</button>
+              </Link>
+              <Link to={`/game/2/${locale}`}>
+                <button className="btn">2</button>
+              </Link>
+              <Link to={`/game/3/${locale}`}>
+                <button className="btn">3</button>
+              </Link>
+              <Link to={`/game/4/${locale}`}>
+                <button className="btn">4</button>
+              </Link>
+              <Link to={`/game/5/${locale}`}>
+                <button className="btn">5</button>
+              </Link>
+              <Link to={`/game/6/${locale}`}>
+                <button className="btn">6</button>
+              </Link>
+              <Link to={`/game/7/${locale}`}>
+                <button className="btn">7</button>
+              </Link>
+            </div>
           </div>
-
         </div>
       </IntlProvider>
     )
