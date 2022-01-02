@@ -121,6 +121,7 @@ class SubGraphs extends React.Component {
                 nodes={this.props.nodes}
                 edges={this.props.edges}
                 name={this.props.locale === 'es' ? '' : "sub-graph"}
+                locale={this.props.locale}
               />{" "}
               {this.state.displayed && (
                 <div className="sub-graph-inputs">

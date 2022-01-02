@@ -61,13 +61,14 @@ class MainGraph extends React.Component {
     this.setState({ ticking: true });
   };
 
-  startNextLevel = () => {};
+  startNextLevel = () => { };
 
   render() {
     return (
       <div className="main-graph-wrap">
         <ForceGraph
           colors={this.props.colors}
+          locale={this.props.locale}
           name="svgMain"
           width={window.innerWidth}
           height={window.innerHeight - 54}

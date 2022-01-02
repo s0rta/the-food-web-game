@@ -186,6 +186,7 @@ class Game extends React.Component {
         />
         <MainGraph
           levelData={this.state.levelData}
+          locale={this.state.locale}
           levelOver={this.state.levelOver}
           trophicDisplay={this.state.trophicDisplay}
           winTarget={winTarget}
@@ -213,6 +214,7 @@ class Game extends React.Component {
           nodes={[...this.state.levelNodes]}
           edges={[...this.state.levelEdges]}
           speciesRemaining={this.state.speciesRemaining}
+          locale={this.state.locale}
         />
       </div>
     );

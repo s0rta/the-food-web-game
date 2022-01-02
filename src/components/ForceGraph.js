@@ -48,7 +48,7 @@ class ForceGraph extends React.Component {
   }
 
   isES = (name) => {
-    const es = [
+    const es = this.props.locale === 'en' ? [
       "",
       "wave attenuation",
       "shoreline protection",
@@ -62,7 +62,7 @@ class ForceGraph extends React.Component {
       "recreational fishery",
       "commercial fishery",
       "carbon storage",
-    ];
+    ] : ["Spanish environmental service"];
     let transformed = name.toLowerCase().split("-").join(" ");
     return es.includes(transformed);
   };
