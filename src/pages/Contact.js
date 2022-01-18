@@ -7,9 +7,10 @@ const pageInSpanish = {
   p2: "paragraph2 in spanish {link}"
 }
 
-const locale = "en"
 
-function Contact() {
+function Contact(props) {
+
+  const locale = props.match.params.language;
   return (
     <IntlProvider messages={locale === "es" ? pageInSpanish : ""} locale={locale} defaultLocale="en">
       <div className="contact-wrap copy-wrap">

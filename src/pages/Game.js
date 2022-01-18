@@ -6,8 +6,19 @@ import Modal from "react-modal";
 import * as enLists from "../data/lists";
 import TreeMap from "../components/TreeMap.js";
 
+import { IntlProvider, FormattedMessage } from 'react-intl';
+
 import "./Game.css";
 import { Link } from "react-router-dom";
+
+const componentInSpanish = {
+  level: 'level in spanish',
+  intro: 'introduction in spanish',
+  obj: 'objective in spanish',
+  startLvl: 'start level in spanish',
+  nextLvl: 'next level in spanish',
+  restartLvl: 'restart level in spanish'
+}
 
 class Game extends React.Component {
   constructor(props) {
@@ -152,71 +163,73 @@ class Game extends React.Component {
     };
 
     return (
-      <div className="game-wrap">
-        <Modal isOpen={this.state.isModalOpen} className="levelModal">
-          <h2 class="level-header">Level {this.state.levelData.level} Introduction</h2> <p>{this.state.levelData.intro}</p> <h2 class="level-header">Objective</h2>
-          <p>{this.state.levelData.objective}</p>
-          <button class="btn--primary" onClick={() => this.swapModal()}>Start Level</button>
-        </Modal>
-        {/* Modal for post game screen, using a modal so data transfer is simpler */}
-        <Modal isOpen={this.state.levelOver} className="levelModal levelOverModal">
-          {this.state.levelWon
-            ? this.state.levelData.win
-            : this.state.levelData.lose}
-          <br />
-          {this.state.levelWon && (
-            <Link to={winTarget}>
-              <button className="btn btn--primary">Next Level</button>
-            </Link>
-          )}
-          <button className="btn" onClick={() => window.location.reload()}>
-            Restart Level
-          </button>
-          <button className="btn" onClick={() => this.closeEndModal()}>Explore</button>
-          {/* <button className="btn" onClick={() => this.closeEndModal()}>Explore</button> */}
-          <TreeMap levelOver={this.state.levelOver} nodeList={this.state.levelNodes} />
-        </Modal>
-        <SideBar
-          onToggleModal={this.swapModal}
-          locale={this.state.locale}
-          onToggleTrophic={this.toggleTrophic}
-          onSimulateDisturbance={this.simulateDisturbance}
-          level={this.state.level}
-          data={this.state.hoveredNode}
-        />
-        <MainGraph
-          levelData={this.state.levelData}
-          locale={this.state.locale}
-          levelOver={this.state.levelOver}
-          trophicDisplay={this.state.trophicDisplay}
-          winTarget={winTarget}
-          won={this.state.levelWon}
-          colors={enLists.colors}
-          nodes={[...this.state.levelNodes]}
-          edges={[...this.state.levelEdges]}
-          onNodeHover={this.handleNodeHover}
-          onRightClick={this.handleRightClick}
-          onUpdateESBiomass={this.handleESBiomass}
-          onUpdateSpeciesRemaining={this.handleSpeciesRemaining}
-          onLevelEnd={this.handleLevelEnd}
-          gameStart={this.state.gameStart}
-        />
-        <SubGraphs
-          onLevelLost={this.handleLevelLost}
-          levelOver={this.state.levelOver}
-          levelData={this.state.levelData}
-          esBiomass={this.state.esBiomass}
-          step={this.state.step}
-          onNodeHover={this.handleNodeHover}
-          epiNode={this.state.subGraphEpi}
-          seed={this.state.subSeed}
-          colors={enLists.colors}
-          nodes={[...this.state.levelNodes]}
-          edges={[...this.state.levelEdges]}
-          speciesRemaining={this.state.speciesRemaining}
-          locale={this.state.locale}
-        />
-      </div>
+      <IntlProvider messages={this.state.locale === 'es' ? componentInSpanish : ""} locale={this.state.locale} defaultLocale="en">
+        <div className="game-wrap">
+          <Modal isOpen={this.state.isModalOpen} className="levelModal">
+            <h2 class="level-header"><FormattedMessage id="level" defaultMessage="Level" /> {this.state.levelData.level} <FormattedMessage id="intro" defaultMessage="Introduction" /></h2> <p>{this.state.levelData.intro}</p> <h2 class="level-header"><FormattedMessage id="obj" defaultMessage="Objective" /></h2>
+            <p>{this.state.levelData.objective}</p>
+            <button class="btn--primary" onClick={() => this.swapModal()}><FormattedMessage id="startLvl" defaultMessage="Start Level" /></button>
+          </Modal>
+          {/* Modal for post game screen, using a modal so data transfer is simpler */}
+          <Modal isOpen={this.state.levelOver} className="levelModal levelOverModal">
+            {this.state.levelWon
+              ? this.state.levelData.win
+              : this.state.levelData.lose}
+            <br />
+            {this.state.levelWon && (
+              <Link to={winTarget}>
+                <button className="btn btn--primary"><FormattedMessage id="nextLvl" defaultMessage="Next Level" /></button>
+              </Link>
+            )}
+            <button className="btn" onClick={() => window.location.reload()}>
+              <FormattedMessage id="restartLvl" defaultMessage="Restart Level" />
+            </button>
+            <button className="btn" onClick={() => this.closeEndModal()}>Explore</button>
+            {/* <button className="btn" onClick={() => this.closeEndModal()}>Explore</button> */}
+            <TreeMap levelOver={this.state.levelOver} nodeList={this.state.levelNodes} />
+          </Modal>
+          <SideBar
+            onToggleModal={this.swapModal}
+            locale={this.state.locale}
+            onToggleTrophic={this.toggleTrophic}
+            onSimulateDisturbance={this.simulateDisturbance}
+            level={this.state.level}
+            data={this.state.hoveredNode}
+          />
+          <MainGraph
+            levelData={this.state.levelData}
+            locale={this.state.locale}
+            levelOver={this.state.levelOver}
+            trophicDisplay={this.state.trophicDisplay}
+            winTarget={winTarget}
+            won={this.state.levelWon}
+            colors={enLists.colors}
+            nodes={[...this.state.levelNodes]}
+            edges={[...this.state.levelEdges]}
+            onNodeHover={this.handleNodeHover}
+            onRightClick={this.handleRightClick}
+            onUpdateESBiomass={this.handleESBiomass}
+            onUpdateSpeciesRemaining={this.handleSpeciesRemaining}
+            onLevelEnd={this.handleLevelEnd}
+            gameStart={this.state.gameStart}
+          />
+          <SubGraphs
+            onLevelLost={this.handleLevelLost}
+            levelOver={this.state.levelOver}
+            levelData={this.state.levelData}
+            esBiomass={this.state.esBiomass}
+            step={this.state.step}
+            onNodeHover={this.handleNodeHover}
+            epiNode={this.state.subGraphEpi}
+            seed={this.state.subSeed}
+            colors={enLists.colors}
+            nodes={[...this.state.levelNodes]}
+            edges={[...this.state.levelEdges]}
+            speciesRemaining={this.state.speciesRemaining}
+            locale={this.state.locale}
+          />
+        </div>
+      </IntlProvider>
     );
   }
 }

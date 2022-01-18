@@ -12,9 +12,16 @@ class Credits extends React.Component {
           <h2>
             Acknowledgements
           </h2>
-          <p>We thank members of the Dee Lab, the Principles of Ecology students at the University of Colorado Boulder, and friends and family for providing feedback on earlier drafts of the game. We also thank S. McCarthy, M. Mosher, A. Cohen-Leadholm and their students for piloting this learning module in their high school classes and providing feedback on earlier drafts of this learning module. This work was supported by microgrants from the University of Colorado Office of Outreach and Engagement.</p>
+          <p>We thank members of the Dee Lab, the Principles of Ecology students at the University of Colorado Boulder, and friends and family for providing feedback on earlier drafts of the game. We also thank S. McCarthy, M. Mosher, A. Cohen-Leadholm and their high school students for piloting this learning module in their classes and providing feedback on earlier drafts of this learning module. This work was supported by microgrants from the University of Colorado Office of Outreach and Engagement and the National Science Foundation.</p>
           <h2>Contributions</h2>
-          <p>A. Keyes led the design and development of the game with the help of J. Wright, L. Dee and D. Larremore. J. Wright programmed the entire game. A. Keyes developed the lesson plan and assessment materials with guidance from L. Corwin and L. Dee.</p>
+          <p>
+            <a href="https://aislynkeyes.weebly.com/">A. Keyes</a>{" "}
+            led the design and development of the game with the help of J. Wright,{" "}
+            <a href="https://www.lauraedee.com">L. Dee</a>{" "} and{" "}
+            <a href="https://larremorelab.github.io/">D. Larremore.</a>{" "}
+            J. Wright programmed the entire game. A. Keyes developed the lesson plan and assessment materials with guidance from{" "}
+            <a href="https://www.colorado.edu/lab/corwin-reach/">L. Corwin</a>{" "} and L. Dee.
+          </p>
           <h2>Icon Credit</h2>
           <p>Icons were collected from the Noun Project with creative commons usage rights.</p>
 
