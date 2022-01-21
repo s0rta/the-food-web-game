@@ -9,20 +9,20 @@ class ForceGraph extends React.Component {
 
     let nodeList = this.props.nodes
       ? [
-        ...this.props.nodes.map((n) => {
-          n.living = true;
-          n.saved = false;
-          return n;
-        }),
-      ]
+          ...this.props.nodes.map((n) => {
+            n.living = true;
+            n.saved = false;
+            return n;
+          }),
+        ]
       : [];
     let edgeList = this.props.edges
       ? [
-        ...this.props.edges.map((n) => {
-          n.living = true;
-          return n;
-        }),
-      ]
+          ...this.props.edges.map((n) => {
+            n.living = true;
+            return n;
+          }),
+        ]
       : [];
 
     this.state = {
@@ -43,40 +43,47 @@ class ForceGraph extends React.Component {
       seed: this.props.seed,
       step: 0,
       saves: this.props.levelData && this.props.levelData.saves,
-      didNodeDie: false
+      didNodeDie: false,
     };
   }
 
   isES = (name) => {
-    const es = this.props.locale === 'en' ? [
-      "",
-      "wave attenuation",
-      "shoreline protection",
-      "shoreline stabilization",
-      "carbon sequestration",
-      "water filtration",
-      "commfishery",
-      "birdwatching",
-      "waterfowl hunting",
-      "recfishery",
-      "recreational fishery",
-      "commercial fishery",
-      "carbon storage",
-    ] : ["Spanish environmental service"];
+    const es =
+      this.props.locale === "en"
+        ? [
+            "",
+            "wave attenuation",
+            "shoreline protection",
+            "shoreline stabilization",
+            "carbon sequestration",
+            "water filtration",
+            "commfishery",
+            "birdwatching",
+            "waterfowl hunting",
+            "recfishery",
+            "recreational fishery",
+            "commercial fishery",
+            "carbon storage",
+          ]
+        : ["Spanish environmental service"];
     let transformed = name.toLowerCase().split("-").join(" ");
     return es.includes(transformed);
   };
 
   handleMouseOver(d) {
     this.props.onNodeHover(d);
-    d3.selectAll('line').attr('class', (e) => {
-      const edgeClass = e.Type === 'Feeding' ? 'line-feeding ' : 'line-es ';
-      if (e.source.speciesID !== d.speciesID && e.target.speciesID !== d.speciesID) {
-        return edgeClass + ' line-faded'
+    d3.selectAll("line").attr("class", (e) => {
+      let edgeClass = e.Type === "Feeding" ? "line-feeding " : "line-es ";
+      edgeClass = e.living ? edgeClass : edgeClass + " dead";
+      if (
+        e.source.speciesID !== d.speciesID &&
+        e.target.speciesID !== d.speciesID
+      ) {
+        return edgeClass + " line-faded";
       } else {
         return edgeClass;
       }
-    })
+    });
   }
 
   // handleMouseOut() {
@@ -190,7 +197,6 @@ class ForceGraph extends React.Component {
     this.setState({ edgeList: newEdges });
   };
 
-
   checkNode = (node) => {
     if (node.living) {
       let deadBiomass = 0;
@@ -212,7 +218,7 @@ class ForceGraph extends React.Component {
           biomass += targetBiomass;
           links++;
           types.add(edge.target.organismType);
-          livingTypes.add(edge.target.organismType)
+          livingTypes.add(edge.target.organismType);
           return true;
         } else if (edge.source.speciesID === node.speciesID) {
           biomass += targetBiomass;
@@ -225,26 +231,21 @@ class ForceGraph extends React.Component {
         }
       });
       let check =
-        ((
-          (deadBiomass === 0 ||
-            deadBiomass / biomass <= 0.31) &&
-
-          (deadLinks === 0 ||
-            deadLinks / links <= 0.50)
-          &&
-          (deadTypes.size === 0 || ([...deadTypes].filter((n) => !livingTypes.has(n)).length / types.size) <= 0.50)
-        )
-          ||
-          node.organismType === "Ecosystem Service");
+        ((deadBiomass === 0 || deadBiomass / biomass <= 0.31) &&
+          (deadLinks === 0 || deadLinks / links <= 0.5) &&
+          (deadTypes.size === 0 ||
+            [...deadTypes].filter((n) => !livingTypes.has(n)).length /
+              types.size <=
+              0.5)) ||
+        node.organismType === "Ecosystem Service";
       node.living = check;
       if (!check) {
-        this.setState({ didNodeDie: true })
+        this.setState({ didNodeDie: true });
         this.killLinks(node.speciesID);
       }
     }
     return node;
-
-  }
+  };
 
   gameTick = () => {
     if (this.props.gameClock <= this.props.levelData.initialKills) {
@@ -266,7 +267,7 @@ class ForceGraph extends React.Component {
           this.props.onSpeciesRemove();
 
           // make sure the anything that would die second hand does
-          nodes.map(n => this.checkNode(n))
+          nodes.map((n) => this.checkNode(n));
         }
       }
       this.setState({ nodeList: nodes });
@@ -276,9 +277,9 @@ class ForceGraph extends React.Component {
     } else if (this.props.gameClock > this.props.levelData.initialKills) {
       //checking for dead nodes after the initial kills have happened
 
-      this.setState({ didNodeDie: false })
+      this.setState({ didNodeDie: false });
       let nodes = this.state.nodeList;
-      nodes.map(n => {
+      nodes.map((n) => {
         // WHEN USING BIOMASS FOR DEAD
         // if(node.living) {
         //     let deadBiomass = 0;
@@ -390,7 +391,7 @@ class ForceGraph extends React.Component {
         return d.target.y;
       })
       .attr("class", (d) => {
-        return (d.Type === "Feeding" ? "line-feeding" : "line-es");
+        return d.Type === "Feeding" ? "line-feeding" : "line-es";
       })
       .attr("marker-end", () => {
         return "url(#arrowhead)";
@@ -406,9 +407,7 @@ class ForceGraph extends React.Component {
         d3
           .symbol()
           .size((d) => {
-            let size = this.isES(d.nodeName)
-              ? 900
-              : 750;
+            let size = this.isES(d.nodeName) ? 900 : 750;
             return size;
           })
           .type((d) => {
@@ -467,7 +466,7 @@ class ForceGraph extends React.Component {
 
     simulation.on("tick", () => {
       nodes
-        .attr("transform", function(d) {
+        .attr("transform", function (d) {
           return "translate(" + d.x + "," + d.y + ")";
         })
         .classed("dead", (d) => !d.living)
@@ -477,9 +476,7 @@ class ForceGraph extends React.Component {
           d3
             .symbol()
             .size((d) => {
-              let size = this.isES(d.nodeName)
-                ? 900
-                : d.saved ? 1000 : 750;
+              let size = this.isES(d.nodeName) ? 900 : d.saved ? 1000 : 750;
               return size;
             })
             .type((d) => {
@@ -488,7 +485,7 @@ class ForceGraph extends React.Component {
                 : d3.symbolCircle;
               return test;
             })
-        )
+        );
       links = g_links
         .selectAll("line")
         .attr("x2", (d) => {
@@ -575,9 +572,9 @@ class ForceGraph extends React.Component {
           "y",
           this.props.trophic
             ? d3
-              .forceY()
-              .strength(5)
-              .y((d) => this.tl2y(d.trophicLevel))
+                .forceY()
+                .strength(5)
+                .y((d) => this.tl2y(d.trophicLevel))
             : d3.forceY(this.props.height / 2)
         )
         .alpha(0.1);

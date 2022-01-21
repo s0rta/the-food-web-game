@@ -1,28 +1,27 @@
 .nodes {
-    stroke-width: 1;
-    stroke: white;
+  stroke-width: 1;
+  stroke: white;
 }
 
 .line-feeding {
-    stroke: grey;
-}
-
-.line-faded {
-  opacity: 0.1;
   stroke: grey;
 }
 
+.line-faded {
+  opacity: 0.3;
+}
+
 .line-es {
-    stroke: black;
+  stroke: black;
 }
 
 .saved {
-    stroke: #00c100;
-    stroke-width: 4;
+  stroke: #00c100;
+  stroke-width: 4;
 }
 
 .dead {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .sub-force-graph.container {
