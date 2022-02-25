@@ -14,31 +14,33 @@ const componentInSpanish = {
   trophButton: "spanishTrophicButton",
   cardBio: "spanishCardBiomass",
   cardType: "spanishCardType",
-  cardTroph: "spanishCardTrophic"
-}
+  cardTroph: "spanishCardTrophic",
+};
 
 class SideBar extends React.Component {
   constructor(props) {
-    super(props)
-
+    super(props);
   }
 
   isES = (name) => {
-    const es = this.props.locale == "es" ? [
-      "",
-      "wave attenuation",
-      "shoreline protection",
-      "shoreline stabilization",
-      "carbon sequestration",
-      "water filtration",
-      "commfishery",
-      "birdwatching",
-      "waterfowl hunting",
-      "recfishery",
-      "recreational fishery",
-      "commercial fishery",
-      "carbon storage",
-    ] : [];
+    const es =
+      this.props.locale == "es"
+        ? [
+            "",
+            "wave attenuation",
+            "shoreline protection",
+            "shoreline stabilization",
+            "carbon sequestration",
+            "water filtration",
+            "commfishery",
+            "birdwatching",
+            "waterfowl hunting",
+            "recfishery",
+            "recreational fishery",
+            "commercial fishery",
+            "carbon storage",
+          ]
+        : [];
     let transformed = name.toLowerCase().split("-").join(" ");
     return es.includes(transformed);
   };
@@ -53,27 +55,60 @@ class SideBar extends React.Component {
 
   handleSimulateDisturbance = () => {
     this.props.onSimulateDisturbance();
-  }
+  };
 
   render() {
     return (
-      <IntlProvider messages={this.props.locale === "es" ? componentInSpanish : ""} locale={this.props.locale} defaultLocale="en">
+      <IntlProvider
+        messages={this.props.locale === "es" ? componentInSpanish : ""}
+        locale={this.props.locale}
+        defaultLocale="en"
+      >
         <div className="sidebar-wrap">
           <div class="container">
             <h1 class="level-header">
-              <FormattedMessage id="h1" defaultMessage="Level" /> <span id="level">{this.props.level}</span>
+              <FormattedMessage id="h1" defaultMessage="Level" />{" "}
+              <span id="level">{this.props.level}</span>
             </h1>
             <button className="btn" onClick={this.handleModal}>
-              <FormattedMessage id="objectiveButton" defaultMessage="Show Objective" />
+              <FormattedMessage
+                id="objectiveButton"
+                defaultMessage="Show Objective"
+              />
             </button>
-            <Link to={"/level-select/" + this.props.locale}>
-              <button className="btn"><FormattedMessage id="levelButton" defaultMessage="Level Select" /></button>
+            <Link
+              to={
+                "/level-select/" +
+                this.props.difficulty +
+                "/" +
+                this.props.locale
+              }
+            >
+              <button className="btn">
+                <FormattedMessage
+                  id="levelButton"
+                  defaultMessage="Level Select"
+                />
+              </button>
             </Link>
-            <button className="btn" onClick={() => window.location.reload()}><FormattedMessage id="resetButton" defaultMessage="Reset" /></button>
-            <button className="btn" onClick={this.handleTrophicToggle}>
-              <FormattedMessage id="trophButton" defaultMessage="Toggle Trophic" />
+            <button className="btn" onClick={() => window.location.reload()}>
+              <FormattedMessage id="resetButton" defaultMessage="Reset" />
             </button>
-            <button className="btn--primary sim-button" onClick={this.handleSimulateDisturbance}><FormattedMessage id="simButton" defaultMessage="Simulate Disturbance" /></button>
+            <button className="btn" onClick={this.handleTrophicToggle}>
+              <FormattedMessage
+                id="trophButton"
+                defaultMessage="Toggle Trophic"
+              />
+            </button>
+            <button
+              className="btn--primary sim-button"
+              onClick={this.handleSimulateDisturbance}
+            >
+              <FormattedMessage
+                id="simButton"
+                defaultMessage="Simulate Disturbance"
+              />
+            </button>
           </div>
           <div className="container">
             {this.props.data ? (
@@ -84,7 +119,9 @@ class SideBar extends React.Component {
                   alt=""
                 />
                 <h2 className="name">
-                  <span className="name-filler">{this.props.data.nodeName}</span>
+                  <span className="name-filler">
+                    {this.props.data.nodeName}
+                  </span>
                 </h2>
                 <p className="biomass">
                   <FormattedMessage id="cardBio" defaultMessage="Biomass" />:{" "}
@@ -101,7 +138,11 @@ class SideBar extends React.Component {
                   </span>
                 </p>
                 <p className="trophic">
-                  <FormattedMessage id="cardTrop" defaultMessage="Trophic Level" />:{" "}
+                  <FormattedMessage
+                    id="cardTrop"
+                    defaultMessage="Trophic Level"
+                  />
+                  :{" "}
                   <span className="trophic-filler">
                     {this.props.data.trophicLevel.toFixed(2)}
                   </span>

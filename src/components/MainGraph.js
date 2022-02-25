@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TopBar from './TopBar';
+import TopBar from "./TopBar";
 
 import ForceGraph from "./ForceGraph";
 import "./MainGraph.css";
@@ -43,10 +43,10 @@ class MainGraph extends React.Component {
     this.props.onUpdateESBiomass(bioArr, step);
   };
 
-  handleLevelEnd = (d) => {
+  handleLevelEnd = (d, msg = "") => {
     // this.setState({ticking: false})
     window.clearInterval(this.state.clockTicker);
-    this.props.onLevelEnd(d);
+    this.props.onLevelEnd(d, msg);
   };
 
   handleSpeciesRemove = () => {
@@ -61,7 +61,7 @@ class MainGraph extends React.Component {
     this.setState({ ticking: true });
   };
 
-  startNextLevel = () => { };
+  startNextLevel = () => {};
 
   render() {
     return (
@@ -85,6 +85,7 @@ class MainGraph extends React.Component {
           onSpeciesRemove={this.handleSpeciesRemove}
           onUpdateSpeciesRemaining={this.handleSpeciesRemaining}
           gameClock={this.state.clock}
+          reqSpecies={this.props.reqSpecies}
         />
 
         <div className="controls container">

@@ -4,33 +4,35 @@ import MainGraph from "../components/MainGraph.js";
 import SubGraphs from "../components/SubGraphs.js";
 import Modal from "react-modal";
 import * as enLists from "../data/lists";
+import * as enRockyLists from "../data/list-rocky";
 import TreeMap from "../components/TreeMap.js";
 
-import { IntlProvider, FormattedMessage } from 'react-intl';
+import { IntlProvider, FormattedMessage } from "react-intl";
 
 import "./Game.css";
 import { Link } from "react-router-dom";
 
 const componentInSpanish = {
-  level: 'level in spanish',
-  intro: 'introduction in spanish',
-  obj: 'objective in spanish',
-  startLvl: 'start level in spanish',
-  nextLvl: 'next level in spanish',
-  restartLvl: 'restart level in spanish'
-}
+  level: "level in spanish",
+  intro: "introduction in spanish",
+  obj: "objective in spanish",
+  startLvl: "start level in spanish",
+  nextLvl: "next level in spanish",
+  restartLvl: "restart level in spanish",
+};
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
 
-    let [levelNodes, levelEdges, levelData] = this.getLevelData();
+    let [levelNodes, levelEdges, levelData, reqSpecies] = this.getLevelData();
 
     this.state = {
       level: this.props.match.params.level,
       levelNodes: levelNodes,
       levelEdges: levelEdges,
       levelData: levelData,
+      reqSpecies: reqSpecies,
       speciesRemaining: -1,
       subGraphNodes: [],
       subGraphEdges: [],
@@ -42,17 +44,23 @@ class Game extends React.Component {
       levelWon: true,
       trophicDisplay: true,
       gameStart: false,
-      locale: this.props.match.params.language
+      locale: this.props.match.params.language,
+      levelMsg: "",
     };
   }
 
   getLevelData = () => {
-    console.log(this.props.match.params)
     let levelNodes;
     let levelEdges;
     let levelData;
+    let reqSpecies;
+    let lists;
 
-    const lists = this.props.match.params.language === 'en' ? enLists : ''
+    if (this.props.match.params.difficulty === "hard") {
+      lists = this.props.match.params.language === "en" ? enLists : "";
+    } else {
+      lists = this.props.match.params.language === "en" ? enRockyLists : "";
+    }
 
     switch (this.props.match.params.level) {
       case "1":
@@ -69,6 +77,7 @@ class Game extends React.Component {
         levelNodes = lists.nodeList3;
         levelEdges = lists.edgeList3;
         levelData = lists.levels[2];
+        reqSpecies = ["Fish"];
         break;
       case "4":
         levelNodes = lists.nodeList4;
@@ -100,18 +109,19 @@ class Game extends React.Component {
         levelData = lists.levels[6][3];
         break;
     }
-    return [levelNodes, levelEdges, levelData];
+    return [levelNodes, levelEdges, levelData, reqSpecies];
   };
 
-  componentDidMount() { }
+  componentDidMount() {}
 
   handleLevelLost = () => {
-    this.setState({ levelWon: false })
-  }
+    this.setState({ levelWon: false });
+  };
 
-  handleLevelEnd = () => {
+  handleLevelEnd = (won, msg) => {
     // setTimeout(() => {
-    this.setState({ levelOver: true });
+    console.log(msg);
+    this.setState({ levelOver: true, levelWon: won, levelMsg: msg });
     // }, 2000);
   };
 
@@ -144,12 +154,12 @@ class Game extends React.Component {
   };
 
   toggleTrophic = () => {
-    this.setState({ trophicDisplay: !this.state.trophicDisplay })
-  }
+    this.setState({ trophicDisplay: !this.state.trophicDisplay });
+  };
 
   simulateDisturbance = () => {
-    this.setState({ gameStart: true })
-  }
+    this.setState({ gameStart: true });
+  };
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.level !== prevProps.match.params.level) {
@@ -159,34 +169,66 @@ class Game extends React.Component {
 
   render() {
     const winTarget = {
-      pathname: this.props.match.params.level > 7 ? `/` : `/game/${parseFloat(this.props.match.params.level) + 1}/${this.props.match.params.language}`,
+      pathname:
+        this.props.match.params.level > 7
+          ? `/`
+          : `/game/${parseFloat(this.props.match.params.level) + 1}/${
+              this.props.match.params.difficulty
+            }/${this.props.match.params.language}`,
     };
 
     return (
-      <IntlProvider messages={this.state.locale === 'es' ? componentInSpanish : ""} locale={this.state.locale} defaultLocale="en">
+      <IntlProvider
+        messages={this.state.locale === "es" ? componentInSpanish : ""}
+        locale={this.state.locale}
+        defaultLocale="en"
+      >
         <div className="game-wrap">
           <Modal isOpen={this.state.isModalOpen} className="levelModal">
-            <h2 class="level-header"><FormattedMessage id="level" defaultMessage="Level" /> {this.state.levelData.level} <FormattedMessage id="intro" defaultMessage="Introduction" /></h2> <p>{this.state.levelData.intro}</p> <h2 class="level-header"><FormattedMessage id="obj" defaultMessage="Objective" /></h2>
+            <h2 class="level-header">
+              <FormattedMessage id="level" defaultMessage="Level" />{" "}
+              {this.state.levelData.level}{" "}
+              <FormattedMessage id="intro" defaultMessage="Introduction" />
+            </h2>{" "}
+            <p>{this.state.levelData.intro}</p>{" "}
+            <h2 class="level-header">
+              <FormattedMessage id="obj" defaultMessage="Objective" />
+            </h2>
             <p>{this.state.levelData.objective}</p>
-            <button class="btn--primary" onClick={() => this.swapModal()}><FormattedMessage id="startLvl" defaultMessage="Start Level" /></button>
+            <button class="btn--primary" onClick={() => this.swapModal()}>
+              <FormattedMessage id="startLvl" defaultMessage="Start Level" />
+            </button>
           </Modal>
           {/* Modal for post game screen, using a modal so data transfer is simpler */}
-          <Modal isOpen={this.state.levelOver} className="levelModal levelOverModal">
-            {this.state.levelWon
+          <Modal
+            isOpen={this.state.levelOver}
+            className="levelModal levelOverModal"
+          >
+            {this.state.msg || this.state.levelWon
               ? this.state.levelData.win
               : this.state.levelData.lose}
             <br />
             {this.state.levelWon && (
               <Link to={winTarget}>
-                <button className="btn btn--primary"><FormattedMessage id="nextLvl" defaultMessage="Next Level" /></button>
+                <button className="btn btn--primary">
+                  <FormattedMessage id="nextLvl" defaultMessage="Next Level" />
+                </button>
               </Link>
             )}
             <button className="btn" onClick={() => window.location.reload()}>
-              <FormattedMessage id="restartLvl" defaultMessage="Restart Level" />
+              <FormattedMessage
+                id="restartLvl"
+                defaultMessage="Restart Level"
+              />
             </button>
-            <button className="btn" onClick={() => this.closeEndModal()}>Explore</button>
+            <button className="btn" onClick={() => this.closeEndModal()}>
+              Explore
+            </button>
             {/* <button className="btn" onClick={() => this.closeEndModal()}>Explore</button> */}
-            <TreeMap levelOver={this.state.levelOver} nodeList={this.state.levelNodes} />
+            <TreeMap
+              levelOver={this.state.levelOver}
+              nodeList={this.state.levelNodes}
+            />
           </Modal>
           <SideBar
             onToggleModal={this.swapModal}
@@ -195,6 +237,7 @@ class Game extends React.Component {
             onSimulateDisturbance={this.simulateDisturbance}
             level={this.state.level}
             data={this.state.hoveredNode}
+            difficulty={this.props.match.params.difficulty}
           />
           <MainGraph
             levelData={this.state.levelData}
@@ -212,6 +255,7 @@ class Game extends React.Component {
             onUpdateSpeciesRemaining={this.handleSpeciesRemaining}
             onLevelEnd={this.handleLevelEnd}
             gameStart={this.state.gameStart}
+            reqSpecies={this.state.reqSpecies}
           />
           <SubGraphs
             onLevelLost={this.handleLevelLost}

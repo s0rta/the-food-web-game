@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { IntlProvider, FormattedMessage } from 'react-intl';
+import { IntlProvider, FormattedMessage } from "react-intl";
 
 import { Button, Wrapper, Menu, MenuItem } from "react-aria-menubutton";
 
@@ -17,9 +17,8 @@ const pageInSpanish = {
   introDop: "sIntro",
   tutorialDrop: "sTut",
   rockyDrop: "sRocky",
-  saltDrop: "sSalt"
-}
-
+  saltDrop: "sSalt",
+};
 
 class Nav extends React.Component {
   constructor(props) {
@@ -28,14 +27,24 @@ class Nav extends React.Component {
   render() {
     const locale = this.props.language;
     return (
-      <IntlProvider messages={locale === "es" ? pageInSpanish : ""} locale={locale} defaultLocale="en">
+      <IntlProvider
+        messages={locale === "es" ? pageInSpanish : ""}
+        locale={locale}
+        defaultLocale="en"
+      >
         <div class="nav-bar">
           <div class="left-nav">
             <Link to={"/" + locale} className="nav-title nav-elm">
-              <FormattedMessage id="homeLink" defaultMessage="The Food Web Game" />
+              <FormattedMessage
+                id="homeLink"
+                defaultMessage="The Food Web Game"
+              />
             </Link>
             <Link to={"/for-educators/" + locale} className="nav-elm">
-              <FormattedMessage id="educatorsLink" defaultMessage="For Educators" />
+              <FormattedMessage
+                id="educatorsLink"
+                defaultMessage="For Educators"
+              />
             </Link>
             <Link to={"/glossary/" + locale} className="nav-elm">
               <FormattedMessage id="glossaryLink" defaultMessage="Glossary" />
@@ -57,29 +66,41 @@ class Nav extends React.Component {
                   <li key="2">
                     <Link to={"/intro/" + locale}>
                       <MenuItem className="playMenuButton-menuItem">
-                        <FormattedMessage id="introDop" defaultMessage="Introduction to Key Concepts" />
+                        <FormattedMessage
+                          id="introDop"
+                          defaultMessage="Introduction to Key Concepts"
+                        />
                       </MenuItem>
                     </Link>
                   </li>
                   <li key="3">
                     <Link to={"/tutorial/" + locale}>
                       <MenuItem className="playMenuButton-menuItem">
-                        <FormattedMessage id="tutorialDrop" defaultMessage="Tutorial" />
+                        <FormattedMessage
+                          id="tutorialDrop"
+                          defaultMessage="Tutorial"
+                        />
                       </MenuItem>
                     </Link>
                   </li>
                   <li key="1">
-                    <Link to={"/"}>
+                    <Link to={"/level-select/easy/" + locale}>
                       <MenuItem className="playMenuButton-menuItem">
-                        <FormattedMessage id="rockyDrop" defaultMessage="Play Rocky Inner Tidal (Coming soon) (Easy)" />
+                        <FormattedMessage
+                          id="rockyDrop"
+                          defaultMessage="Play Rocky Inner Tidal (Coming soon) (Easy)"
+                        />
                       </MenuItem>
                     </Link>
                   </li>
 
                   <li key="0">
-                    <Link to={"/level-select/" + locale}>
+                    <Link to={"/level-select/hard/" + locale}>
                       <MenuItem className="playMenuButton-menuItem">
-                        <FormattedMessage id="saltDrop" defaultMessage="Play Salt Marsh (Hard)" />
+                        <FormattedMessage
+                          id="saltDrop"
+                          defaultMessage="Play Salt Marsh (Hard)"
+                        />
                       </MenuItem>
                     </Link>
                   </li>
@@ -88,7 +109,7 @@ class Nav extends React.Component {
             </Wrapper>
           </div>
         </div>
-      </IntlProvider >
+      </IntlProvider>
     );
   }
 }

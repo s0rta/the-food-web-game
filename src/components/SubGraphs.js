@@ -23,9 +23,8 @@ const componentInSpanish = {
   iaa: "spanish insect &c.",
   f: "spanish fish",
   p: "spanish plankton",
-  mol: "spanish mollusc"
-
-}
+  mol: "spanish mollusc",
+};
 
 class SubGraphs extends React.Component {
   constructor(props) {
@@ -103,7 +102,11 @@ class SubGraphs extends React.Component {
 
   render() {
     return (
-      <IntlProvider messages={this.props.locale === "es" ? componentInSpanish : ""} defaultLocale="en" locale={this.props.locale} >
+      <IntlProvider
+        messages={this.props.locale === "es" ? componentInSpanish : ""}
+        defaultLocale="en"
+        locale={this.props.locale}
+      >
         <div className="sub-graph-wrap">
           {this.props.step === 0 && this.props.seed && (
             <div className="sub-force-graph container">
@@ -120,12 +123,18 @@ class SubGraphs extends React.Component {
                 colors={this.props.colors}
                 nodes={this.props.nodes}
                 edges={this.props.edges}
-                name={this.props.locale === 'es' ? '' : "sub-graph"}
+                name={this.props.locale === "es" ? "" : "sub-graph"}
                 locale={this.props.locale}
               />{" "}
               {this.state.displayed && (
                 <div className="sub-graph-inputs">
-                  <span><FormattedMessage id="los" defaultMessage="Levels of Separation" />: {this.state.n}</span>
+                  <span>
+                    <FormattedMessage
+                      id="los"
+                      defaultMessage="Levels of Separation"
+                    />
+                    : {this.state.n}
+                  </span>
                   <button class="btn" onClick={this.decN}>
                     -
                   </button>
@@ -156,18 +165,24 @@ class SubGraphs extends React.Component {
             </div>
           )}
           <br />
-          <div className={this.props.levelOver ? "plots" : "plotsHidden"} >
+          <div className={this.props.levelOver ? "plots" : "plotsHidden"}>
             <ServiceCount
               locale={this.props.locale}
               onLevelLost={this.handleLevelLost}
               biomass={this.props.esBiomass}
-              display={this.props.levelData.shownGraphs.includes("num-services")}
+              display={this.props.levelData.shownGraphs.includes(
+                "num-services"
+              )}
               pos={this.props.esBiomass[0]}
             />
             <Plot
               locale={this.props.locale}
-              yAxis={this.props.locale === 'es' ? "" : "% of species remaining in food web"}
-              name={this.props.locale === 'es' ? '' : "Species Remaining"}
+              yAxis={
+                this.props.locale === "es"
+                  ? ""
+                  : "% of species remaining in food web"
+              }
+              name={this.props.locale === "es" ? "" : "Species Remaining"}
               onLevelLost={this.handleLevelLost}
               step={this.props.step}
               id="species-remaining"
@@ -179,8 +194,10 @@ class SubGraphs extends React.Component {
               pos={this.props.speciesRemaining}
             />
             <Plot
-              yAxis={this.props.locale === 'es' ? "" : "% of ecosystem service left"}
-              name={this.props.locale === 'es' ? '' : "Wave Attenuation"}
+              yAxis={
+                this.props.locale === "es" ? "" : "% of ecosystem service left"
+              }
+              name={this.props.locale === "es" ? "" : "Wave Attenuation"}
               onLevelLost={this.handleLevelLost}
               step={this.props.step}
               id="wave-attenuation"
@@ -192,8 +209,10 @@ class SubGraphs extends React.Component {
               pos={this.props.esBiomass[0]}
             />
             <Plot
-              yAxis={this.props.locale === 'es' ? "" : "% of ecosystem service left"}
-              name={this.props.locale === 'es' ? '' : "Shoreline Protection"}
+              yAxis={
+                this.props.locale === "es" ? "" : "% of ecosystem service left"
+              }
+              name={this.props.locale === "es" ? "" : "Shoreline Protection"}
               onLevelLost={this.handleLevelLost}
               step={this.props.step}
               id="shoreline-protection"
@@ -205,8 +224,10 @@ class SubGraphs extends React.Component {
               pos={this.props.esBiomass[1]}
             />
             <Plot
-              yAxis={this.props.locale === 'es' ? "" : "% of ecosystem service left"}
-              name={this.props.locale === 'es' ? '' : "Carbon Storage"}
+              yAxis={
+                this.props.locale === "es" ? "" : "% of ecosystem service left"
+              }
+              name={this.props.locale === "es" ? "" : "Carbon Storage"}
               onLevelLost={this.handleLevelLost}
               step={this.props.step}
               id="carbon-storage"
@@ -218,8 +239,10 @@ class SubGraphs extends React.Component {
               pos={this.props.esBiomass[2]}
             />
             <Plot
-              yAxis={this.props.locale === 'es' ? "" : "% of ecosystem service left"}
-              name={this.props.locale === 'es' ? '' : "Water Filtration"}
+              yAxis={
+                this.props.locale === "es" ? "" : "% of ecosystem service left"
+              }
+              name={this.props.locale === "es" ? "" : "Water Filtration"}
               onLevelLost={this.handleLevelLost}
               step={this.props.step}
               id="water-filtration"
@@ -231,10 +254,13 @@ class SubGraphs extends React.Component {
               pos={this.props.esBiomass[3]}
             />
             <Plot
-              yAxis={this.props.locale === 'es' ? "" : "% of ecosystem service left"}
-              name={this.props.locale === 'es' ? '' : "Commercial Fishery"}
+              yAxis={
+                this.props.locale === "es" ? "" : "% of ecosystem service left"
+              }
+              name={this.props.locale === "es" ? "" : "Commercial Fishery"}
               onLevelLost={this.handleLevelLost}
               step={this.props.step}
+              requiredSpecies="fish"
               id="commercial-fishery"
               index={750}
               failLine={50}
@@ -244,19 +270,25 @@ class SubGraphs extends React.Component {
               pos={this.props.esBiomass[4]}
             />
             <Plot
-              yAxis={this.props.locale === 'es' ? "" : "% of ecosystem service left"}
-              name={this.props.locale === 'es' ? '' : "Bird Watching"}
+              yAxis={
+                this.props.locale === "es" ? "" : "% of ecosystem service left"
+              }
+              name={this.props.locale === "es" ? "" : "Bird Watching"}
               onLevelLost={this.handleLevelLost}
               step={this.props.step}
               id="bird-watching"
               index={850}
               failLine={50}
-              display={this.props.levelData.shownGraphs.includes("bird-watching")}
+              display={this.props.levelData.shownGraphs.includes(
+                "bird-watching"
+              )}
               pos={this.props.esBiomass[5]}
             />
             <Plot
-              yAxis={this.props.locale === 'es' ? "" : "% of ecosystem service left"}
-              name={this.props.locale === 'es' ? '' : "Waterfowl Hunting"}
+              yAxis={
+                this.props.locale === "es" ? "" : "% of ecosystem service left"
+              }
+              name={this.props.locale === "es" ? "" : "Waterfowl Hunting"}
               onLevelLost={this.handleLevelLost}
               step={this.props.step}
               id="waterfowl-hunting"
@@ -268,11 +300,14 @@ class SubGraphs extends React.Component {
               pos={this.props.esBiomass[6]}
             />
             <Plot
-              yAxis={this.props.locale === 'es' ? "" : "% of ecosystem service left"}
-              name={this.props.locale === 'es' ? '' : "Recreational Fishery"}
+              yAxis={
+                this.props.locale === "es" ? "" : "% of ecosystem service left"
+              }
+              name={this.props.locale === "es" ? "" : "Recreational Fishery"}
               onLevelLost={this.handleLevelLost}
               step={this.props.step}
               id="recreational-fishery"
+              requiredSpecies="fish"
               index={1050}
               failLine={50}
               display={this.props.levelData.shownGraphs.includes(
@@ -283,24 +318,41 @@ class SubGraphs extends React.Component {
           </div>
           <div className="legend container">
             <div className="directions">
-              <FormattedMessage id="dirs" defaultMessage="
+              <FormattedMessage
+                id="dirs"
+                defaultMessage="
               <p><u>Directions</u></p>
               <p><u>Hover over species</u> to get more information, including what they might be vunerable to.</p>
               <p><u>Right click a species (two finger click on laptop)</u> (or ecosystem service) to look at its predators and prey more closely.</p>
               <p><u>Left click a species</u> to protect it against the direct effects of the disturbance.</p>
               <p><u>Toggle trophic</u> display to get a new perspective.</p>
               <p>Once your ready, (protected as many species as allowed), <u>simulate the distrbance</u> to see if you won!</p>
-              " values={{ p: (...msg) => <p>{msg}</p>, u: (...msg) => <u>{msg}</u> }} />
+              "
+                values={{
+                  p: (...msg) => <p>{msg}</p>,
+                  u: (...msg) => <u>{msg}</u>,
+                }}
+              />
             </div>
-            <p><u><FormattedMessage id="key" defaultMessage="Key" /></u></p>
+            <p>
+              <u>
+                <FormattedMessage id="key" defaultMessage="Key" />
+              </u>
+            </p>
             <div className="legend-elm-wrap">
-              <FormattedMessage id="si" defaultMessage="Species Interaction " /><div className="si legend-elm"></div>
+              <FormattedMessage id="si" defaultMessage="Species Interaction " />
+              <div className="si legend-elm"></div>
             </div>
             <div className="legend-elm-wrap">
-              <FormattedMessage id="ssi" defaultMessage="Service Species Interaction" /><div className="ssi legend-elm"></div>
+              <FormattedMessage
+                id="ssi"
+                defaultMessage="Service Species Interaction"
+              />
+              <div className="ssi legend-elm"></div>
             </div>
             <div className="legend-elm-wrap">
-              <FormattedMessage id="es" defaultMessage="Ecosystem Service" /> <div className="eco-serve legend-elm"></div>
+              <FormattedMessage id="es" defaultMessage="Ecosystem Service" />{" "}
+              <div className="eco-serve legend-elm"></div>
             </div>
             <div className="legend-elm-wrap">
               <FormattedMessage id="m" defaultMessage="Mammal" />
@@ -321,33 +373,41 @@ class SubGraphs extends React.Component {
               </div>
             </div>
             <div className="legend-elm-wrap">
-              <FormattedMessage id="p" defaultMessage="Plant " /><div className="plant legend-elm legend-species">
+              <FormattedMessage id="p" defaultMessage="Plant " />
+              <div className="plant legend-elm legend-species">
                 <img src="/Node-Icons/plant-icon.svg" />
               </div>
             </div>
             <div className="legend-elm-wrap">
-              <FormattedMessage id="b" defaultMessage="Bird " /><div className="bird legend-elm legend-species">
+              <FormattedMessage id="b" defaultMessage="Bird " />
+              <div className="bird legend-elm legend-species">
                 <img src="/Node-Icons/bird-icon.svg" />
               </div>
             </div>
             <div className="legend-elm-wrap">
-              <FormattedMessage id="iaa" defaultMessage="Insect, Annelid & Arachnid" />{" "}
+              <FormattedMessage
+                id="iaa"
+                defaultMessage="Insect, Annelid & Arachnid"
+              />{" "}
               <div className="insect legend-elm legend-species">
                 <img src="/Node-Icons/insect-icon.svg" />
               </div>
             </div>
             <div className="legend-elm-wrap">
-              <FormattedMessage id="f" defaultMessage="Fish" /><div className="fish legend-elm legend-species">
+              <FormattedMessage id="f" defaultMessage="Fish" />
+              <div className="fish legend-elm legend-species">
                 <img src="/Node-Icons/fish-icon.svg" />
               </div>
             </div>
             <div className="legend-elm-wrap">
-              <FormattedMessage id="p" defaultMessage="Plankton" /><div className="plankton legend-elm legend-species">
+              <FormattedMessage id="p" defaultMessage="Plankton" />
+              <div className="plankton legend-elm legend-species">
                 <img src="/Node-Icons/plankton-icon.svg" />
               </div>
             </div>
             <div className="legend-elm-wrap">
-              <FormattedMessage id="mol" defaultMessage="Mollusc " /><div className="mollusc legend-elm legend-species">
+              <FormattedMessage id="mol" defaultMessage="Mollusc & Snail " />
+              <div className="mollusc legend-elm legend-species">
                 <img src="/Node-Icons/mollusc-icon.svg" />
               </div>
             </div>

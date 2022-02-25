@@ -4,9 +4,9 @@ import Game from "./pages/Game";
 import LevelSelect from "./pages/LevelSelect";
 import Credits from "./pages/Credits";
 import Tutorial from "./pages/Tutorial";
-import Educators from "./pages/Educators"
+import Educators from "./pages/Educators";
 import Contact from "./pages/Contact";
-import Glossary from './pages/Glossary';
+import Glossary from "./pages/Glossary";
 
 import Nav from "./components/Nav";
 
@@ -21,8 +21,11 @@ function App() {
         <Nav language="en" />
 
         <Switch>
-          <Route path="/game/:level/:language" component={Game} />
-          <Route path="/level-select/:language" component={LevelSelect} />
+          <Route path="/game/:level/:difficulty/:language" component={Game} />
+          <Route
+            path="/level-select/:difficulty/:language"
+            component={LevelSelect}
+          />
           <Route path="/intro/:language" component={Intro} />
           <Route path="/tutorial/:language" component={Tutorial} />
           <Route path="/Credits/:language" component={Credits} />

@@ -3,6 +3,8 @@ import * as d3 from "d3";
 
 import "./ForceGraph.css";
 
+import ForceGraphSvgFramework from "../utils/ForceGraphSvgFramework";
+
 class ForceGraph extends React.Component {
   constructor(props) {
     super(props);
@@ -85,12 +87,6 @@ class ForceGraph extends React.Component {
       }
     });
   }
-
-  // handleMouseOut() {
-  //   d3.selectAll('line').attr('class', (e) => {
-  //     return e.Type === "Feeding" ? 'line-feeding' : 'line-es';
-  //   })
-  // }
 
   filterNodes = (epiNode, n) => {
     let arr = [];
@@ -230,18 +226,30 @@ class ForceGraph extends React.Component {
           return false;
         }
       });
+
+      let killedTypes = [...deadTypes].filter((e) => !livingTypes.has(e));
+
       let check =
         ((deadBiomass === 0 || deadBiomass / biomass <= 0.31) &&
           (deadLinks === 0 || deadLinks / links <= 0.5) &&
-          (deadTypes.size === 0 ||
-            [...deadTypes].filter((n) => !livingTypes.has(n)).length /
-              types.size <=
-              0.5)) ||
+          (killedTypes.length === 0 ||
+            killedTypes.length / types.size <= 0.5)) ||
         node.organismType === "Ecosystem Service";
       node.living = check;
       if (!check) {
         this.setState({ didNodeDie: true });
         this.killLinks(node.speciesID);
+      } else if (
+        node.organismType === "Ecosystem Service" &&
+        this.props.reqSpecies &&
+        killedTypes.find((e) => this.props.reqSpecies.includes(e))
+      ) {
+        console.log(killedTypes);
+        console.log(types);
+        this.props.onLevelEnd(
+          false,
+          `Your ecosystem service ran out of a required species (${this.props.reqSpecies[0]}).`
+        );
       }
     }
     return node;
@@ -280,57 +288,6 @@ class ForceGraph extends React.Component {
       this.setState({ didNodeDie: false });
       let nodes = this.state.nodeList;
       nodes.map((n) => {
-        // WHEN USING BIOMASS FOR DEAD
-        // if(node.living) {
-        //     let deadBiomass = 0;
-        //     let biomass = 0;
-
-        //     this.props.edges.forEach((edge) => {
-        //         if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
-        //             biomass += edge.target.biomass;
-        //             return true;
-        //         } else if(edge.source.speciesID === node.speciesID) {
-        //             biomass += edge.target.biomass;
-        //             deadBiomass += edge.target.biomass;
-        //             return false;
-        //         }
-        //     })
-        //     let check = !(deadBiomass > 0 && ((deadBiomass / biomass) >= 0.20)) || node.organismType === "Ecosystem Service";
-        //         node.living = check;
-        //     if(!check) {
-        //         levelOver = false;
-        //     }
-
-        // }
-
-        // if using link count, doesn't really work because it counts every element at the same level
-        // if(node.living) {
-        //     let deadLinks = 0;
-        //     let links = 0;
-
-        //     this.props.edges.forEach((edge) => {
-        //         if(edge.source.speciesID === node.speciesID && edge.target.living === true) {
-        //             links++;
-        //             return true;
-        //         } else if(edge.source.speciesID === node.speciesID) {
-        //             links++
-        //             deadLinks++
-
-        //             return false;
-        //         }
-        //     })
-        //     let check = !(deadLinks > 0 && ((deadLinks / links) >= 0.8)) || node.organismType === "Ecosystem Service";
-        //     if(check === false) {
-        //         node.living = false;
-        //         this.killLinks(node.speciesID);
-        //     }
-
-        //     if(!check) {
-        //         levelOver = false;
-        //     }
-
-        // }
-
         this.checkNode(n);
       });
       // if no nodes dies, the level is over
@@ -396,7 +353,7 @@ class ForceGraph extends React.Component {
       .attr("marker-end", () => {
         return "url(#arrowhead)";
       });
-
+    console.log(this.state.nodeList);
     let nodes = g_nodes
       .selectAll(".nodes")
       .data(this.state.nodeList)
@@ -418,8 +375,10 @@ class ForceGraph extends React.Component {
           })
       )
       .attr("fill", (d) => {
-        // return 'url(#mollusc-node-icon)';
-        return `url('#${d.organismType
+        return `url('#${(d.organismType === "Ecosystem Service"
+          ? d.nodeName
+          : d.organismType
+        )
           .toLowerCase()
           .split("s,")[0]
           .split(" ")
@@ -428,9 +387,6 @@ class ForceGraph extends React.Component {
       .on("mouseover", (event, d) => {
         return this.handleMouseOver(d);
       })
-      // .on("mouseout", () => {
-      //   return this.handleMouseOut();
-      // })
       .on("click", (event, d) => {
         if (event.shiftKey) {
           return this.handleRightClick(d);
@@ -442,7 +398,7 @@ class ForceGraph extends React.Component {
         return this.handleRightClick(d);
       });
 
-    const zoomed = (event, d) => {
+    const zoomed = (event) => {
       g.attr("transform", event.transform);
     };
 
@@ -525,7 +481,7 @@ class ForceGraph extends React.Component {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.gameClock !== this.props.gameClock) {
       this.gameTick();
     }
@@ -552,7 +508,7 @@ class ForceGraph extends React.Component {
         });
 
         this.setState(
-          (state, props) => {
+          () => {
             return {
               edgeList: linksArr,
               nodeList: [...nodesArr, this.props.epiNode],
@@ -594,276 +550,7 @@ class ForceGraph extends React.Component {
   }
 
   render() {
-    return (
-      <div className="force-wrap">
-        <div id="map">
-          <svg id={this.props.name}>
-            <defs>
-              <marker
-                id="arrowhead"
-                viewBox="-0 -5 10 10"
-                refX="25"
-                refY="0"
-                orient="auto"
-                markerWidth="13"
-                markerHeight="13"
-                xoverflow="visible"
-              >
-                <path d="M 0,-5 L 10 ,0 L 0,5" fill="#999"></path>
-              </marker>
-
-              <pattern
-                id="bird-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="16"
-                  stroke="none"
-                  fill="#920000"
-                ></circle>
-                <image
-                  className="bird-icon"
-                  xlinkHref="/Node-Icons/bird-icon.svg"
-                  x="1"
-                  y="1"
-                  width="28"
-                  height="28"
-                ></image>
-              </pattern>
-
-              <pattern
-                id="crustacean-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                '
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="16"
-                  stroke="none"
-                  fill="#009292"
-                ></circle>
-                <image
-                  className="crustacean-icon"
-                  xlinkHref="/Node-Icons/crustacean-icon.svg"
-                  x="1"
-                  y="0"
-                  width="28"
-                  height="28"
-                ></image>
-              </pattern>
-              <pattern
-                id="fish-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="16"
-                  stroke="none"
-                  fill="#006ddb"
-                ></circle>
-                <image
-                  className="fish-icon"
-                  xlinkHref="/Node-Icons/fish-icon.svg"
-                  x="0"
-                  y="-3"
-                  width="28"
-                  height="28"
-                ></image>
-              </pattern>
-              <pattern
-                id="insect-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="16"
-                  stroke="none"
-                  fill="#490092"
-                ></circle>
-                <image
-                  className="insect-icon"
-                  xlinkHref="/Node-Icons/insect-icon.svg"
-                  x="2"
-                  y="4"
-                  width="26"
-                  height="26"
-                ></image>
-              </pattern>
-
-              <pattern
-                id="mammal-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="16"
-                  stroke="none"
-                  fill="#db6d00"
-                ></circle>
-                <image
-                  className="mammel-icon"
-                  xlinkHref="/Node-Icons/mammel-icon.svg"
-                  x="2"
-                  y="1"
-                  width="26"
-                  height="26"
-                ></image>
-              </pattern>
-
-              <pattern
-                id="microscopic-organism-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="16"
-                  stroke="none"
-                  fill="#000"
-                ></circle>
-                <image
-                  className="microscopic-icon"
-                  xlinkHref="/Node-Icons/microscopic-icon.svg"
-                  x="1"
-                  y="2"
-                  width="28"
-                  height="28"
-                ></image>
-              </pattern>
-
-              <pattern
-                id="mollusc-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="16"
-                  stroke="none"
-                  fill="#004949"
-                ></circle>
-                <image
-                  className="mollusc-icon"
-                  xlinkHref="/Node-Icons/mollusc-icon.svg"
-                  x="3"
-                  y="3"
-                  width="24"
-                  height="24"
-                ></image>
-              </pattern>
-
-              <pattern
-                id="plankton-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="16"
-                  stroke="none"
-                  fill="#ffff6d"
-                ></circle>
-                <image
-                  className="plankton-icon"
-                  xlinkHref="/Node-Icons/plankton-icon.svg"
-                  x="0"
-                  y="0"
-                  width="30"
-                  height="30"
-                ></image>
-              </pattern>
-
-              <pattern
-                id="plant-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="15"
-                  cy="15"
-                  r="16"
-                  stroke="none"
-                  fill="#24ff24"
-                ></circle>
-                <image
-                  className="plant-icon"
-                  xlinkHref="/Node-Icons/plant-icon.svg"
-                  x="2"
-                  y="3"
-                  width="26"
-                  height="26"
-                ></image>
-              </pattern>
-
-              <pattern
-                id="ecosystem-service-node-icon"
-                x="15"
-                y="15"
-                width="30"
-                height="30"
-                patternUnits="userSpaceOnUse"
-              >
-                <rect
-                  width="30"
-                  height="30"
-                  stroke="none"
-                  fill="#ff6db6"
-                ></rect>
-                <image
-                  className="service-icon"
-                  xlinkHref="/Node-Icons/service-icon.svg"
-                  x="2"
-                  y="2"
-                  width="26"
-                  height="26"
-                ></image>
-              </pattern>
-            </defs>
-          </svg>
-        </div>
-      </div>
-    );
+    return <ForceGraphSvgFramework name={this.props.name} />;
   }
 }
 
