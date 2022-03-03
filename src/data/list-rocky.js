@@ -699,7 +699,7 @@ export const levels = [
     objective:
       "Temperature increases in the ocean are going to impact many organisms. While you are in the field you are preparing to make recommendations about which species to protect. Using the information that you have, which species would you protect if you wanted to maintain this food chain?",
     topBarCopy:
-      "Level 1 Goal: Protect (left click) 1 species to maintain all 3 species in this food chain.",
+      "Level 1 Goal: Protect (left click [1 finger click on laptop]) 1 species to maintain all 3 species in this food chain.",
     removableIDs: [1],
     initialKills: 1,
     saves: 1,
@@ -714,7 +714,7 @@ export const levels = [
     objective:
       "Temperature increases in the ocean are going to impact many organisms. Using the new information that you have, which species would you protect if you wanted to maintain 5 of the species in the food web?",
     topBarCopy:
-      "Level 2 Goal: Protect (left click) 1 species to  maintain 5 of the species in the food web.",
+      "Level 2 Goal: Protect (left click [1 finger click on laptop]) 1 species to  maintain 5 of the species in the food web.",
     initialKills: 2,
     removableIDs: [1, 5],
     saves: 1,
@@ -729,7 +729,7 @@ export const levels = [
     objective:
       "Temperature increases in the ocean are going to impact many organisms. Using the new information that you have, which species would you protect if you wanted to maintain 7 of the species in the food web?",
     topBarCopy:
-      "evel 3 Goal: Protect (left click) 1 species to maintain 7 species in the food web",
+      "evel 3 Goal: Protect (left click [one finger click on laptop]) 1 species to maintain 7 species in the food web",
     initialKills: 3,
     removableIDs: [3, 5, 11],
     saves: 1,
@@ -745,7 +745,7 @@ export const levels = [
       objective:
         "Temperature increases in the ocean are going to impact many organisms. Which species would you protect if you wanted to maintain 8 of the species in the food web?",
       topBarCopy:
-        "Level 4 Goal: Protect (left click) 2 species to maintain at least 8 of the species in the food web.",
+        "Level 4 Goal: Protect (left click [one finger click on laptop]) 2 species to maintain at least 8 of the species in the food web.",
       saves: 2,
       initialKills: 3,
       removableIDs: [3, 5, 7],
@@ -763,7 +763,7 @@ export const levels = [
       objective:
         "The rocky shore ecosystem is a great place to watch birds. Ocean acidification, where the ocean's pH is lowering and becoming more acidic, makes it hard for organisms to build their shells. It also makes them more vulnerable to predation. Which species would you protect to make sure people can still watch birds here?",
       topBarCopy:
-        "Level 5 Goal: Protect (left click) 3 species to maintain a birdwatching ecosystem service.",
+        "Level 5 Goal: Protect (left click [one finger click on laptop]) 3 species to maintain a birdwatching ecosystem service.",
       saves: 3,
       removableIDs: [3, 5, 7],
       initialKills: 3,
