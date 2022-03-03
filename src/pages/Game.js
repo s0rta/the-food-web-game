@@ -234,6 +234,7 @@ class Game extends React.Component {
             </button>
             <div className="postDataWrap">
               <TreeMap
+                level={this.state.levelData.level}
                 levelOver={this.state.levelOver}
                 nodeList={this.state.levelNodes}
               />

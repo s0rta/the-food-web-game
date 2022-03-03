@@ -68,28 +68,28 @@ function TreeMap(props) {
 
       const total = treeDataIndirect[11].size || 1;
       const directTotal = treeDataDirect[11].size || 1;
-
-      document.getElementById("direct-wrapper").appendChild(
-        Treemap(treeDataDirect, {
-          path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
-          value: (d) =>
-            d?.size > 0 && d?.name != "total"
-              ? (d.size / directTotal) * 100
-              : 0, // size of each node (file); null for internal nodes (folders)
-          group: (d) => d.name.split(".")[0], // e.g., "animate" in "flare.animate.Easing"; for color
-          label: (d, n) =>
-            [
-              ...d.name
-                .split(".")
-                .pop()
-                .split(/(?=[A-Z][a-z])/g),
-              n.value.toLocaleString("en"),
-            ].join("\n"),
-          title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`, // text to show on hover
-          width: 300,
-          height: 300,
-        })
-      );
+      props.level > 2 &&
+        document.getElementById("direct-wrapper").appendChild(
+          Treemap(treeDataDirect, {
+            path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
+            value: (d) =>
+              d?.size > 0 && d?.name != "total"
+                ? (d.size / directTotal) * 100
+                : 0, // size of each node (file); null for internal nodes (folders)
+            group: (d) => d.name.split(".")[0], // e.g., "animate" in "flare.animate.Easing"; for color
+            label: (d, n) =>
+              [
+                ...d.name
+                  .split(".")
+                  .pop()
+                  .split(/(?=[A-Z][a-z])/g),
+                n.value.toLocaleString("en"),
+              ].join("\n"),
+            title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`, // text to show on hover
+            width: 300,
+            height: 300,
+          })
+        );
       document.getElementById("indirect-wrapper").appendChild(
         Treemap(treeDataIndirect, {
           path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
@@ -114,9 +114,11 @@ function TreeMap(props) {
 
   return (
     <div id="treemap-wrapper">
-      <div id="direct-wrapper">
-        <p>Types of Species Directly Impacted</p>
-      </div>
+      {props.level > 2 && (
+        <div id="direct-wrapper">
+          <p>Types of Species Directly Impacted</p>
+        </div>
+      )}
       <div id="indirect-wrapper">
         <p>Types of Species Indirectly Lost (hover area for more info)</p>
       </div>
