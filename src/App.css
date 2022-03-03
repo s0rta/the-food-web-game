@@ -23,7 +23,7 @@
 }
 
 body {
-  background: #e0f4f0;
+  background: #d7d1e3;
 }
 
 td,
@@ -73,13 +73,13 @@ button.btn {
 }
 
 button.btn--primary {
-  background: #14b8a6;
+  background: #02075d;
   color: white;
   text-decoration: none;
 }
 
 button.btn--primary:hover {
-  background: #109385;
+  background: #00004d;
 }
 
 .btn--secondary.btn--nav {

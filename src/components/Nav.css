@@ -1,6 +1,6 @@
 .nav-bar {
   display: flex;
-  background: #14B8A6;
+  background: #02075d;
   align-items:center;
   justify-content: space-between;
   padding: 0px 36px; 
@@ -54,6 +54,6 @@
 }
 
 .playMenuButton-menuItem:hover {
-  background: #14B8A6;
+  background: #02075d;
   color: white;
 }

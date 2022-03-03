@@ -12,8 +12,8 @@ class ForceGraph extends React.Component {
     let nodeList = this.props.nodes
       ? [
           ...this.props.nodes.map((n) => {
-            n.living = true;
-            n.saved = false;
+            n.living = n.living || true;
+            n.saved = n.saved || false;
             return n;
           }),
         ]
@@ -68,7 +68,7 @@ class ForceGraph extends React.Component {
             "carbon storage",
           ]
         : ["Spanish environmental service"];
-    let transformed = name.toLowerCase().split("-").join(" ");
+    let transformed = name?.toLowerCase().split("-").join(" ");
     return es.includes(transformed);
   };
 
@@ -138,6 +138,9 @@ class ForceGraph extends React.Component {
     }
   };
 
+  // this function is more handling tick data now that needs to be passed up
+  // 1. handling the species remaining count
+  // 2. handling the historical node and edge lists for the post screen
   handleSpeciesRemaining = () => {
     if (this.props.onUpdateSpeciesRemaining) {
       let count = 0;
@@ -146,7 +149,39 @@ class ForceGraph extends React.Component {
           count++;
         }
       });
-      this.props.onUpdateSpeciesRemaining(count);
+      console.log([...this.state.nodeList]);
+      this.props.onUpdateSpeciesRemaining(
+        count,
+        structuredClone(
+          this.state.nodeList.map((e) => {
+            return {
+              biomass: e.biomass,
+              nodeName: e.nodeName,
+              speciesID: e.speciesID,
+              living: e.living,
+              desc: e.desc,
+              imgCaption: e.imgCaption,
+              imgFile: e.imgFile,
+              index: e.index,
+              organismType: e.organismType,
+              nodeColor: e.nodeColor,
+              nodeShape: e.nodeShape,
+              trophicLevel: e.trophicLevel,
+            };
+          })
+        ),
+        structuredClone(
+          this.state.edgeList.map((e) => {
+            return {
+              source: e.source.index,
+              target: e.target.index,
+              Type: e.Type,
+              living: e.living,
+              index: e.index,
+            };
+          })
+        )
+      );
     }
   };
 
@@ -364,6 +399,7 @@ class ForceGraph extends React.Component {
         d3
           .symbol()
           .size((d) => {
+            console.log(d);
             let size = this.isES(d.nodeName) ? 900 : 750;
             return size;
           })
@@ -484,6 +520,16 @@ class ForceGraph extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.gameClock !== this.props.gameClock) {
       this.gameTick();
+    }
+
+    if (prevProps.historyStep !== this.props.historyStep) {
+      d3.select(`#${this.props.name}`).selectAll("*").remove();
+      this.setState(
+        { edgeList: this.props.edges, nodeList: this.props.nodes },
+        () => {
+          this.createSim();
+        }
+      );
     }
 
     if (prevProps.seed !== this.props.seed) {

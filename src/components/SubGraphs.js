@@ -321,8 +321,8 @@ class SubGraphs extends React.Component {
               <FormattedMessage
                 id="dirs"
                 defaultMessage="
-              <p><u>Directions</u></p>
-              <p><u>Hover over species</u> to get more information, including what they might be vunerable to.</p>
+              <h3>Directions</h3>
+              <p><u>Hover over species</u> to get more information, including what they might be vulnerable to.</p>
               <p><u>Right click a species (two finger click on laptop)</u> (or ecosystem service) to look at its predators and prey more closely.</p>
               <p><u>Left click a species</u> to protect it against the direct effects of the disturbance.</p>
               <p><u>Toggle trophic</u> display to get a new perspective.</p>
@@ -331,14 +331,13 @@ class SubGraphs extends React.Component {
                 values={{
                   p: (...msg) => <p>{msg}</p>,
                   u: (...msg) => <u>{msg}</u>,
+                  h3: (...msg) => <h3>{msg}</h3>,
                 }}
               />
             </div>
-            <p>
-              <u>
-                <FormattedMessage id="key" defaultMessage="Key" />
-              </u>
-            </p>
+            <h3>
+              <FormattedMessage id="key" defaultMessage="Key" />
+            </h3>
             <div className="legend-elm-wrap">
               <FormattedMessage id="si" defaultMessage="Species Interaction " />
               <div className="si legend-elm"></div>

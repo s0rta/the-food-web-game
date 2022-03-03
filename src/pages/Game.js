@@ -11,6 +11,7 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 
 import "./Game.css";
 import { Link } from "react-router-dom";
+import ForceGraph from "../components/ForceGraph.js";
 
 const componentInSpanish = {
   level: "level in spanish",
@@ -36,9 +37,12 @@ class Game extends React.Component {
       speciesRemaining: -1,
       subGraphNodes: [],
       subGraphEdges: [],
+      nodeHistory: [],
+      edgeHistory: [],
       subSeed: 0,
       esBiomass: [-1, -1, -1, -1, -1, -1, -1, -1],
       step: 0,
+      historyStep: 0,
       isModalOpen: true,
       levelOver: false,
       levelWon: true,
@@ -141,8 +145,12 @@ class Game extends React.Component {
     this.setState({ esBiomass: bioArr, step: step });
   };
 
-  handleSpeciesRemaining = (count) => {
-    this.setState({ speciesRemaining: count - 8 });
+  handleSpeciesRemaining = (count, nodes, edges) => {
+    this.setState({
+      speciesRemaining: count - 8,
+      nodeHistory: [...this.state.nodeHistory, nodes],
+      edgeHistory: [...this.state.edgeHistory, edges],
+    });
   };
 
   swapModal = () => {
@@ -224,11 +232,58 @@ class Game extends React.Component {
             <button className="btn" onClick={() => this.closeEndModal()}>
               Explore
             </button>
-            {/* <button className="btn" onClick={() => this.closeEndModal()}>Explore</button> */}
-            <TreeMap
-              levelOver={this.state.levelOver}
-              nodeList={this.state.levelNodes}
-            />
+            <div className="postDataWrap">
+              <TreeMap
+                levelOver={this.state.levelOver}
+                nodeList={this.state.levelNodes}
+              />
+              <div>
+                <ForceGraph
+                  width={550}
+                  height={550}
+                  locale={this.state.locale}
+                  trophicDisplay={this.state.trophicDisplay}
+                  colors={enLists.colors}
+                  nodes={
+                    this.state.nodeHistory.length && [
+                      ...this.state.nodeHistory[this.state.historyStep],
+                    ]
+                  }
+                  edges={
+                    this.state.edgeHistory.length && [
+                      ...this.state.edgeHistory[this.state.historyStep],
+                    ]
+                  }
+                  onNodeHover={this.handleNodeHover}
+                  onRightClick={this.handleRightClick}
+                  name="postGameGraph"
+                  historyStep={this.state.historyStep}
+                />
+                <button
+                  class="btn"
+                  onClick={() => {
+                    this.state.historyStep > 0 &&
+                      this.setState({
+                        historyStep: this.state.historyStep - 1,
+                      });
+                  }}
+                >
+                  -
+                </button>
+                <button
+                  class="btn"
+                  onClick={() => {
+                    this.state.historyStep <
+                      this.state.nodeHistory.length - 1 &&
+                      this.setState({
+                        historyStep: this.state.historyStep + 1,
+                      });
+                  }}
+                >
+                  +
+                </button>
+              </div>
+            </div>
           </Modal>
           <SideBar
             onToggleModal={this.swapModal}

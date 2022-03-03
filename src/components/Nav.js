@@ -83,23 +83,23 @@ class Nav extends React.Component {
                       </MenuItem>
                     </Link>
                   </li>
-                  <li key="1">
-                    <Link to={"/level-select/easy/" + locale}>
-                      <MenuItem className="playMenuButton-menuItem">
-                        <FormattedMessage
-                          id="rockyDrop"
-                          defaultMessage="Play Rocky Inner Tidal (Coming soon) (Easy)"
-                        />
-                      </MenuItem>
-                    </Link>
-                  </li>
+                  {/* <li key="1"> */}
+                  {/*   <Link to={"/level-select/easy/" + locale}> */}
+                  {/*     <MenuItem className="playMenuButton-menuItem"> */}
+                  {/*       <FormattedMessage */}
+                  {/*         id="rockyDrop" */}
+                  {/*         defaultMessage="Play Rocky Inner Tidal (Coming soon) (Easy)" */}
+                  {/*       /> */}
+                  {/*     </MenuItem> */}
+                  {/*   </Link> */}
+                  {/* </li> */}
 
                   <li key="0">
                     <Link to={"/level-select/hard/" + locale}>
                       <MenuItem className="playMenuButton-menuItem">
                         <FormattedMessage
                           id="saltDrop"
-                          defaultMessage="Play Salt Marsh (Hard)"
+                          defaultMessage="Play Salt Marsh"
                         />
                       </MenuItem>
                     </Link>

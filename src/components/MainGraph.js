@@ -53,8 +53,8 @@ class MainGraph extends React.Component {
     this.setState({ removed: this.state.removed + 1 });
   };
 
-  handleSpeciesRemaining = (count) => {
-    this.props.onUpdateSpeciesRemaining(count);
+  handleSpeciesRemaining = (count, nodes, edges) => {
+    this.props.onUpdateSpeciesRemaining(count, nodes, edges);
   };
 
   gameTick = () => {

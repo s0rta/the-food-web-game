@@ -6684,7 +6684,7 @@ export const nodeList7 = [
     organismType: "Ecosystem Service",
     nodeColor: "Dark Pink-4",
     nodeShape: "Square",
-    nodeName: "Shoreline Stabilization",
+    nodeName: "Shoreline Protection",
     trophicLevel: 2.0,
     desc: "Shoreline protection is the strengthening and stabilizing of coastal areas. Naturally, plants with deep roots can prevent erosion, enhancing shoreline protection.",
     imgFile: "saltmarsh.jpg",
