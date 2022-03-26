@@ -20,6 +20,9 @@ const componentInSpanish = {
   startLvl: "start level in spanish",
   nextLvl: "next level in spanish",
   restartLvl: "restart level in spanish",
+  prevStep: "previous step in spanish",
+  nextStep: "next step in spanish",
+  stepHeader: "step header in spanish",
 };
 
 class Game extends React.Component {
@@ -129,7 +132,10 @@ class Game extends React.Component {
     // }, 2000);
   };
 
-  handleNodeHover = (d) => {
+  handleNodeHover = (d, lite = false) => {
+    if (lite) {
+      this.setState({ liteLabel: d.nodeName });
+    }
     this.setState(() => {
       return { hoveredNode: d };
     });
@@ -239,6 +245,12 @@ class Game extends React.Component {
                 nodeList={this.state.levelNodes}
               />
               <div>
+                <h2 className="level-header">
+                  <FormattedMessage
+                    id="stepHeader"
+                    defaultMessage="Step through the level"
+                  />
+                </h2>
                 <ForceGraph
                   width={550}
                   height={550}
@@ -256,10 +268,14 @@ class Game extends React.Component {
                     ]
                   }
                   onNodeHover={this.handleNodeHover}
+                  hoverLite={true}
                   onRightClick={this.handleRightClick}
                   name="postGameGraph"
                   historyStep={this.state.historyStep}
                 />
+                <div className="lite-label">
+                  {this.state.liteLabel || "Hover node to see its name"}
+                </div>
                 <button
                   class="btn"
                   onClick={() => {
@@ -269,7 +285,10 @@ class Game extends React.Component {
                       });
                   }}
                 >
-                  -
+                  <FormattedMessage
+                    id="prevStep"
+                    defaultMessage="Previous Step"
+                  />
                 </button>
                 <button
                   class="btn"
@@ -281,7 +300,7 @@ class Game extends React.Component {
                       });
                   }}
                 >
-                  +
+                  <FormattedMessage id="nextStep" defaultMessage="Next Step" />
                 </button>
               </div>
             </div>

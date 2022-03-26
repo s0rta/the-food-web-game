@@ -73,7 +73,7 @@ class ForceGraph extends React.Component {
   };
 
   handleMouseOver(d) {
-    this.props.onNodeHover(d);
+    this.props.onNodeHover(d, this.props.hoverLite);
     d3.selectAll("line").attr("class", (e) => {
       let edgeClass = e.Type === "Feeding" ? "line-feeding " : "line-es ";
       edgeClass = e.living ? edgeClass : edgeClass + " dead";

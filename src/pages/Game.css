@@ -5,6 +5,12 @@
   grid-gap: 12px;
 }
 
+.lite-label {
+  margin-top: -20px;
+  margin-bottom: 4px;
+  margin-left: 4px;
+}
+
 .levelModal {
   position: absolute;
   inset: 160px;
