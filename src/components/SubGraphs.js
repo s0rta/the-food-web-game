@@ -410,6 +410,12 @@ class SubGraphs extends React.Component {
                 <img src="/Node-Icons/mollusc-icon.svg" />
               </div>
             </div>
+            <div className="legend-elm-wrap">
+              <FormattedMessage id="seau" defaultMessage="Sea Urchin" />
+              <div className="sea-urchin legend-elm legend-species">
+                <img src="/Node-Icons/sea-urchin-icon.svg" />
+              </div>
+            </div>
           </div>
         </div>
       </IntlProvider>
