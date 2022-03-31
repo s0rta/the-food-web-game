@@ -8455,7 +8455,7 @@ export const levels = [
       "Salt marshes are not only vulnerable to ocean acidification but also changes in nutrient levels, which can cause eutrophication, where excess nutrient levels lead to increased algal growth and decreased oxygen levels. Decreased oxygen, also known as hypoxia, can lead to fish kills. Maintain the recreational fishery.",
     removableIDs: [900, 500, 120, 118, 125, 800, 700],
     topBarCopy:
-      "Level 3 Goal: Protect (left click [one finger click on laptop]) 1 species to maintain recreational fisheries",
+      "Level 3 Goal: Protect (left click [one finger click on laptop]) 2 species to maintain recreational fisheries",
     shownGraphs: ["recreational-fishery"],
     saves: 2,
     initialKills: 7,

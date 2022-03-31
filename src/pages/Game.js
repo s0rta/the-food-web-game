@@ -46,7 +46,7 @@ class Game extends React.Component {
       esBiomass: [-1, -1, -1, -1, -1, -1, -1, -1],
       step: 0,
       historyStep: 0,
-      isModalOpen: true,
+      isModalOpen: this.props.match.params.retry === "r" ? false : true,
       levelOver: false,
       levelWon: true,
       trophicDisplay: true,
@@ -229,7 +229,12 @@ class Game extends React.Component {
                 </button>
               </Link>
             )}
-            <button className="btn" onClick={() => window.location.reload()}>
+            <button
+              className="btn"
+              onClick={() => {
+                window.location.href = "/#/game/1/hard/en/r";
+              }}
+            >
               <FormattedMessage
                 id="restartLvl"
                 defaultMessage="Restart Level"

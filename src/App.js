@@ -21,7 +21,10 @@ function App() {
         <Nav language="en" />
 
         <Switch>
-          <Route path="/game/:level/:difficulty/:language" component={Game} />
+          <Route
+            path="/game/:level/:difficulty/:language/:retry?"
+            component={Game}
+          />
           <Route
             path="/level-select/:difficulty/:language"
             component={LevelSelect}
