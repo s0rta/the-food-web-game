@@ -86,8 +86,8 @@ function TreeMap(props) {
                 n.value.toLocaleString("en"),
               ].join("\n"),
             title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`, // text to show on hover
-            width: 300,
-            height: 300,
+            width: 400,
+            height: 400,
           })
         );
       document.getElementById("indirect-wrapper").appendChild(
@@ -105,8 +105,8 @@ function TreeMap(props) {
               n.value.toLocaleString("en"),
             ].join("\n"),
           title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`, // text to show on hover
-          width: 300,
-          height: 300,
+          width: 400,
+          height: 400,
         })
       );
     }
@@ -116,11 +116,17 @@ function TreeMap(props) {
     <div id="treemap-wrapper">
       {props.level > 2 && (
         <div id="direct-wrapper">
-          <p>Types of Species Directly Impacted</p>
+          <p>
+            Types of Species Directly Impacted (hover over small sections for
+            species)
+          </p>
         </div>
       )}
       <div id="indirect-wrapper">
-        <p>Types of Species Indirectly Lost (hover area for more info)</p>
+        <p>
+          Types of Species Indirectly Lost (hover over small sections for
+          species)
+        </p>
       </div>
     </div>
   );

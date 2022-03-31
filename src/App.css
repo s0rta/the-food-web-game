@@ -134,5 +134,6 @@ button.btn--game-ui {
 
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
   z-index: 2;
+  overflow-x: auto;
   margin-top: 54px;
 }
