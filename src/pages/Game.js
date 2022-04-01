@@ -232,7 +232,7 @@ class Game extends React.Component {
             <button
               className="btn"
               onClick={() => {
-                window.location.href = "/#/game/1/hard/en/r";
+                window.location.reload();
               }}
             >
               <FormattedMessage
