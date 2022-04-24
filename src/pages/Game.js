@@ -218,31 +218,35 @@ class Game extends React.Component {
             isOpen={this.state.levelOver}
             className="levelModal levelOverModal"
           >
-            {this.state.msg || this.state.levelWon
-              ? this.state.levelData.win
-              : this.state.levelData.lose}
+            <div className="level-end-msg">
+              {this.state.msg || this.state.levelWon
+                ? this.state.levelData.win
+                : this.state.levelData.lose}
+            </div>
             <br />
-            {this.state.levelWon && (
-              <Link to={winTarget}>
-                <button className="btn btn--primary">
-                  <FormattedMessage id="nextLvl" defaultMessage="Next Level" />
-                </button>
-              </Link>
-            )}
-            <button
-              className="btn"
-              onClick={() => {
-                window.location.reload();
-              }}
-            >
-              <FormattedMessage
-                id="restartLvl"
-                defaultMessage="Restart Level"
-              />
-            </button>
-            <button className="btn" onClick={() => this.closeEndModal()}>
-              Explore
-            </button>
+            <div className="level-end-button-wrap">
+              {this.state.levelWon && (
+                <Link to={winTarget}>
+                  <button className="btn btn--primary next-level-button">
+                    <FormattedMessage
+                      id="nextLvl"
+                      defaultMessage="Next Level"
+                    />
+                  </button>
+                </Link>
+              )}
+              <button
+                className="btn restart-button"
+                onClick={() => {
+                  window.location.reload();
+                }}
+              >
+                <FormattedMessage
+                  id="restartLvl"
+                  defaultMessage="Restart Level"
+                />
+              </button>
+            </div>
             <div className="postDataWrap">
               <TreeMap
                 level={this.state.levelData.level}
@@ -282,7 +286,7 @@ class Game extends React.Component {
                   {this.state.liteLabel || "Hover node to see its name"}
                 </div>
                 <button
-                  class="btn"
+                  class="btn prev-step-button"
                   onClick={() => {
                     this.state.historyStep > 0 &&
                       this.setState({

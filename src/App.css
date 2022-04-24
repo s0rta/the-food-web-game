@@ -82,6 +82,10 @@ button.btn--primary:hover {
   background: #00004d;
 }
 
+button.next-level-button, .prev-step-button, .restart-button{
+  margin-right: 8px;
+}
+
 .btn--secondary.btn--nav {
   background: rgba(0, 0, 0, 0);
   border: 1px solid white;
@@ -95,6 +99,19 @@ button.btn--primary:hover {
 button.btn--game-ui {
   background: #52525b;
 }
+
+.level-end-msg {
+  font-size: 20px;
+  margin-bottom: 20px;
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.level-end-button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
 
 .container {
   background: #fafafa;

@@ -116,17 +116,13 @@ function TreeMap(props) {
     <div id="treemap-wrapper">
       {props.level > 2 && (
         <div id="direct-wrapper">
-          <p>
-            Types of Species Directly Impacted (hover over small sections for
-            species)
-          </p>
+          <h2 className="level-header">
+            Breakdown of Species Directly Impacted
+          </h2>
         </div>
       )}
       <div id="indirect-wrapper">
-        <p>
-          Types of Species Indirectly Lost (hover over small sections for
-          species)
-        </p>
+        <h2 className="level-header">Breakdown Species Indirectly Lost</h2>
       </div>
     </div>
   );
