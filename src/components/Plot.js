@@ -18,8 +18,8 @@ class Plot extends React.Component {
   }
 
   drawPlot() {
-    const width = 300;
-    const height = 300;
+    const width = 350;
+    const height = 350;
 
     d3.select(`#${this.props.id} *`).remove();
 
@@ -33,10 +33,12 @@ class Plot extends React.Component {
     let plotX = d3
       .scaleLinear()
       .domain([0, this.props.step + 1])
-      .range([0, width - 110])
+      .range([0, width - 110]);
 
-
-    let plotY = d3.scaleLinear().domain([0, 100]).range([height - 140, 0]);
+    let plotY = d3
+      .scaleLinear()
+      .domain([0, 100])
+      .range([height - 140, 0]);
 
     plotSVG
       .append("g")
@@ -45,7 +47,10 @@ class Plot extends React.Component {
 
     plotSVG
       .append("text")
-      .attr("transform", "translate(" + (width - 110) / 2 + " ," + (height - 100) + ")")
+      .attr(
+        "transform",
+        "translate(" + (width - 110) / 2 + " ," + (height - 100) + ")"
+      )
       .style("text-anchor", "middle")
       .text(this.props.locale === "es" ? "" : "Number of species Removed");
 

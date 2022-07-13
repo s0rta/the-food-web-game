@@ -6,6 +6,7 @@ import Modal from "react-modal";
 import * as enLists from "../data/lists";
 import * as enRockyLists from "../data/list-rocky";
 import TreeMap from "../components/TreeMap.js";
+import GlossaryModal from "../components/GlossaryModal";
 
 import { IntlProvider, FormattedMessage } from "react-intl";
 
@@ -53,6 +54,7 @@ class Game extends React.Component {
       gameStart: false,
       locale: this.props.match.params.language,
       levelMsg: "",
+      glossaryOpen: false,
     };
   }
 
@@ -198,6 +200,12 @@ class Game extends React.Component {
         defaultLocale="en"
       >
         <div className="game-wrap">
+          <GlossaryModal
+            language={this.props.match.params.language}
+            isOpen={this.state.glossaryOpen}
+            close={() => this.setState({ glossaryOpen: false })}
+          />
+
           <Modal isOpen={this.state.isModalOpen} className="levelModal">
             <h2 class="level-header">
               <FormattedMessage id="level" defaultMessage="Level" />{" "}
@@ -355,6 +363,7 @@ class Game extends React.Component {
             edges={[...this.state.levelEdges]}
             speciesRemaining={this.state.speciesRemaining}
             locale={this.state.locale}
+            difficulty={this.props.match.params.difficulty}
           />
         </div>
       </IntlProvider>

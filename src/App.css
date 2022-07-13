@@ -50,10 +50,17 @@ h1 {
 p {
   font-size: 13px;
   margin-bottom: 13px;
+  line-height: 1.5;
 }
 
 img {
   border-radius: 10px;
+}
+
+.modal-button {
+  position: sticky;
+  bottom: 10px;
+  left: 12px;
 }
 
 button,
@@ -82,7 +89,9 @@ button.btn--primary:hover {
   background: #00004d;
 }
 
-button.next-level-button, .prev-step-button, .restart-button{
+button.next-level-button,
+.prev-step-button,
+.restart-button {
   margin-right: 8px;
 }
 
@@ -111,7 +120,6 @@ button.btn--game-ui {
   display: flex;
   justify-content: center;
 }
-
 
 .container {
   background: #fafafa;

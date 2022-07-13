@@ -22,7 +22,7 @@ const componentInSpanish = {
   b: "spanish bird",
   iaa: "spanish insect &c.",
   f: "spanish fish",
-  p: "spanish plankton",
+  pl: "spanish plankton",
   mol: "spanish mollusc",
 };
 
@@ -146,14 +146,14 @@ class SubGraphs extends React.Component {
                     type="checkbox"
                     value="Energy In"
                     onClick={this.swapFlowIn}
-                    checked
+                    checked={this.state.flowIn}
                   />
                   <FormattedMessage id="efl" defaultMessage="Energy Flow In" />
                   <input
                     type="checkbox"
                     value="Energy Out"
                     onClick={this.swapFlowOut}
-                    checked
+                    checked={this.state.flowOut}
                   />
                   <FormattedMessage id="efo" defaultMessage="Energy Flow Out" />
                   <br />
@@ -180,7 +180,7 @@ class SubGraphs extends React.Component {
               yAxis={
                 this.props.locale === "es"
                   ? ""
-                  : "% of species remaining in food web"
+                  : "Percent of species remaining in food web"
               }
               name={this.props.locale === "es" ? "" : "Species Remaining"}
               onLevelLost={this.handleLevelLost}
@@ -195,7 +195,9 @@ class SubGraphs extends React.Component {
             />
             <Plot
               yAxis={
-                this.props.locale === "es" ? "" : "% of ecosystem service left"
+                this.props.locale === "es"
+                  ? ""
+                  : "Percent of ecosystem service left"
               }
               name={this.props.locale === "es" ? "" : "Wave Attenuation"}
               onLevelLost={this.handleLevelLost}
@@ -210,7 +212,9 @@ class SubGraphs extends React.Component {
             />
             <Plot
               yAxis={
-                this.props.locale === "es" ? "" : "% of ecosystem service left"
+                this.props.locale === "es"
+                  ? ""
+                  : "Percent of ecosystem service left"
               }
               name={this.props.locale === "es" ? "" : "Shoreline Protection"}
               onLevelLost={this.handleLevelLost}
@@ -225,7 +229,9 @@ class SubGraphs extends React.Component {
             />
             <Plot
               yAxis={
-                this.props.locale === "es" ? "" : "% of ecosystem service left"
+                this.props.locale === "es"
+                  ? ""
+                  : "Percent of ecosystem service left"
               }
               name={this.props.locale === "es" ? "" : "Carbon Storage"}
               onLevelLost={this.handleLevelLost}
@@ -240,7 +246,9 @@ class SubGraphs extends React.Component {
             />
             <Plot
               yAxis={
-                this.props.locale === "es" ? "" : "% of ecosystem service left"
+                this.props.locale === "es"
+                  ? ""
+                  : "Percent of ecosystem service left"
               }
               name={this.props.locale === "es" ? "" : "Water Filtration"}
               onLevelLost={this.handleLevelLost}
@@ -255,7 +263,9 @@ class SubGraphs extends React.Component {
             />
             <Plot
               yAxis={
-                this.props.locale === "es" ? "" : "% of ecosystem service left"
+                this.props.locale === "es"
+                  ? ""
+                  : "Percent of ecosystem service left"
               }
               name={this.props.locale === "es" ? "" : "Commercial Fishery"}
               onLevelLost={this.handleLevelLost}
@@ -271,7 +281,9 @@ class SubGraphs extends React.Component {
             />
             <Plot
               yAxis={
-                this.props.locale === "es" ? "" : "% of ecosystem service left"
+                this.props.locale === "es"
+                  ? ""
+                  : "Percent of ecosystem service left"
               }
               name={this.props.locale === "es" ? "" : "Bird Watching"}
               onLevelLost={this.handleLevelLost}
@@ -286,7 +298,9 @@ class SubGraphs extends React.Component {
             />
             <Plot
               yAxis={
-                this.props.locale === "es" ? "" : "% of ecosystem service left"
+                this.props.locale === "es"
+                  ? ""
+                  : "Percent of ecosystem service left"
               }
               name={this.props.locale === "es" ? "" : "Waterfowl Hunting"}
               onLevelLost={this.handleLevelLost}
@@ -301,7 +315,9 @@ class SubGraphs extends React.Component {
             />
             <Plot
               yAxis={
-                this.props.locale === "es" ? "" : "% of ecosystem service left"
+                this.props.locale === "es"
+                  ? ""
+                  : "Percent of ecosystem service left"
               }
               name={this.props.locale === "es" ? "" : "Recreational Fishery"}
               onLevelLost={this.handleLevelLost}
@@ -345,7 +361,7 @@ class SubGraphs extends React.Component {
             <div className="legend-elm-wrap">
               <FormattedMessage
                 id="ssi"
-                defaultMessage="Service Species Interaction"
+                defaultMessage="Species providing ecosystem service"
               />
               <div className="ssi legend-elm"></div>
             </div>
@@ -410,12 +426,14 @@ class SubGraphs extends React.Component {
                 <img src="/Node-Icons/mollusc-icon.svg" />
               </div>
             </div>
-            <div className="legend-elm-wrap">
-              <FormattedMessage id="seau" defaultMessage="Sea Urchin" />
-              <div className="sea-urchin legend-elm legend-species">
-                <img src="/Node-Icons/sea-urchin-icon.svg" />
+            {this.props.difficulty === "easy" && (
+              <div className="legend-elm-wrap">
+                <FormattedMessage id="seau" defaultMessage="Sea Urchin" />
+                <div className="sea-urchin legend-elm legend-species">
+                  <img src="/Node-Icons/sea-urchin-icon.svg" />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </IntlProvider>

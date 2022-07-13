@@ -22,6 +22,21 @@
   flex-direction: column;
   align-items: center;
   max-width: 80%;
+  overflow: auto;
+}
+
+.glossaryModal {
+  position: absolute;
+  inset: 160px;
+  background: white;
+  padding: 4px;
+  border: 1px solid grey;
+  box-shadow: 3px 3px 5px #535353;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80%;
+  overflow: auto;
 }
 
 .levelModal p {
@@ -70,9 +85,9 @@
 
 .sidebar-wrap a .btn {
   width: 100%;
-  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
   width: fill-available;
-  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -moz-available; /* WebKit-based browsers will ignore this. */
 }
 
 .sidebar-wrap button {
@@ -107,4 +122,8 @@
 
 .sub-graph-inputs .btn {
   margin: 4px;
+}
+
+.glossary-list li {
+  margin-bottom: 12px;
 }

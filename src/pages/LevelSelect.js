@@ -31,11 +31,6 @@ class LevelSelect extends React.Component {
               <FormattedMessage id="h1" defaultMessage="Level Select" />
             </h1>
             <div className="levels">
-              <Link to="/intro">
-                <button className="btn">
-                  <FormattedMessage id="div1" defaultMessage="Intro" />
-                </button>
-              </Link>
               <Link to={`/game/1/${difficulty}/${locale}`}>
                 <button className="btn">1</button>
               </Link>

@@ -54,21 +54,36 @@ class MainMenu extends React.Component {
                     defaultMessage="Conservation aims to protect these species and maintain ecosystem services, but resources are limited. We do not have unlimited money, human power or time; and we need to decide which species to prioritize. In this learning module, you will learn more about coastal ecosystems and the threats they face; and you will develop skills to balance uncertainty and complexity."
                   />{" "}
                 </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="main-menu container"
+            style={{ marginTop: "16px", paddingTop: "24px" }}
+          >
+            <div className="header-wrap ">
+              <div class="header-text">
                 <p>
                   <FormattedMessage
                     id="p3"
-                    defaultMessage={`Here to just play the game? If
+                    defaultMessage={`<b>Here to just play the game?</b> If
                     it’s your first time, we suggest starting with the 
                     ‘Introduction to key concepts’ and ‘Game tutorial’ pages
                     (found under the Play Game tab) before jumping into the game. 
                     There are two difficulty levels for this game. The ‘Rocky Intertidal Zone’ 
                     is the easier version and the ‘Salt Marsh’.`}
+                    values={{
+                      b: (...chunk) => <b>{chunk}</b>,
+                    }}
                   />
                 </p>
                 <p>
                   <FormattedMessage
                     id="p4"
-                    defaultMessage="Are you an educator looking to use this game in your classroom? You’ll find lesson plans, activities and assessments on the ‘Educators’ page."
+                    defaultMessage="<b>Are you an educator looking to use this game in your classroom?</b> You’ll find lesson plans, activities and assessments on the ‘Educators’ page."
+                    values={{
+                      b: (...chunk) => <b>{chunk}</b>,
+                    }}
                   />
                 </p>
               </div>

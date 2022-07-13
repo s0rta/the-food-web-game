@@ -1,4 +1,5 @@
 import React from "react";
+import Modal from "react-modal";
 import { IntlProvider, FormattedMessage } from "react-intl";
 
 const pageInSpanish = {
@@ -11,25 +12,31 @@ const pageInSpanish = {
   ul3: "<li><b>Third spanish ul</b> third spanish ul</li>",
 };
 
-function Glossary(props) {
-  return (
-    <IntlProvider
-      messages={props.match.params.language === "es" ? pageInSpanish : ""}
-      locale={props.match.params.language}
-      defaultLocale="en"
-    >
-      <div className="copy-wrap glossary-wrap">
-        <div className="container">
-          <h1>
-            <FormattedMessage id="h1" defaultMessage="Glossary" />
-          </h1>
-          <h2>
-            <FormattedMessage id="h21" defaultMessage="Ecology" />
-          </h2>
-          <ul className="glossary-list">
-            <FormattedMessage
-              id="ul1"
-              defaultMessage="
+export default class GlossaryModal extends React.Component {
+  closeModal = () => {
+    this.props.close();
+  };
+
+  render() {
+    return (
+      <Modal isOpen={this.props.isOpen} className="glossaryModal ">
+        <IntlProvider
+          messages={this.props.language === "es" ? pageInSpanish : ""}
+          locale={this.props.language}
+          defaultLocale="en"
+        >
+          <div className="">
+            <div className="container">
+              <h1>
+                <FormattedMessage id="h1" defaultMessage="Glossary" />
+              </h1>
+              <h2>
+                <FormattedMessage id="h21" defaultMessage="Ecology" />
+              </h2>
+              <ul className="glossary-list">
+                <FormattedMessage
+                  id="ul1"
+                  defaultMessage="
             <li><b>Species:</b> A way of classifying organisms that can reproduce in nature and produce fertile offspring.
             </li>
             <li><b>Calcifying organisms:</b> Organisms that form shells or skeletons made out of calcium carbonate.
@@ -44,20 +51,23 @@ function Glossary(props) {
             </li>
             <li><b>Trophic level:</b> the position that a species occupies in a food web and is classified by the number of feeding steps a species is from primary producers.
             </li>"
-              values={{
-                li: (...msg) => <li>{msg}</li>,
-                b: (...msg) => <b>{msg}</b>,
-              }}
-            />
-          </ul>
+                  values={{
+                    li: (...msg) => <li>{msg}</li>,
+                    b: (...msg) => <b>{msg}</b>,
+                  }}
+                />
+              </ul>
 
-          <h2>
-            <FormattedMessage id="h22" defaultMessage="Ecosystem Services" />
-          </h2>
-          <ul className="glossary-list">
-            <FormattedMessage
-              id="ul2"
-              defaultMessage="<li><b>Ecosystem service:</b> The benefits that nature provides people</li>
+              <h2>
+                <FormattedMessage
+                  id="h22"
+                  defaultMessage="Ecosystem Services"
+                />
+              </h2>
+              <ul className="glossary-list">
+                <FormattedMessage
+                  id="ul2"
+                  defaultMessage="<li><b>Ecosystem service:</b> The benefits that nature provides people</li>
             <li><b>Birdwatching:</b> A recreational activity where people observe birds</li>
             <li><b>Fishery:</b> Fisheries are the harvest of species that live in water, including fish, shrimp and other seafood. Fisheries can take place in freshwater or saltwater.</li>
             <li><b>Wave attenuation:</b> The buffering, or slowing of waves</li>
@@ -65,20 +75,20 @@ function Glossary(props) {
             <li><b>Carbon storage:</b> The process of capturing carbon and storing it in biomass (biological mass) before carbon dioxide is released into the atmosphere.</li>
             <li><b>Waterfowl hunting:</b> A recreational activity where people hunt ducks, geese, and other water birds.</li>
             <li><b>Water filtration:</b> The process of filtering particles out of water. These particles can range from harmful chemicals and pollutants to metals.</li>"
-              values={{
-                li: (...msg) => <li>{msg}</li>,
-                b: (...msg) => <b>{msg}</b>,
-              }}
-            />
-          </ul>
+                  values={{
+                    li: (...msg) => <li>{msg}</li>,
+                    b: (...msg) => <b>{msg}</b>,
+                  }}
+                />
+              </ul>
 
-          <h2>
-            <FormattedMessage id="h23" defaultMessage="Disturbance" />
-          </h2>
-          <ul className="glossary-list">
-            <FormattedMessage
-              id="ul3"
-              defaultMessage="
+              <h2>
+                <FormattedMessage id="h23" defaultMessage="Disturbance" />
+              </h2>
+              <ul className="glossary-list">
+                <FormattedMessage
+                  id="ul3"
+                  defaultMessage="
             <li><b>Disturbance:</b> Usually an abrupt change in environmental conditions that causes changes in ecosystem structure and/or function.</li>
             <li><b>Direct impacts:</b> Disturbances can directly impact species, where the changes in environmental conditions cause a shift for a species. For example, decreasing ocean pH directly impacts species that form shells, as the increased acidity can dissolve the calcified structures.</li>
             <li><b>Indirect impacts:</b> Indirect impacts occur when a change in environmental conditions impacts a species through another species. For example, when the menhaden (a fish species) is overharvested, humpback whale populations decrease.</li>
@@ -88,16 +98,22 @@ function Glossary(props) {
             <li><b>Eutrophication:</b> Excessive amounts of nutrients dissolved in a body of water, often caused by run-off from the land. This can lead to dense growth of algae and other plants.</li>
             <li><b>Salinity:</b> The amount of salt dissolved in a body of water.</li>
           "
-              values={{
-                li: (...msg) => <li>{msg}</li>,
-                b: (...msg) => <b>{msg}</b>,
-              }}
-            />
-          </ul>
-        </div>
-      </div>
-    </IntlProvider>
-  );
+                  values={{
+                    li: (...msg) => <li>{msg}</li>,
+                    b: (...msg) => <b>{msg}</b>,
+                  }}
+                />
+              </ul>
+            </div>
+            <button
+              className="btn--primary modal-button"
+              onClick={this.closeModal}
+            >
+              Close
+            </button>
+          </div>
+        </IntlProvider>
+      </Modal>
+    );
+  }
 }
-
-export default Glossary;

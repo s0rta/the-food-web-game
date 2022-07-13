@@ -8424,7 +8424,7 @@ export const levels = [
     objective:
       "Ecosystem service are nature's contributions to people. Your supervisor requests that you conduct a brief study to maximize the number of ecosystem services at the reserve with a limited budget. Maintain as many ecosystem services as you can by protecting one type of species.",
     topBarCopy:
-      "Level 1 Goal: Protect (left click [one finger click on laptop]) 1 species to maintain all 8 ecosystem services",
+      "Level 1 Goal: Protect (left click [or single tap]) 1 species to maintain all 8 ecosystem services",
     removableIDs: [300],
     shownGraphs: ["num-services"],
     saves: 1,
@@ -8439,7 +8439,7 @@ export const levels = [
     objective:
       "Since salt marshes exist at the intersection of fresh water from rivers and salt water from the ocean, ocean acidification - the ongoing decrease in the ocean's pH - is reaching the salt marsh.  Ocean acidifcation impacts calcifying organisms, including those that build shells. Habitat destruction also threatens coastal ecosystems. Maintain water filtration in the salt marsh to ensure water quality.",
     topBarCopy:
-      "Level 2 Goal: Protect (left click [one finger click on laptop]) 1 species to maintain water filtration",
+      "Level 2 Goal: Protect (left click [or single tap]) 1 species to maintain water filtration",
     removableIDs: [500, 300],
     shownGraphs: ["water-filtration"],
     saves: 1,
@@ -8455,7 +8455,7 @@ export const levels = [
       "Salt marshes are not only vulnerable to ocean acidification but also changes in nutrient levels, which can cause eutrophication, where excess nutrient levels lead to increased algal growth and decreased oxygen levels. Decreased oxygen, also known as hypoxia, can lead to fish kills. Maintain the recreational fishery.",
     removableIDs: [900, 500, 120, 118, 125, 800, 700],
     topBarCopy:
-      "Level 3 Goal: Protect (left click [one finger click on laptop]) 2 species to maintain recreational fisheries",
+      "Level 3 Goal: Protect (left click [or single tap]) 2 species to maintain recreational fisheries",
     shownGraphs: ["recreational-fishery"],
     saves: 2,
     initialKills: 7,
@@ -8470,7 +8470,7 @@ export const levels = [
         "After many weeks birdwatching with your friends, you finally know all of the birds in the Carpinteria Salt Marsh Reserve! You also had a meeting with local Fish and Wildlife offices, where you discussed waterfowl hunting permits in nearby salt marshes. Hunting doesn't take place in the reserve but is allowed in neighboring marshlands, and birds often move between the areas. Officials mention that these neighboring marshlands are hotspots for hunting, which generate important conservation resources through fees and permits. They request that your department surveys the waterfowl population in the reserve, and take any necessary actions to maintain stable populations.",
       objective: "Maintain waterfowl hunting in the surrounding area.",
       topBarCopy:
-        "Level 4 Goal: Protect (left click [one finger click on laptop]) 2 species to maintain waterfowl hunting",
+        "Level 4 Goal: Protect (left click [or single tap]) 2 species to maintain waterfowl hunting",
       removableIDs: [300, 500, 600],
       shownGraphs: ["waterfowl-hunting"],
       saves: 2,
@@ -8547,7 +8547,7 @@ export const levels = [
       objective:
         "Coastal wetlands, like salt marshes, can be contaminated with pesticides and other pollutants from upstream and adjacent lands. Recently, while monitoring water quality you noticed higher concentrations of these chemicals in the reserve. Maintain the birdwatching service by mitigating the impacts of pesticide contamination.",
       topBarCopy:
-        "Level 5 Goal: Protect (left click [one finger click on laptop]) 4 species to maintain birdwatching",
+        "Level 5 Goal: Protect (left click [or single tap]) 4 species to maintain birdwatching",
       removableIDs: [600, 900, 144, 66, 68, 118, 500, 61],
       shownGraphs: ["bird-watching"],
       saves: 4,
@@ -8627,7 +8627,7 @@ export const levels = [
       objective:
         "Increasing soil salinty can lead to changes in community structure and function. There is also evidence that increased soil salinty can lead to increased below ground biomass, which is linked to carbon storage. Sea level rise can also result in lost habitat for fish and bird species. Maintain carbon storage level while protecting the fish species that are important for commerical fisheries.",
       topBarCopy:
-        "Level 6 Goal: Protect (left click [one finger click on laptop]) 6 species to maintain carbon storage and commercial fisheries",
+        "Level 6 Goal: Protect (left click [or single tap]) 6 species to maintain carbon storage and commercial fisheries",
       removableIDs: [16, 11, 8, 68, 89, 111, 113, 114, 120, 109],
       shownGraphs: ["carbon-storage", "commercial-fishery"],
       saves: 6,
@@ -8712,7 +8712,7 @@ export const levels = [
       objective:
         " Maintain a species richness of at least 70%, and maintain shoreline protection and wave attenuation. Given the budget, you can only protect 7 species.",
       topBarCopy:
-        "Level 7 Goal: Protect (left click [one finger click on laptop]) 7 species to maintain shoreline protection, wave attenuation, and at least 70% of species",
+        "Level 7 Goal: Protect (left click [or single tap]) 7 species to maintain shoreline protection, wave attenuation, and at least 70% of species",
       removableIDs: [
         5, 6, 7, 8, 9, 10, 11, 12, 16, 118, 121, 122, 125, 64, 65, 67, 25,
       ],
