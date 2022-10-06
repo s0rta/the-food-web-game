@@ -37,7 +37,7 @@ class Plot extends React.Component {
 
     let plotY = d3
       .scaleLinear()
-      .domain([0, 100])
+      .domain(this.props.overRidePercent ? [0, 7] : [0, 100])
       .range([height - 140, 0]);
 
     plotSVG
@@ -109,7 +109,9 @@ class Plot extends React.Component {
       let data = [...this.state.data];
       data.push({
         x: this.props.step,
-        y: (this.props.pos / this.state.startPos) * 100,
+        y: this.props.overRidePercent
+          ? this.props.pos
+          : (this.props.pos / this.state.startPos) * 100,
       });
       this.setState(
         {
@@ -123,7 +125,9 @@ class Plot extends React.Component {
           this.drawPlot();
         }
       );
-      if (
+      if (this.props.overRidePercent && this.props.pos < 6) {
+        this.props.onLevelLost(true);
+      } else if (
         Math.abs((this.props.pos / this.state.startPos) * 100) <
         this.props.failLine
       ) {

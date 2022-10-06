@@ -161,8 +161,12 @@ class Game extends React.Component {
     });
   };
 
-  swapModal = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen });
+  swapModal = (modal = "objective") => {
+    if (modal === "objective") {
+      this.setState({ isModalOpen: !this.state.isModalOpen });
+    } else if (modal === "glossary") {
+      this.setState({ glossaryOpen: true });
+    }
   };
 
   closeEndModal = () => {
@@ -262,34 +266,37 @@ class Game extends React.Component {
                 nodeList={this.state.levelNodes}
               />
               <div>
-                <h2 className="level-header">
-                  <FormattedMessage
-                    id="stepHeader"
-                    defaultMessage="Step through the level"
+                <div style={{ paddingRight: 280, paddingLeft: 12 }}>
+                  <h2 className="level-header">
+                    <FormattedMessage
+                      id="stepHeader"
+                      defaultMessage="Step through the level"
+                    />
+                  </h2>
+
+                  <ForceGraph
+                    width={550}
+                    height={550}
+                    locale={this.state.locale}
+                    trophicDisplay={this.state.trophicDisplay}
+                    colors={enLists.colors}
+                    nodes={
+                      this.state.nodeHistory.length && [
+                        ...this.state.nodeHistory[this.state.historyStep],
+                      ]
+                    }
+                    edges={
+                      this.state.edgeHistory.length && [
+                        ...this.state.edgeHistory[this.state.historyStep],
+                      ]
+                    }
+                    onNodeHover={this.handleNodeHover}
+                    hoverLite={true}
+                    onRightClick={this.handleRightClick}
+                    name="postGameGraph"
+                    historyStep={this.state.historyStep}
                   />
-                </h2>
-                <ForceGraph
-                  width={550}
-                  height={550}
-                  locale={this.state.locale}
-                  trophicDisplay={this.state.trophicDisplay}
-                  colors={enLists.colors}
-                  nodes={
-                    this.state.nodeHistory.length && [
-                      ...this.state.nodeHistory[this.state.historyStep],
-                    ]
-                  }
-                  edges={
-                    this.state.edgeHistory.length && [
-                      ...this.state.edgeHistory[this.state.historyStep],
-                    ]
-                  }
-                  onNodeHover={this.handleNodeHover}
-                  hoverLite={true}
-                  onRightClick={this.handleRightClick}
-                  name="postGameGraph"
-                  historyStep={this.state.historyStep}
-                />
+                </div>
                 <div className="lite-label">
                   {this.state.liteLabel || "Hover node to see its name"}
                 </div>
@@ -323,10 +330,11 @@ class Game extends React.Component {
             </div>
           </Modal>
           <SideBar
-            onToggleModal={this.swapModal}
+            onToggleModal={(modal) => this.swapModal(modal)}
             locale={this.state.locale}
             onToggleTrophic={this.toggleTrophic}
             onSimulateDisturbance={this.simulateDisturbance}
+            trophicDisplay={this.state.trophicDisplay}
             level={this.state.level}
             data={this.state.hoveredNode}
             difficulty={this.props.match.params.difficulty}

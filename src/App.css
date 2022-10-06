@@ -66,7 +66,7 @@ img {
 button,
 span.btn--secondary {
   border-radius: 4px;
-  padding: 8px 13px;
+  padding: 8px 12px;
   font-size: 13px;
   color: white;
   border: 0px;
@@ -92,7 +92,7 @@ button.btn--primary:hover {
 button.next-level-button,
 .prev-step-button,
 .restart-button {
-  margin-right: 8px;
+  margin: 4px 12px;
 }
 
 .btn--secondary.btn--nav {
@@ -111,9 +111,8 @@ button.btn--game-ui {
 
 .level-end-msg {
   font-size: 20px;
-  margin-bottom: 20px;
   max-width: 70%;
-  margin: 0 auto;
+  margin: 8px auto;
 }
 
 .level-end-button-wrap {
@@ -129,6 +128,10 @@ button.btn--game-ui {
   /* margin: 12px; */
   padding: 12px 24px;
   overflow: auto;
+}
+
+.sub-graph-wrap > .container {
+  padding-left: 0;
 }
 
 .game-wrap .container {
@@ -161,4 +164,8 @@ button.btn--game-ui {
   z-index: 2;
   overflow-x: auto;
   margin-top: 54px;
+}
+
+tspan {
+  font-size: 12px;
 }

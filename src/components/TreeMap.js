@@ -6,40 +6,34 @@ import Treemap from "../scripts/json-to-treemap.js";
 
 function TreeMap(props) {
   const [treeDataDirect, setTreeDataDirect] = useState([
-    { name: "No species were directly lost", size: 1 },
-    { name: "Mammal", size: 0 },
-    { name: "Microscopic Organism", size: 0 },
-    { name: "Crustacean", size: 0 },
-    { name: "Plant", size: 0 },
-    { name: "Bird", size: 0 },
-    { name: "Insect", size: 0 },
-    { name: "Insect, Annelid & Arachnid", size: 0 },
-    { name: "Fish", size: 0 },
-    { name: "Plankton", size: 0 },
-    { name: "Mollusc", size: 0 },
-    { name: "total", size: 0 },
+    { name: "Mammal", size: 0, color: "db6d00" },
+    { name: "Microscopic Organism", size: 0, color: "#000" },
+    { name: "Crustacean", size: 0, color: "#009292" },
+    { name: "Plant", size: 0, color: "#24ff24" },
+    { name: "Bird", size: 0, color: "#920000" },
+    { name: "Insect", size: 0, color: "#b6dff" },
+    { name: "Insect, Annelid & Arachnid", size: 0, color: "#b66dff" },
+    { name: "Fish", size: 0, color: "#006ddb" },
+    { name: "Plankton", size: 0, color: "#ffff6d" },
+    { name: "Mollusc", size: 0, color: "#004949" },
   ]);
   const [treeDataIndirect, setTreeDataIndirect] = useState([
-    { name: "No species were indirectly lost", size: 1 },
-    { name: "Mammal", size: 0 },
-    { name: "Microscopic Organism", size: 0 },
-    { name: "Crustacean", size: 0 },
-    { name: "Plant", size: 0 },
-    { name: "Bird", size: 0 },
-    { name: "Insect", size: 0 },
-    { name: "Insect, Annelid & Arachnid", size: 0 },
-    { name: "Fish", size: 0 },
-    { name: "Plankton", size: 0 },
-    { name: "Mollusc", size: 0 },
-    { name: "total", size: 0 },
+    { name: "Mammal", size: 0, color: "db6d00" },
+    { name: "Microscopic Organism", size: 0, color: "#000" },
+    { name: "Crustacean", size: 0, color: "#009292" },
+    { name: "Plant", size: 0, color: "#24ff24" },
+    { name: "Bird", size: 0, color: "#920000" },
+    { name: "Insect", size: 0, color: "#b6dff" },
+    { name: "Insect, Annelid & Arachnid", size: 0, color: "#b66dff" },
+    { name: "Fish", size: 0, color: "#006ddb" },
+    { name: "Plankton", size: 0, color: "#ffff6d" },
+    { name: "Mollusc", size: 0, color: "#004949" },
   ]);
   const [isOver, setIsOver] = useState(false);
 
   const incrementTreeData = (index, value, direct) => {
     let newTreeData = direct ? treeDataDirect : treeDataIndirect;
     newTreeData[index].size += Math.max(value, 0);
-    newTreeData[11].size += Math.max(value, 0);
-    newTreeData[0].size = 0;
     console.log(newTreeData);
     if (!direct) {
       setTreeDataIndirect(newTreeData);
@@ -66,49 +60,13 @@ function TreeMap(props) {
         }
       }
 
-      const total = treeDataIndirect[11].size || 1;
-      const directTotal = treeDataDirect[11].size || 1;
       props.level > 2 &&
-        document.getElementById("direct-wrapper").appendChild(
-          Treemap(treeDataDirect, {
-            path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
-            value: (d) =>
-              d?.size > 0 && d?.name != "total"
-                ? (d.size / directTotal) * 100
-                : 0, // size of each node (file); null for internal nodes (folders)
-            group: (d) => d.name.split(".")[0], // e.g., "animate" in "flare.animate.Easing"; for color
-            label: (d, n) =>
-              [
-                ...d.name
-                  .split(".")
-                  .pop()
-                  .split(/(?=[A-Z][a-z])/g),
-                n.value.toLocaleString("en"),
-              ].join("\n"),
-            title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`, // text to show on hover
-            width: 400,
-            height: 400,
-          })
-        );
-      document.getElementById("indirect-wrapper").appendChild(
-        Treemap(treeDataIndirect, {
-          path: (d) => d.name.replace(/\./g, "/"), // e.g., "flare/animate/Easing"
-          value: (d) =>
-            d?.size > 0 && d?.name !== "total" ? (d?.size / total) * 100 : 0, // size of each node (file); null for internal nodes (folders)
-          group: (d) => d.name.split(".")[0], // e.g., "animate" in "flare.animate.Easing"; for color
-          label: (d, n) =>
-            [
-              ...d.name
-                .split(".")
-                .pop()
-                .split(/(?=[A-Z][a-z])/g),
-              n.value.toLocaleString("en"),
-            ].join("\n"),
-          title: (d, n) => `${d.name}\n${n.value.toLocaleString("en")}`, // text to show on hover
-          width: 400,
-          height: 400,
-        })
-      );
+        document
+          .getElementById("direct-wrapper")
+          .appendChild(Treemap(treeDataDirect));
+      document
+        .getElementById("indirect-wrapper")
+        .appendChild(Treemap(treeDataIndirect));
     }
   });
 
@@ -116,13 +74,17 @@ function TreeMap(props) {
     <div id="treemap-wrapper">
       {props.level > 2 && (
         <div id="direct-wrapper">
-          <h2 className="level-header">
+          <h2 className="level-header" style={{ textAlign: "left" }}>
             Breakdown of Species Directly Impacted
           </h2>
+          (Hover over a rectangle to see what kind of species was lost)
+          <div id="my_dataviz1"></div>
         </div>
       )}
-      <div id="indirect-wrapper">
-        <h2 className="level-header">Breakdown Species Indirectly Lost</h2>
+      <div id="indirect-wrapper" style={{ textAlign: "left" }}>
+        <h2 className="level-header">Breakdown of Species Indirectly Lost</h2>
+        <p>(Hover over a rectangle to see what kind of species was lost)</p>
+        <div id="my_dataviz2"></div>
       </div>
     </div>
   );

@@ -1,14 +1,14 @@
 .game-wrap {
   display: grid;
   grid-template-columns: 300px auto 380px;
-  margin: 12px;
+  /* margin: 12px; */
   grid-gap: 12px;
 }
 
 .lite-label {
-  margin-top: -20px;
-  margin-bottom: 4px;
-  margin-left: 4px;
+  margin-top: -24px;
+  margin-bottom: 8px;
+  margin-left: 16px;
 }
 
 .levelModal {
@@ -50,12 +50,13 @@
   height: 100%;
   display: block;
   max-width: 100%;
-  width: calc(100% - 24px);
-  padding: 24px;
+  width: 100%;
+  padding: 0px;
 }
 
 .postDataWrap {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .level-header {
@@ -80,6 +81,10 @@
 }
 
 .sidebar-wrap > div:nth-child(1) .btn--primary {
+  grid-column: 1 / span 2;
+}
+
+.sidebar-wrap > div:nth-child(1) a {
   grid-column: 1 / span 2;
 }
 

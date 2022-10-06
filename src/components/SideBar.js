@@ -45,8 +45,8 @@ class SideBar extends React.Component {
     return es.includes(transformed);
   };
 
-  handleModal = () => {
-    this.props.onToggleModal();
+  handleModal = (modal) => {
+    this.props.onToggleModal(modal);
   };
 
   handleTrophicToggle = () => {
@@ -70,12 +70,6 @@ class SideBar extends React.Component {
               <FormattedMessage id="h1" defaultMessage="Level" />{" "}
               <span id="level">{this.props.level}</span>
             </h1>
-            <button className="btn" onClick={this.handleModal}>
-              <FormattedMessage
-                id="objectiveButton"
-                defaultMessage="Show Objective"
-              />
-            </button>
             <Link
               to={
                 "/level-select/" +
@@ -91,13 +85,34 @@ class SideBar extends React.Component {
                 />
               </button>
             </Link>
+
+            <button
+              className="btn"
+              onClick={() => this.handleModal("glossary")}
+            >
+              <FormattedMessage
+                id="glossaryButton"
+                defaultMessage="Show Glossary"
+              />
+            </button>
+            <button
+              className="btn"
+              onClick={() => this.handleModal("objective")}
+            >
+              <FormattedMessage
+                id="objectiveButton"
+                defaultMessage="Show Objective"
+              />
+            </button>
             <button className="btn" onClick={() => window.location.reload()}>
               <FormattedMessage id="resetButton" defaultMessage="Reset" />
             </button>
             <button className="btn" onClick={this.handleTrophicToggle}>
               <FormattedMessage
                 id="trophButton"
-                defaultMessage="Toggle Trophic"
+                defaultMessage={`Trophic View ${
+                  this.props.trophicDisplay ? "Off" : "On"
+                }`}
               />
             </button>
             <button
