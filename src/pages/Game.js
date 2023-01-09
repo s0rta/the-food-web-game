@@ -21,8 +21,6 @@ const componentInSpanish = {
   startLvl: "start level in spanish",
   nextLvl: "next level in spanish",
   restartLvl: "restart level in spanish",
-  prevStep: "previous step in spanish",
-  nextStep: "next step in spanish",
   stepHeader: "step header in spanish",
 };
 
@@ -121,7 +119,7 @@ class Game extends React.Component {
     return [levelNodes, levelEdges, levelData, reqSpecies];
   };
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   handleLevelLost = () => {
     this.setState({ levelWon: false });
@@ -192,9 +190,8 @@ class Game extends React.Component {
       pathname:
         this.props.match.params.level > 7
           ? `/`
-          : `/game/${parseFloat(this.props.match.params.level) + 1}/${
-              this.props.match.params.difficulty
-            }/${this.props.match.params.language}`,
+          : `/game/${parseFloat(this.props.match.params.level) + 1}/${this.props.match.params.difficulty
+          }/${this.props.match.params.language}`,
     };
 
     return (
@@ -266,13 +263,15 @@ class Game extends React.Component {
                 nodeList={this.state.levelNodes}
               />
               <div>
-                <div style={{ paddingRight: 280, paddingLeft: 12 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '60%', paddingLeft: 12 }}>
                   <h2 className="level-header">
                     <FormattedMessage
                       id="stepHeader"
                       defaultMessage="Step through the level"
                     />
                   </h2>
+                  <p><FormattedMessage id="stepDesc1" defaultMessage="Want to see what happened? Click the arrows below the network to see the food web change after each species is directly impacted by the threat (lost)" /></p>
+
 
                   <ForceGraph
                     width={550}
@@ -296,36 +295,35 @@ class Game extends React.Component {
                     name="postGameGraph"
                     historyStep={this.state.historyStep}
                   />
+
+                  <div className="lite-label">
+                    {this.state.liteLabel || "Hover node to see its name"}
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginLeft: '-12px', marginRight: '36px', minWidth: '574px' }}>
+                    <button
+                      class="btn step-button"
+                      onClick={() => {
+                        this.state.historyStep > 0 &&
+                          this.setState({
+                            historyStep: this.state.historyStep - 1,
+                          });
+                      }}
+                    >🡐
+                    </button>
+                    <button
+                      class="btn step-button"
+                      onClick={() => {
+                        this.state.historyStep <
+                          this.state.nodeHistory.length - 1 &&
+                          this.setState({
+                            historyStep: this.state.historyStep + 1,
+                          });
+                      }}
+                    >
+                      🡒
+                    </button>
+                  </div>
                 </div>
-                <div className="lite-label">
-                  {this.state.liteLabel || "Hover node to see its name"}
-                </div>
-                <button
-                  class="btn prev-step-button"
-                  onClick={() => {
-                    this.state.historyStep > 0 &&
-                      this.setState({
-                        historyStep: this.state.historyStep - 1,
-                      });
-                  }}
-                >
-                  <FormattedMessage
-                    id="prevStep"
-                    defaultMessage="Previous Step"
-                  />
-                </button>
-                <button
-                  class="btn"
-                  onClick={() => {
-                    this.state.historyStep <
-                      this.state.nodeHistory.length - 1 &&
-                      this.setState({
-                        historyStep: this.state.historyStep + 1,
-                      });
-                  }}
-                >
-                  <FormattedMessage id="nextStep" defaultMessage="Next Step" />
-                </button>
               </div>
             </div>
           </Modal>
