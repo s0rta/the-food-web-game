@@ -11,11 +11,13 @@ function TreeMap(props) {
     { name: "Crustacean", size: 0, color: "#009292" },
     { name: "Plant", size: 0, color: "#24ff24" },
     { name: "Bird", size: 0, color: "#920000" },
-    { name: "Insect", size: 0, color: "#b6dff" },
-    { name: "Insect, Annelid & Arachnid", size: 0, color: "#b66dff" },
+    { name: "Insect", size: 0, color: "#b6dbff" },
+    { name: "Insect, Annelid & Arachnid", size: 0, color: "#b6dbff" },
     { name: "Fish", size: 0, color: "#006ddb" },
     { name: "Plankton", size: 0, color: "#ffff6d" },
     { name: "Mollusc", size: 0, color: "#004949" },
+    { name: "Snail", size: 0, color: "#004949" },
+    { name: "Sea Urchin", size: 0, color: "#e1be6a" }
   ]);
   const [treeDataIndirect, setTreeDataIndirect] = useState([
     { name: "Mammal", size: 0, color: "db6d00" },
@@ -23,23 +25,25 @@ function TreeMap(props) {
     { name: "Crustacean", size: 0, color: "#009292" },
     { name: "Plant", size: 0, color: "#24ff24" },
     { name: "Bird", size: 0, color: "#920000" },
-    { name: "Insect", size: 0, color: "#b6dff" },
-    { name: "Insect, Annelid & Arachnid", size: 0, color: "#b66dff" },
+    { name: "Insect", size: 0, color: "#b6dbff" },
+    { name: "Insect, Annelid & Arachnid", size: 0, color: "#b6dbff" },
     { name: "Fish", size: 0, color: "#006ddb" },
     { name: "Plankton", size: 0, color: "#ffff6d" },
     { name: "Mollusc", size: 0, color: "#004949" },
+    { name: "Snail", size: 0, color: "#004949" },
+    { name: "Sea Urchin", size: 0, color: "#e1be6a" }
   ]);
   const [isOver, setIsOver] = useState(false);
 
   const incrementTreeData = (index, value, direct) => {
     let newTreeData = direct ? treeDataDirect : treeDataIndirect;
     newTreeData[index].size += Math.max(value, 0);
-    console.log(newTreeData);
     if (!direct) {
       setTreeDataIndirect(newTreeData);
     } else {
       setTreeDataDirect(newTreeData);
     }
+    console.log(treeDataDirect, treeDataIndirect)
   };
 
   useEffect(() => {
@@ -77,13 +81,11 @@ function TreeMap(props) {
           <h2 className="level-header" style={{ textAlign: "left" }}>
             Breakdown of Species Directly Impacted
           </h2>
-          (Hover over a rectangle to see what kind of species was lost)
           <div id="my_dataviz1"></div>
         </div>
       )}
       <div id="indirect-wrapper" style={{ textAlign: "left" }}>
         <h2 className="level-header">Breakdown of Species Indirectly Lost</h2>
-        <p>(Hover over a rectangle to see what kind of species was lost)</p>
         <div id="my_dataviz2"></div>
       </div>
     </div>

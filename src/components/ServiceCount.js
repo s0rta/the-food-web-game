@@ -49,17 +49,18 @@ class ServiceCount extends React.Component {
       >
         {this.props.display && (
           <div className="service-count-wrap">
-            {this.state.workingES}{" "}
+            <FormattedMessage id="sitStart" defaultMessage="At the end of the simulation" />
+            {" "}{this.state.workingES}{" "}
             <FormattedMessage
               id="sit"
-              defaultMessage="out of 8 services in tact"
+              defaultMessage="out of 8 ecosystem services were in tact"
             />
             <Plot
               locale={this.props.locale}
               yAxis={
                 this.props.locale === "es" ? "" : "Count of services in tact"
               }
-              name={this.props.locale === "es" ? "" : "Species Remaining"}
+              name={""}
               onLevelLost={this.props.onLevelLost}
               step={this.props.step}
               id="services-remaining"

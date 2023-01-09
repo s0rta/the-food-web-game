@@ -1,8 +1,12 @@
 import * as d3 from "d3";
 
 export default function Treemap(data) {
-  console.log("here", data);
-  // set the dimensions and margins of the graph
+  let filteredData = data.filter(datum => {
+    return datum.size > 0
+  })
+  console.log("here", filteredData);
+
+// set the dimensions and margins of the graph
   const margin = { top: 30, right: 0, bottom: 100, left: 40 },
     width = 500 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
@@ -21,7 +25,7 @@ export default function Treemap(data) {
   const x = d3
     .scaleBand()
     .range([0, width])
-    .domain(data.map((d) => d.name))
+    .domain(filteredData.map((d) => d.name))
     .padding(0.2);
   main
     .append("g")
@@ -34,14 +38,14 @@ export default function Treemap(data) {
   // Add Y axis
   const y = d3
     .scaleLinear()
-    .domain([0, Math.max(...data.map((d) => d.size)) + 100])
+    .domain([0, Math.max(...filteredData.map((d) => d.size)) ])
     .range([height, 0]);
   main.append("g").call(d3.axisLeft(y));
 
   // Bars
   main
     .selectAll("mybar")
-    .data(data)
+    .data(filteredData)
     .join("rect")
     .attr("x", (d) => x(d.name))
     .attr("y", (d) => y(d.size))

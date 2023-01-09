@@ -41,7 +41,7 @@ class Credits extends React.Component {
             <p>
               <FormattedMessage
                 id="h21subhead"
-                defaultMessage={`We thank members of the Dee Lab, the Principles of Ecology students at the University of Colorado Boulder, and friends and family for providing feedback on earlier drafts of the game. We also thank S. McCarthy, M. Mosher, A. Cohen-Leadholm and their high school students for piloting this learning module in their classes and providing feedback on earlier drafts of this learning module. This work was supported by microgrants from the University of Colorado Office of Outreach and Engagement and we acknowledge support from the National Science Foundation Biological Oceanography program, grant #2049360 to Laura Dee: Collaborative Research: The consequences of species loss for food web persistence and functioning in the Gulf of Maine rocky intertidal.`}
+                defaultMessage={`We thank members of the Dee Lab, the Principles of Ecology students at the University of Colorado Boulder, and friends and family for providing feedback on earlier drafts of the game. We also thank A. Cohen-Leadholm and his students for piloting this learning module in their classes and providing feedback on earlier drafts of this learning module. This work was supported by microgrants from the University of Colorado Office of Outreach and Engagement and the funding from the University of Colorado Undergraduate Research Opportunities Program. We also acknowledge support from the National Science Foundation Biological Oceanography program, grant #2049360 to Laura Dee: Collaborative Research: The consequences of species loss for food web persistence and functioning in the Gulf of Maine rocky intertidal.`}
               />
               <br />
               <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2049360">
@@ -62,7 +62,7 @@ class Credits extends React.Component {
               Wright programmed the entire game. A. Keyes developed the lesson
               plan and assessment materials with guidance from
               <a4>L. Corwin</a4>,
-              L. Dee and <a5>K. Davies</a5>.`}
+              <a5>L. Dee</a5> and <a6>K. Davies</a6>. Mariana Bastias translated the entire game and all of the lesson materials.`}
                 values={{
                   a1: (...msg) => (
                     <a href="https://aislynkeyes.weebly.com/">{msg}</a>
@@ -77,6 +77,9 @@ class Credits extends React.Component {
                     </a>
                   ),
                   a5: (...msg) => (
+          <a href="https://www.lauraedee.com">{msg}</a>
+        ),
+                  a6: (...msg) => (
                     <a href="https://www.colorado.edu/lab/davies/">{msg}</a>
                   ),
                 }}
