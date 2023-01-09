@@ -18,8 +18,8 @@ class Plot extends React.Component {
   }
 
   drawPlot() {
-    const width = 350;
-    const height = 350;
+    const width = 400;
+    const height = 400;
 
     d3.select(`#${this.props.id} *`).remove();
 
@@ -70,7 +70,7 @@ class Plot extends React.Component {
       .datum(this.state.data)
       .attr("fill", "none")
       .attr("stroke", "steelblue")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 2.5)
       .attr(
         "d",
         d3
@@ -84,7 +84,7 @@ class Plot extends React.Component {
       .datum(this.state.failLine)
       .attr("fill", "none")
       .attr("stroke", "red")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 2.5)
       .attr(
         "d",
         d3
