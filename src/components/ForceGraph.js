@@ -72,6 +72,14 @@ class ForceGraph extends React.Component {
     return es.includes(transformed);
   };
 
+  handleMouseOut() {
+    d3.selectAll("line").attr("class", (e) => {
+      let edgeClass = e.Type === "Feeding" ? "line-feeding " : "line-es ";
+      edgeClass = e.living ? edgeClass : edgeClass + " dead";
+      return edgeClass;
+    });
+  }
+
   handleMouseOver(d) {
     this.props.onNodeHover(d, this.props.hoverLite);
     d3.selectAll("line").attr("class", (e) => {
@@ -149,7 +157,6 @@ class ForceGraph extends React.Component {
           count++;
         }
       });
-      console.log([...this.state.nodeList]);
       this.props.onUpdateSpeciesRemaining(
         count,
         structuredClone(
@@ -366,7 +373,8 @@ class ForceGraph extends React.Component {
       .data(
         this.state.edgeList.filter((n) => {
           return n.source !== n.target;
-        })
+        }),
+        (d) => d.index
       )
       .enter()
       .append("line")
@@ -391,7 +399,7 @@ class ForceGraph extends React.Component {
     console.log(this.state.nodeList);
     let nodes = g_nodes
       .selectAll(".nodes")
-      .data(this.state.nodeList)
+      .data(this.state.nodeList, (d) => d.index)
       .enter()
       .append("path")
       .attr(
@@ -422,6 +430,9 @@ class ForceGraph extends React.Component {
       })
       .on("mouseover", (event, d) => {
         return this.handleMouseOver(d);
+      })
+      .on("mouseout", (event, d) => {
+        return this.handleMouseOut(d);
       })
       .on("click", (event, d) => {
         if (event.shiftKey) {

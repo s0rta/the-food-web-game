@@ -8,13 +8,16 @@
 }
 
 .line-faded {
-  animation: dropopacity 0.2s;
-  animation-fill-mode: forwards;
+  display: none;
 }
 
 @keyframes dropopacity {
-  from { opacity: 1; }
-  to {opacity: 0.3;}
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
 }
 
 .line-es {
@@ -23,14 +26,18 @@
 
 .saved {
   stroke: #00c100;
-  
+
   animation: hideshow 0.1s;
   animation-fill-mode: forwards;
 }
 
 @keyframes hideshow {
-  from { stroke-width: 1; }
-  to { stroke-width: 4; }
+  from {
+    stroke-width: 1;
+  }
+  to {
+    stroke-width: 4;
+  }
 }
 
 .dead {
@@ -39,7 +46,9 @@
 }
 
 @keyframes killnode {
-  from {opacity: 1;}
+  from {
+    opacity: 1;
+  }
   to {
     opacity: 0;
     visibility: hidden;
