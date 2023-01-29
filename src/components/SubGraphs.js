@@ -24,6 +24,7 @@ const componentInSpanish = {
   f: "spanish fish",
   pl: "spanish plankton",
   mol: "spanish mollusc",
+  plotEx: "plot explanation in spanish",
 };
 
 class SubGraphs extends React.Component {
@@ -341,6 +342,18 @@ class SubGraphs extends React.Component {
                 )}
                 pos={this.props.esBiomass[7]}
               />
+              <div className="plot-explanation">
+                <FormattedMessage
+                  id="plotEx"
+                  defaultMessage="
+                Ecosystem services rely on species and can also be lost when
+                disturbances hit ecosystems. This plot shows how the amount of
+                the ecosystem service (measured as Percent of ecosystem service
+                left) changed when the disturbance hit the ecosystem. You lose
+                the level when the ecosystem service drops below the 50% (red)
+                line."
+                />
+              </div>
             </div>
             <div className="legend container">
               <div className="directions">
