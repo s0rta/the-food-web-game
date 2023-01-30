@@ -660,6 +660,19 @@ export const nodeList5 = [
     imgFile: "gull.jpg",
     imgCaption: "Great black-beaked gull standing on a rock in a bay",
   },
+  {
+    index: 14,
+    speciesID: 850,
+    biomass: 0.369631471,
+    organismType: "Ecosystem Service",
+    nodeColor: "Dark Pink-4",
+    nodeShape: "Circle",
+    nodeName: "Birdwatching",
+    trophicLevel: 5.914905607,
+    desc: "Birdwatching, or birding, is a type of wildlife viewing, where people track, look and listen for birds. This can be done for recreation and/or citizen science.",
+    imgFile: "birdwatch.jpg",
+    imgCaption: "Binoculars on bird guide.",
+  },
 ];
 
 export const edgeList5 = [
@@ -689,6 +702,8 @@ export const edgeList5 = [
   { target: 8, source: 13, Type: "Feeding" },
   { target: 8, source: 11, Type: "Feeding" },
   { target: 11, source: 13, Type: "Feeding" },
+  { target: 13, source: 14, Type: "ES"},
+  { target: 12, source: 14, Type: "ES"}
 ];
 
 export const levels = [
@@ -705,6 +720,7 @@ export const levels = [
     saves: 1,
     win: "You won! ",
     lose: "You lost! Which species is the base of the food chain?",
+    maintainReq: 3,
     shownGraphs: [],
   },
   {
@@ -720,6 +736,7 @@ export const levels = [
     saves: 1,
     win: "You Won!",
     lose: "You lost! Are there any consumers that don't have as many resources?",
+    maintainReq: 5,
     shownGraphs: [],
   },
   {
@@ -729,12 +746,13 @@ export const levels = [
     objective:
       "Temperature increases in the ocean are going to impact many organisms. Using the new information that you have, which species would you protect if you wanted to maintain 7 of the species in the food web?",
     topBarCopy:
-      "evel 3 Goal: Protect (left click [or single tap]) 1 species to maintain 7 species in the food web",
+      "Level 3 Goal: Protect (left click [or single tap]) 1 species to maintain 6 species in the food web",
     initialKills: 3,
     removableIDs: [3, 5, 11],
     saves: 1,
     win: "You won!",
     lose: "You lost! Are there any consumers that don't have as many resources?",
+    maintainReq: 6,
     shownGraphs: [],
   },
   [
@@ -751,6 +769,7 @@ export const levels = [
       removableIDs: [3, 5, 7],
       win: "You won!",
       lose: "You lost! Remember, consumers need to have most of their resources available to stay alive.",
+      maintainReq: 8,
       shownGraphs: [],
     },
   ],
@@ -769,7 +788,7 @@ export const levels = [
       initialKills: 3,
       win: "You Won!",
       lose: "You lost! Remember, consumers need to have most of their resources available to stay alive.",
-      shownGraphs: [],
+      shownGraphs: ["bird-watching"],
     },
   ],
 ];

@@ -334,7 +334,22 @@ class ForceGraph extends React.Component {
       });
       // if no nodes dies, the level is over
       if (!this.state.didNodeDie) {
-        this.props.onLevelEnd(true);
+        let didWin = true
+        // for easy levels 1-4, you need to pass based on count of saved species
+        if(this.props.levelData.maintainReq) {
+          let requiredSpecies = this.props.levelData.maintainReq
+          let livingSpecies = 0
+          this.state.nodeList.forEach(n => {
+            if (n.living) {
+              livingSpecies += 1
+            }
+          })
+          console.log(requiredSpecies, livingSpecies)
+          if(livingSpecies < requiredSpecies) {
+            didWin = false
+          }
+        }
+        this.props.onLevelEnd(didWin);
       }
 
       this.setState({ nodeList: nodes });

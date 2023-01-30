@@ -175,7 +175,7 @@ class SubGraphs extends React.Component {
                 )}
               </div>
             )}
-            <div className={this.props.levelOver ? "plots" : "plotsHidden"}>
+            <div className={this.props.levelOver &&  this.props.levelData.shownGraphs.length ? "plots" : "plotsHidden"}>
               <ServiceCount
                 locale={this.props.locale}
                 onLevelLost={this.handleLevelLost}
