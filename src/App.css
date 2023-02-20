@@ -66,8 +66,8 @@ img {
 button,
 span.btn--secondary {
   border-radius: 4px;
-  padding: 8px 12px;
-  font-size: 13px;
+  padding: 6px 12px;
+  font-size: 12px;
   color: white;
   border: 0px;
   font-weight: bold;
@@ -83,6 +83,10 @@ button.btn--primary {
   background: #02075d;
   color: white;
   text-decoration: none;
+}
+
+.btn--demo {
+  margin-bottom: -22px !important;
 }
 
 button.btn--primary:hover {

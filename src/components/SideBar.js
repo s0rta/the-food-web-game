@@ -26,20 +26,20 @@ class SideBar extends React.Component {
     const es =
       this.props.locale == "es"
         ? [
-            "",
-            "wave attenuation",
-            "shoreline protection",
-            "shoreline stabilization",
-            "carbon sequestration",
-            "water filtration",
-            "commfishery",
-            "birdwatching",
-            "waterfowl hunting",
-            "recfishery",
-            "recreational fishery",
-            "commercial fishery",
-            "carbon storage",
-          ]
+          "",
+          "wave attenuation",
+          "shoreline protection",
+          "shoreline stabilization",
+          "carbon sequestration",
+          "water filtration",
+          "commfishery",
+          "birdwatching",
+          "waterfowl hunting",
+          "recfishery",
+          "recreational fishery",
+          "commercial fishery",
+          "carbon storage",
+        ]
         : [];
     let transformed = name.toLowerCase().split("-").join(" ");
     return es.includes(transformed);
@@ -57,6 +57,10 @@ class SideBar extends React.Component {
     this.props.onSimulateDisturbance();
   };
 
+  continueDemo = () => {
+    this.props.continueDemo();
+  }
+
   render() {
     return (
       <IntlProvider
@@ -66,64 +70,79 @@ class SideBar extends React.Component {
       >
         <div className="sidebar-wrap">
           <div class="container">
-            <h1 class="level-header">
-              <FormattedMessage id="h1" defaultMessage="Level" />{" "}
-              <span id="level">{this.props.level}</span>
-            </h1>
-            <Link
-              to={
-                "/level-select/" +
-                this.props.difficulty +
-                "/" +
-                this.props.locale
-              }
-            >
-              <button className="btn">
+            {this.props.demoMode ? <>
+
+              <button
+                className="btn--primary btn--demo"
+                onClick={this.continueDemo}
+              >
                 <FormattedMessage
-                  id="levelButton"
-                  defaultMessage="Level Select"
+                  id="contButton"
+                  defaultMessage="Continue"
                 />
               </button>
-            </Link>
 
-            <button
-              className="btn"
-              onClick={() => this.handleModal("glossary")}
-            >
-              <FormattedMessage
-                id="glossaryButton"
-                defaultMessage="Show Glossary"
-              />
-            </button>
-            <button
-              className="btn"
-              onClick={() => this.handleModal("objective")}
-            >
-              <FormattedMessage
-                id="objectiveButton"
-                defaultMessage="Show Objective"
-              />
-            </button>
-            <button className="btn" onClick={() => window.location.reload()}>
-              <FormattedMessage id="resetButton" defaultMessage="Reset" />
-            </button>
-            <button className="btn" onClick={this.handleTrophicToggle}>
-              <FormattedMessage
-                id="trophButton"
-                defaultMessage={`Trophic View ${
-                  this.props.trophicDisplay ? "Off" : "On"
-                }`}
-              />
-            </button>
-            <button
-              className="btn--primary sim-button"
-              onClick={this.handleSimulateDisturbance}
-            >
-              <FormattedMessage
-                id="simButton"
-                defaultMessage="Simulate Disturbance"
-              />
-            </button>
+            </> :
+              <>
+                <h1 class="level-header">
+                  <FormattedMessage id="h1" defaultMessage="Level" />{" "}
+                  <span id="level">{this.props.level}</span>
+                </h1>
+                <Link
+                  to={
+                    "/level-select/" +
+                    this.props.difficulty +
+                    "/" +
+                    this.props.locale
+                  }
+                >
+                  <button className="btn">
+                    <FormattedMessage
+                      id="levelButton"
+                      defaultMessage="Level Select"
+                    />
+                  </button>
+                </Link>
+
+                <button
+                  className="btn"
+                  onClick={() => this.handleModal("glossary")}
+                >
+                  <FormattedMessage
+                    id="glossaryButton"
+                    defaultMessage="Show Glossary"
+                  />
+                </button>
+                <button
+                  className="btn"
+                  onClick={() => this.handleModal("objective")}
+                >
+                  <FormattedMessage
+                    id="objectiveButton"
+                    defaultMessage="Show Objective"
+                  />
+                </button>
+                <button className="btn" onClick={() => window.location.reload()}>
+                  <FormattedMessage id="resetButton" defaultMessage="Reset" />
+                </button>
+                <button className="btn" onClick={this.handleTrophicToggle}>
+                  <FormattedMessage
+                    id="trophButton"
+                    defaultMessage={`Trophic View ${this.props.trophicDisplay ? "Off" : "On"
+                      }`}
+                  />
+                </button>
+                <button
+                  className="btn--primary sim-button"
+                  onClick={this.handleSimulateDisturbance}
+                >
+                  <FormattedMessage
+                    id="simButton"
+                    defaultMessage="Simulate Disturbance"
+                  />
+                </button>
+              </>
+            }
           </div>
           <div className="container">
             {this.props.data ? (

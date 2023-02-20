@@ -74,6 +74,7 @@ class MainGraph extends React.Component {
           height={window.innerHeight - 54}
           nodes={this.props.nodes}
           seed={0}
+          historyStep={this.props.historyStep}
           edges={this.props.edges}
           levelData={this.props.levelData}
           trophic={this.props.trophicDisplay}

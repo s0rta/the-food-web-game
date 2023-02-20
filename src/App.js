@@ -7,6 +7,7 @@ import Tutorial from "./pages/Tutorial";
 import Educators from "./pages/Educators";
 import Contact from "./pages/Contact";
 import Glossary from "./pages/Glossary";
+import Demo from "./components/Demo";
 
 import Nav from "./components/Nav";
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/for-educators/:language" component={Educators} />
           <Route path="/Contact/:language" component={Contact} />
           <Route path="/Glossary/:language" component={Glossary} />
+          <Route path="/Game/Demo" component={Demo} />
           <Route path="/">
             <MainMenu language="en" />
           </Route>

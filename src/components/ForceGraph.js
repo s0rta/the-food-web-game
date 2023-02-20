@@ -11,20 +11,20 @@ class ForceGraph extends React.Component {
 
     let nodeList = this.props.nodes
       ? [
-          ...this.props.nodes.map((n) => {
-            n.living = n.living || true;
-            n.saved = n.saved || false;
-            return n;
-          }),
-        ]
+        ...this.props.nodes.map((n) => {
+          n.living = n.living || true;
+          n.saved = n.saved || false;
+          return n;
+        }),
+      ]
       : [];
     let edgeList = this.props.edges
       ? [
-          ...this.props.edges.map((n) => {
-            n.living = true;
-            return n;
-          }),
-        ]
+        ...this.props.edges.map((n) => {
+          n.living = true;
+          return n;
+        }),
+      ]
       : [];
 
     this.state = {
@@ -53,20 +53,20 @@ class ForceGraph extends React.Component {
     const es =
       this.props.locale === "en"
         ? [
-            "",
-            "wave attenuation",
-            "shoreline protection",
-            "shoreline stabilization",
-            "carbon sequestration",
-            "water filtration",
-            "commfishery",
-            "birdwatching",
-            "waterfowl hunting",
-            "recfishery",
-            "recreational fishery",
-            "commercial fishery",
-            "carbon storage",
-          ]
+          "",
+          "wave attenuation",
+          "shoreline protection",
+          "shoreline stabilization",
+          "carbon sequestration",
+          "water filtration",
+          "commfishery",
+          "birdwatching",
+          "waterfowl hunting",
+          "recfishery",
+          "recreational fishery",
+          "commercial fishery",
+          "carbon storage",
+        ]
         : ["Spanish environmental service"];
     let transformed = name?.toLowerCase().split("-").join(" ");
     return es.includes(transformed);
@@ -75,7 +75,7 @@ class ForceGraph extends React.Component {
   handleMouseOut() {
     d3.selectAll("line").attr("class", (e) => {
       let edgeClass = e.Type === "Feeding" ? "line-feeding " : "line-es ";
-      edgeClass = e.living ? edgeClass : edgeClass + " dead";
+      edgeClass = (e.living ?? true)? edgeClass : edgeClass + " dead";
       return edgeClass;
     });
   }
@@ -84,7 +84,7 @@ class ForceGraph extends React.Component {
     this.props.onNodeHover(d, this.props.hoverLite);
     d3.selectAll("line").attr("class", (e) => {
       let edgeClass = e.Type === "Feeding" ? "line-feeding " : "line-es ";
-      edgeClass = e.living ? edgeClass : edgeClass + " dead";
+      edgeClass = (e.living ?? true) ? edgeClass : edgeClass + " dead";
       if (
         e.source.speciesID !== d.speciesID &&
         e.target.speciesID !== d.speciesID
@@ -336,7 +336,7 @@ class ForceGraph extends React.Component {
       if (!this.state.didNodeDie) {
         let didWin = true
         // for easy levels 1-4, you need to pass based on count of saved species
-        if(this.props.levelData.maintainReq) {
+        if (this.props.levelData.maintainReq) {
           let requiredSpecies = this.props.levelData.maintainReq
           let livingSpecies = 0
           this.state.nodeList.forEach(n => {
@@ -345,7 +345,7 @@ class ForceGraph extends React.Component {
             }
           })
           console.log(requiredSpecies, livingSpecies)
-          if(livingSpecies < requiredSpecies) {
+          if (livingSpecies < requiredSpecies) {
             didWin = false
           }
         }
@@ -375,6 +375,7 @@ class ForceGraph extends React.Component {
       .attr("width", this.props.width)
       .attr("height", this.props.height)
       .attr("stroke", "#CCC")
+      .classed("main-rect", () => true)
       .attr("stroke-width", 4);
 
     let g = svg.append("g");
@@ -422,7 +423,6 @@ class ForceGraph extends React.Component {
         d3
           .symbol()
           .size((d) => {
-            console.log(d);
             let size = this.isES(d.nodeName) ? 900 : 750;
             return size;
           })
@@ -484,10 +484,12 @@ class ForceGraph extends React.Component {
 
     simulation.on("tick", () => {
       nodes
-        .attr("transform", function (d) {
+        .attr("transform", function(d) {
           return "translate(" + d.x + "," + d.y + ")";
         })
-        .classed("dead", (d) => !d.living)
+        .classed("dead", (d) => {
+          return !(d.living ?? true)
+        })
         .classed("saved", (d) => d.saved)
         .attr(
           "d",
@@ -518,8 +520,9 @@ class ForceGraph extends React.Component {
         .attr("y1", (d) => {
           return d.target.y;
         })
-        .classed("dead", (d) => !d.living);
+        .classed("dead", (d) => !(d.living ?? true));
     });
+
 
     this.setState(
       { sim: simulation, g_nodes: g_nodes, g_links: g_links },
@@ -549,7 +552,9 @@ class ForceGraph extends React.Component {
     }
 
     if (prevProps.historyStep !== this.props.historyStep) {
-      d3.select(`#${this.props.name}`).selectAll("*").remove();
+      // cant remove * because we need to keep definitions
+      d3.select(`#${this.props.name}`).selectAll(".main-rect").remove();
+      d3.select(`#${this.props.name}`).selectAll("g").remove();
       this.setState(
         { edgeList: this.props.edges, nodeList: this.props.nodes },
         () => {
@@ -600,9 +605,9 @@ class ForceGraph extends React.Component {
           "y",
           this.props.trophic
             ? d3
-                .forceY()
-                .strength(5)
-                .y((d) => this.tl2y(d.trophicLevel))
+              .forceY()
+              .strength(5)
+              .y((d) => this.tl2y(d.trophicLevel))
             : d3.forceY(this.props.height / 2)
         )
         .alpha(0.1);
