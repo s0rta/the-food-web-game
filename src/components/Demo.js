@@ -2,7 +2,7 @@ import React from "react";
 import * as enDemoLists from '../data/list-demo'
 import MainGraph from './MainGraph'
 import SideBar from './SideBar'
-import {Redirect} from 'react-router-dom'
+import {Redirect } from 'react-router-dom'
 
 class Demo extends React.Component {
 	constructor(props) {
@@ -12,8 +12,8 @@ class Demo extends React.Component {
 			locale: 'en',
 			levelOver: false,
 			hoveredNode: null,
-			nodes: [enDemoLists.nodeList1, enDemoLists.nodeList2, enDemoLists.nodeList3],
-			edges: [enDemoLists.edgeList1, enDemoLists.edgeList2, enDemoLists.edgeList3],
+			nodes: [enDemoLists.nodeList1, enDemoLists.nodeList2, enDemoLists.nodeList3, enDemoLists.nodeList4],
+			edges: [enDemoLists.edgeList1, enDemoLists.edgeList2, enDemoLists.edgeList3, enDemoLists.edgeList4],
 			demoPos: 0,
 		}
 
@@ -30,19 +30,17 @@ class Demo extends React.Component {
 	};
 
 	handleContinueDemo = () => {
-		console.log(this.state.demoPos)
-		if(this.state.demoPos < 2) {
+
 			this.setState({demoPos: this.state.demoPos + 1})
-		} else {
-			return (
-				Redirect("/level-select/hard/en")
-			)
-		}
-	}
+			 	}
 
 	render() {
 		return (
 			<div className="demo-wrap">
+				{this.state.demoPos > 3 ? 
+			<Redirect push to={`/game/1/${this.props.match.params.difficulty}/${this.props.match.params.language}`} /> 
+			:
+			<> 
 				<SideBar
 					onToggleModal={(modal) => this.swapModal(modal)}
 					locale={this.state.locale}
@@ -69,6 +67,9 @@ class Demo extends React.Component {
 					onNodeHover={this.handleNodeHover}
 					historyStep={this.state.demoPos}
 				/>
+			</>
+		}
+			
 			</div>
 		)
 	}

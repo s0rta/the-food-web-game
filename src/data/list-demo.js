@@ -93,7 +93,58 @@ export const nodeList3 = [
   },
 ];
 
+
+
 export const edgeList3 = [
+  { target: 0, source: 1, Type: "Feeding" },
+  { target: 1, source: 2, Type: "ES" },
+];
+
+
+
+export const nodeList4 = [
+  {
+    index: 0,
+    speciesID: 8,
+    biomass: 1,
+    organismType: "Sea Urchin",
+    nodeColor: "Orange/brown-13",
+    nodeShape: "Circle",
+    nodeName: "Green Sea Urchin",
+    trophicLevel: 2.5,
+    desc: "Green sea urchins are a type of spiny echinoderm that lives in the intertidal ecosystem. They are shaped like a sphere and have hard shells.",
+    imgFile: "urchin.jpg",
+    imgCaption: "Close up of Green Sea Urchin on exposed rock",
+  },
+  {
+    index: 1,
+    speciesID: 14,
+    biomass: 1,
+    organismType: "Bird",
+    nodeColor: "Maroon-11",
+    nodeShape: "Circle",
+    nodeName: "Great black-beaked gull",
+    trophicLevel: 3.75,
+    desc: "Great black beaked gulls are a very common type of bird. They are the largest species of gull in the world.",
+    imgFile: "gull.jpg",
+    imgCaption: "Great black-beaked gull standing on a rock in a bay",
+  },
+  {
+    index: 2,
+    speciesID: 850,
+    biomass: 0.369631471,
+    organismType: "Ecosystem Service",
+    nodeColor: "Dark Pink-4",
+    nodeShape: "Circle",
+    nodeName: "Birdwatching",
+    trophicLevel: 5.914905607,
+    desc: "Birdwatching, or birding, is a type of wildlife viewing, where people track, look and listen for birds. This can be done for recreation and/or citizen science.",
+    imgFile: "birdwatch.jpg",
+    imgCaption: "Binoculars on bird guide.",
+  },
+];
+
+export const edgeList4 = [
   { target: 0, source: 1, Type: "Feeding" },
   { target: 1, source: 2, Type: "ES" },
 ];
@@ -143,6 +194,22 @@ export const levels = [
     removableIDs: [],
     initialKills: 0,
     saves: 0,
+    win: "",
+    lose: "",
+    maintainReq: 0,
+    shownGraphs: [],
+  },
+  {
+    level: 4,
+    intro:
+      "",
+    objective:
+      "",
+    topBarCopy:
+      "In each level of the game, there will be an ecological disturbance, you will be able to protect a few species, click on a species to protect it. Protecting a species only helps if that species would be directly impacted by the disturbance, protection does not help in the case of indirect impact. Press continue to play the first level of the game!",
+    removableIDs: [],
+    initialKills: 0,
+    saves: 1,
     win: "",
     lose: "",
     maintainReq: 0,

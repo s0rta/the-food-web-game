@@ -22,6 +22,7 @@ function App() {
         <Nav language="en" />
 
         <Switch>
+          <Route path="/Game/Demo/:difficulty/:language" component={Demo} />
           <Route
             path="/game/:level/:difficulty/:language/:retry?"
             component={Game}
@@ -36,7 +37,6 @@ function App() {
           <Route path="/for-educators/:language" component={Educators} />
           <Route path="/Contact/:language" component={Contact} />
           <Route path="/Glossary/:language" component={Glossary} />
-          <Route path="/Game/Demo" component={Demo} />
           <Route path="/">
             <MainMenu language="en" />
           </Route>
