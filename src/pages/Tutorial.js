@@ -56,7 +56,7 @@ class Tutorial extends React.Component {
               <button class="btn--primary" style={{ marginRight: "8px" }}>
                 <FormattedMessage
                   id="button1"
-                  defaultMessage="Start Rocky Inner Tidal Levels"
+                  defaultMessage="Start Rocky Innertidal Levels"
                 />
               </button>
             </Link>

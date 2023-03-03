@@ -88,7 +88,7 @@ class Nav extends React.Component {
                       <MenuItem className="playMenuButton-menuItem">
                         <FormattedMessage
                           id="rockyDrop"
-                          defaultMessage="Play Rocky Inner Tidal (Easy)"
+                          defaultMessage="Play Rocky Innertidal (Easy)"
                         />
                       </MenuItem>
                     </Link>

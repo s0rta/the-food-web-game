@@ -359,14 +359,14 @@ class SubGraphs extends React.Component {
               <div className="directions">
                 <FormattedMessage
                   id="dirs"
-                  defaultMessage="
+                  defaultMessage={`
               <h3>Directions</h3>
-              <p><u>Hover over species</u> to get more information, including what they might be vulnerable to.</p>
+              <p><u>Hover over species</u> to get more information about a species and to just se their interactions</p>
               <p><u>Right click a species (two finger click on laptop)</u> (or ecosystem service) to look at its predators and prey more closely.</p>
               <p><u>Left click a species</u> to protect it against the direct effects of the disturbance.</p>
               <p><u>Toggle trophic</u> display to get a new perspective.</p>
-              <p>Once your ready, (protected as many species as allowed), <u>simulate the distrbance</u> to see if you won!</p>
-              "
+              <p>Once you're ready, (protect as many species as allowed), <u>simulate the disturbance</u> to see if you won!</p>
+              `}
                   values={{
                     p: (...msg) => <p>{msg}</p>,
                     u: (...msg) => <u>{msg}</u>,
