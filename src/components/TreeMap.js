@@ -47,7 +47,6 @@ function TreeMap(props) {
   };
 
   useEffect(() => {
-    console.log(props);
     if (props.levelOver && !isOver) {
       setIsOver(true);
       for (const node of props.nodeList) {
@@ -84,10 +83,12 @@ function TreeMap(props) {
           <div id="my_dataviz1"></div>
         </div>
       )}
+      {props.level > 1 && (
       <div id="indirect-wrapper" style={{ textAlign: "left" }}>
         <h2 className="level-header">Breakdown of Species Indirectly Lost</h2>
         <div id="my_dataviz2"></div>
       </div>
+      )}
     </div>
   );
 }
