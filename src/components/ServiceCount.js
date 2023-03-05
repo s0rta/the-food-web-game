@@ -1,4 +1,3 @@
-import { thresholdScott } from "d3-array";
 import React from "react";
 import { FormattedMessage, IntlProvider } from "react-intl";
 import Plot from "./Plot";

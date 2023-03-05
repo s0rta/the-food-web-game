@@ -220,10 +220,6 @@ class ForceGraph extends React.Component {
     g.attr("transform", event.transform);
   }
 
-  restartSim = () => {
-    this.state.sim.alpha(0.05).restart();
-  };
-
   killLinks = (nSID) => {
     let newEdges = [...this.state.edgeList].map((e) => {
       if (e && (e.target.speciesID === nSID || e.source.speciesID === nSID)) {
@@ -329,9 +325,7 @@ class ForceGraph extends React.Component {
 
       this.setState({ didNodeDie: false });
       let nodes = this.state.nodeList;
-      nodes.map((n) => {
-        this.checkNode(n);
-      });
+      nodes.map((n) => this.checkNode(n))
       // if no nodes dies, the level is over
       if (!this.state.didNodeDie) {
         let didWin = true
@@ -360,8 +354,6 @@ class ForceGraph extends React.Component {
   };
 
   createSim = () => {
-    let transform = d3.zoomIdentity;
-
     const svg = d3
       .select(`#${this.props.name}`)
       .attr("width", this.props.width)
