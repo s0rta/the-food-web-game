@@ -6,10 +6,10 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import "./Intro.css";
 
 const pageInSpanish = {
-  h1: "spanish h1",
-  p1: "spanish p1",
-  button1: "spanish button",
-  button2: "spanish button2",
+  h1: "Tutorial",
+  p1: "En este juego, usarás información sobre especies y sus interacciones para decidir qué especies proteger para mantener los servicios ecosistemáticos. Cada nivel se volverá más desafiante y se centrará en un servicio ecosistemático diferente. Mira este video corto para aprender a jugar.",
+  button1: "Jugar “Zona Intermareal Rocosa” (Fácil)",
+  button2: "Jugar nivel “Salinas” (Difícil)",
 };
 
 class Tutorial extends React.Component {

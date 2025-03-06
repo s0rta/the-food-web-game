@@ -8,22 +8,32 @@ import { Button, Wrapper, Menu, MenuItem } from "react-aria-menubutton";
 import "./Nav.css";
 
 const pageInSpanish = {
-  homeLink: "sl1",
-  educatorsLink: "sl2",
-  glossaryLink: "sl3",
-  creditsLink: "sl4",
-  contactLink: "sl5",
-  playButton: "sbutton",
-  introDop: "sIntro",
-  tutorialDrop: "sTut",
-  rockyDrop: "sRocky",
-  saltDrop: "sSalt",
+  homeLink: "Inicio",
+  educatorsLink: "Educadores",
+  glossaryLink: "Glosario",
+  creditsLink: "Créditos",
+  contactLink: "Contacto",
+  playButton: "Jugar",
+  introDop: "Introducción a los conceptos clave",
+  tutorialDrop: "Tutorial del juego",
+  rockyDrop: "Zona Intermareal Rocosa",
+  saltDrop: "Salinas",
 };
 
 class Nav extends React.Component {
   constructor(props) {
     super(props);
+    this.handleLanguageSwitch = this.handleLanguageSwitch.bind(this);
   }
+
+  handleLanguageSwitch() {
+    console.log("handleLanguageSwitch");
+    const newLanguage = this.props.language === "en" ? "es" : "en";
+    if (this.props.onLanguageChange) {
+      this.props.onLanguageChange(newLanguage);
+    }
+  }
+
   render() {
     const locale = this.props.language;
     return (
@@ -57,6 +67,12 @@ class Nav extends React.Component {
             </Link>
           </div>
           <div className="right-nav">
+            <button
+              onClick={this.handleLanguageSwitch}
+              className="btn btn--secondary language-switch"
+            >
+              {locale === "en" ? "Español" : "English"}
+            </button>
             <Wrapper className="playMenuButton">
               <Button className="btn--nav btn btn--secondary">
                 <FormattedMessage id="playButton" defaultMessage="Play Game" />

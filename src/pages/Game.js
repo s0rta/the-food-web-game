@@ -15,13 +15,13 @@ import { Link } from "react-router-dom";
 import ForceGraph from "../components/ForceGraph.js";
 
 const componentInSpanish = {
-  level: "level in spanish",
-  intro: "introduction in spanish",
-  obj: "objective in spanish",
-  startLvl: "start level in spanish",
-  nextLvl: "next level in spanish",
-  restartLvl: "restart level in spanish",
-  stepHeader: "step header in spanish",
+  level: "Nivel",
+  intro: "Introducción",
+  obj: "Objetivo",
+  startLvl: "Comenzar nivel",
+  nextLvl: "Siguiente nivel",
+  restartLvl: "Reiniciar nivel",
+  stepHeader: "Paso a paso",
 };
 
 class Game extends React.Component {
@@ -64,9 +64,10 @@ class Game extends React.Component {
     let lists;
 
     if (this.props.match.params.difficulty === "hard") {
-      lists = this.props.match.params.language === "en" ? enLists : "";
+      lists = this.props.match.params.language === "en" ? enLists : enLists;
     } else {
-      lists = this.props.match.params.language === "en" ? enRockyLists : "";
+      lists =
+        this.props.match.params.language === "en" ? enRockyLists : enRockyLists;
     }
 
     switch (this.props.match.params.level) {
@@ -119,7 +120,7 @@ class Game extends React.Component {
     return [levelNodes, levelEdges, levelData, reqSpecies];
   };
 
-  componentDidMount() { }
+  componentDidMount() {}
 
   handleLevelLost = () => {
     this.setState({ levelWon: false });
@@ -190,8 +191,9 @@ class Game extends React.Component {
       pathname:
         this.props.match.params.level > 7
           ? `/`
-          : `/game/${parseFloat(this.props.match.params.level) + 1}/${this.props.match.params.difficulty
-          }/${this.props.match.params.language}`,
+          : `/game/${parseFloat(this.props.match.params.level) + 1}/${
+              this.props.match.params.difficulty
+            }/${this.props.match.params.language}`,
     };
 
     return (
@@ -263,15 +265,26 @@ class Game extends React.Component {
                 nodeList={this.state.levelNodes}
               />
               <div>
-                <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '60%', paddingLeft: 12 }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    maxWidth: "60%",
+                    paddingLeft: 12,
+                  }}
+                >
                   <h2 className="level-header">
                     <FormattedMessage
                       id="stepHeader"
                       defaultMessage="Step through the level"
                     />
                   </h2>
-                  <p><FormattedMessage id="stepDesc1" defaultMessage="Want to see what happened? Click the arrows below the network to see the food web change after each species is directly impacted by the threat (lost)" /></p>
-
+                  <p>
+                    <FormattedMessage
+                      id="stepDesc1"
+                      defaultMessage="Want to see what happened? Click the arrows below the network to see the food web change after each species is directly impacted by the threat (lost)"
+                    />
+                  </p>
 
                   <ForceGraph
                     width={550}
@@ -299,7 +312,15 @@ class Game extends React.Component {
                   <div className="lite-label">
                     {this.state.liteLabel || "Hover node to see its name"}
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginLeft: '-12px', marginRight: '36px', minWidth: '574px' }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      marginLeft: "-12px",
+                      marginRight: "36px",
+                      minWidth: "574px",
+                    }}
+                  >
                     <button
                       class="btn step-button"
                       onClick={() => {
@@ -308,7 +329,8 @@ class Game extends React.Component {
                             historyStep: this.state.historyStep - 1,
                           });
                       }}
-                    >🡐
+                    >
+                      🡐
                     </button>
                     <button
                       class="btn step-button"

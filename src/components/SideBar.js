@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 import "./SideBar.css";
 
 const componentInSpanish = {
-  h1: "spanish H1",
-  objectiveButton: "spanish objective button",
-  levelButton: "spanishLevelButton",
-  resetButton: "spanishResetButton",
-  simButton: "spanishSimButton",
-  trophButton: "spanishTrophicButton",
-  cardBio: "spanishCardBiomass",
-  cardType: "spanishCardType",
-  cardTroph: "spanishCardTrophic",
+  h1: "Nivel",
+  objectiveButton: "Mostrar objetivo",
+  levelButton: "Seleccionar nivel",
+  resetButton: "Reiniciar",
+  simButton: "Simular perturbación",
+  trophButton: "Vista trófica",
+  cardBio: "Biomasa",
+  cardType: "Tipo",
+  cardTroph: "Nivel trófico",
 };
 
 class SideBar extends React.Component {
@@ -26,20 +26,20 @@ class SideBar extends React.Component {
     const es =
       this.props.locale == "es"
         ? [
-          "",
-          "wave attenuation",
-          "shoreline protection",
-          "shoreline stabilization",
-          "carbon sequestration",
-          "water filtration",
-          "commfishery",
-          "birdwatching",
-          "waterfowl hunting",
-          "recfishery",
-          "recreational fishery",
-          "commercial fishery",
-          "carbon storage",
-        ]
+            "",
+            "wave attenuation",
+            "shoreline protection",
+            "shoreline stabilization",
+            "carbon sequestration",
+            "water filtration",
+            "commfishery",
+            "birdwatching",
+            "waterfowl hunting",
+            "recfishery",
+            "recreational fishery",
+            "commercial fishery",
+            "carbon storage",
+          ]
         : [];
     let transformed = name.toLowerCase().split("-").join(" ");
     return es.includes(transformed);
@@ -59,7 +59,7 @@ class SideBar extends React.Component {
 
   continueDemo = () => {
     this.props.continueDemo();
-  }
+  };
 
   render() {
     return (
@@ -70,19 +70,16 @@ class SideBar extends React.Component {
       >
         <div className="sidebar-wrap">
           <div class="container">
-            {this.props.demoMode ? <>
-
-              <button
-                className="btn--primary btn--demo"
-                onClick={this.continueDemo}
-              >
-                <FormattedMessage
-                  id="contButton"
-                  defaultMessage="Continue"
-                />
-              </button>
-
-            </> :
+            {this.props.demoMode ? (
+              <>
+                <button
+                  className="btn--primary btn--demo"
+                  onClick={this.continueDemo}
+                >
+                  <FormattedMessage id="contButton" defaultMessage="Continue" />
+                </button>
+              </>
+            ) : (
               <>
                 <h1 class="level-header">
                   <FormattedMessage id="h1" defaultMessage="Level" />{" "}
@@ -122,14 +119,18 @@ class SideBar extends React.Component {
                     defaultMessage="Show Objective"
                   />
                 </button>
-                <button className="btn" onClick={() => window.location.reload()}>
+                <button
+                  className="btn"
+                  onClick={() => window.location.reload()}
+                >
                   <FormattedMessage id="resetButton" defaultMessage="Reset" />
                 </button>
                 <button className="btn" onClick={this.handleTrophicToggle}>
                   <FormattedMessage
                     id="trophButton"
-                    defaultMessage={`Trophic View ${this.props.trophicDisplay ? "Off" : "On"
-                      }`}
+                    defaultMessage={`Trophic View ${
+                      this.props.trophicDisplay ? "Off" : "On"
+                    }`}
                   />
                 </button>
                 <button
@@ -142,7 +143,7 @@ class SideBar extends React.Component {
                   />
                 </button>
               </>
-            }
+            )}
           </div>
           <div className="container">
             {this.props.data ? (

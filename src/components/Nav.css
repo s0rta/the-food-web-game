@@ -1,12 +1,12 @@
 .nav-bar {
   display: flex;
   background: #02075d;
-  align-items:center;
+  align-items: center;
   justify-content: space-between;
-  padding: 0px 36px; 
+  padding: 0px 36px;
   height: 54px;
   width: calc(100% - 72px);
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.06), 0px 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-elm {
@@ -16,13 +16,11 @@
   margin-right: 24px;
 }
 
-
 .nav-title {
   font-weight: bold;
   font-size: 20px;
   margin-right: 36px;
 }
-
 
 .playMenuButton-menu {
   position: absolute;
@@ -31,12 +29,12 @@
   margin-left: -180px;
   background: white;
   border-radius: 4px;
-  box-shadow: var(--shadow-elevation-medium); 
+  box-shadow: var(--shadow-elevation-medium);
 }
 
 .playMenuButton-menu ul {
   padding-left: 0px;
-  margin:0;
+  margin: 0;
 }
 
 .playMenuButton-menu ul li a {
@@ -49,11 +47,23 @@
   color: black;
   padding: 6px;
   margin-bottom: 0px;
-  text-align:right;
+  text-align: right;
   border-radius: 4px;
 }
 
 .playMenuButton-menuItem:hover {
   background: #02075d;
   color: white;
+}
+
+.language-switch {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.language-switch:hover {
+  opacity: 0.8;
 }

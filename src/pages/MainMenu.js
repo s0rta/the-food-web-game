@@ -4,12 +4,13 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import "./MainMenu.css";
 
 const pageInSpanish = {
-  h1: "spanish h1",
-  h1Subhead: "spanish subhead",
-  p1: "paragraph1 spanish",
-  p2: "paragraph2 spanish",
-  p3: "paragraph3 spanish",
-  p4: "paragraph4 spanish",
+  h1: "El Juego de la Red Alimenticia",
+  h1Subhead:
+    "Un juego sobre conservar redes alimenticias complejas y sus servicios ecosistemáticos",
+  p1: "Los ecosistemas costeros están llenos de vida marina diversa y son de vital importancia alrededor del mundo. Estos ecosistemas proveen una gran variedad de beneficios a personas, incluyendo protección de las costas, la producción pesquera y la filtración de agua. Estos beneficios se conocen como servicios ecosistemáticos. Desafortunadamente, los ecosistemas costeros y los servicios que proveen están siendo amenazados: el calentamiento de las aguas, el aumento del nivel del mar, las especies invasoras, y la contaminación son algunas de las amenazas que estos ecosistemas enfrentan.",
+  p2: "La conservación apunta a proteger estas especies y mantener los servicios ecosistemáticos, pero los recursos son limitados. No poseemos dinero, tiempo o mano de obra ilimitada, y tenemos que decidir qué especies priorizar. En este módulo de aprendizaje, aprenderá más sobre los sistemas ecosistemáticos y las amenazas que enfrentan; y desarrollará las habilidades para equilibrar la incertidumbre y la complejidad.",
+  p3: "¿Viene sólo a jugar el juego? Si es su primera vez aquí, le sugerimos empezar con las páginas de “introducción a los conceptos claves” y “Tutorial del Juego” (que se encuentran bajo la pestaña “Jugar”) antes de comenzar el juego. Hay dos niveles de dificultad para este juego. La “Zona Intermareal Rocosa” es la versión más fácil y el nivel “Salinas” es la más desafiante.",
+  p4: "¿Es Ud. un educador buscando usar este juego en su sala de clases? Encontrará planes de estudio, actividades, y evaluaciones en la página “Educadores.”",
 };
 
 class MainMenu extends React.Component {

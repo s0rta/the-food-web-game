@@ -5,16 +5,21 @@ import { imgCredit } from "../data/lists";
 import { FormattedMessage, IntlProvider } from "react-intl";
 
 const pageInSpanish = {
-  h1: "spanish h1",
-  h21: "spanish h2",
-  h21subhead: "spanish h2 subhead",
-  contr: "<a>spanish contributions</a>",
-  h22: "spanish h2",
-  h22subhead: "spanish h2 subhead",
-  h23: "spanish h2",
-  h23subhead: "spanish h2 subhead",
-  h24: "spanish h2",
-  h24subhead: "spanish h2 subhead",
+  h1: "Página de Creditos",
+  h21: "Agradecimientos",
+  h21subhead:
+    "Queremos agradecer a los miembros del Laboratorio Dee, los estudiantes de Principios de Ecología en la Universidad de Colorado Boulder, y a nuestros amigos y familiares quienes brindaron evaluaciones y criticas sobre los primeros borradores del juego. Queremos también agradecer a S. McCarthy, M. Mosher, A. Cohen-Leadholm y sus estudiantes de secundaria por poner en prueba este módulo de aprendizaje y por proveer evaluaciones y criticas sobre los primeros borradores del juego. Este trabajo ha sido apoyado por microbecas de la Oficina de Alcance y Compromiso de la Universidad de Colorado y también reconocemos el apoyo del programa de Oceanografía Biológca de la Fundación Nacional de Ciencias, beca no. 202049360 para Laura Dee: Investigación Collaborativa: Las consecuencias de la pérdida de especies para a la perseverancia y funcionamiento de la redes alimenticia en el intermareal rocoso del Golfo de Maine.",
+  contr:
+    "A. Keyes dirigió el diseño y desarrollo del juego con la ayuda de J. Write, L. Dee y D. Larremore. J. Wright programó el juego por completo. A. Keyes desarrolló el plan de estudio y los materiales de evaluación con guía de L. Corwin y L. Dee. Mariana Bastías tradujo el juego/página web y todos los materiales del plan de estudio, incluyendo las evaluaciones.",
+  h22: "Contribuciones",
+  h22subhead:
+    "Los iconos fueron recolectados del Proyecto Noun con derechos de uso Creative Commons.",
+  h23: "Créditos de Iconos",
+  h23subhead:
+    "Los iconos fueron recolectados del Proyecto Noun con derechos de uso Creative Commons.",
+  h24: "Créditos de Imagenes",
+  h24subhead:
+    "Las imagenes fueron recolectadas de varios fotógrafos con derechos de uso Creative Commons.",
 };
 
 class Credits extends React.Component {
@@ -76,9 +81,7 @@ class Credits extends React.Component {
                       {msg}
                     </a>
                   ),
-                  a5: (...msg) => (
-          <a href="https://www.lauraedee.com">{msg}</a>
-        ),
+                  a5: (...msg) => <a href="https://www.lauraedee.com">{msg}</a>,
                   a6: (...msg) => (
                     <a href="https://www.colorado.edu/lab/davies/">{msg}</a>
                   ),

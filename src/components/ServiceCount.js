@@ -3,7 +3,7 @@ import { FormattedMessage, IntlProvider } from "react-intl";
 import Plot from "./Plot";
 
 const componentInSpanish = {
-  sit: "spanish services in tact",
+  sit: "Servicios en pie",
 };
 
 class ServiceCount extends React.Component {
@@ -48,8 +48,11 @@ class ServiceCount extends React.Component {
       >
         {this.props.display && (
           <div className="service-count-wrap">
-            <FormattedMessage id="sitStart" defaultMessage="At the end of the simulation" />
-            {" "}{this.state.workingES}{" "}
+            <FormattedMessage
+              id="sitStart"
+              defaultMessage="At the end of the simulation"
+            />{" "}
+            {this.state.workingES}{" "}
             <FormattedMessage
               id="sit"
               defaultMessage="out of 8 ecosystem services were in tact"

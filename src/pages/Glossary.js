@@ -2,13 +2,13 @@ import React from "react";
 import { IntlProvider, FormattedMessage } from "react-intl";
 
 const pageInSpanish = {
-  h1: "spanish h1",
-  h21: "first spanish h2",
-  ul1: "<li><b>First spanish ul</b> first spanish ul</li>",
-  h22: "second spanish h2",
-  ul2: "<li><b>Second spanish ul</b> second spanish ul</li>",
-  h23: "third spanish h2",
-  ul3: "<li><b>Third spanish ul</b> third spanish ul</li>",
+  h1: "Glosario",
+  h21: "Ecología",
+  ul1: "<li><b>Especies:</b> Una manera de clasificar organismos que se reproducen en la naturaleza y producen descendencia fértil.</li>",
+  h22: "Servicios Ecosistemáticos",
+  ul2: "<li><b>Servicio Ecosistemático:</b> Los beneficios que la naturaleza proporciona a las personas</li>",
+  h23: "Perturbación",
+  ul3: "<li><b>Perturbación:</b> Usualmente un cambio abrupto en las condiciones ambientales que causa cambios en la estructura y/o función del ecosistema.</li>",
 };
 
 function Glossary(props) {

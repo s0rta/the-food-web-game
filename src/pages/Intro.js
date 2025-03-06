@@ -6,9 +6,9 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import "./Intro.css";
 
 const pageInSpanish = {
-  h1: "spanish h1",
-  p1: "spanish paragraph 1 <a>spanish link</a>",
-  button1: "spanish button1",
+  h1: "Revisión de conceptos",
+  p1: "¿Quiere aprender más sobre estos conceptos? Visite otros recursos <a>aquí</a>.",
+  button1: "Tutorial del juego",
 };
 
 const locale = "en";

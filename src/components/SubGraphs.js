@@ -6,25 +6,25 @@ import Plot from "./Plot";
 import ServiceCount from "./ServiceCount";
 
 const componentInSpanish = {
-  los: "Levels of Separation spanish",
-  efl: "energy flow in spanish",
-  efo: "energy flow out spanish",
-  tt: "toggle trophic spanish",
-  dirs: "spanish directions",
-  key: "spanish key",
-  si: "spanish species Interaction",
-  ssi: "spanish service species Interaction",
-  es: "spanish ecosystem service",
-  m: "spanish mammal",
-  mo: "spanish Microscopic Organism",
-  c: "spanish crustacean",
-  p: "spanish plant",
-  b: "spanish bird",
-  iaa: "spanish insect &c.",
-  f: "spanish fish",
-  pl: "spanish plankton",
-  mol: "spanish mollusc",
-  plotEx: "plot explanation in spanish",
+  los: "Niveles de separación",
+  efl: "flujo de energía en",
+  efo: "flujo de energía fuera",
+  tt: "toggle trófico",
+  dirs: "direcciones",
+  key: "clave",
+  si: "interacción de especies",
+  ssi: "interacción de especies que proporcionan servicios",
+  es: "servicio del ecosistema",
+  m: "mamífero",
+  mo: "organismo microscópico",
+  c: "crustáceo",
+  p: "planta",
+  b: "ave",
+  iaa: "insecto &c.",
+  f: "pez",
+  pl: "plankton",
+  mol: "molusco",
+  plotEx: "explicación del gráfico",
 };
 
 class SubGraphs extends React.Component {
@@ -175,7 +175,13 @@ class SubGraphs extends React.Component {
                 )}
               </div>
             )}
-            <div className={this.props.levelOver &&  this.props.levelData.shownGraphs.length ? "plots" : "plotsHidden"}>
+            <div
+              className={
+                this.props.levelOver && this.props.levelData.shownGraphs.length
+                  ? "plots"
+                  : "plotsHidden"
+              }
+            >
               <ServiceCount
                 locale={this.props.locale}
                 onLevelLost={this.handleLevelLost}

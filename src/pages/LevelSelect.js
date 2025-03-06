@@ -7,8 +7,8 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import "./LevelSelect.css";
 
 const pageInSpanish = {
-  h1: "spanish h1",
-  div1: "spanish div",
+  h1: "Selección de Nivel",
+  div1: "Elige el nivel que quieres jugar",
 };
 
 class LevelSelect extends React.Component {
@@ -31,7 +31,9 @@ class LevelSelect extends React.Component {
               <FormattedMessage id="h1" defaultMessage="Level Select" />
             </h1>
             <div className="levels">
-              <Link to={`/game/demo/${difficulty}/${locale}`}><button className="btn">0</button></Link>
+              <Link to={`/game/demo/${difficulty}/${locale}`}>
+                <button className="btn">0</button>
+              </Link>
               <Link to={`/game/1/${difficulty}/${locale}`}>
                 <button className="btn">1</button>
               </Link>
