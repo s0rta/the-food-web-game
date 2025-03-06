@@ -9,6 +9,12 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.right-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .nav-elm {
   color: white;
   text-decoration: none;
