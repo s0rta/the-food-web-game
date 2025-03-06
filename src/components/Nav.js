@@ -8,7 +8,7 @@ import { Button, Wrapper, Menu, MenuItem } from "react-aria-menubutton";
 import "./Nav.css";
 
 const pageInSpanish = {
-  homeLink: "Inicio",
+  homeLink: "El juego de la red alimentaria",
   educatorsLink: "Educadores",
   glossaryLink: "Glosario",
   creditsLink: "Créditos",
